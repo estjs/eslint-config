@@ -1,6 +1,6 @@
 {
   "name": "@ventjs/eslint-config-ts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -19,7 +19,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
-    "@ventjs/eslint-config-basic": "^0.0.2"
+    "@ventjs/eslint-config-basic": "^0.0.3"
   },
   "devDependencies": {
     "eslint": "^8.10.0"
