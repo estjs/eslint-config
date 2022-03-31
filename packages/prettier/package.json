@@ -1,0 +1,31 @@
+{
+  "name": "@ventjs/eslint-config-prettier",
+  "version": "0.0.1",
+  "description": "Prettier Config",
+  "keywords": [],
+  "license": "MIT",
+  "author": "ventjs",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --config=index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "eslint": ">=7.4.0"
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-yml": "^0.14.0",
+    "prettier": "^2.5.1"
+  },
+  "devDependencies": {
+    "eslint": "8.10.0"
+  },
+  "gitHead": "fb057f44be70c4d8953be0726e310d817063cc76"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@ventjs/eslint-config",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "author": "ventjs",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "peerDependencies": {
+    "eslint": ">=7.4.0"
+  },
+  "dependencies": {
+    "@ventjs/eslint-config-prettier": "^0.2.0",
+    "@ventjs/eslint-config-vue": "^0.2.0",
+    "@ventjs/eslint-config-vue2": "^0.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "fb057f44be70c4d8953be0726e310d817063cc76"
+}

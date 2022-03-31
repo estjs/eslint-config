@@ -1,0 +1,28 @@
+{
+  "name": "@ventjs/eslint-config-ts",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "license": "MIT",
+  "author": "ventjs",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "eslint": ">=7.4.0",
+    "typescript": ">=3.9"
+  },
+  "dependencies": {
+    "@ventjs/eslint-config-basic": "^0.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0"
+  },
+  "gitHead": "fb057f44be70c4d8953be0726e310d817063cc76"
+}

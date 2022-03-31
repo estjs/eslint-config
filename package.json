@@ -1,0 +1,18 @@
+{
+  "name": "@ventjs/eslint-config",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "ventjs",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "lint": "npx eslint --ext .js,.json,.vue,.md .",
+    "release": "lerna publish --conventional-commits",
+    "publish": "npm publish --access public"
+  },
+  "devDependencies": {
+    "@ventjs/eslint-config": "*",
+    "eslint": "^8.10.0",
+    "lerna": "^4.0.0",
+    "typescript": "^4.6.2"
+  }
+}
