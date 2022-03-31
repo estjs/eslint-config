@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@ventjs/eslint-config-ts": "^0.2.0",
+    "@ventjs/eslint-config-ts": "^0.0.1",
     "eslint-plugin-vue": "^8.5.0"
   },
   "devDependencies": {
