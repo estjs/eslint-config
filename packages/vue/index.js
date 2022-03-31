@@ -27,7 +27,6 @@ module.exports = {
         defineExpose: 'readonly',
         withDefaults: 'readonly',
 
-        // RFC: https://github.com/vuejs/rfcs/discussions/430
         defineOptions: 'readonly',
       },
       rules: {
