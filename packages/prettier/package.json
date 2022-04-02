@@ -1,10 +1,10 @@
 {
-  "name": "@ventjs/eslint-config-prettier",
+  "name": "@estjs/eslint-config-prettier",
   "version": "0.0.3",
   "description": "Prettier Config",
   "keywords": [],
   "license": "MIT",
-  "author": "ventjs",
+  "author": "estjs",
   "files": [
     "index.js"
   ],

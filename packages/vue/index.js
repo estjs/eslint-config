@@ -36,7 +36,7 @@ module.exports = {
       },
     },
   ],
-  extends: ['plugin:vue/vue3-recommended', '@ventjs/eslint-config-ts'],
+  extends: ['plugin:vue/vue3-recommended', '@estjs/eslint-config-ts'],
   rules: {
     'vue/max-attributes-per-line': 'off',
     'vue/no-v-html': 'off',

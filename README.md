@@ -1,31 +1,31 @@
-# @ventjs/eslint-config
+# @estjs/eslint-config
 
 Forked from [antfu/eslint-config](https://github.com/antfu/eslint-config)
 
 ## Usage
 
 ```bash
-pnpm i -D @ventjs/eslint-config-basic # JavaScript only
+pnpm i -D @estjs/eslint-config-basic # JavaScript only
 # Or yarn add -D / npm install -D
-pnpm i -D @ventjs/eslint-config-ts # JavaScript and TypeScript
-pnpm i -D @ventjs/eslint-config-vue # JavaScript, TypeScript and Vue 3
-pnpm i -D @ventjs/eslint-config-vue2 # JavaScript, TypeScript and Vue 2
+pnpm i -D @estjs/eslint-config-ts # JavaScript and TypeScript
+pnpm i -D @estjs/eslint-config-vue # JavaScript, TypeScript and Vue 3
+pnpm i -D @estjs/eslint-config-vue2 # JavaScript, TypeScript and Vue 2
 
-pnpm i -D @ventjs/eslint-config-prettier # Prettier only
-pnpm i -D @ventjs/eslint-config # JavaScript, TypeScript, Vue 3&2 and Prettier
+pnpm i -D @estjs/eslint-config-prettier # Prettier only
+pnpm i -D @estjs/eslint-config # JavaScript, TypeScript, Vue 3&2 and Prettier
 ```
 
 ### Install
 
 ```bash
-pnpm add -D eslint @ventjs/eslint-config
+pnpm add -D eslint @estjs/eslint-config
 ```
 
 ### Config `.eslintrc`
 
 ```json
 {
-  "extends": ["@ventjs/eslint-config"]
+  "extends": ["@estjs/eslint-config"]
 }
 ```
 

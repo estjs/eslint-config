@@ -1,10 +1,10 @@
 {
-  "name": "@ventjs/eslint-config-basic",
+  "name": "@estjs/eslint-config-basic",
   "version": "0.0.3",
   "description": "",
   "keywords": [],
   "license": "MIT",
-  "author": "ventjs",
+  "author": "estjs",
   "files": [
     "index.js"
   ],

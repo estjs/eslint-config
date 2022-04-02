@@ -1,9 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const basic = require('@ventjs/eslint-config-basic')
+const basic = require('@estjs/eslint-config-basic')
 
 module.exports = {
   extends: [
-    '@ventjs/eslint-config-basic',
+    '@estjs/eslint-config-basic',
     'plugin:@typescript-eslint/recommended',
   ],
   overrides: basic.overrides,

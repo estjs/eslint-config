@@ -1,10 +1,10 @@
 {
-  "name": "@ventjs/eslint-config-vue2",
+  "name": "@estjs/eslint-config-vue2",
   "version": "0.0.3",
   "description": "",
   "keywords": [],
   "license": "MIT",
-  "author": "ventjs",
+  "author": "estjs",
   "files": [
     "index.js"
   ],
@@ -16,7 +16,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@ventjs/eslint-config-ts": "^0.0.3",
+    "@estjs/eslint-config-ts": "^0.0.3",
     "eslint-plugin-vue": "^8.5.0"
   },
   "devDependencies": {

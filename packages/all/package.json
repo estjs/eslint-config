@@ -1,10 +1,10 @@
 {
-  "name": "@ventjs/eslint-config",
+  "name": "@estjs/eslint-config",
   "version": "0.0.3",
   "description": "",
   "keywords": [],
   "license": "MIT",
-  "author": "ventjs",
+  "author": "estjs",
   "files": [
     "index.js"
   ],
@@ -13,9 +13,9 @@
     "eslint": ">=7.4.0"
   },
   "dependencies": {
-    "@ventjs/eslint-config-prettier": "^0.0.3",
-    "@ventjs/eslint-config-vue": "^0.0.3",
-    "@ventjs/eslint-config-vue2": "^0.0.3"
+    "@estjs/eslint-config-prettier": "^0.0.3",
+    "@estjs/eslint-config-vue": "^0.0.3",
+    "@estjs/eslint-config-vue2": "^0.0.3"
   },
   "devDependencies": {
     "eslint": "^8.10.0"

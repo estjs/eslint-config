@@ -14,7 +14,7 @@ module.exports = {
       },
     },
   ],
-  extends: ['plugin:vue/recommended', '@ventjs/eslint-config-ts'],
+  extends: ['plugin:vue/recommended', '@estjs/eslint-config-ts'],
   rules: {
     '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^h$', argsIgnorePattern: '^h$' }],
     'vue/no-v-html': 'off',
