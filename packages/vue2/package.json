@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@estjs/eslint-config-ts": "^0.0.5",
-    "eslint-plugin-vue": "^8.5.0"
+    "eslint-plugin-vue": "^8.6.0"
   },
   "devDependencies": {
     "eslint": "8.11.0"

@@ -18,7 +18,7 @@
     "@estjs/eslint-config-vue2": "^0.0.5"
   },
   "devDependencies": {
-    "eslint": "^8.10.0"
+    "eslint": "^8.13.0"
   },
   "publishConfig": {
     "access": "public"
