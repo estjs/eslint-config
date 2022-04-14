@@ -2,14 +2,10 @@
 const basic = require('@estjs/eslint-config-basic')
 
 module.exports = {
-  extends: [
-    '@estjs/eslint-config-basic',
-    'plugin:@typescript-eslint/recommended',
-  ],
+  extends: ['@estjs/eslint-config-basic', 'plugin:@typescript-eslint/recommended'],
   overrides: basic.overrides,
   rules: {
     'import/named': 'off',
-
     // TS
     '@typescript-eslint/semi': ['error', 'never'],
     '@typescript-eslint/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
@@ -19,7 +15,6 @@ module.exports = {
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/consistent-indexed-object-style': ['error', 'record'],
     '@typescript-eslint/prefer-ts-expect-error': 'error',
-
     // Override JS
     'no-useless-constructor': 'off',
     'indent': 'off',

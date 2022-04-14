@@ -5,17 +5,18 @@
   "keywords": [],
   "license": "MIT",
   "author": "estjs",
+  "main": "index.js",
   "files": [
     "index.js"
   ],
-  "main": "index.js",
   "peerDependencies": {
     "eslint": ">=7.4.0"
   },
   "dependencies": {
     "@estjs/eslint-config-prettier": "^0.0.6",
     "@estjs/eslint-config-vue": "^0.0.6",
-    "@estjs/eslint-config-vue2": "^0.0.6"
+    "@estjs/eslint-config-vue2": "^0.0.6",
+    "local-pkg": "^0.4.1"
   },
   "devDependencies": {
     "eslint": "^8.13.0"

@@ -5,10 +5,10 @@
   "keywords": [],
   "license": "MIT",
   "author": "estjs",
+  "main": "index.js",
   "files": [
     "index.js"
   ],
-  "main": "index.js",
   "publishConfig": {
     "access": "public"
   },
