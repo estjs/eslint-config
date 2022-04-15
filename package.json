@@ -1,19 +1,16 @@
 {
   "name": "@estjs/eslint-config",
-  "version": "0.0.1",
   "license": "MIT",
-  "author": "estjs",
+  "author": "estjs (https://github.com/estjs/)",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "lint": "npx eslint --ext .js,.json,.vue,.md .",
-    "release": "lerna publish --conventional-commits",
-    "publish": "npm publish --access public"
+    "lint": "eslint . --ext .js,.ts,.json,.json5,.vue,.md --fix",
+    "release": "bumpp package.json packages/*/package.json --commit --push --tag"
   },
   "devDependencies": {
     "@estjs/eslint-config": "*",
     "eslint": "^8.13.0",
-    "lerna": "^4.0.0",
-    "typescript": "^4.6.3",
-    "vue": "^3.2.33"
-  }
+    "bumpp": "^7.1.1",
+    "typescript": "^4.6.3"
+  },
+  "version": "0.1.0"
 }
