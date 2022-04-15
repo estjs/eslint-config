@@ -1,4 +1,6 @@
-module.exports = {
+const { defineConfig } = require('eslint-define-config')
+
+module.exports = defineConfig({
   env: {
     es6: true,
     browser: true,
@@ -237,8 +239,6 @@ module.exports = {
     'vars-on-top': 'error',
     'require-await': 'off',
     'no-return-assign': 'off',
-    'operator-linebreak': ['error', 'before'],
-
     'no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
     'eslint-comments/disable-enable-pair': 'off',
     'import/no-named-as-default-member': 'off',
@@ -259,4 +259,4 @@ module.exports = {
     'yml/quotes': ['error', { prefer: 'single', avoidEscape: false }],
     'yml/no-empty-document': 'off',
   },
-}
+})

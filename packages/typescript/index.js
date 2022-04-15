@@ -1,7 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const basic = require('@estjs/eslint-config-basic')
+const { defineConfig } = require('eslint-define-config')
 
-module.exports = {
+module.exports = defineConfig({
   extends: ['@estjs/eslint-config-basic', 'plugin:@typescript-eslint/recommended'],
   overrides: basic.overrides,
   rules: {
@@ -31,7 +32,13 @@ module.exports = {
     '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
     'object-curly-spacing': 'off',
     '@typescript-eslint/object-curly-spacing': ['error', 'always'],
-
+    '@typescript-eslint/typedef': [
+      'error',
+      {
+        arrowParameter: false,
+        variableDeclaration: true,
+      },
+    ],
     // off
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -46,4 +53,4 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-namespace': 'off',
   },
-}
+})

@@ -1,4 +1,6 @@
-module.exports = {
+const { defineConfig } = require('eslint-define-config')
+
+module.exports = defineConfig({
   globals: {
     // Reactivity Transform
     $: 'readonly',
@@ -45,4 +47,4 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'vue/singleline-html-element-content-newline': 'off',
   },
-}
+})

@@ -1,6 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { defineConfig } = require('eslint-define-config');
 
-module.exports = {
+module.exports =defineConfig({
   overrides: [
     {
       files: ['*.vue'],
@@ -32,4 +32,4 @@ module.exports = {
       },
     ],
   },
-}
+})
