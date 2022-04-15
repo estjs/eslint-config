@@ -32,13 +32,6 @@ module.exports = defineConfig({
     '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
     'object-curly-spacing': 'off',
     '@typescript-eslint/object-curly-spacing': ['error', 'always'],
-    '@typescript-eslint/typedef': [
-      'error',
-      {
-        arrowParameter: false,
-        variableDeclaration: true,
-      },
-    ],
     // off
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
