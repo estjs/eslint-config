@@ -1,16 +1,16 @@
 {
   "name": "@estjs/eslint-config",
+  "version": "0.1.0",
   "license": "MIT",
-  "author": "estjs (https://github.com/estjs/)",
+  "author": "estjs",
   "scripts": {
     "lint": "eslint . --ext .js,.ts,.json,.json5,.vue,.md --fix",
-    "release": "bumpp package.json packages/*/package.json --commit --push --tag"
+    "release": "standard-version"
   },
   "devDependencies": {
     "@estjs/eslint-config": "*",
     "eslint": "^8.13.0",
-    "bumpp": "^7.1.1",
+    "standard-version": "^9.3.2",
     "typescript": "^4.6.3"
-  },
-  "version": "0.1.0"
+  }
 }

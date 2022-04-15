@@ -1,4 +1,4 @@
-const { defineConfig } = require('eslint-define-config')
+const { defineConfig } = require('eslint-define-config');
 
 module.exports = defineConfig({
   env: {
@@ -7,7 +7,7 @@ module.exports = defineConfig({
     node: true,
   },
   extends: [
-    'standard',
+    'eslint:recommended',
     'plugin:import/recommended',
     'plugin:eslint-comments/recommended',
     'plugin:jsonc/recommended-with-jsonc',
@@ -21,7 +21,6 @@ module.exports = defineConfig({
     'LICENSE*',
     'output',
     'coverage',
-    'public',
     'temp',
     'packages-lock.json',
     'pnpm-lock.yaml',
@@ -31,7 +30,7 @@ module.exports = defineConfig({
     '!.vitepress',
     '!.vscode',
   ],
-  plugins: ['html'],
+  plugins: ['html', 'promise','unicorn'],
   settings: {
     'import/resolver': {
       node: { extensions: ['.js', '.mjs', '.ts', '.d.ts'] },
@@ -39,20 +38,8 @@ module.exports = defineConfig({
   },
   overrides: [
     {
-      files: ['*.json', '*.json5'],
+      files: ['*.json', '*.json5', '*.jsonc', '*rc'],
       parser: 'jsonc-eslint-parser',
-      rules: {
-        'quotes': ['error', 'single'],
-        'quote-props': ['error', 'always'],
-        'comma-dangle': ['error', 'never'],
-      },
-    },
-    {
-      files: ['*.yaml', '*.yml'],
-      parser: 'yaml-eslint-parser',
-      rules: {
-        'spaced-comment': 'off',
-      },
     },
     {
       files: ['package.json'],
@@ -64,31 +51,40 @@ module.exports = defineConfig({
             pathPattern: '^$',
             order: [
               'name',
-              'type',
               'version',
               'private',
               'packageManager',
               'description',
+              'type',
               'keywords',
+              'homepage',
+              'bugs',
               'license',
               'author',
-              'repository',
+              'contributors',
               'funding',
+              'files',
               'main',
               'module',
-              'types',
+              'exports',
               'unpkg',
               'jsdelivr',
-              'exports',
-              'files',
+              'browser',
               'bin',
-              'sideEffects',
+              'man',
+              'directories',
+              'repository',
+              'publishConfig',
               'scripts',
               'peerDependencies',
               'peerDependenciesMeta',
-              'dependencies',
               'optionalDependencies',
+              'dependencies',
               'devDependencies',
+              'engines',
+              'config',
+              'overrides',
+              'pnpm',
               'husky',
               'lint-staged',
               'eslintConfig',
@@ -99,18 +95,6 @@ module.exports = defineConfig({
             order: { type: 'asc' },
           },
         ],
-      },
-    },
-    {
-      files: ['*.d.ts'],
-      rules: {
-        'import/no-duplicates': 'off',
-      },
-    },
-    {
-      files: ['*.js'],
-      rules: {
-        '@typescript-eslint/no-var-requires': 'off',
       },
     },
     {
@@ -145,105 +129,45 @@ module.exports = defineConfig({
   ],
   rules: {
     // import
-    'import/order': 'error',
     'import/first': 'error',
     'import/no-mutable-exports': 'error',
     'import/no-unresolved': 'off',
     'import/no-absolute-path': 'off',
+    'import/no-duplicates': 'error',
+    'import/no-named-as-default': 'off',
+    'import/no-named-as-default-member': 'off',
+    'import/named': 'off',
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
+        pathGroups: [{ pattern: '@/**', group: 'internal' }],
+        pathGroupsExcludedImportTypes: ['type'],
+      },
+    ],
 
     // Common
-    'semi': ['error', 'never'],
-    'curly': ['error', 'multi-or-nest', 'consistent'],
-    'quotes': ['error', 'single'],
-    'quote-props': ['error', 'consistent-as-needed'],
     'no-unused-vars': 'warn',
-    'no-param-reassign': 'off',
-    'array-bracket-spacing': ['error', 'never'],
-    'brace-style': ['error', '1tbs', { allowSingleLine: true }],
-    'block-spacing': ['error', 'always'],
-    'camelcase': 'off',
-    'comma-spacing': ['error', { before: false, after: true }],
-    'comma-style': ['error', 'last'],
-    'comma-dangle': ['error', 'always-multiline'],
     'no-constant-condition': 'warn',
-    'no-debugger': 'error',
-    'no-console': ['error', { allow: ['warn', 'error'] }],
-    'no-cond-assign': ['error', 'always'],
-    'func-call-spacing': ['off', 'never'],
-    'key-spacing': ['error', { beforeColon: false, afterColon: true }],
-    'indent': ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
-    'no-restricted-syntax': ['error', 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
-    'object-curly-spacing': ['error', 'always'],
-    'no-return-await': 'off',
-    'space-before-function-paren': ['error', 'never'],
-
-    // es6
-    'no-var': 'error',
-    'prefer-const': [
+    'no-debugger': 'warn',
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
+    'no-restricted-syntax': [
       'error',
-      {
-        destructuring: 'any',
-        ignoreReadBeforeAssign: true,
-      },
+      'ForInStatement',
+      'LabeledStatement',
+      'WithStatement',
     ],
-    'prefer-arrow-callback': [
-      'error',
-      {
-        allowNamedFunctions: false,
-        allowUnboundThis: true,
-      },
-    ],
-    'object-shorthand': [
-      'error',
-      'always',
-      {
-        ignoreConstructors: false,
-        avoidQuotes: true,
-      },
-    ],
-    'prefer-rest-params': 'error',
-    'prefer-spread': 'error',
-    'prefer-template': 'error',
-    'template-curly-spacing': 'error',
-    'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
-    'generator-star-spacing': 'off',
-    'spaced-comment': [
-      'error',
-      'always',
-      {
-        line: {
-          markers: ['/'],
-          exceptions: ['/', '#'],
-        },
-        block: {
-          markers: ['!'],
-          exceptions: ['*'],
-          balanced: true,
-        },
-      },
-    ],
-
-    // best-practice
-    'array-callback-return': 'error',
-    'block-scoped-var': 'error',
-    'consistent-return': 'off',
-    'complexity': ['off', 11],
-    'eqeqeq': ['error', 'smart'],
-    'no-alert': 'warn',
-    'no-case-declarations': 'error',
-    'no-multi-spaces': 'error',
-    'no-multi-str': 'error',
-    'no-with': 'error',
-    'no-void': 'error',
-    'no-useless-escape': 'off',
-    'vars-on-top': 'error',
-    'require-await': 'off',
-    'no-return-assign': 'off',
-    'no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
-    'eslint-comments/disable-enable-pair': 'off',
-    'import/no-named-as-default-member': 'off',
-    'n/no-callback-literal': 'off',
-
+    'no-return-await': 'warn',
+    'no-empty': ['error', { allowEmptyCatch: true }],
     'sort-imports': [
       'error',
       {
@@ -255,8 +179,90 @@ module.exports = defineConfig({
       },
     ],
 
-    // yml
-    'yml/quotes': ['error', { prefer: 'single', avoidEscape: false }],
-    'yml/no-empty-document': 'off',
+    // es6
+    'no-var': 'error',
+    'prefer-const': [
+      'warn',
+      { destructuring: 'all', ignoreReadBeforeAssign: true },
+    ],
+    'prefer-arrow-callback': [
+      'error',
+      { allowNamedFunctions: false, allowUnboundThis: true },
+    ],
+    'object-shorthand': [
+      'error',
+      'always',
+      { ignoreConstructors: false, avoidQuotes: true },
+    ],
+    'prefer-rest-params': 'error',
+    'prefer-spread': 'error',
+    'prefer-template': 'error',
+
+    // best-practice
+    'array-callback-return': 'error',
+    'block-scoped-var': 'error',
+    'no-alert': 'warn',
+    'no-case-declarations': 'error',
+    'no-fallthrough': ['warn', { commentPattern: 'break[\\s\\w]*omitted' }],
+    'no-multi-str': 'error',
+    'no-with': 'error',
+    'no-void': 'error',
+
+    // stylistic-issues
+    'no-lonely-if': 'error',
+    'prefer-exponentiation-operator': 'error',
+
+    // unicorns
+    'unicorn/better-regex': 'error',
+    'unicorn/custom-error-definition': 'error',
+    'unicorn/error-message': 'error',
+    'unicorn/escape-case': 'error',
+    'unicorn/explicit-length-check': 'error',
+    'unicorn/import-index': 'error',
+    'unicorn/new-for-builtins': 'error',
+    'unicorn/no-array-callback-reference': 'error',
+    'unicorn/no-array-method-this-argument': 'error',
+    'unicorn/no-array-push-push': 'error',
+    'unicorn/no-console-spaces': 'error',
+    'unicorn/no-for-loop': 'error',
+    'unicorn/no-hex-escape': 'error',
+    'unicorn/no-instanceof-array': 'error',
+    'unicorn/no-invalid-remove-event-listener': 'error',
+    'unicorn/no-lonely-if': 'error',
+    'unicorn/no-new-array': 'error',
+    'unicorn/no-new-buffer': 'error',
+    'unicorn/no-unsafe-regex': 'off',
+    'unicorn/number-literal-case': 'error',
+    'unicorn/prefer-add-event-listener': 'error',
+    'unicorn/prefer-array-find': 'error',
+    'unicorn/prefer-array-flat-map': 'error',
+    'unicorn/prefer-array-index-of': 'error',
+    'unicorn/prefer-array-some': 'error',
+    'unicorn/prefer-date-now': 'error',
+    'unicorn/prefer-dom-node-append': 'error',
+    'unicorn/prefer-dom-node-dataset': 'error',
+    'unicorn/prefer-dom-node-remove': 'error',
+    'unicorn/prefer-dom-node-text-content': 'error',
+    'unicorn/prefer-includes': 'error',
+    'unicorn/prefer-keyboard-event-key': 'error',
+    'unicorn/prefer-math-trunc': 'error',
+    'unicorn/prefer-modern-dom-apis': 'error',
+    'unicorn/prefer-negative-index': 'error',
+    'unicorn/prefer-number-properties': 'error',
+    'unicorn/prefer-optional-catch-binding': 'error',
+    'unicorn/prefer-prototype-methods': 'error',
+    'unicorn/prefer-query-selector': 'error',
+    'unicorn/prefer-reflect-apply': 'error',
+    'unicorn/prefer-string-replace-all': 'error',
+    'unicorn/prefer-string-slice': 'error',
+    'unicorn/prefer-string-starts-ends-with': 'error',
+    'unicorn/prefer-string-trim-start-end': 'error',
+    'unicorn/prefer-type-error': 'error',
+    'unicorn/throw-new-error': 'error',
+
+    'eslint-comments/disable-enable-pair': 'off',
+
+    'jsonc/quote-props': 'off',
+    'jsonc/quotes': 'off',
   },
-})
+});
