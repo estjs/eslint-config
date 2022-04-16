@@ -5,13 +5,13 @@
   "author": "estjs",
   "scripts": {
     "lint": "eslint . --ext .js,.ts,.json,.json5,.vue,.md --fix",
-    "release": "standard-version",
-    "publish": "git push --follow-tags origin main && npm run publish"
+    "release": "lerna publish --conventional-commits",
+    "publish": "npm publish --access public"
   },
   "devDependencies": {
     "@estjs/eslint-config": "*",
     "eslint": "^8.13.0",
-    "standard-version": "^9.3.2",
+    "lerna": "^4.0.0",
     "typescript": "^4.6.3"
   }
 }
