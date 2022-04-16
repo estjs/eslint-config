@@ -1,6 +1,6 @@
 {
   "name": "@estjs/eslint-config-prettier",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Prettier Config",
   "keywords": [],
   "license": "MIT",
