@@ -1,11 +1,12 @@
 {
   "name": "@estjs/eslint-config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "estjs",
   "scripts": {
     "lint": "eslint . --ext .js,.ts,.json,.json5,.vue,.md --fix",
-    "release": "standard-version"
+    "release": "standard-version",
+    "publish": "git push --follow-tags origin main && npm run publish"
   },
   "devDependencies": {
     "@estjs/eslint-config": "*",
