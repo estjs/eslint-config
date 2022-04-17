@@ -1,6 +1,6 @@
 const { defineConfig } = require('eslint-define-config');
 
-module.exports =defineConfig({
+module.exports = defineConfig({
   overrides: [
     {
       files: ['*.vue'],
@@ -16,7 +16,10 @@ module.exports =defineConfig({
   ],
   extends: ['plugin:vue/recommended', '@estjs/eslint-config-ts'],
   rules: {
-    '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^h$', argsIgnorePattern: '^h$' }],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      { varsIgnorePattern: '^h$', argsIgnorePattern: '^h$' },
+    ],
     'vue/no-v-html': 'off',
     'vue/multi-word-component-names': 'off',
     'vue/html-self-closing': [
@@ -32,4 +35,4 @@ module.exports =defineConfig({
       },
     ],
   },
-})
+});
