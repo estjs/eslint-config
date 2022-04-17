@@ -1,6 +1,5 @@
-const { defineConfig } = require('eslint-define-config');
 
-module.exports = defineConfig({
+module.exports = {
   env: {
     es6: true,
     browser: true,
@@ -265,4 +264,4 @@ module.exports = defineConfig({
     'jsonc/quote-props': 'off',
     'jsonc/quotes': 'off',
   },
-});
+}

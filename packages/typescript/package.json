@@ -1,14 +1,14 @@
 {
   "name": "@estjs/eslint-config-ts",
-  "version": "0.1.4",
+  "version": "0.0.7",
   "description": "",
   "keywords": [],
   "license": "MIT",
   "author": "estjs",
+  "main": "index.js",
   "files": [
     "index.js"
   ],
-  "main": "index.js",
   "publishConfig": {
     "access": "public"
   },
@@ -17,12 +17,11 @@
     "typescript": ">=3.9"
   },
   "dependencies": {
-    "@estjs/eslint-config-basic": "^0.0.5",
-    "@typescript-eslint/eslint-plugin": "^5.13.0",
-    "@typescript-eslint/parser": "^5.13.0"
+    "@estjs/eslint-config-basic": "^0.0.7",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0"
   },
   "devDependencies": {
-    "eslint": "^8.10.0"
-  },
-  "gitHead": "f7beac968e94ea18f75ee50bbb4ef52ff6bbd48a"
+    "eslint": "^8.13.0"
+  }
 }
