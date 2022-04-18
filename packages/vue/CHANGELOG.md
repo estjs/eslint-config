@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/estjs/eslint-config/compare/v0.1.8...v0.2.0) (2022-04-18)
+
+**Note:** Version bump only for package @estjs/eslint-config-vue
+
+
+
+
+
 ## [0.1.8](https://github.com/estjs/eslint-config/compare/v0.1.7...v0.1.8) (2022-04-18)
 
 **Note:** Version bump only for package @estjs/eslint-config-vue

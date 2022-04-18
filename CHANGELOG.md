@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/estjs/eslint-config/compare/v0.1.8...v0.2.0) (2022-04-18)
+
+
+### Features
+
+* update rule ([c834ac7](https://github.com/estjs/eslint-config/commit/c834ac739de0d49a984c2162ec137cc9edd5a1d7))
+
+
+
+
+
 ## [0.1.8](https://github.com/estjs/eslint-config/compare/v0.1.7...v0.1.8) (2022-04-18)
 
 **Note:** Version bump only for package @estjs/eslint-config
