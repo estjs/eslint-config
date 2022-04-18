@@ -52,7 +52,7 @@ module.exports = {
         math: 'always',
       },
     ],
-
+    'vue/singleline-html-element-content-newline': 'off',
     // Reactivity Transform
     'vue/no-setup-props-destructure': 'off',
   },
