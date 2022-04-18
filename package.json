@@ -1,17 +1,16 @@
 {
   "name": "@estjs/eslint-config",
-  "version": "0.1.7",
+  "version": "0.2.1",
   "license": "MIT",
   "author": "estjs",
   "scripts": {
     "lint": "eslint . --ext .js,.ts,.json,.vue,.md --fix",
-    "release": "lerna publish --conventional-commits",
-    "publish": "npm publish --access public"
+    "release": "bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish --access public"
   },
   "devDependencies": {
-    "@estjs/eslint-config": "workspace:*",
+    "@estjs/eslint-config": "*",
     "eslint": "^8.13.0",
-    "lerna": "^4.0.0",
+    "bumpp": "^7.1.1",
     "typescript": "^4.6.3"
   }
 }
