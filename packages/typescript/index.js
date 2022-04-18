@@ -1,11 +1,7 @@
-const { defineConfig } = require('eslint-define-config');
-const basic = require('@estjs/eslint-config-basic');
+const basic = require('@estjs/eslint-config-basic')
 
-module.exports = defineConfig({
-  extends: [
-    '@estjs/eslint-config-basic',
-    'plugin:@typescript-eslint/recommended',
-  ],
+module.exports = {
+  extends: ['@estjs/eslint-config-basic', 'plugin:@typescript-eslint/recommended'],
   overrides: [
     ...basic.overrides,
     {
@@ -35,13 +31,10 @@ module.exports = defineConfig({
 
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/ban-types': 'off',
-    '@typescript-eslint/consistent-type-imports': [
-      'error',
-      { disallowTypeAnnotations: false },
-    ],
+    '@typescript-eslint/consistent-type-imports': ['error', { disallowTypeAnnotations: false }],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/prefer-as-const': 'warn',
   },
-});
+}

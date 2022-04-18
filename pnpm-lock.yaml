@@ -17,12 +17,14 @@ importers:
   packages/all:
     specifiers:
       '@estjs/eslint-config-prettier': workspace:*
+      '@estjs/eslint-config-ts': workspace:*
       '@estjs/eslint-config-vue': workspace:*
       '@estjs/eslint-config-vue2': workspace:*
       eslint: ^8.13.0
       local-pkg: ^0.4.1
     dependencies:
       '@estjs/eslint-config-prettier': link:../prettier
+      '@estjs/eslint-config-ts': link:../typescript
       '@estjs/eslint-config-vue': link:../vue
       '@estjs/eslint-config-vue2': link:../vue2
       local-pkg: 0.4.1
@@ -32,7 +34,6 @@ importers:
   packages/basic:
     specifiers:
       eslint: ^8.13.0
-      eslint-define-config: ^1.3.0
       eslint-plugin-eslint-comments: ^3.2.0
       eslint-plugin-html: ^6.2.0
       eslint-plugin-import: ^2.26.0
@@ -41,7 +42,6 @@ importers:
       eslint-plugin-unicorn: ^42.0.0
       eslint-plugin-yml: ^0.14.0
     dependencies:
-      eslint-define-config: 1.3.0
       eslint-plugin-eslint-comments: 3.2.0_eslint@8.13.0
       eslint-plugin-html: 6.2.0
       eslint-plugin-import: 2.26.0_eslint@8.13.0
@@ -56,13 +56,11 @@ importers:
     specifiers:
       eslint: 8.10.0
       eslint-config-prettier: ^8.5.0
-      eslint-define-config: ^1.3.0
       eslint-plugin-prettier: ^4.0.0
       eslint-plugin-yml: ^0.14.0
       prettier: ^2.6.2
     dependencies:
       eslint-config-prettier: 8.5.0_eslint@8.10.0
-      eslint-define-config: 1.3.0
       eslint-plugin-prettier: 4.0.0_1ebe1be021ad270ba911a13f202a7a9f
       eslint-plugin-yml: 0.14.0_eslint@8.10.0
       prettier: 2.6.2
@@ -75,12 +73,10 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.19.0
       '@typescript-eslint/parser': ^5.19.0
       eslint: ^8.13.0
-      eslint-define-config: ^1.3.0
     dependencies:
       '@estjs/eslint-config-basic': link:../basic
       '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
       '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
-      eslint-define-config: 1.3.0
     devDependencies:
       eslint: 8.13.0
 
@@ -88,11 +84,9 @@ importers:
     specifiers:
       '@estjs/eslint-config-ts': workspace:*
       eslint: ^8.13.0
-      eslint-define-config: ^1.3.0
       eslint-plugin-vue: ^8.6.0
     dependencies:
       '@estjs/eslint-config-ts': link:../typescript
-      eslint-define-config: 1.3.0
       eslint-plugin-vue: 8.6.0_eslint@8.13.0
     devDependencies:
       eslint: 8.13.0
@@ -101,11 +95,9 @@ importers:
     specifiers:
       '@estjs/eslint-config-ts': workspace:*
       eslint: 8.11.0
-      eslint-define-config: ^1.3.0
       eslint-plugin-vue: ^8.6.0
     dependencies:
       '@estjs/eslint-config-ts': link:../typescript
-      eslint-define-config: 1.3.0
       eslint-plugin-vue: 8.6.0_eslint@8.11.0
     devDependencies:
       eslint: 8.11.0
@@ -702,11 +694,6 @@ packages:
       eslint: '>=7.0.0'
     dependencies:
       eslint: 8.10.0
-    dev: false
-
-  /eslint-define-config/1.3.0:
-    resolution: {integrity: sha512-sFbHUnaXdJfG74c0EfFjXajjM3ugDVOMteKBnddCHQP5eas6p3nmS7PbSVhyZ8Y9DaNNtFbzlovdGmVdTwrHcw==}
-    engines: {node: '>= 16.9.0', npm: '>= 7.0.0', pnpm: '>= 6.32.2'}
     dev: false
 
   /eslint-import-resolver-node/0.3.6:

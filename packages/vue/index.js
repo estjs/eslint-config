@@ -1,6 +1,4 @@
-const { defineConfig } = require('eslint-define-config');
-
-module.exports = defineConfig({
+module.exports = {
   globals: {
     // Reactivity Transform
     $: 'readonly',
@@ -37,7 +35,7 @@ module.exports = defineConfig({
       },
     },
   ],
-  extends: ['plugin:vue/vue3-recommended', '@sxzz/eslint-config-ts'],
+  extends: ['plugin:vue/vue3-recommended', '@estjs/eslint-config-ts'],
   rules: {
     'vue/max-attributes-per-line': 'off',
     'vue/no-v-html': 'off',
@@ -58,4 +56,4 @@ module.exports = defineConfig({
     // Reactivity Transform
     'vue/no-setup-props-destructure': 'off',
   },
-});
+}
