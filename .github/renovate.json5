@@ -1,14 +1,14 @@
 {
-  extends: ['config:base', 'schedule:weekly', 'group:allNonMajor'],
-  labels: ['dependencies'],
-  pin: false,
-  rangeStrategy: 'bump',
-  node: false,
-  packageRules: [
+  "extends": ["config:base", "schedule:weekly", "group:allNonMajor"],
+  "labels": ["dependencies"],
+  "pin": false,
+  "rangeStrategy": "bump",
+  "node": false,
+  "packageRules": [
     {
-      depTypeList: ['peerDependencies'],
-      enabled: false,
+      "depTypeList": ["peerDependencies"],
+      "enabled": false,
     },
   ],
-  ignoreDeps: ['node'],
+  "ignoreDeps": ["node"],
 }
