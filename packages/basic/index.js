@@ -181,9 +181,7 @@ module.exports = {
     'no-multi-str': 'error',
     'no-with': 'error',
     'no-void': 'error',
-    'comma-dangle': ['error', 'always-multiline'],
-    'operator-linebreak': ['error', 'before'],
-    'arrow-parens': [2, 'as-needed', { requireForBlockBody: true }],
+
     // stylistic-issues
     'no-lonely-if': 'error',
     'prefer-exponentiation-operator': 'error',
