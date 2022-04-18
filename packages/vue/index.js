@@ -1,4 +1,6 @@
-module.exports = {
+const { defineConfig } = require('eslint-define-config');
+
+module.exports = defineConfig({
   globals: {
     // Reactivity Transform
     $: 'readonly',
@@ -14,8 +16,8 @@ module.exports = {
       files: ['*.vue'],
       parser: 'vue-eslint-parser',
       parserOptions: {
-        extraFileExtensions: ['.vue'],
         parser: '@typescript-eslint/parser',
+        extraFileExtensions: ['.vue'],
         ecmaFeatures: {
           jsx: true,
         },
@@ -27,21 +29,33 @@ module.exports = {
         defineExpose: 'readonly',
         withDefaults: 'readonly',
 
+        // RFC: https://github.com/vuejs/rfcs/discussions/430
         defineOptions: 'readonly',
       },
       rules: {
-        'no-unused-vars': 'off',
         'no-undef': 'off',
-        '@typescript-eslint/no-unused-vars': 'off',
       },
     },
   ],
-  extends: ['plugin:vue/vue3-recommended', '@estjs/eslint-config-ts'],
+  extends: ['plugin:vue/vue3-recommended', '@sxzz/eslint-config-ts'],
   rules: {
     'vue/max-attributes-per-line': 'off',
     'vue/no-v-html': 'off',
-    'vue/require-prop-types': 'off',
-    'vue/require-default-prop': 'off',
     'vue/multi-word-component-names': 'off',
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'always',
+          normal: 'always',
+          component: 'always',
+        },
+        svg: 'always',
+        math: 'always',
+      },
+    ],
+
+    // Reactivity Transform
+    'vue/no-setup-props-destructure': 'off',
   },
-}
+});

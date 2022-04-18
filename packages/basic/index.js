@@ -1,4 +1,6 @@
-module.exports = {
+const { defineConfig } = require('eslint-define-config');
+
+module.exports = defineConfig({
   env: {
     es6: true,
     browser: true,
@@ -138,7 +140,16 @@ module.exports = {
     'import/order': [
       'error',
       {
-        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
         pathGroups: [{ pattern: '@/**', group: 'internal' }],
         pathGroupsExcludedImportTypes: ['type'],
       },
@@ -149,7 +160,12 @@ module.exports = {
     'no-constant-condition': 'warn',
     'no-debugger': 'warn',
     'no-console': ['warn', { allow: ['warn', 'error'] }],
-    'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
+    'no-restricted-syntax': [
+      'error',
+      'ForInStatement',
+      'LabeledStatement',
+      'WithStatement',
+    ],
     'no-return-await': 'warn',
     'no-empty': ['error', { allowEmptyCatch: true }],
     'sort-imports': [
@@ -165,9 +181,19 @@ module.exports = {
 
     // es6
     'no-var': 'error',
-    'prefer-const': ['warn', { destructuring: 'all', ignoreReadBeforeAssign: true }],
-    'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
-    'object-shorthand': ['error', 'always', { ignoreConstructors: false, avoidQuotes: true }],
+    'prefer-const': [
+      'warn',
+      { destructuring: 'all', ignoreReadBeforeAssign: true },
+    ],
+    'prefer-arrow-callback': [
+      'error',
+      { allowNamedFunctions: false, allowUnboundThis: true },
+    ],
+    'object-shorthand': [
+      'error',
+      'always',
+      { ignoreConstructors: false, avoidQuotes: true },
+    ],
     'prefer-rest-params': 'error',
     'prefer-spread': 'error',
     'prefer-template': 'error',
@@ -239,4 +265,4 @@ module.exports = {
     'jsonc/quote-props': 'off',
     'jsonc/quotes': 'off',
   },
-}
+});
