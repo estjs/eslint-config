@@ -13,9 +13,9 @@
     "eslint": ">=7.4.0"
   },
   "dependencies": {
-    "@estjs/eslint-config-prettier": "^0.0.7",
-    "@estjs/eslint-config-vue": "^0.0.7",
-    "@estjs/eslint-config-vue2": "^0.0.7",
+    "@estjs/eslint-config-prettier": "^0.1.6",
+    "@estjs/eslint-config-vue": "^0.1.6",
+    "@estjs/eslint-config-vue2": "^0.1.6",
     "local-pkg": "^0.4.1"
   },
   "devDependencies": {
