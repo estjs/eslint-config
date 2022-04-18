@@ -1,6 +1,6 @@
 {
   "name": "@estjs/eslint-config",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "license": "MIT",
   "author": "estjs",
   "scripts": {
@@ -9,8 +9,8 @@
   },
   "devDependencies": {
     "@estjs/eslint-config": "*",
-    "eslint": "^8.13.0",
     "bumpp": "^7.1.1",
+    "eslint": "^8.13.0",
     "typescript": "^4.6.3"
   }
 }

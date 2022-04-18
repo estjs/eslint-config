@@ -1,23 +1,22 @@
 {
   "name": "@estjs/eslint-config-vue2",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "",
   "keywords": [],
   "license": "MIT",
   "author": "estjs",
-  "main": "index.js",
   "files": [
     "index.js"
   ],
-  "peerDependencies": {
-    "eslint": ">=7.4.0"
-  },
+  "main": "index.js",
   "publishConfig": {
     "access": "public"
   },
+  "peerDependencies": {
+    "eslint": ">=7.4.0"
+  },
   "dependencies": {
     "@estjs/eslint-config-ts": "workspace:*",
-    "eslint-define-config": "^1.3.0",
     "eslint-plugin-vue": "^8.6.0"
   },
   "devDependencies": {
