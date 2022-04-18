@@ -1,5 +1,5 @@
 {
-  "name": "@estjs/eslint-config",
+  "name": "@estjs/eslint-config-monorepo",
   "version": "0.2.6",
   "license": "MIT",
   "author": "estjs",
