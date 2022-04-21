@@ -16,7 +16,6 @@
     "eslint": ">=7.4.0"
   },
   "dependencies": {
-    "@estjs/eslint-config-prettier": "workspace:*",
     "@estjs/eslint-config-ts": "workspace:*",
     "@estjs/eslint-config-vue": "workspace:*",
     "@estjs/eslint-config-vue2": "workspace:*",
