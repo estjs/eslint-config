@@ -17,6 +17,20 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^h$', argsIgnorePattern: '^h$' }],
     'vue/no-v-html': 'off',
     'vue/multi-word-component-names': 'off',
+    'vue/max-attributes-per-line': ['error', {
+      singleline: {
+        max: 3,
+      },
+      multiline: {
+        max: 3,
+      },
+    }],
+    'vue/max-len': ['error', {
+      code: 160,
+      template: 160,
+      tabWidth: 2,
+      ignoreComments: true, ignoreTrailingComments: true, ignoreUrls: true, ignoreStrings: true, ignoreRegExpLiterals: true,
+    }],
     'vue/html-self-closing': [
       'error',
       {

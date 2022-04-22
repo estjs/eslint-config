@@ -37,8 +37,21 @@ module.exports = {
   ],
   extends: ['plugin:vue/vue3-recommended', '@estjs/eslint-config-ts'],
   rules: {
-    'vue/max-attributes-per-line': 'off',
     'vue/no-v-html': 'off',
+    'vue/max-attributes-per-line': ['error', {
+      singleline: {
+        max: 3,
+      },
+      multiline: {
+        max: 3,
+      },
+    }],
+    'vue/max-len': ['error', {
+      code: 160,
+      template: 160,
+      tabWidth: 2,
+      ignoreComments: true, ignoreTrailingComments: true, ignoreUrls: true, ignoreStrings: true, ignoreRegExpLiterals: true,
+    }],
     'vue/multi-word-component-names': 'off',
     'vue/html-self-closing': [
       'error',

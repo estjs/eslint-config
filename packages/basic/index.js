@@ -137,7 +137,7 @@ module.exports = {
     'semi': ['error', 'never'],
     'curly': ['error', 'multi-or-nest', 'consistent'],
     'quotes': ['error', 'single'],
-    'max-len': ['error', { code: 160, tabWidth: 2, ignoreComments: true }],
+    'max-len': ['error', { code: 160, tabWidth: 2, ignoreComments: true, ignoreTrailingComments: true, ignoreUrls: true, ignoreStrings: true, ignoreRegExpLiterals: true }],
     'quote-props': ['error', 'consistent-as-needed'],
     'no-unused-vars': 'warn',
     'no-param-reassign': 'off',
