@@ -39,6 +39,14 @@ module.exports = {
   rules: {
     'vue/no-v-html': 'off',
     'vue/multi-word-component-names': 'off',
+    'vue/max-attributes-per-line': ['error', {
+      singleline: {
+        max: 3,
+      },
+      multiline: {
+        max: 3,
+      },
+    }],
     'vue/html-self-closing': [
       'error',
       {
