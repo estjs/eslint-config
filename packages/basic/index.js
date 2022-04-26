@@ -134,7 +134,7 @@ module.exports = {
     'import/no-absolute-path': 'off',
 
     // Common
-    'curly': ['error', 'multi'],
+    'curly': ['error', 'all'],
     'quotes': ['error', 'single'],
     'quote-props': ['error', 'consistent-as-needed'],
     'no-unused-vars': 'warn',
