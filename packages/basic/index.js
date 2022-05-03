@@ -38,6 +38,12 @@ module.exports = {
     {
       files: ['*.json', '*.json5', '*.jsonc', '*rc'],
       parser: 'jsonc-eslint-parser',
+      rules: {
+        'jsonc/quotes': ['error', 'double'],
+        'jsonc/quote-props': ['error', 'always'],
+        'jsonc/comma-dangle': ['error', 'never'],
+      },
+
     },
     {
       files: ['package.json'],
@@ -156,7 +162,8 @@ module.exports = {
     'no-restricted-syntax': ['error', 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
     'object-curly-spacing': ['error', 'always'],
     'no-return-await': 'off',
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': 'off',
+    'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 1 }],
 
     // es6
     'no-var': 'error',
