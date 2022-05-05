@@ -36,20 +36,13 @@ module.exports = {
     'vue/require-default-prop': 'off',
     'vue/multi-word-component-names': 'off',
 
-    // reactivity transform
-    'vue/no-setup-props-destructure': 'off',
-
     'vue/block-tag-newline': ['error', {
       singleline: 'always',
       multiline: 'always',
     }],
     'vue/component-name-in-template-casing': ['error', 'PascalCase'],
     'vue/component-options-name-casing': ['error', 'PascalCase'],
-    'vue/custom-event-name-casing': ['error', 'camelCase'],
 
-    'vue/html-comment-content-spacing': ['error', 'always', {
-      exceptions: ['-'],
-    }],
     'vue/no-restricted-v-bind': ['error', '/^v-/'],
     'vue/no-useless-v-bind': 'error',
     'vue/no-v-text-v-html-on-component': 'error',
@@ -68,10 +61,8 @@ module.exports = {
     'vue/eqeqeq': ['error', 'smart'],
     'vue/key-spacing': ['error', { beforeColon: false, afterColon: true }],
     'vue/keyword-spacing': ['error', { before: true, after: true }],
-    'vue/no-constant-condition': 'warn',
     'vue/no-empty-pattern': 'error',
     'vue/no-extra-parens': ['error', 'functions'],
-    'vue/no-irregular-whitespace': 'error',
     'vue/no-loss-of-precision': 'error',
     'vue/no-restricted-syntax': [
       'error',
@@ -79,6 +70,8 @@ module.exports = {
       'LabeledStatement',
       'WithStatement',
     ],
+    'vue/no-template-shadow': 'off',
+    'vue/no-constant-condition': 'off',
     'vue/no-sparse-arrays': 'error',
     'vue/object-curly-newline': ['error', { multiline: true, consistent: true }],
     'vue/object-curly-spacing': ['error', 'always'],
@@ -92,7 +85,6 @@ module.exports = {
       },
     ],
     'vue/operator-linebreak': ['error', 'before'],
-    'vue/prefer-template': 'error',
     'vue/quote-props': ['error', 'consistent-as-needed'],
     'vue/space-in-parens': ['error', 'never'],
     'vue/space-infix-ops': 'error',
