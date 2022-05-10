@@ -8,10 +8,10 @@
   "files": [
     "index.js"
   ],
+  "main": "index.js",
   "bin": {
     "lcf": "bin/eslint.js"
   },
-  "main": "index.js",
   "publishConfig": {
     "access": "public"
   },

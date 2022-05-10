@@ -47,6 +47,15 @@ For example:
 }
 ```
 
+just lint changed files.(must be git project)
+```json
+{
+	"scripts": {
+		"lint": "lcf --fix \"**/*.{vue,ts,js}\""
+	}
+}
+```
+
 ### Config VSCode auto fix
 
 Create `.vscode/settings.json`
