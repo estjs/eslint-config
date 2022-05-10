@@ -2,8 +2,12 @@
   "name": "@estjs/eslint-config-monorepo",
   "version": "0.2.21",
   "private": true,
+	"type": "module",
   "license": "MIT",
   "author": "estjs",
+	"bin": {
+    "lcf": "bin/eslint.js"
+  },
   "scripts": {
     "lint": "eslint . --ext .js,.ts,.json,.vue,.md --fix",
     "release": "bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish --access public"
