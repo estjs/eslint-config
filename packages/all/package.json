@@ -8,7 +8,6 @@
   "files": [
     "index.js"
   ],
-  "type": "module",
   "bin": {
     "lcf": "bin/eslint.js"
   },
