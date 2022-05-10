@@ -1,6 +1,6 @@
 {
   "name": "@estjs/eslint-config",
-  "version": "0.2.22",
+  "version": "0.2.23",
   "description": "",
   "keywords": [],
   "license": "MIT",
@@ -9,8 +9,7 @@
     "index.js"
   ],
   "type": "module",
-
-	"bin": {
+  "bin": {
     "lcf": "bin/eslint.js"
   },
   "main": "index.js",
