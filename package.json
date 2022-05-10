@@ -1,11 +1,11 @@
 {
   "name": "@estjs/eslint-config-monorepo",
-  "version": "0.2.21",
+  "version": "0.2.22",
   "private": true,
-	"type": "module",
+  "type": "module",
   "license": "MIT",
   "author": "estjs",
-	"bin": {
+  "bin": {
     "lcf": "bin/eslint.js"
   },
   "scripts": {
