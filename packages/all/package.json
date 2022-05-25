@@ -2,16 +2,16 @@
   "name": "@estjs/eslint-config",
   "version": "0.2.25",
   "description": "",
-  "keywords": [],
-  "license": "MIT",
   "author": "estjs",
-  "files": [
-    "index.js"
-  ],
+  "license": "MIT",
+  "keywords": [],
   "main": "index.js",
   "bin": {
     "lcf": "bin/eslint.js"
   },
+  "files": [
+    "index.js"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -25,6 +25,6 @@
     "local-pkg": "^0.4.1"
   },
   "devDependencies": {
-    "eslint": "^8.14.0"
+    "eslint": "^8.16.0"
   }
 }

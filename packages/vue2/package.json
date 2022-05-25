@@ -2,13 +2,13 @@
   "name": "@estjs/eslint-config-vue2",
   "version": "0.2.25",
   "description": "",
-  "keywords": [],
-  "license": "MIT",
   "author": "estjs",
+  "license": "MIT",
+  "keywords": [],
+  "main": "index.js",
   "files": [
     "index.js"
   ],
-  "main": "index.js",
   "publishConfig": {
     "access": "public"
   },
