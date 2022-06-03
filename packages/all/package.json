@@ -1,17 +1,17 @@
 {
   "name": "@estjs/eslint-config",
-  "version": "0.2.25",
+  "version": "0.3.0",
   "description": "",
-  "keywords": [],
-  "license": "MIT",
   "author": "estjs",
-  "files": [
-    "index.js"
-  ],
+  "license": "MIT",
+  "keywords": [],
   "main": "index.js",
   "bin": {
     "lcf": "bin/eslint.js"
   },
+  "files": [
+    "index.js"
+  ],
   "publishConfig": {
     "access": "public"
   },
