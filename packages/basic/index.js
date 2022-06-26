@@ -153,6 +153,7 @@ module.exports = {
     'import/no-absolute-path': 'off',
 
     // Common
+    'semi': ['error', 'always'],
     'curly': ['error', 'all'],
     'quotes': ['error', 'single'],
     'quote-props': ['error', 'consistent-as-needed'],
@@ -298,4 +299,4 @@ module.exports = {
     'jsonc/quote-props': 'off',
     'jsonc/quotes': 'off',
   },
-}
+};

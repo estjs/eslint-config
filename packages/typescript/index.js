@@ -1,4 +1,4 @@
-const basic = require('@estjs/eslint-config-basic')
+const basic = require('@estjs/eslint-config-basic');
 
 module.exports = {
   extends: ['@estjs/eslint-config-basic', 'plugin:@typescript-eslint/recommended'],
@@ -25,7 +25,7 @@ module.exports = {
   ],
   rules: {
     'import/named': 'off',
-
+    '@typescript-eslint/semi': ['error', 'always'],
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/member-delimiter-style': [
       'warn',
@@ -131,4 +131,4 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-namespace': 'off',
   },
-}
+};
