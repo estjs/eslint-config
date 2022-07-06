@@ -18,10 +18,10 @@
   },
   "dependencies": {
     "@estjs/eslint-config-basic": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "^5.27.0",
-    "@typescript-eslint/parser": "^5.27.0"
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5"
   },
   "devDependencies": {
-    "eslint": "^8.16.0"
+    "eslint": "^8.19.0"
   }
 }
