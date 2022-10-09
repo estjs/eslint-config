@@ -6,9 +6,6 @@
   "license": "MIT",
   "keywords": [],
   "main": "index.js",
-  "bin": {
-    "lcf": "bin/eslint.js"
-  },
   "files": [
     "index.js"
   ],
