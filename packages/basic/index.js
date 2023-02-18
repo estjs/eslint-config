@@ -251,7 +251,6 @@ module.exports = {
     'unicorn/custom-error-definition': 'error',
     'unicorn/error-message': 'error',
     'unicorn/escape-case': 'error',
-    'unicorn/explicit-length-check': 'error',
     'unicorn/import-index': 'error',
     'unicorn/new-for-builtins': 'error',
     'unicorn/no-array-callback-reference': 'error',
