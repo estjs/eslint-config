@@ -1,6 +1,6 @@
 {
   "name": "@estjs/eslint-config",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "",
   "author": "estjs",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "@estjs/eslint-config-ts": "workspace:*",
     "@estjs/eslint-config-vue": "workspace:*",
     "@estjs/eslint-config-vue2": "workspace:*",
-		"@estjs/eslint-config-react": "workspace:*",
+    "@estjs/eslint-config-react": "workspace:*",
     "local-pkg": "^0.4.3"
   },
   "devDependencies": {
