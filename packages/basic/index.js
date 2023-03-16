@@ -39,8 +39,8 @@ module.exports = {
       files: ['*.json', '*.json5', '*.jsonc', '*rc'],
       parser: 'jsonc-eslint-parser',
       rules: {
-        'jsonc/quotes': ['error', 'double'],
-        'jsonc/quote-props': ['error', 'always'],
+        'jsonc/quotes': ['warn', 'double'],
+        'jsonc/quote-props': ['warn', 'always'],
         'jsonc/comma-dangle': ['warn', 'never'],
       },
 
@@ -155,8 +155,8 @@ module.exports = {
     // Common
     'semi': ['warn', 'always'],
     'curly': ['error', 'all'],
-    'quotes': ['error', 'single'],
-    'quote-props': ['error', 'consistent-as-needed'],
+    'quotes': ['warn', 'single'],
+    'quote-props': ['warn', 'consistent-as-needed'],
     'no-unused-vars': 'warn',
     'no-param-reassign': 'off',
     'array-bracket-spacing': ['error', 'never'],
