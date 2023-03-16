@@ -28,6 +28,6 @@
     "eslint-plugin-yml": "^1.5.0"
   },
   "devDependencies": {
-    "eslint": "^8.34.0"
+    "eslint": "^8.36.0"
   }
 }
