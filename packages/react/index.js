@@ -1,3 +1,4 @@
+const { isPackageExists } = require('local-pkg');
 const isTsExists = isPackageExists('typescript');
 
 const eslintExtends =[
