@@ -25,7 +25,7 @@ module.exports = {
   ],
   rules: {
     'import/named': 'off',
-    '@typescript-eslint/semi': ['error', 'always'],
+    '@typescript-eslint/semi': ['warn', 'always'],
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/member-delimiter-style': [
       'warn',
@@ -48,7 +48,7 @@ module.exports = {
     // Override JS
     'no-useless-constructor': 'off',
     'indent': 'off',
-    '@typescript-eslint/indent': ['error', 2, {
+    '@typescript-eslint/indent': ['warn', 2, {
       SwitchCase: 1,
       VariableDeclarator: 1,
       outerIIFEBody: 1,
@@ -104,9 +104,9 @@ module.exports = {
     'space-infix-ops': 'off',
     '@typescript-eslint/space-infix-ops': 'error',
     'keyword-spacing': 'off',
-    '@typescript-eslint/keyword-spacing': ['error', { before: true, after: true }],
+    '@typescript-eslint/keyword-spacing': ['warn', { before: true, after: true }],
     'comma-spacing': 'off',
-    '@typescript-eslint/comma-spacing': ['error', { before: false, after: true }],
+    '@typescript-eslint/comma-spacing': ['warn', { before: false, after: true }],
     'no-extra-parens': 'off',
     '@typescript-eslint/no-extra-parens': ['error', 'functions'],
     'no-dupe-class-members': 'off',

@@ -153,7 +153,7 @@ module.exports = {
     'import/no-absolute-path': 'off',
 
     // Common
-    'semi': ['error', 'always'],
+    'semi': ['warn', 'always'],
     'curly': ['error', 'all'],
     'quotes': ['error', 'single'],
     'quote-props': ['error', 'consistent-as-needed'],
@@ -163,7 +163,7 @@ module.exports = {
     'brace-style': ['error', '1tbs', { allowSingleLine: true }],
     'block-spacing': ['error', 'always'],
     'camelcase': 'off',
-    'comma-spacing': ['error', { before: false, after: true }],
+    'comma-spacing': ['warn', { before: false, after: true }],
     'comma-style': ['error', 'last'],
     'comma-dangle': ['error', 'always-multiline'],
     'no-constant-condition': 'warn',
@@ -172,12 +172,12 @@ module.exports = {
     'no-cond-assign': ['error', 'always'],
     'func-call-spacing': ['off', 'never'],
     'key-spacing': ['error', { beforeColon: false, afterColon: true }],
-    'indent': ['error', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
+    'indent': ['warn', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
     'no-restricted-syntax': ['error', 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
     'object-curly-spacing': ['error', 'always'],
     'no-return-await': 'off',
     'space-before-function-paren': 'off',
-    'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 1 }],
+    'no-multiple-empty-lines': ['warn', { max: 1, maxBOF: 0, maxEOF: 1 }],
 
     // es6
     'no-var': 'error',
@@ -209,7 +209,7 @@ module.exports = {
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
     'generator-star-spacing': 'off',
     'spaced-comment': [
-      'error',
+      'warn',
       'always',
       {
         line: {
@@ -232,7 +232,7 @@ module.exports = {
     'eqeqeq': ['error', 'smart'],
     'no-alert': 'warn',
     'no-case-declarations': 'error',
-    'no-multi-spaces': 'error',
+    'no-multi-spaces': 'warn',
     'no-multi-str': 'error',
     'no-with': 'error',
     'no-void': 'error',
@@ -251,7 +251,6 @@ module.exports = {
     'unicorn/custom-error-definition': 'error',
     'unicorn/error-message': 'error',
     'unicorn/escape-case': 'error',
-    'unicorn/import-index': 'error',
     'unicorn/new-for-builtins': 'error',
     'unicorn/no-array-callback-reference': 'error',
     'unicorn/no-array-method-this-argument': 'error',
@@ -292,11 +291,8 @@ module.exports = {
     'unicorn/prefer-string-trim-start-end': 'error',
     'unicorn/prefer-type-error': 'error',
     'unicorn/throw-new-error': 'error',
-    // Prefer using the node: protocol
     'unicorn/prefer-node-protocol': 'error',
-
     'eslint-comments/disable-enable-pair': 'off',
-
     'jsonc/quote-props': 'off',
     'jsonc/quotes': 'off',
   },
