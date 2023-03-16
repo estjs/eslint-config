@@ -1,6 +1,6 @@
 module.exports = {
   extends: [
-    '@estjs/eslint-config-basic',
+    '@estjs/eslint-config-ts',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended'
   ],
