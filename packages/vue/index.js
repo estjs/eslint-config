@@ -66,7 +66,7 @@ module.exports = {
     'vue/arrow-spacing': ['error', { before: true, after: true }],
     'vue/block-spacing': ['error', 'always'],
     'vue/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
-    'vue/comma-dangle': ['error', 'always-multiline'],
+    'vue/comma-dangle': ['warn', 'always-multiline'],
     'vue/comma-spacing': ['warn', { before: false, after: true }],
     'vue/comma-style': ['error', 'last'],
     'vue/dot-location': ['error', 'property'],
@@ -88,7 +88,7 @@ module.exports = {
     ],
     'vue/no-sparse-arrays': 'error',
     'vue/object-curly-newline': ['error', { multiline: true, consistent: true }],
-    'vue/object-curly-spacing': ['error', 'always'],
+    'vue/object-curly-spacing': ['warn', 'always'],
     'vue/object-property-newline': ['error', { allowMultiplePropertiesPerLine: true }],
     'vue/object-shorthand': [
       'error',
