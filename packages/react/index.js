@@ -17,7 +17,7 @@ module.exports = {
   },
   rules: {
     'jsx-quotes': [
-      'error',
+      'warn',
       'prefer-double',
     ],
     'react/jsx-no-bind': ['error', {
