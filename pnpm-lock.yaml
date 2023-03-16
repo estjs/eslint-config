@@ -16,12 +16,14 @@ importers:
 
   packages/all:
     specifiers:
+      '@estjs/eslint-config-react': workspace:*
       '@estjs/eslint-config-ts': workspace:*
       '@estjs/eslint-config-vue': workspace:*
       '@estjs/eslint-config-vue2': workspace:*
       eslint: ^8.36.0
       local-pkg: ^0.4.3
     dependencies:
+      '@estjs/eslint-config-react': link:../react
       '@estjs/eslint-config-ts': link:../typescript
       '@estjs/eslint-config-vue': link:../vue
       '@estjs/eslint-config-vue2': link:../vue2
