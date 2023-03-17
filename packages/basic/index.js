@@ -146,7 +146,7 @@ module.exports = {
   ],
   rules: {
     // import
-    'import/order': 'error',
+    'import/order': 'warn',
     'import/first': 'error',
     'import/no-mutable-exports': 'error',
     'import/no-unresolved': 'off',
