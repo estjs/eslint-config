@@ -178,6 +178,7 @@ module.exports = {
     'no-return-await': 'off',
     'space-before-function-paren': 'off',
     'no-multiple-empty-lines': ['warn', { max: 1, maxBOF: 0, maxEOF: 1 }],
+    'max-len': ['warn', 180, { ignoreUrls: true, ignoreStrings: true, ignoreTemplateLiterals: true }],
 
     // es6
     'no-var': 'error',
