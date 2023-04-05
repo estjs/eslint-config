@@ -35,7 +35,8 @@ module.exports = {
     'vue/require-prop-types': 'off',
     'vue/require-default-prop': 'off',
     'vue/multi-word-component-names': 'off',
-
+    'vue/prefer-import-from-vue': 'off',
+    'vue/no-v-text-v-html-on-component': 'off',
     'vue/block-tag-newline': ['error', {
       singleline: 'always',
       multiline: 'always',
@@ -45,7 +46,7 @@ module.exports = {
 
     'vue/no-restricted-v-bind': ['error', '/^v-/'],
     'vue/no-useless-v-bind': 'error',
-    'vue/no-v-text-v-html-on-component': 'error',
+    'vue/no-unused-refs': 'warn',
     'vue/prefer-separate-static-class': 'error',
 
     // extensions
