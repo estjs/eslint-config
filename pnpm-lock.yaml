@@ -88,10 +88,12 @@ importers:
 
   packages/vue:
     specifiers:
+      '@estjs/eslint-config-basic': workspace:*
       '@estjs/eslint-config-ts': workspace:*
       eslint: ^8.37.0
       eslint-plugin-vue: ^9.10.0
     dependencies:
+      '@estjs/eslint-config-basic': link:../basic
       '@estjs/eslint-config-ts': link:../typescript
       eslint-plugin-vue: 9.10.0_eslint@8.37.0
     devDependencies:
@@ -99,10 +101,12 @@ importers:
 
   packages/vue2:
     specifiers:
+      '@estjs/eslint-config-basic': workspace:*
       '@estjs/eslint-config-ts': workspace:*
       eslint: 8.37.0
       eslint-plugin-vue: ^9.10.0
     dependencies:
+      '@estjs/eslint-config-basic': link:../basic
       '@estjs/eslint-config-ts': link:../typescript
       eslint-plugin-vue: 9.10.0_eslint@8.37.0
     devDependencies:
