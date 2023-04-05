@@ -1,3 +1,7 @@
+const { isPackageExists } = require('local-pkg');
+
+const isTsExists = isPackageExists('typescript');
+
 module.exports = {
   overrides: [
     {
@@ -15,7 +19,7 @@ module.exports = {
   ],
   extends: [
     'plugin:vue/vue3-recommended',
-    '@estjs/eslint-config-ts',
+    isTsExists ? '@estjs/eslint-config-ts' : '@estjs/eslint-config-basic'
   ],
   rules: {
 
@@ -59,7 +63,6 @@ module.exports = {
     'vue/no-restricted-v-bind': ['error', '/^v-/'],
     'vue/no-useless-v-bind': 'error',
     'vue/no-unused-refs': 'warn',
-    'vue/no-v-text-v-html-on-component': 'error',
     'vue/padding-line-between-blocks': ['error', 'always'],
     'vue/prefer-separate-static-class': 'error',
 

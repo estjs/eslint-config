@@ -1,20 +1,18 @@
 const { isPackageExists } = require('local-pkg');
+
 const isTsExists = isPackageExists('typescript');
 
-const eslintExtends = [
-  'plugin:react/recommended',
-  'plugin:react-hooks/recommended'
-];
-
-eslintExtends.push(isTsExists ? '@estjs/eslint-config-ts' : '@estjs/eslint-config-basic');
-
 module.exports = {
-  extends: eslintExtends,
   settings: {
     react: {
       version: 'detect',
     },
   },
+  extends: [
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    isTsExists ? '@estjs/eslint-config-ts' : '@estjs/eslint-config-basic'
+  ],
   rules: {
     'jsx-quotes': [
       'warn',

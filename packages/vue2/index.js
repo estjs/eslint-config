@@ -1,3 +1,7 @@
+const { isPackageExists } = require('local-pkg');
+
+const isTsExists = isPackageExists('typescript');
+
 module.exports = {
   overrides: [
     {
@@ -12,7 +16,10 @@ module.exports = {
       },
     },
   ],
-  extends: ['plugin:vue/recommended', '@estjs/eslint-config-ts'],
+  extends: [
+    'plugin:vue/recommended',
+    isTsExists ? '@estjs/eslint-config-ts' : '@estjs/eslint-config-basic'
+  ],
   rules: {
     '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^h$', argsIgnorePattern: '^h$' }],
 
