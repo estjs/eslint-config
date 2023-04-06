@@ -1,5 +1,5 @@
 {
-	"name": "@estjs/eslint-plugin",
+	"name": "eslint-plugin-atomic",
 	"type": "module",
 	"version": "0.5.4-beta.0",
 	"description": "",
@@ -52,5 +52,6 @@
 	"devDependencies": {
 		"eslint": "^8.37.0",
 		"unbuild": "^1.2.0"
+
 	}
 }

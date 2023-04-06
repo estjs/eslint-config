@@ -1,5 +1,5 @@
-export default {
-  extends: [
-    'plugin:@estjs/recommended',
+module.exports = {
+  plugins: [
+    'atomic',
   ],
 };

@@ -8,6 +8,7 @@ importers:
       '@types/node': ^18.15.11
       bumpp: ^9.1.0
       eslint: ^8.37.0
+      eslint-plugin-atomic: link:./packages/eslint-plugin-atomic
       typescript: ^5.0.3
       unocss: ^0.50.6
     devDependencies:
@@ -15,6 +16,7 @@ importers:
       '@types/node': 18.15.11
       bumpp: 9.1.0
       eslint: 8.37.0
+      eslint-plugin-atomic: link:packages/eslint-plugin-atomic
       typescript: 5.0.3
       unocss: 0.50.6
 
@@ -27,6 +29,7 @@ importers:
       '@estjs/eslint-config-vue': workspace:*
       '@estjs/eslint-config-vue2': workspace:*
       eslint: ^8.37.0
+      eslint-plugin-atomic: workspace:*
       local-pkg: ^0.4.3
     dependencies:
       '@estjs/eslint-config-atomic': link:../atomic
@@ -35,16 +38,18 @@ importers:
       '@estjs/eslint-config-ts': link:../typescript
       '@estjs/eslint-config-vue': link:../vue
       '@estjs/eslint-config-vue2': link:../vue2
+      eslint-plugin-atomic: link:../eslint-plugin-atomic
       local-pkg: 0.4.3
     devDependencies:
       eslint: 8.37.0
 
   packages/atomic:
     specifiers:
-      '@estjs/eslint-plugin': workspace:*
+      eslint-plugin-atomic: workspace:*
       unbuild: ^1.2.0
+    dependencies:
+      eslint-plugin-atomic: link:../eslint-plugin-atomic
     devDependencies:
-      '@estjs/eslint-plugin': link:../eslint-plugin
       unbuild: 1.2.0
 
   packages/basic:
@@ -68,7 +73,7 @@ importers:
     devDependencies:
       eslint: 8.37.0
 
-  packages/eslint-plugin:
+  packages/eslint-plugin-atomic:
     specifiers:
       '@typescript-eslint/utils': ^5.57.1
       '@unocss/config': ^0.50.6

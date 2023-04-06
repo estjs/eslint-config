@@ -22,6 +22,7 @@
     "@estjs/eslint-config-ts": "workspace:*",
     "@estjs/eslint-config-vue": "workspace:*",
     "@estjs/eslint-config-vue2": "workspace:*",
+		"eslint-plugin-atomic": "workspace:*",
     "local-pkg": "^0.4.3"
   },
   "devDependencies": {

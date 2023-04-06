@@ -42,8 +42,10 @@
 		"build": "unbuild",
 		"lint": "eslint ./src"
 	},
+	"dependencies": {
+		"eslint-plugin-atomic": "workspace:*"
+	},
 	"devDependencies": {
-		"@estjs/eslint-plugin": "workspace:*",
 		"unbuild": "^1.2.0"
 	}
 }
