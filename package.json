@@ -1,6 +1,6 @@
 {
   "name": "@estjs/eslint-config-monorepo",
-  "version": "0.6.0-beta.0",
+  "version": "0.6.0-beta.1",
   "private": true,
   "author": "estjs",
   "license": "MIT",
@@ -14,10 +14,9 @@
   "devDependencies": {
     "@estjs/eslint-config": "*",
     "@types/node": "^18.15.11",
+    "all": "^0.0.0",
     "bumpp": "^9.1.0",
     "eslint": "^8.37.0",
-    "typescript": "^5.0.3",
-    "unocss": "^0.50.6"
-
+    "typescript": "^5.0.3"
   }
 }

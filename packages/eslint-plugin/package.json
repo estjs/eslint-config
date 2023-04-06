@@ -1,17 +1,17 @@
 {
   "name": "@estjs/eslint-plugin",
-	"type": "module",
-	"version": "0.6.0-beta.0",
-	"description": "",
-	"author": "jiangxd <jiangxd2016@gmail.com>",
-	"license": "MIT",
-	"funding": "https://github.com/sponsors/estjs",
-	"homepage": "https://github.com/estjs/@estjs/eslint-configc#readme",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/estjs/@estjs/eslint-config.git"
-	},
-	"bugs": "https://github.com/estjs/@estjs/eslint-config/issues",
+  "type": "module",
+  "version": "0.6.0-beta.1",
+  "description": "",
+  "author": "jiangxd <jiangxd2016@gmail.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/estjs",
+  "homepage": "https://github.com/estjs/@estjs/eslint-configc#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estjs/@estjs/eslint-config.git"
+  },
+  "bugs": "https://github.com/estjs/@estjs/eslint-config/issues",
   "keywords": [
     "eslint-plugin",
     "eslint"
@@ -33,20 +33,19 @@
   "engines": {
     "node": ">=14"
   },
-	"scripts": {
-		"build": "unbuild",
-		"lint": "eslint ./src"
-	},
-	"dependencies": {
-		"@typescript-eslint/utils": "^5.57.1",
-		"@unocss/config": "^0.50.6",
-		"@unocss/core": "^0.50.6",
-		"magic-string": "^0.30.0",
-		"synckit": "^0.8.5"
-
-	},
-	"devDependencies": {
-		"eslint": "^8.37.0",
-		"unbuild": "^1.2.0"
-	}
+  "scripts": {
+    "build": "unbuild",
+    "lint": "eslint ./src"
+  },
+  "dependencies": {
+    "@typescript-eslint/utils": "^5.57.1",
+    "@unocss/config": "^0.50.6",
+    "@unocss/core": "^0.50.6",
+    "magic-string": "^0.30.0",
+    "synckit": "^0.8.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.37.0",
+    "unbuild": "^1.2.0"
+  }
 }
