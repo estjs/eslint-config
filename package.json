@@ -1,6 +1,6 @@
 {
   "name": "@estjs/eslint-config-monorepo",
-  "version": "0.5.4-beta.0",
+  "version": "0.6.0-beta.0",
   "private": true,
   "author": "estjs",
   "license": "MIT",
@@ -19,6 +19,5 @@
     "eslint-plugin-atomic": "link:./packages/eslint-plugin-atomic",
     "typescript": "^5.0.3",
     "unocss": "^0.50.6"
-
   }
 }
