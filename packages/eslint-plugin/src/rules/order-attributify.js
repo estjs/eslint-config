@@ -60,12 +60,10 @@ export default ESLintUtils.RuleCreator(name => name)({
       },
     };
 
-    // @ts-expect-error missing-types
     if (context.parserServices == null || context.parserServices.defineTemplateBodyVisitor == null) {
       return scriptVisitor;
     } else {
       // For Vue
-      // @ts-expect-error missing-types
       return context.parserServices?.defineTemplateBodyVisitor(templateBodyVisitor, scriptVisitor);
     }
   },

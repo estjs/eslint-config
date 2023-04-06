@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import { ESLintUtils } from '@typescript-eslint/utils';
 import defineTemplateBodyVisitor from '../util/parser';
 import getOption from '../util/settings';
 import { parseClassname } from '../util/groupMethods';
@@ -11,15 +13,9 @@ import {
   getTemplateElementPrefix,
   getTemplateElementSuffix, isArrayExpression, isClassAttribute, isLiteralAttributeValue, isObjectExpression, isValidVueAttribute, isVLiteralValue
 } from '../util/ast.js';
-// ------------------------------------------------------------------------------
-// Rule Definition
-// ------------------------------------------------------------------------------
 
-// Predefine message for use in context.report conditional.
-// messageId will still be usable in tests.
-const SHORTHAND_CANDIDATE_CLASSNAMES_DETECTED_MSG = 'Classnames \'{{classnames}}\' could be replaced by the \'{{shorthand}}\' shorthand!';
-
-export default {
+export default ESLintUtils.RuleCreator(name => name)({
+  name: 'shorthand',
   meta: {
     docs: {
       description: 'Enforces the usage of shorthand Atomic CSS classnames',
@@ -56,6 +52,7 @@ export default {
       }
     ]
   },
+  defaultOptions: [],
 
   create(context) {
     const callees = getOption(context, 'callees');
@@ -444,4 +441,4 @@ export default {
 
     return defineTemplateBodyVisitor(context, templateVisitor, scriptVisitor);
   }
-}
+});
