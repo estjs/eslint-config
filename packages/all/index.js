@@ -3,7 +3,9 @@ const { isPackageExists } = require('local-pkg');
 const isVueExists = isPackageExists('vue');
 const isReactExists = isPackageExists('react');
 const isTSExists = isPackageExists('typescript');
-const isUnoCssExists = isPackageExists('unocss');
+const isAtomicExists = isPackageExists('unocss') || isPackageExists('tailwindcss') || isPackageExists('windicss');
+
+console.log(isAtomicExists);
 
 const eslintExtends = [];
 if (isVueExists) {
@@ -17,8 +19,8 @@ if (isVueExists) {
   eslintExtends.push('@estjs/eslint-config-basic');
 }
 
-if (isUnoCssExists) {
-  eslintExtends.push('@unocss/eslint-config');
+if (isAtomicExists) {
+  eslintExtends.push('@estjs/eslint-config-atomic');
 }
 
 module.exports = {
