@@ -1,4 +1,3 @@
-import fs from 'node:fs';
 import { ESLintUtils } from '@typescript-eslint/utils';
 import defineTemplateBodyVisitor from '../util/parser';
 import getOption from '../util/settings';
@@ -21,9 +20,6 @@ export default ESLintUtils.RuleCreator(name => name)({
       description: 'Enforces the usage of shorthand Atomic CSS classnames',
       category: 'Best Practices',
       recommended: true
-    },
-    messages: {
-      shorthandCandidateDetected: SHORTHAND_CANDIDATE_CLASSNAMES_DETECTED_MSG
     },
     fixable: 'code',
     schema: [

@@ -5,8 +5,6 @@ const isReactExists = isPackageExists('react');
 const isTSExists = isPackageExists('typescript');
 const isAtomicExists = isPackageExists('unocss') || isPackageExists('tailwindcss') || isPackageExists('windicss');
 
-console.log(isAtomicExists);
-
 const eslintExtends = [];
 if (isVueExists) {
   const Vue = require('vue');
