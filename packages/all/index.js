@@ -20,7 +20,7 @@ if (isVueExists) {
 }
 
 if (isAtomicExists) {
-  eslintExtends.push('@estjs/eslint-config-atomic');
+  eslintExtends.push( 'plugin:@estjs/recommended');
 }
 
 module.exports = {

@@ -1,5 +1,5 @@
 export default {
-  plugins: ['atomic'],
+  plugins: ['@estjs'],
   rules: {
     '@estjs/order': 'warn',
     '@estjs/order-attributify': 'warn',
