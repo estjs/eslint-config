@@ -1,4 +1,3 @@
-import { ESLintUtils } from '@typescript-eslint/utils';
 import defineTemplateBodyVisitor from '../util/parser';
 import getOption from '../util/settings';
 import { parseClassname } from '../util/groupMethods';
@@ -20,7 +19,7 @@ import {
 // messageId will still be usable in tests.
 const SHORTHAND_CANDIDATE_CLASSNAMES_DETECTED_MSG = 'Classnames \'{{classnames}}\' could be replaced by the \'{{shorthand}}\' shorthand!';
 
-export default ESLintUtils.RuleCreator(name => name)({
+export default {
   meta: {
     docs: {
       description: 'Enforces the usage of shorthand Atomic CSS classnames',
@@ -445,4 +444,4 @@ export default ESLintUtils.RuleCreator(name => name)({
 
     return defineTemplateBodyVisitor(context, templateVisitor, scriptVisitor);
   }
-});
+}

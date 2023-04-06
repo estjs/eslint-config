@@ -1,4 +1,3 @@
-import { ESLintUtils } from '@typescript-eslint/utils';
 import { parseClassname } from '../util/groupMethods';
 import getOption from '../util/settings';
 import defineTemplateBodyVisitor from '../util/parser';
@@ -19,7 +18,7 @@ import {
 // messageId will still be usable in tests.
 const ARBITRARY_VALUE_DETECTED_MSG = 'Arbitrary value detected in \'{{classname}}\'';
 
-export default ESLintUtils.RuleCreator(name => name)({
+export default{
   meta: {
     docs: {
       description: 'Forbid using arbitrary values in classnames',
@@ -212,4 +211,4 @@ export default ESLintUtils.RuleCreator(name => name)({
 
     return defineTemplateBodyVisitor(context, templateVisitor, scriptVisitor);
   },
-});
+}
