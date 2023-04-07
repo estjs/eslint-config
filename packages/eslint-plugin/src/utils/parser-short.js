@@ -1,3 +1,11 @@
+/*
+ * @Author: jiangxd<jiangxd2016@gmail.com>
+ * @Date: 2023-04-07 21:19:54
+ * @LastEditTime: 2023-04-07 22:52:29
+ * @LastEditors: jiangxd<jiangxd2016@gmail.com>
+ * @Description:
+ * @FilePath: /eslint-config/packages/eslint-plugin/src/utils/parser-short.js
+ */
 import { loadConfig } from '@unocss/config';
 import { createGenerator } from '@unocss/core';
 import { runAsWorker } from 'synckit';
@@ -9,6 +17,17 @@ const dirMap = {
   y: ['t', 'b'],
   a: ['x', 'y']
 };
+
+// TODO: support short token
+// const shortToken = [
+//   'dark',
+//   'flex',
+//   'grid',
+//   'text',
+//   'bg',
+//   'border',
+//   'ring',
+// ];
 
 function isdDirection(dir1, dir2) {
 

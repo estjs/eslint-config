@@ -1,10 +1,18 @@
+/*
+ * @Author: jiangxd<jiangxd2016@gmail.com>
+ * @Date: 2023-04-07 15:20:08
+ * @LastEditTime: 2023-04-07 22:50:14
+ * @LastEditors: jiangxd<jiangxd2016@gmail.com>
+ * @Description:
+ * @FilePath: /eslint-config/packages/eslint-plugin/src/rules/shorthand.js
+ */
 import { join } from 'node:path';
 import { ESLintUtils } from '@typescript-eslint/utils';
 import { createSyncFn } from 'synckit';
 import { distDir } from '../utils/dirs';
 import { CLASS_FIELDS } from '../utils/constants.js';
 
-const parserShort = createSyncFn(join(distDir, 'parser-token.cjs'));
+const parserShort = createSyncFn(join(distDir, 'parser-short.cjs'));
 
 const createShorthandRule = ESLintUtils.RuleCreator(name => name);
 
