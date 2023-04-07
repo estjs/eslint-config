@@ -1,5 +1,10 @@
+import { join } from 'node:path';
 import { ESLintUtils } from '@typescript-eslint/utils';
+import { createSyncFn } from 'synckit';
+import { distDir } from '../utils/dirs';
 import { CLASS_FIELDS } from '../utils/constants.js';
+
+const parserToken = createSyncFn(join(distDir, 'parser-token.cjs'));
 
 const createShorthandRule = ESLintUtils.RuleCreator(name => name);
 const dirMap = {
@@ -28,30 +33,32 @@ export default createShorthandRule({
       if (typeof node.value.value !== 'string') {
         return;
       }
-
-      // Define the regular expression to match shorthand utility classnames
-      const reg = /^((m|p|border|b)-?)?([blrtxy])(?:-?(-?.+))?$/;
-      const classList = Array.from(new Set(...node.value.value.split(' ')));
+      const reg = /^((m|p)-?)?([blrtxy])(?:-?(-?.+))?$/;
+      const borderReg = /^(?:border|b)-([belr-t])(?:-(.+))?$/;
+      const getReg = (className) => {
+        const regv = className.startsWith('b') ? borderReg : reg;
+        const parser = parserToken(className);
+        return {
+          test: regv.test(className) && parser,
+          match: className.match(regv)
+        };
+      };
+      const classList = Array.from(new Set(node.value.value.split(' ') || []));
       if (classList.length < 2) {
         return;
       }
-      const fixableNodes = [];
       const used = [];
-
-      // Iterate over each classname and check if it matches the regular expression
+      const genrate = [];
       for (let i = 0; i < classList.length; i++) {
         const className1 = classList[i];
-        if (reg.test(className1) && !used.includes(className1)) {
-          const [, , prefix1, dir1, val1] = className1.match(reg);
-
-          // Look ahead to find the next class name with a matching prefix
+        const { test, match } = getReg(className1);
+        if (test && !used.includes(className1)) {
+          const [, , prefix1, dir1, val1] = match;
           for (let j = i + 1; j < classList.length; j++) {
             const className2 = classList[j];
-            if (reg.test(className2) && className1 !== className2) {
-
-              const [, , prefix2, dir2, val2] = className2.match(reg);
-
-              // If the two class names have the same direction, combine them
+            const { test: test2, match: match2 } = getReg(className2);
+            if (test2 && className1 !== className2) {
+              const [, , prefix2, dir2, val2] = match2;
               if (prefix1 === prefix2 && val1 === val2) {
                 const x = dirMap.x.includes(dir1) ? dirMap.x.includes(dir2) ? 'x' : undefined : undefined;
                 const y = dirMap.y.includes(dir1) ? dirMap.y.includes(dir2) ? 'y' : undefined : undefined;
@@ -59,38 +66,38 @@ export default createShorthandRule({
                 if (!x && !y && !a) {
                   break;
                 }
-                // 标记已被使用
-                used.push(className2);
+                used.push(className2, className1);
                 const fixedClassName = `${prefix1}${x || y || a}-${val1}`;
-                const fixedNode = {
-                  ...node,
-                  value: {
-                    ...node.value,
-                    value: node.value.value.replace(className1 + ' ' + className2, fixedClassName)
-                  }
-                };
-                fixableNodes.push(fixedNode);
+
+                genrate.push(fixedClassName);
+
+                const findIndex = classList.indexOf(className1);
+                classList.splice(findIndex, 1);
+                const findIndex2 = classList.indexOf(className2);
+                classList.splice(findIndex2, 1);
+
+                console.log(classList, genrate);
+
               }
             }
           }
         }
       }
 
-      if (fixableNodes.length > 0) {
+      if (genrate.length > 0) {
         context.report({
           node,
           message: 'Utility classes like {{className}} should be replaced ',
-          data: { className: fixableNodes[0].value.value },
+          data: { className: used[0] },
           fix(fixer) {
-            return fixer.replaceTextRange(
-              [node.value.range[0] + 1, node.value.range[1] - 1],
-              fixableNodes.map(node => node.value.value).join(' ')
+            return fixer.replaceText(
+              node,
+              [...genrate, ...classList].join(' ')
             );
-          },
+          }
         });
       }
     };
-
     const scriptVisitor = {
       JSXAttribute(node) {
         if (typeof node.name.name === 'string'

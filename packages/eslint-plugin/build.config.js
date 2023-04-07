@@ -5,6 +5,7 @@ export default defineBuildConfig({
     'src/utils/dirs',
     'src/index',
     'src/utils/worker-sort',
+    'Src/utils/parser-token'
   ],
   clean: true,
   failOnWarn: false,
