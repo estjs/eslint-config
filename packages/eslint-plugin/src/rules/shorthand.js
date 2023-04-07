@@ -39,12 +39,9 @@ export default createShorthandRule({
         context.report({
           node,
           message: 'Utility classes like {{className}} should be replaced ',
-          data: { className: used[0] },
+          data: { className: used.join(', ') },
           fix(fixer) {
-            return fixer.replaceText(
-              node,
-              [...genrate, ...clsList].join(' ')
-            );
+            return fixer.replaceTextRange([node.range[0] + 1, node.range[1] - 1], [...genrate, ...clsList].join(' '));
           }
         });
       }
