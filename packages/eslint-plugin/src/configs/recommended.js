@@ -3,6 +3,6 @@ export default {
   rules: {
     '@estjs/order': 'warn',
     '@estjs/order-attributify': 'warn',
-    '@estjs/shorthand': 'warn'
+    '@estjs/shorthand': 'warn',
   },
 };

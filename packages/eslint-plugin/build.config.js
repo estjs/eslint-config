@@ -2,9 +2,9 @@ import { defineBuildConfig } from 'unbuild';
 
 export default defineBuildConfig({
   entries: [
-    'src/dirs',
+    'src/utils/dirs',
     'src/index',
-    'src/worker-sort',
+    'src/utils/worker-sort',
   ],
   clean: true,
   failOnWarn: false,
