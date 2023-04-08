@@ -29,7 +29,7 @@ export default createShorthandRule({
       if (typeof node.value !== 'string') {
         return;
       }
-      const classList = Array.from(new Set( node.value.split(' ') || []));
+      const classList = Array.from(new Set( node.value.split( /^(\S+?)\s+(\S+?)\s+(\S+?)\s+(.+)$/) || []));
       if (classList.length < 2) {
         return;
       }

@@ -30,11 +30,11 @@ runAsWorker(async (classList) => {
       return false;
     });
     if (isShortToken) {
-      used.push(className);
       // 找到对应的 class
       const equalClasses = classList.filter(i => i.startsWith(token) && i !== className);
 
       if (equalClasses.length) {
+        used.push(className);
 
         equalClasses.push(className);
         equalClasses.forEach(equalClass => used.push(equalClass));
@@ -48,7 +48,7 @@ runAsWorker(async (classList) => {
           equalClasses.splice(equalClasses.indexOf(equalTokenClasses[0]), 1);
         }
 
-        const gen = `${token}-(${isEqualToken ? '~ ' : ''}${equalClasses.map(i=>i.replace(token, '')).join(' ')})`;
+        const gen = `${token}-(${isEqualToken ? '~ ' : ''}${equalClasses.map(i=>i.replace(token, '').replace(/^[:-]/, '')).join(' ')})`;
 
         genrate.push(gen);
       } else {
