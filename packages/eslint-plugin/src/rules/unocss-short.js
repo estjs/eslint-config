@@ -9,16 +9,16 @@ const parserShort = createSyncFn(join(distDir, 'parser-short.cjs'));
 const createShorthandRule = ESLintUtils.RuleCreator(name => name);
 
 export default createShorthandRule({
-  name: 'shorthand',
+  name: 'unocss-shorthand',
   meta: {
     docs: {
-      description: 'Enforces the usage of shorthand Atomic CSS classnames',
+      description: 'Enforces the usage of unocss shorthand Atomic CSS classnames',
       category: 'Best Practices',
       recommended: true
     },
     fixable: 'code',
     messages: {
-      'invalid-shorthand': 'Atomic CSS utilities are not shorthand',
+      'invalid-shorthand': 'Atomic CSS utilities are not unocss shorthand',
     },
     schema: [],
   },

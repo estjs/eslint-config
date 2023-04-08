@@ -88,10 +88,10 @@ runAsWorker(async (classList) => {
       }
     }
   }
-  const clsList = classList.filter(i => !used.includes(i));
+  const unused = classList.filter(i => !used.includes(i));
 
   return {
-    clsList,
+    unused,
     used,
     genrate,
   };
