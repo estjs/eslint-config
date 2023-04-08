@@ -1,14 +1,15 @@
 import { runAsWorker } from 'synckit';
+import { collapseVariantGroup,} from '@unocss/core';
 
 // 支持简写的 token
 const shortTokens = [
-  'dark',
-  'flex',
-  'grid',
-  'text',
-  'bg',
-  'border',
-  'ring',
+  'dark:',
+  'flex-',
+  'grid-',
+  'text-',
+  'bg-',
+  'border-',
+  'ring-',
 ];
 
 runAsWorker(async (classList) => {
@@ -32,25 +33,12 @@ runAsWorker(async (classList) => {
     if (isShortToken) {
       // 找到对应的 class
       const equalClasses = classList.filter(i => i.startsWith(token) && i !== className);
-      // find className 完全等于token的 (暂时只有grid和flex需要这样处理)
-      const equalTokenClasses = equalClasses.filter(i => i === token && (token === 'grid' || token === 'flex'));
-      // 只有一个，也必须只有一个
-      if (equalTokenClasses.length > 0) {
-        equalTokenClasses.forEach((equalClass) => {
-          unused.push(equalClass);
-          used.push(equalClass);
-          equalClasses.splice(equalClasses.indexOf(equalClass), 1);
-
-        });
-      }
 
       if (equalClasses.length) {
         used.push(className);
-
         equalClasses.push(className);
         equalClasses.forEach(equalClass => used.push(equalClass));
-
-        const gen = `${token}-(${equalClasses.map(i => i.replace(token, '').replace(/^[:-]/, '')).join(' ')})`;
+        const gen = collapseVariantGroup(equalClasses.join(' '), [token]);
 
         genrate.push(gen);
       } else {
