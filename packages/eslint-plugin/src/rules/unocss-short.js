@@ -4,7 +4,7 @@ import { createSyncFn } from 'synckit';
 import { distDir } from '../utils/dirs';
 import { CLASS_FIELDS } from '../utils/constants.js';
 
-const parserShort = createSyncFn(join(distDir, 'parser-short.cjs'));
+const parserUnocssShort = createSyncFn(join(distDir, 'unocss-short.cjs'));
 
 const createShorthandRule = ESLintUtils.RuleCreator(name => name);
 
@@ -33,7 +33,7 @@ export default createShorthandRule({
       if (classList.length < 2) {
         return;
       }
-      const { unused, used, genrate } = parserShort(classList);
+      const { unused, used, genrate } = parserUnocssShort(classList);
 
       if (genrate.length > 0) {
         context.report({
