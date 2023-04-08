@@ -1,4 +1,6 @@
 import { runAsWorker } from 'synckit';
+import { loadConfig } from '@unocss/config';
+import { createGenerator } from '@unocss/core';
 
 // 支持简写的 token
 const shortTokens = [
@@ -10,7 +12,18 @@ const shortTokens = [
   'border',
   'ring',
 ];
+async function getGenerator() {
+  const { config } = await loadConfig();
+  return createGenerator(config);
+}
 
+let promise;
+async function parserGroup(classes,prefix) {
+  promise = promise || getGenerator();
+  const uno = await promise;
+	const groupClass = uno.collapseVariantGroup(classes, prefix);
+  return Promise.resolve(groupClass);
+}
 runAsWorker(async (classList) => {
   const used = [];
   const unused = [];
@@ -39,8 +52,8 @@ runAsWorker(async (classList) => {
         equalClasses.push(className);
         equalClasses.forEach(equalClass => used.push(equalClass));
 
-        // find className 完全等于token的
-        const equalTokenClasses = equalClasses.filter(i => i === token);
+        // find className 完全等于token的 (暂时只有grid和flex需要这样处理)
+        const equalTokenClasses = equalClasses.filter(i => i === token && (token === 'grid' || token === 'flex') );
 
         const isEqualToken = equalTokenClasses.length > 0;
         // 只有一个，也必须只有一个

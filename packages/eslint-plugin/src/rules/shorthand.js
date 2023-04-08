@@ -29,7 +29,8 @@ export default createShorthandRule({
       if (typeof node.value !== 'string') {
         return;
       }
-      const classList = Array.from(new Set( node.value.split( /^(\S+?)\s+(\S+?)\s+(\S+?)\s+(.+)$/) || []));
+      const splitList = node.value.includes(')') ? node.value.split( /^(\S+?)\s+(\S+?)\s+(\S+?)\s+(.+)$/) : node.value.split(' ');
+      const classList = Array.from(new Set(splitList || []));
       if (classList.length < 2) {
         return;
       }
