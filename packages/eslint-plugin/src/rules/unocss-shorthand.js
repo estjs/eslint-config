@@ -4,7 +4,7 @@ import { createSyncFn } from 'synckit';
 import { distDir } from '../utils/dirs';
 import { CLASS_FIELDS } from '../utils/constants.js';
 
-const parserUnocssShort = createSyncFn(join(distDir, 'unocss-short.cjs'));
+const parserUnocssShort = createSyncFn(join(distDir, 'unocss-shorthand.cjs'));
 
 const createShorthandRule = ESLintUtils.RuleCreator(name => name);
 

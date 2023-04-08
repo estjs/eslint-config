@@ -4,7 +4,7 @@ import { createSyncFn } from 'synckit';
 import { distDir } from '../utils/dirs';
 import { CLASS_FIELDS } from '../utils/constants.js';
 
-const parserShort = createSyncFn(join(distDir, 'parser-short.cjs'));
+const parserShort = createSyncFn(join(distDir, 'parser-shorthand.cjs'));
 
 const createShorthandRule = ESLintUtils.RuleCreator(name => name);
 
