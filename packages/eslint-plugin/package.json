@@ -1,7 +1,7 @@
 {
   "name": "@estjs/eslint-plugin",
   "type": "module",
-  "version": "0.6.3-beta.5",
+  "version": "0.6.3",
   "description": "",
   "author": "jiangxd <jiangxd2016@gmail.com>",
   "license": "MIT",
