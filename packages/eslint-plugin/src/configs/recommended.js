@@ -4,6 +4,6 @@ export default {
     '@estjs/order': 'warn',
     '@estjs/order-attributify': 'warn',
     '@estjs/shorthand': 'warn',
-    '@estjs/unocss-shorthand': 'warn'
+    '@estjs/unocss-shorthand': 'off'
   },
 };
