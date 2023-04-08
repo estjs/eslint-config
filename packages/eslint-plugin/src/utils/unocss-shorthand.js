@@ -1,6 +1,4 @@
 import { runAsWorker } from 'synckit';
-import { loadConfig } from '@unocss/config';
-import { createGenerator } from '@unocss/core';
 
 // 支持简写的 token
 const shortTokens = [
@@ -12,18 +10,7 @@ const shortTokens = [
   'border',
   'ring',
 ];
-async function getGenerator() {
-  const { config } = await loadConfig();
-  return createGenerator(config);
-}
 
-let promise;
-async function parserGroup(classes,prefix) {
-  promise = promise || getGenerator();
-  const uno = await promise;
-	const groupClass = uno.collapseVariantGroup(classes, prefix);
-  return Promise.resolve(groupClass);
-}
 runAsWorker(async (classList) => {
   const used = [];
   const unused = [];
@@ -45,6 +32,17 @@ runAsWorker(async (classList) => {
     if (isShortToken) {
       // 找到对应的 class
       const equalClasses = classList.filter(i => i.startsWith(token) && i !== className);
+      // find className 完全等于token的 (暂时只有grid和flex需要这样处理)
+      const equalTokenClasses = equalClasses.filter(i => i === token && (token === 'grid' || token === 'flex'));
+      // 只有一个，也必须只有一个
+      if (equalTokenClasses.length > 0) {
+        equalTokenClasses.forEach((equalClass) => {
+          unused.push(equalClass);
+          used.push(equalClass);
+          equalClasses.splice(equalClasses.indexOf(equalClass), 1);
+
+        });
+      }
 
       if (equalClasses.length) {
         used.push(className);
@@ -52,16 +50,7 @@ runAsWorker(async (classList) => {
         equalClasses.push(className);
         equalClasses.forEach(equalClass => used.push(equalClass));
 
-        // find className 完全等于token的 (暂时只有grid和flex需要这样处理)
-        const equalTokenClasses = equalClasses.filter(i => i === token && (token === 'grid' || token === 'flex') );
-
-        const isEqualToken = equalTokenClasses.length > 0;
-        // 只有一个，也必须只有一个
-        if (isEqualToken) {
-          equalClasses.splice(equalClasses.indexOf(equalTokenClasses[0]), 1);
-        }
-
-        const gen = `${token}-(${isEqualToken ? '~ ' : ''}${equalClasses.map(i=>i.replace(token, '').replace(/^[:-]/, '')).join(' ')})`;
+        const gen = `${token}-(${equalClasses.map(i => i.replace(token, '').replace(/^[:-]/, '')).join(' ')})`;
 
         genrate.push(gen);
       } else {

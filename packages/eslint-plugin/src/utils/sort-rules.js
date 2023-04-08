@@ -21,7 +21,7 @@ export async function sortRules(rules, uno) {
       return [order, i];
     }));
 
-  const sorted = result
+  let sorted = result
     .filter(element => notNull(element))
     .sort((a, b) => {
       let result = a[0] - b[0];
@@ -31,7 +31,7 @@ export async function sortRules(rules, uno) {
     .map(i => i[1])
     .join(' ');
 
-  // if (expandedResult?.prefixes.length) { sorted = collapseVariantGroup(sorted, expandedResult.prefixes); }
+  if (expandedResult?.prefixes.length) { sorted = collapseVariantGroup(sorted, expandedResult.prefixes); }
 
   return [...unknown, sorted].join(' ').trim();
 }
