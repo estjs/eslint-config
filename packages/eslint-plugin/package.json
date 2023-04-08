@@ -1,8 +1,7 @@
-
 {
   "name": "@estjs/eslint-plugin",
   "type": "module",
-  "version": "0.6.2",
+  "version": "0.6.3-beta.0",
   "description": "",
   "author": "jiangxd <jiangxd2016@gmail.com>",
   "license": "MIT",
@@ -48,6 +47,6 @@
   "devDependencies": {
     "eslint": "^8.37.0",
     "unbuild": "^1.2.0",
-		"typescript":"^5.0.3"
+    "typescript": "^5.0.3"
   }
 }
