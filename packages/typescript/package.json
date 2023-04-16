@@ -1,6 +1,6 @@
 {
   "name": "@estjs/eslint-config-ts",
-  "version": "0.3.4",
+  "version": "0.6.5",
   "description": "",
   "author": "estjs",
   "license": "MIT",
@@ -18,10 +18,11 @@
   },
   "dependencies": {
     "@estjs/eslint-config-basic": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "^5.33.0",
-    "@typescript-eslint/parser": "^5.33.0"
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1"
   },
   "devDependencies": {
-    "eslint": "^8.21.0"
+    "eslint": "^8.37.0",
+    "typescript": "^5.0.3"
   }
 }

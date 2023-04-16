@@ -1,0 +1,52 @@
+{
+  "name": "@estjs/eslint-plugin",
+  "type": "module",
+  "version": "0.6.5",
+  "description": "",
+  "author": "jiangxd <jiangxd2016@gmail.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/estjs",
+  "homepage": "https://github.com/estjs/@estjs/eslint-configc#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estjs/@estjs/eslint-config.git"
+  },
+  "bugs": "https://github.com/estjs/@estjs/eslint-config/issues",
+  "keywords": [
+    "eslint-plugin",
+    "eslint"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "lint": "eslint ./src"
+  },
+  "dependencies": {
+    "@typescript-eslint/utils": "^5.57.1",
+    "@unocss/config": "^0.50.6",
+    "@unocss/core": "^0.50.6",
+    "magic-string": "^0.30.0",
+    "synckit": "^0.8.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.37.0",
+    "typescript": "^5.0.3",
+    "unbuild": "^1.2.0"
+  }
+}
