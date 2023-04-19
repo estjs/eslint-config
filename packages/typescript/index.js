@@ -115,6 +115,8 @@ module.exports = {
     '@typescript-eslint/no-loss-of-precision': 'error',
     'lines-between-class-members': 'off',
     '@typescript-eslint/lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
+    'no-invalid-this': 'off',
+    '@typescript-eslint/no-invalid-this': 'error',
 
     // off
     '@typescript-eslint/consistent-indexed-object-style': 'off',
