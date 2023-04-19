@@ -1,6 +1,6 @@
 {
   "name": "@estjs/eslint-config-monorepo",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "private": true,
   "author": "estjs",
   "license": "MIT",
@@ -16,6 +16,6 @@
     "@estjs/eslint-plugin": "workspace:*",
     "bumpp": "^9.1.0",
     "eslint": "^8.38.0",
-		"typescript": "^5.0.4"
+    "typescript": "^5.0.4"
   }
 }
