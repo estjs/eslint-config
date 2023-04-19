@@ -1,5 +1,5 @@
 import { runAsWorker } from 'synckit';
-import { collapseVariantGroup,} from '@unocss/core';
+import { collapseVariantGroup } from '@unocss/core';
 
 // 支持简写的 token
 const shortTokens = [

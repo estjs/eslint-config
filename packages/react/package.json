@@ -13,8 +13,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "eslint": ">=8.20.0",
-    "typescript": ">=3.9"
+    "eslint": ">=7.4.0"
   },
   "dependencies": {
     "@estjs/eslint-config-basic": "workspace:*",
@@ -23,6 +22,8 @@
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "devDependencies": {
-    "eslint": "^8.38.0"
+    "eslint": "^8.38.0",
+    "react": "^18.2.0",
+    "typescript": "^5.0.4"
   }
 }
