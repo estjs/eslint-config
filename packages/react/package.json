@@ -23,7 +23,6 @@
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "devDependencies": {
-    "eslint": "^8.37.0",
-    "typescript": "^5.0.3"
+    "eslint": "^8.38.0"
   }
 }

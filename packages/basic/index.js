@@ -27,6 +27,8 @@ module.exports = {
     '!.github',
     '!.vitepress',
     '!.vscode',
+    // force exclude
+    '.vitepress/cache',
   ],
   plugins: ['html', 'unicorn'],
   settings: {
