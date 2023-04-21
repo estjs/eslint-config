@@ -61,8 +61,8 @@ importers:
   packages/eslint-plugin:
     specifiers:
       '@typescript-eslint/utils': ^5.59.0
-      '@unocss/config': ^0.51.4
-      '@unocss/core': ^0.51.4
+      '@unocss/config': ^0.51.5
+      '@unocss/core': ^0.51.5
       eslint: ^8.38.0
       magic-string: ^0.30.0
       synckit: ^0.8.5
@@ -70,8 +70,8 @@ importers:
       unbuild: ^1.2.1
     dependencies:
       '@typescript-eslint/utils': 5.59.0_voubu7prgxjfsfbgx5d4sqnwiy
-      '@unocss/config': 0.51.4
-      '@unocss/core': 0.51.4
+      '@unocss/config': 0.51.5
+      '@unocss/core': 0.51.5
       magic-string: 0.30.0
       synckit: 0.8.5
     devDependencies:
@@ -965,16 +965,16 @@ packages:
       eslint-visitor-keys: 3.4.0
     dev: false
 
-  /@unocss/config/0.51.4:
-    resolution: {integrity: sha512-DAUdVhrtdQDf8lI+tDO/8CkHcZn9jdN4M/twNKQDEfPP4IRBtLwP5TfYvDI7KcNcjyUAmACINhw0TrTkyCKHUA==}
+  /@unocss/config/0.51.5:
+    resolution: {integrity: sha512-VqLAGgzONkMugCsAxK0pn96m48x4dpAqiwOE2YFqr/1kJkHkIcc8F/QtIygvfhZN2A674Mq4+S3hrYUdn8zq8g==}
     engines: {node: '>=14'}
     dependencies:
-      '@unocss/core': 0.51.4
+      '@unocss/core': 0.51.5
       unconfig: 0.3.7
     dev: false
 
-  /@unocss/core/0.51.4:
-    resolution: {integrity: sha512-glPBN989gJNNVzjulH6NlLAekBLuZbsFRIDqwZ1ZaoWY6teu8Z6uo3pqFCy+ibjxZSEha77BcnKfDzd2Hccsdw==}
+  /@unocss/core/0.51.5:
+    resolution: {integrity: sha512-c2Ssp62nMRp3hCGhyaWYOMSD+QdwoYgTUbmIVNMTlVtDo9fjvyE2XwVRwAK7fJk8TnubAaDpkhZ49hVVf7Wjag==}
     dev: false
 
   /acorn-jsx/5.3.2_acorn@8.8.2:
