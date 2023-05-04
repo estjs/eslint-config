@@ -1,6 +1,6 @@
 {
   "name": "@estjs/eslint-config-ts",
-  "version": "0.6.10-beta.1",
+  "version": "0.6.10-beta.2",
   "description": "",
   "author": "estjs",
   "license": "MIT",
@@ -11,10 +11,6 @@
   ],
   "publishConfig": {
     "access": "public"
-  },
-  "peerDependencies": {
-    "eslint": ">=8.28.0",
-    "typescript": ">=3.9"
   },
   "dependencies": {
     "@estjs/eslint-config-basic": "workspace:*",
