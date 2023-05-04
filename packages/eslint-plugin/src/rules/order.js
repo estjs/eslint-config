@@ -1,12 +1,11 @@
 import { join } from 'node:path';
-import { ESLintUtils } from '@typescript-eslint/utils';
 import { createSyncFn } from 'synckit';
 import { distDir } from '../utils/dirs';
 import { CLASS_FIELDS } from '../utils/constants.js';
 
 const sortClasses = createSyncFn(join(distDir, 'worker-sort.cjs'));
 
-export default ESLintUtils.RuleCreator(name => name)({
+export default {
   name: 'order',
   meta: {
     type: 'layout',
@@ -62,4 +61,4 @@ export default ESLintUtils.RuleCreator(name => name)({
       return context.parserServices?.defineTemplateBodyVisitor(templateBodyVisitor, scriptVisitor);
     }
   },
-});
+};

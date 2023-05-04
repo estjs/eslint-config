@@ -1,14 +1,11 @@
 import { join } from 'node:path';
-import { ESLintUtils } from '@typescript-eslint/utils';
 import { createSyncFn } from 'synckit';
 import { distDir } from '../utils/dirs';
 import { CLASS_FIELDS } from '../utils/constants.js';
 
 const parserShort = createSyncFn(join(distDir, 'parser-shorthand.cjs'));
 
-const createShorthandRule = ESLintUtils.RuleCreator(name => name);
-
-export default createShorthandRule({
+export default {
   name: 'shorthand',
   meta: {
     docs: {
@@ -72,4 +69,4 @@ export default createShorthandRule({
       return context.parserServices?.defineTemplateBodyVisitor(templateBodyVisitor, scriptVisitor);
     }
   }
-});
+};

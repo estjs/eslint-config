@@ -1,5 +1,4 @@
 import { join } from 'node:path';
-import { ESLintUtils } from '@typescript-eslint/utils';
 import { createSyncFn } from 'synckit';
 import MagicString from 'magic-string';
 import { distDir } from '../utils/dirs';
@@ -8,7 +7,7 @@ const sortClasses = createSyncFn(join(distDir, 'worker-sort.cjs'));
 
 const INGORE_ATTRIBUTES = ['style', 'class', 'classname', 'value'];
 
-export default ESLintUtils.RuleCreator(name => name)({
+export default {
   name: 'order-attributify',
   meta: {
     type: 'layout',
@@ -67,4 +66,4 @@ export default ESLintUtils.RuleCreator(name => name)({
       return context.parserServices?.defineTemplateBodyVisitor(templateBodyVisitor, scriptVisitor);
     }
   },
-});
+};
