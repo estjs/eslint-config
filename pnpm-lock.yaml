@@ -16,9 +16,6 @@ importers:
       eslint:
         specifier: ^8.38.0
         version: 8.38.0
-      typescript:
-        specifier: ^5.0.4
-        version: 5.0.4
 
   packages/all:
     dependencies:
@@ -78,9 +75,6 @@ importers:
 
   packages/eslint-plugin:
     dependencies:
-      '@typescript-eslint/utils':
-        specifier: ^5.59.0
-        version: 5.59.0(eslint@8.38.0)(typescript@5.0.4)
       '@unocss/config':
         specifier: ^0.51.5
         version: 0.51.5
@@ -97,9 +91,6 @@ importers:
       eslint:
         specifier: ^8.38.0
         version: 8.38.0
-      typescript:
-        specifier: ^5.0.4
-        version: 5.0.4
       unbuild:
         specifier: ^1.2.1
         version: 1.2.1
@@ -140,9 +131,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^5.59.0
         version: 5.59.0(eslint@8.38.0)(typescript@5.0.4)
-      typescript:
-        specifier: '>=3.9'
-        version: 5.0.4
     devDependencies:
       eslint:
         specifier: ^8.38.0

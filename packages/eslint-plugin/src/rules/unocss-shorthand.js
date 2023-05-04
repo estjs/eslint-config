@@ -5,7 +5,6 @@ import { CLASS_FIELDS } from '../utils/constants.js';
 
 const parserUnocssShort = createSyncFn(join(distDir, 'unocss-shorthand.cjs'));
 
-
 export default {
   name: 'unocss-shorthand',
   meta: {
@@ -70,4 +69,4 @@ export default {
       return context.parserServices?.defineTemplateBodyVisitor(templateBodyVisitor, scriptVisitor);
     }
   }
-}
+};
