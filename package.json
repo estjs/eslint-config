@@ -15,6 +15,6 @@
     "@estjs/eslint-config": "*",
     "@estjs/eslint-plugin": "workspace:*",
     "bumpp": "^9.1.0",
-    "eslint": "^8.38.0"
+    "eslint": "^8.40.0"
   }
 }
