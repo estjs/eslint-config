@@ -38,13 +38,13 @@
     "lint": "eslint ./src"
   },
   "dependencies": {
-    "@unocss/config": "^0.51.5",
-    "@unocss/core": "^0.51.5",
+    "@unocss/config": "^0.51.12",
+    "@unocss/core": "^0.51.12",
     "magic-string": "^0.30.0",
     "synckit": "^0.8.5"
   },
   "devDependencies": {
-    "eslint": "^8.38.0",
+    "eslint": "^8.40.0",
     "unbuild": "^1.2.1"
   }
 }
