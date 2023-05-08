@@ -18,7 +18,7 @@ if (isVueExists) {
 }
 
 if (isAtomicExists) {
-  // eslintExtends.push('plugin:@estjs/recommended');
+  eslintExtends.push('plugin:@estjs/recommended');
 }
 
 module.exports = {
