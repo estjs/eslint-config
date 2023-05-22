@@ -1,9 +1,8 @@
 import { join } from 'node:path';
 import { createSyncFn } from 'synckit';
-import { distDir } from '../utils/dirs';
-import { CLASS_FIELDS } from '../utils/constants.js';
+import { distDir, CLASS_FIELDS } from '../utils/constants';
 
-const parserShort = createSyncFn(join(distDir, 'parser-shorthand.cjs'));
+const parserShort = createSyncFn(join(distDir, 'parserShorthand.cjs'));
 
 export default {
   name: 'shorthand',
