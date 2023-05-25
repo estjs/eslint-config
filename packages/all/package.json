@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@estjs/eslint-config-basic": "workspace:*",
-    "@estjs/eslint-config-check-file": "workspace:*",
     "@estjs/eslint-config-react": "workspace:*",
     "@estjs/eslint-config-ts": "workspace:*",
     "@estjs/eslint-config-vue": "workspace:*",
