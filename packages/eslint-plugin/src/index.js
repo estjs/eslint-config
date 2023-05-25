@@ -1,8 +1,8 @@
 import order from './rules/order';
 import configsRecommended from './configs/recommended';
-import orderAttributify from './rules/orderAttributify';
+import orderAttributify from './rules/order-attributify';
 import shorthand from './rules/shorthand';
-import unocssShorthand from './rules/unocssShorthand';
+import unocssShorthand from './rules/unocss-shorthand';
 
 export default {
   rules: {

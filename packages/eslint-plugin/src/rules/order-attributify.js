@@ -1,7 +1,7 @@
 import { join } from 'node:path';
 import { createSyncFn } from 'synckit';
 import MagicString from 'magic-string';
-import { distDir } from '../utils/constants';
+import { distDir } from '../utils/dirs';
 
 const sortClasses = createSyncFn(join(distDir, 'worker-sort.cjs'));
 

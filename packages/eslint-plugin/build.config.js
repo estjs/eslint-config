@@ -2,10 +2,11 @@ import { defineBuildConfig } from 'unbuild';
 
 export default defineBuildConfig({
   entries: [
+    'src/utils/dirs',
     'src/index',
-    'src/utils/workerSort',
-    'src/utils/parserShorthand',
-    'src/utils/unocssShorthand',
+    'src/utils/worker-sort',
+    'src/utils/parser-shorthand',
+    'src/utils/unocss-shorthand',
   ],
   clean: true,
   failOnWarn: false,

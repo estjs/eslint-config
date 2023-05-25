@@ -13,8 +13,7 @@ module.exports = {
     'check-file/filename-naming-convention': [
       'error',
       {
-        '**/*.{jsx,tsx,js,ts,vue,}': 'CAMEL_CASE',
-        '**/*.{js,ts}': 'CAMEL_CASE'
+        '**/*.{jsx,tsx,js,ts,vue}': 'CAMEL_CASE',
       },
       {
         ignoreMiddleExtensions: true,
@@ -23,9 +22,7 @@ module.exports = {
     'check-file/folder-naming-convention': [
       'error',
       {
-        'src/**/': 'KEBAB_CASE',
-        'packages/**/': 'KEBAB_CASE',
-        'test/**/': 'KEBAB_CASE'
+        '**/*': 'KEBAB_CASE',
       }
     ]
   }
