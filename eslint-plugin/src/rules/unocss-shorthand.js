@@ -1,6 +1,7 @@
 import { join } from 'node:path';
 import { createSyncFn } from 'synckit';
-import { distDir, CLASS_FIELDS } from '../utils/constants';
+import { distDir } from '../utils/dirs';
+import { CLASS_FIELDS } from '../utils/constants.js';
 
 const parserUnocssShort = createSyncFn(join(distDir, 'unocss-shorthand.cjs'));
 
@@ -14,9 +15,9 @@ export default {
     },
     fixable: 'code',
     messages: {
-      'invalid-shorthand': 'Atomic CSS utilities are not unocss shorthand'
+      'invalid-shorthand': 'Atomic CSS utilities are not unocss shorthand',
     },
-    schema: []
+    schema: [],
   },
   defaultOptions: [],
 
@@ -25,8 +26,8 @@ export default {
       if (typeof node.value !== 'string') {
         return;
       }
-      const splitList = node.value.includes(')') ? node.value.split(/^(\S+?)\s+(\S+?)\s+(\S+?)\s+(.+)$/) : node.value.split(' ');
-      const classList = Array.from(new Set(splitList || []));
+      const splitList = node.value.includes(')') ? node.value.split( /^(\S+?)\s+(\S+?)\s+(\S+?)\s+(.+)$/) : node.value.split(' ');
+      const classList = Array.from(new Set( splitList || []));
       if (classList.length < 2) {
         return;
       }
@@ -50,7 +51,7 @@ export default {
 					&& node.value && node.value.type === 'Literal') {
           checkLiteral(node.value);
         }
-      }
+      },
     };
 
     const templateBodyVisitor = {
@@ -58,7 +59,7 @@ export default {
         if (node.key.name === 'class' && node.value.type === 'VLiteral') {
           checkLiteral(node.value);
         }
-      }
+      },
     };
 
     if (context.parserServices == null || context.parserServices.defineTemplateBodyVisitor == null) {

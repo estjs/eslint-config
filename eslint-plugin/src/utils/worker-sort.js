@@ -1,7 +1,7 @@
 import { loadConfig } from '@unocss/config';
 import { createGenerator } from '@unocss/core';
 import { runAsWorker } from 'synckit';
-import { sortRules } from './sortRules';
+import { sortRules } from './sort-rules';
 
 async function getGenerator() {
   const { config } = await loadConfig();

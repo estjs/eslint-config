@@ -1,0 +1,23 @@
+{
+  "name": "@estjs/eslint-config-ts",
+  "version": "0.6.16-beta.0",
+  "description": "",
+  "author": "estjs",
+  "license": "MIT",
+  "keywords": [],
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@estjs/eslint-config-basic": "workspace:*",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0"
+  }
+}

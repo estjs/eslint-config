@@ -1,0 +1,26 @@
+{
+  "name": "@estjs/eslint-config-vue",
+  "version": "0.6.16-beta.0",
+  "description": "",
+  "author": "estjs",
+  "license": "MIT",
+  "keywords": [],
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "eslint": ">=8.28.0 "
+  },
+  "dependencies": {
+    "@estjs/eslint-config-basic": "workspace:*",
+    "@estjs/eslint-config-ts": "workspace:*",
+    "eslint-plugin-vue": "^9.11.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.40.0"
+  }
+}

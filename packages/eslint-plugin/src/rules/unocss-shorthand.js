@@ -3,19 +3,19 @@ import { createSyncFn } from 'synckit';
 import { distDir } from '../utils/dirs';
 import { CLASS_FIELDS } from '../utils/constants.js';
 
-const parserShort = createSyncFn(join(distDir, 'parser-shorthand.cjs'));
+const parserUnocssShort = createSyncFn(join(distDir, 'unocss-shorthand.cjs'));
 
 export default {
-  name: 'shorthand',
+  name: 'unocss-shorthand',
   meta: {
     docs: {
-      description: 'Enforces the usage of shorthand Atomic CSS classnames',
+      description: 'Enforces the usage of unocss shorthand Atomic CSS classnames',
       category: 'Best Practices',
       recommended: true
     },
     fixable: 'code',
     messages: {
-      'invalid-shorthand': 'Atomic CSS utilities are not shorthand',
+      'invalid-shorthand': 'Atomic CSS utilities are not unocss shorthand',
     },
     schema: [],
   },
@@ -27,11 +27,11 @@ export default {
         return;
       }
       const splitList = node.value.includes(')') ? node.value.split( /^(\S+?)\s+(\S+?)\s+(\S+?)\s+(.+)$/) : node.value.split(' ');
-      const classList = Array.from(new Set(splitList || []));
+      const classList = Array.from(new Set( splitList || []));
       if (classList.length < 2) {
         return;
       }
-      const { unused, used, genrate } = parserShort(classList);
+      const { unused, used, genrate } = parserUnocssShort(classList);
 
       if (genrate.length > 0) {
         context.report({
