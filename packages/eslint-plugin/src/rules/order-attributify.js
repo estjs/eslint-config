@@ -27,7 +27,9 @@ export default {
 
     const templateBodyVisitor = {
       VStartTag(node) {
-        const valueless = node.attributes.filter((i) => typeof i.key?.name === 'string' && !INGORE_ATTRIBUTES.includes(i.key?.name?.toLowerCase()) && i.value == null);
+        const valueless = node.attributes.filter(
+          (i) => typeof i.key?.name === 'string' && !INGORE_ATTRIBUTES.includes(i.key?.name?.toLowerCase()) && i.value == null,
+        );
         if (!valueless.length) {
           return;
         }
