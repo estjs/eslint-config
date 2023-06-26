@@ -7,20 +7,20 @@ const isAtomicExists = isPackageExists('unocss') || isPackageExists('tailwindcss
 
 const eslintExtends = [];
 if (isVueExists) {
-	const Vue = require('vue');
-	eslintExtends.push(Vue.version.startsWith('2.') ? '@estjs/eslint-config-vue2' : '@estjs/eslint-config-vue');
+  const Vue = require('vue');
+  eslintExtends.push(Vue.version.startsWith('2.') ? '@estjs/eslint-config-vue2' : '@estjs/eslint-config-vue');
 } else if (isReactExists) {
-	eslintExtends.push('@estjs/eslint-config-react');
+  eslintExtends.push('@estjs/eslint-config-react');
 } else if (isTSExists) {
-	eslintExtends.push('@estjs/eslint-config-ts');
+  eslintExtends.push('@estjs/eslint-config-ts');
 } else {
-	eslintExtends.push('@estjs/eslint-config-basic');
+  eslintExtends.push('@estjs/eslint-config-basic');
 }
 
 if (isAtomicExists) {
-	eslintExtends.push('plugin:@estjs/recommended');
+  eslintExtends.push('plugin:@estjs/recommended');
 }
 
 module.exports = {
-	extends: eslintExtends,
+  extends: eslintExtends,
 };
