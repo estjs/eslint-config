@@ -239,7 +239,6 @@ module.exports = {
     'vars-on-top': 'error',
     'require-await': 'off',
     'no-return-assign': 'off',
-    'operator-linebreak': ['error', 'before'],
 
     // stylistic-issues
     'no-lonely-if': 'error',
