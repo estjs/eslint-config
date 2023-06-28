@@ -300,7 +300,7 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
-        // 一行最多 180 字符
+        // 一行最多 160 字符
         printWidth: 160,
         // 使用 2 个空格缩进
         tabWidth: 2,
@@ -310,6 +310,9 @@ module.exports = {
         semi: true,
         // 使用单引号
         singleQuote: true,
+        // jsx 不使用单引号，而使用双引号
+        jsxSingleQuote: false,
+        // 对象的 key 仅在必要时用引号
         quoteProps: 'consistent',
         // 末尾需要有逗号
         trailingComma: 'all',
