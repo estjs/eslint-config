@@ -46,7 +46,7 @@ module.exports = {
     'vue/block-tag-newline': [
       'error',
       {
-        singleline: 'always',
+        singleline: 'never',
         multiline: 'always',
       },
     ],
