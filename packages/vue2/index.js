@@ -87,7 +87,6 @@ module.exports = {
         avoidQuotes: true,
       },
     ],
-    'vue/operator-linebreak': ['error', 'before'],
     'vue/quote-props': ['warn', 'consistent-as-needed'],
     'vue/space-in-parens': ['error', 'never'],
     'vue/space-infix-ops': 'error',
