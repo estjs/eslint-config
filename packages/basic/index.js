@@ -171,7 +171,6 @@ module.exports = {
     'no-cond-assign': ['error', 'always'],
     'func-call-spacing': ['off', 'never'],
     'key-spacing': ['warn', { beforeColon: false, afterColon: true }],
-    'indent': ['warn', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
     'no-restricted-syntax': ['error', 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
     'object-curly-spacing': ['warn', 'always'],
     'no-return-await': 'off',
