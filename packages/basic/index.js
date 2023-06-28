@@ -310,8 +310,6 @@ module.exports = {
         semi: true,
         // 使用单引号
         singleQuote: true,
-        // jsx 不使用单引号，而使用双引号
-        jsxSingleQuote: false,
         // 对象的 key 仅在必要时用引号
         quoteProps: 'consistent',
         // 末尾需要有逗号
@@ -333,10 +331,6 @@ module.exports = {
         htmlWhitespaceSensitivity: 'css',
         // 换行符使用 lf
         endOfLine: 'lf',
-        // 格式化嵌入的内容
-        embeddedLanguageFormatting: 'auto',
-        // html, vue, jsx 中每个属性占一行
-        singleAttributePerLine: false,
       },
     ],
   },
