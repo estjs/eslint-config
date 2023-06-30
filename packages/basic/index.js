@@ -31,7 +31,7 @@ module.exports = {
     // force exclude
     '.vitepress/cache',
   ],
-  plugins: ['html', 'unicorn', 'prettier'],
+  plugins: ['html', 'unicorn', 'prettier', 'check-file'],
   settings: {
     'import/resolver': {
       node: { extensions: ['.js', '.mjs', '.ts', '.d.ts'] },
@@ -294,6 +294,30 @@ module.exports = {
     'jsonc/quote-props': 'off',
     'jsonc/quotes': 'off',
 
+    // file or dir name
+    'check-file/folder-match-with-fex': [
+      'error',
+      {
+        '*.{test,spec}.{js,jsx,ts,tsx}': '**/__tests__/',
+        '*.styled.{jsx,tsx}': '**/pages/',
+      },
+    ],
+    'check-file/filename-naming-convention': [
+      'error',
+      {
+        '**/*.{jsx,tsx,js,ts,vue}': 'CAMEL_CASE',
+      },
+      {
+        ignoreMiddleExtensions: true,
+      },
+    ],
+    'check-file/folder-naming-convention': [
+      'error',
+      {
+        '/**/': 'KEBAB_CASE',
+      },
+    ],
+
     // prettier
     'prettier/prettier': [
       'error',
@@ -303,7 +327,7 @@ module.exports = {
         // 使用 2 个空格缩进
         tabWidth: 2,
         // 不使用缩进符，而使用空格
-        useTabs: false,
+        useTabs: true,
         // 行尾需要有分号
         semi: true,
         // 使用单引号
