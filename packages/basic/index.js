@@ -30,7 +30,13 @@ module.exports = {
     // force exclude
     '.vitepress/cache',
   ],
-  plugins: ['html', 'unicorn'],
+  plugins: [
+    'html',
+    'unicorn',
+    'import',
+    'n',
+    'promise',
+  ],
   settings: {
     'import/resolver': {
       node: { extensions: ['.js', '.mjs', '.ts', '.d.ts'] },
@@ -136,24 +142,32 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/no-use-before-define': 'off',
         '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/comma-dangle': 'off',
+        '@typescript-eslint/consistent-type-imports': 'off',
+        '@typescript-eslint/no-namespace': 'off',
+        '@typescript-eslint/no-require-imports': 'off',
         'import/no-unresolved': 'off',
+        'unused-imports/no-unused-imports': 'off',
+        'unused-imports/no-unused-vars': 'off',
         'no-alert': 'off',
         'no-console': 'off',
         'no-restricted-imports': 'off',
         'no-undef': 'off',
         'no-unused-expressions': 'off',
         'no-unused-vars': 'off',
+        'antfu/no-cjs-exports': 'off',
+        'antfu/no-ts-export-equal': 'off',
       },
     },
   ],
   rules: {
     // import
-    'import/order': 'warn',
+    'import/order': 'error',
     'import/first': 'error',
     'import/no-mutable-exports': 'error',
     'import/no-unresolved': 'off',
     'import/no-absolute-path': 'off',
-    'import/newline-after-import': ['error', { count: 1 }],
+    'import/newline-after-import': ['error', { count: 1, considerComments: true }],
 
     // Common
     'semi': ['warn', 'always'],
@@ -176,10 +190,35 @@ module.exports = {
     'func-call-spacing': ['off', 'never'],
     'key-spacing': ['warn', { beforeColon: false, afterColon: true }],
     'indent': ['warn', 2, { SwitchCase: 1, VariableDeclarator: 1, outerIIFEBody: 1 }],
-    'no-restricted-syntax': ['error', 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
-    'object-curly-spacing': ['warn', 'always'],
+    'no-restricted-syntax': [
+      'error',
+      'DebuggerStatement',
+      'LabeledStatement',
+      'WithStatement',
+    ],
+    'object-curly-spacing': ['error', 'always'],
     'no-return-await': 'off',
-    'space-before-function-paren': 'off',
+    'space-before-function-paren': [
+      'error',
+      {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always',
+      },
+    ],
+    'no-restricted-globals': [
+      'error',
+      { name: 'global', message: 'Use `globalThis` instead.' },
+      { name: 'self', message: 'Use `globalThis` instead.' },
+    ],
+    'no-restricted-properties': [
+      'error',
+      { property: '__proto__', message: 'Use `Object.getPrototypeOf` or `Object.setPrototypeOf` instead.' },
+      { property: '__defineGetter__', message: 'Use `Object.defineProperty` instead.' },
+      { property: '__defineSetter__', message: 'Use `Object.defineProperty` instead.' },
+      { property: '__lookupGetter__', message: 'Use `Object.getOwnPropertyDescriptor` instead.' },
+      { property: '__lookupSetter__', message: 'Use `Object.getOwnPropertyDescriptor` instead.' },
+    ],
     'no-multiple-empty-lines': ['warn', { max: 1, maxBOF: 0, maxEOF: 1 }],
 
     // es6
@@ -231,11 +270,11 @@ module.exports = {
     'array-callback-return': 'error',
     'block-scoped-var': 'error',
     'consistent-return': 'off',
-    'complexity': ['off', 11],
+    'complexity': 'off',
     'eqeqeq': ['error', 'smart'],
     'no-alert': 'warn',
     'no-case-declarations': 'error',
-    'no-multi-spaces': 'warn',
+    'no-multi-spaces': 'error',
     'no-multi-str': 'error',
     'no-with': 'error',
     'no-void': 'error',
@@ -245,59 +284,67 @@ module.exports = {
     'require-await': 'off',
     'no-return-assign': 'off',
     'operator-linebreak': ['error', 'before'],
-
-    // stylistic-issues
-    'no-lonely-if': 'error',
-    'prefer-exponentiation-operator': 'error',
+    'max-statements-per-line': ['error', { max: 1 }],
 
     // unicorns
-    'unicorn/better-regex': 'error',
-    'unicorn/custom-error-definition': 'error',
+    // Pass error message when throwing errors
     'unicorn/error-message': 'error',
+    // Uppercase regex escapes
     'unicorn/escape-case': 'error',
-    'unicorn/new-for-builtins': 'error',
-    'unicorn/no-array-callback-reference': 'error',
-    'unicorn/no-array-method-this-argument': 'error',
-    'unicorn/no-array-push-push': 'error',
-    'unicorn/no-console-spaces': 'error',
-    'unicorn/no-for-loop': 'error',
-    'unicorn/no-hex-escape': 'error',
+    // Array.isArray instead of instanceof
     'unicorn/no-instanceof-array': 'error',
-    'unicorn/no-invalid-remove-event-listener': 'error',
-    'unicorn/no-lonely-if': 'error',
-    'unicorn/no-new-array': 'error',
+    // Prevent deprecated `new Buffer()`
     'unicorn/no-new-buffer': 'error',
+    // Keep regex literals safe!
     'unicorn/no-unsafe-regex': 'off',
+    // Lowercase number formatting for octal, hex, binary (0x1'error' instead of 0X1'error')
     'unicorn/number-literal-case': 'error',
-    'unicorn/prefer-add-event-listener': 'error',
-    'unicorn/prefer-array-find': 'error',
-    'unicorn/prefer-array-flat-map': 'error',
-    'unicorn/prefer-array-index-of': 'error',
-    'unicorn/prefer-array-some': 'error',
-    'unicorn/prefer-date-now': 'error',
-    'unicorn/prefer-dom-node-append': 'error',
-    'unicorn/prefer-dom-node-dataset': 'error',
-    'unicorn/prefer-dom-node-remove': 'error',
-    'unicorn/prefer-dom-node-text-content': 'error',
+    // includes over indexOf when checking for existence
     'unicorn/prefer-includes': 'error',
-    'unicorn/prefer-keyboard-event-key': 'error',
-    'unicorn/prefer-math-trunc': 'error',
-    'unicorn/prefer-modern-dom-apis': 'error',
-    'unicorn/prefer-negative-index': 'error',
-    'unicorn/prefer-number-properties': 'error',
-    'unicorn/prefer-optional-catch-binding': 'error',
-    'unicorn/prefer-prototype-methods': 'error',
-    'unicorn/prefer-query-selector': 'error',
-    'unicorn/prefer-reflect-apply': 'error',
-    'unicorn/prefer-string-replace-all': 'error',
-    'unicorn/prefer-string-slice': 'error',
+    // String methods startsWith/endsWith instead of more complicated stuff
     'unicorn/prefer-string-starts-ends-with': 'error',
-    'unicorn/prefer-string-trim-start-end': 'error',
+    // textContent instead of innerText
+    'unicorn/prefer-text-content': 'error',
+    // Enforce throwing type error when throwing error while checking typeof
     'unicorn/prefer-type-error': 'error',
+    // Use new when throwing error
     'unicorn/throw-new-error': 'error',
+    // Prefer using the node: protocol
     'unicorn/prefer-node-protocol': 'error',
+    // Prefer using number properties like `Number.isNaN` rather than `isNaN`
+    'unicorn/prefer-number-properties': 'error',
+
+    'no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
     'eslint-comments/disable-enable-pair': 'off',
-    'jsonc/quote-props': 'off',
-    'jsonc/quotes': 'off',
+    'import/no-named-as-default-member': 'off',
+    'import/no-named-as-default': 'off',
+    'import/namespace': 'off',
+
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: false,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+        allowSeparatedGroups: false,
+      },
+    ],
+
+    // yml
+    'yml/quotes': ['error', { prefer: 'single', avoidEscape: false }],
+    'yml/no-empty-document': 'off',
+
+    // node
+    'n/prefer-global/buffer': ['error', 'never'],
+    'n/handle-callback-err': ['error', '^(err|error)$'],
+    'n/no-callback-literal': 'error',
+    'n/no-deprecated-api': 'error',
+    'n/no-exports-assign': 'error',
+    'n/no-new-require': 'error',
+    'n/no-path-concat': 'error',
+    'n/process-exit-as-throw': 'error',
+
+    'promise/param-names': 'error',
   },
 };
