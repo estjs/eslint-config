@@ -10,8 +10,8 @@ pnpm i -D @estjs/eslint-config-basic # JavaScript only
 pnpm i -D @estjs/eslint-config-ts # JavaScript and TypeScript
 pnpm i -D @estjs/eslint-config-vue # JavaScript, TypeScript and Vue 3
 pnpm i -D @estjs/eslint-config-vue2 # JavaScript, TypeScript and Vue 2
-
-pnpm i -D @estjs/eslint-config # JavaScript, TypeScript, Vue 3&2
+pnpm i -D @estjs/eslint-config-react # JavaScript, TypeScript and react
+pnpm i -D @estjs/eslint-config # JavaScript, TypeScript, Vue 3&2 and react
 ```
 
 ### Install
@@ -42,7 +42,7 @@ For example:
 ```json
 {
   "scripts": {
-    "lint": "eslint \"**/*.{vue,ts,js}\""
+    "lint": "eslint \"**/*.{vue,ts.tsx,js,jsx}\""
   }
 }
 ```
@@ -53,6 +53,7 @@ Create `.vscode/settings.json`
 
 ```json
 {
+  "prettier.enable": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   }
