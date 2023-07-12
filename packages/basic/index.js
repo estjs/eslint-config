@@ -228,7 +228,7 @@ module.exports = {
 		'prefer-rest-params': 'error',
 		'prefer-spread': 'error',
 		'template-curly-spacing': 'error',
-		'arrow-parens': "off",
+		'arrow-parens': 'off',
 		'generator-star-spacing': 'off',
 		'spaced-comment': [
 			'warn',
@@ -329,7 +329,7 @@ module.exports = {
 
 		// prettier
 		'prettier/prettier': [
-			'error',
+			'warn',
 			{
 				// 一行最多 160 字符
 				printWidth: 160,
@@ -342,7 +342,7 @@ module.exports = {
 				// 对象的 key 仅在必要时用引号
 				quoteProps: 'preserve',
 				// 箭头函数仅在有必要时(x) => x
-				arrowParens: "avoid",
+				arrowParens: 'avoid',
 				// 大括号内的首尾需要空格
 				bracketSpacing: true,
 				// 末尾需要有逗号
