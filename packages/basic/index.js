@@ -341,6 +341,8 @@ module.exports = {
 				singleQuote: true,
 				// 对象的 key 仅在必要时用引号
 				quoteProps: 'preserve',
+				// 箭头函数仅在有必要时(x) => x
+				arrowParens: "avoid",
 				// 大括号内的首尾需要空格
 				bracketSpacing: true,
 				// 末尾需要有逗号
