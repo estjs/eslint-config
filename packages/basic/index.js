@@ -228,7 +228,7 @@ module.exports = {
 		'prefer-rest-params': 'error',
 		'prefer-spread': 'error',
 		'template-curly-spacing': 'error',
-		'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
+		'arrow-parens': "off",
 		'generator-star-spacing': 'off',
 		'spaced-comment': [
 			'warn',
