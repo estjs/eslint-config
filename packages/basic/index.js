@@ -340,7 +340,7 @@ module.exports = {
 				// 使用单引号
 				singleQuote: true,
 				// 对象的 key 仅在必要时用引号
-				quoteProps: 'consistent',
+				quoteProps: 'preserve',
 				// 大括号内的首尾需要空格
 				bracketSpacing: true,
 				// 末尾需要有逗号
