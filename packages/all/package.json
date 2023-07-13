@@ -1,6 +1,6 @@
 {
 	"name": "@estjs/eslint-config",
-	"version": "0.7.10",
+	"version": "0.7.11-beta.0",
 	"description": "",
 	"author": "estjs",
 	"license": "MIT",
