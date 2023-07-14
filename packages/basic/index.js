@@ -157,8 +157,21 @@ module.exports = {
 		'import/no-mutable-exports': 'error',
 		'import/no-unresolved': 'off',
 		'import/no-absolute-path': 'off',
+		'import/no-self-import': 'error',
+		'import/no-named-as-default-member': 'off',
+		'import/no-named-as-default': 'off',
+		'import/namespace': 'off',
 		'import/newline-after-import': ['error', { count: 1, considerComments: true }],
-
+		'sort-imports': [
+			'error',
+			{
+				ignoreCase: false,
+				ignoreDeclarationSort: true,
+				ignoreMemberSort: false,
+				memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+				allowSeparatedGroups: false,
+			},
+		],
 		// Common
 		'semi': ['warn', 'always'],
 		'curly': ['error', 'all'],
@@ -299,23 +312,12 @@ module.exports = {
 		'unicorn/prefer-node-protocol': 'error',
 		// Prefer using number properties like `Number.isNaN` rather than `isNaN`
 		'unicorn/prefer-number-properties': 'error',
+		// Ban `new Array` as `Array` constructor's params are ambiguous
+		'unicorn/no-new-array': 'error',
 
 		'no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
 		'eslint-comments/disable-enable-pair': 'off',
-		'import/no-named-as-default-member': 'off',
-		'import/no-named-as-default': 'off',
-		'import/namespace': 'off',
 
-		'sort-imports': [
-			'error',
-			{
-				ignoreCase: false,
-				ignoreDeclarationSort: true,
-				ignoreMemberSort: false,
-				memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-				allowSeparatedGroups: false,
-			},
-		],
 
 		// yml
 		'yml/quotes': ['error', { prefer: 'single', avoidEscape: false }],
