@@ -1,6 +1,6 @@
 {
 	"name": "@estjs/eslint-config-monorepo",
-	"version": "0.7.10",
+	"version": "0.7.11-beta.2",
 	"private": true,
 	"author": "estjs",
 	"license": "MIT",
@@ -9,12 +9,13 @@
 		"test": "pnpm -r test",
 		"lint": "eslint . --ext .js,.ts,.json,.vue,.md --fix",
 		"prerelease": "pnpm -r run build",
-		"release": "bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish --access public"
+		"release": "bumpp package.json packages/*/package.json --no-git-checks --commit --push --tag && pnpm -r publish --access public"
 	},
 	"devDependencies": {
 		"@estjs/eslint-config": "*",
 		"bumpp": "^9.1.1",
 		"eslint": "^8.44.0",
+		"prettier": "^3.0.0",
 		"typescript": "^5.1.6"
 	}
 }
