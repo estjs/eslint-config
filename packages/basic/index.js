@@ -152,7 +152,7 @@ module.exports = {
 	],
 	rules: {
 		// import
-		'import/order': 'error',
+		'import/order': 'warn',
 		'import/first': 'error',
 		'import/no-mutable-exports': 'error',
 		'import/no-unresolved': 'off',
@@ -317,8 +317,6 @@ module.exports = {
 
 		'no-use-before-define': ['error', { functions: false, classes: false, variables: true }],
 		'eslint-comments/disable-enable-pair': 'off',
-
-
 		// yml
 		'yml/quotes': ['error', { prefer: 'single', avoidEscape: false }],
 		'yml/no-empty-document': 'off',
