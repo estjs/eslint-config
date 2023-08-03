@@ -1,6 +1,6 @@
 {
 	"name": "@estjs/eslint-config-react",
-	"version": "0.7.13-beta.2",
+	"version": "0.7.13",
 	"description": "",
 	"author": "estjs",
 	"license": "MIT",
