@@ -67,6 +67,7 @@ module.exports = {
 		'@typescript-eslint/object-curly-spacing': ['warn', 'always'],
 		'quotes': 'off',
 		// '@typescript-eslint/quotes': ['warn', 'single'],
+		'@typescript-eslint/quotes': 'off',
 		'space-before-blocks': 'off',
 		'@typescript-eslint/space-before-blocks': ['error', 'always'],
 		'space-before-function-paren': 'off',
