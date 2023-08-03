@@ -107,7 +107,7 @@ module.exports = {
 					},
 					{
 						pathPattern: '^exports.*$',
-						order: ['types', 'import', 'require'],
+						order: ['types', 'import', 'require', 'default'],
 					},
 				],
 			},
@@ -177,6 +177,7 @@ module.exports = {
 		'curly': ['error', 'all'],
 		// TODO: fix prettier
 		// 'quotes': ['warn', 'single', { avoidEscape: true, allowTemplateLiterals: false }],
+		'quotes': 'off',
 		'quote-props': ['warn', 'consistent-as-needed'],
 		'no-unused-vars': 'warn',
 		'no-param-reassign': 'off',
