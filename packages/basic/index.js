@@ -175,7 +175,8 @@ module.exports = {
 		// Common
 		'semi': ['warn', 'always'],
 		'curly': ['error', 'all'],
-		'quotes': ['warn', 'single', { avoidEscape: true, allowTemplateLiterals: false }],
+		// TODO: fix prettier
+		// 'quotes': ['warn', 'single', { avoidEscape: true, allowTemplateLiterals: false }],
 		'quote-props': ['warn', 'consistent-as-needed'],
 		'no-unused-vars': 'warn',
 		'no-param-reassign': 'off',
