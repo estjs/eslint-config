@@ -21,10 +21,10 @@
 		"@estjs/eslint-config-ts": "workspace:*",
 		"@estjs/eslint-config-vue": "workspace:*",
 		"@estjs/eslint-config-vue2": "workspace:*",
-		"@unocss/eslint-config": "^0.53.5",
+		"@unocss/eslint-config": "^0.54.1",
 		"local-pkg": "^0.4.3"
 	},
 	"devDependencies": {
-		"eslint": "^8.44.0"
+		"eslint": "^8.46.0"
 	}
 }
