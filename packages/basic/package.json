@@ -1,6 +1,6 @@
 {
 	"name": "@estjs/eslint-config-basic",
-	"version": "0.7.18",
+	"version": "0.7.19-beta.0",
 	"description": "",
 	"author": "estjs",
 	"license": "MIT",
@@ -20,7 +20,7 @@
 		"prettier": ">=3.0.0"
 	},
 	"dependencies": {
-		"eslint-config-prettier": "^8.10.0",
+		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-eslint-comments": "^3.2.0",
 		"eslint-plugin-html": "^7.1.0",
 		"eslint-plugin-import": "^2.28.0",

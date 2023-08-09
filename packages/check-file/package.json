@@ -1,5 +1,5 @@
 {
-	"name": "@estjs/eslint-config-vue2",
+	"name": "@estjs/eslint-config-check-file",
 	"version": "0.7.19-beta.0",
 	"description": "",
 	"author": "estjs",
@@ -16,9 +16,7 @@
 		"eslint": ">=8.28.0 "
 	},
 	"dependencies": {
-		"@estjs/eslint-config-basic": "workspace:*",
-		"@estjs/eslint-config-ts": "workspace:*",
-		"eslint-plugin-vue": "^9.16.1"
+		"eslint-plugin-check-file": "^2.6.1"
 	},
 	"devDependencies": {
 		"eslint": "8.46.0"

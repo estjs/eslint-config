@@ -5,7 +5,7 @@ const isReactExists = isPackageExists('react');
 const isTSExists = isPackageExists('typescript');
 const isAtomicExists =
 	isPackageExists('unocss') || isPackageExists('tailwindcss') || isPackageExists('windicss');
-const eslintExtends = [];
+const eslintExtends = ['@estjs/eslint-config-check-file'];
 if (isVueExists) {
 	const Vue = require('vue');
 	eslintExtends.push(
@@ -20,7 +20,7 @@ if (isVueExists) {
 }
 
 if (isAtomicExists) {
-	eslintExtends.push('@unocss');
+	eslintExtends.push('plugin:@estjs/recommended');
 }
 
 module.exports = {
