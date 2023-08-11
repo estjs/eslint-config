@@ -191,7 +191,7 @@ module.exports = {
 		'no-constant-condition': 'warn',
 		'no-debugger': 'error',
 		'no-console': ['error', { allow: ['warn', 'error'] }],
-		'no-cond-assign': ['error', 'always'],
+		'no-cond-assign': ['error'],
 		'func-call-spacing': ['off', 'never'],
 		'key-spacing': ['warn', { beforeColon: false, afterColon: true }],
 		'no-restricted-syntax': ['error', 'DebuggerStatement', 'LabeledStatement', 'WithStatement'],
