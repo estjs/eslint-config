@@ -29,7 +29,7 @@ module.exports = {
 		'!.vitepress',
 		'!.vscode',
 		// force exclude
-		'.vitepress/cache',
+		'**/.vitepress/cache',
 	],
 	plugins: ['html', 'unicorn', 'import', 'n', 'prettier', 'promise'],
 	settings: {
