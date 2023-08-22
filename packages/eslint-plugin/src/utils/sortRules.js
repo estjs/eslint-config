@@ -8,7 +8,8 @@ export async function sortRules(rules, uno) {
 		uno.config.details = true;
 	}
 
-	const expandedResult = parseVariantGroup(rules); // todo read seperators from config
+	// todo read seperators from config
+	const expandedResult = parseVariantGroup(rules);
 	rules = expandedResult.expanded;
 
 	const result = await Promise.all(

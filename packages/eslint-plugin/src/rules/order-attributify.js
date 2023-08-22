@@ -1,4 +1,3 @@
-// eslint-disable-next-line check-file/filename-naming-convention
 import { join } from 'node:path';
 import { createSyncFn } from 'synckit';
 import MagicString from 'magic-string';
