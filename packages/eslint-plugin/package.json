@@ -14,19 +14,18 @@
 	"bugs": "https://github.com/estjs/@estjs/eslint-config/issues",
 	"keywords": [
 		"eslint-plugin",
-		"eslint"
+		"eslint",
+		"atomic"
 	],
 	"sideEffects": false,
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.cjs"
 		}
 	},
 	"main": "dist/index.cjs",
 	"module": "dist/index.mjs",
-	"types": "dist/index.d.ts",
 	"files": [
 		"dist"
 	],
@@ -35,16 +34,20 @@
 	},
 	"scripts": {
 		"build": "unbuild",
-		"lint": "eslint ./src"
+		"lint": "eslint ./src",
+		"test":	"vitest",
+		"test:watch":"vitest --watch"
 	},
 	"dependencies": {
 		"@unocss/config": "^0.55.2",
 		"@unocss/core": "^0.55.2",
+		"@unocss/preset-uno": "^0.55.2",
 		"magic-string": "^0.30.3",
 		"synckit": "^0.8.5"
 	},
 	"devDependencies": {
 		"eslint": "^8.47.0",
-		"unbuild": "^1.2.1"
+		"unbuild": "^1.2.1",
+		"vitest": "^0.34.2"
 	}
 }
