@@ -1,7 +1,4 @@
-import { loadConfig } from '@unocss/config';
-import { createGenerator } from '@unocss/core';
 import { runAsWorker } from 'synckit';
-import customUnoConfig from './unocss.config';
 
 /**
  * TODO:
@@ -29,40 +26,19 @@ function isDirection(dir1, dir2) {
 	return null;
 }
 
-// 异步
-async function getGenerator() {
-	let unoConfig = await loadConfig();
-	if (!unoConfig.config) {
-		unoConfig  = await loadConfig(process.cwd, "./unocss.config.js")
-	}
-	return createGenerator(unoConfig.config);
-}
-
-// 初始化一个 Promise 用于保存生成器
-let promise;
-
-// 异步函数：使用 UNO CSS 解析token
-async function parseToken(token) {
-	promise = promise || getGenerator();
-	const uno = await promise;
-	const parser = await uno.parseToken(token);
-	return parser;
-}
-
 // 主要处理函数
-const fn = async classList => {
+const fn = classList => {
 	// 用于匹配类名的正则表达式
 	const reg = /^((m|p)-?)?([blrtxy])(?:-?(-?.+))?$/;
 	const borderReg = /^((border|b|rounded|rd)-?)?([blrtxy])(?:-(.+))?$/;
 
 	// 函数：根据给定的类名获取适当的正则表达式
-	const getReg = async className => {
+	const getReg = className => {
 		const isBorder = className.startsWith('b') || className.startsWith('r');
 
 		const regv = isBorder ? borderReg : reg;
-		const parser = await parseToken(className);
 		return {
-			test: regv.test(className) && parser,
+			test: regv.test(className),
 			match: className.match(regv),
 		};
 	};
@@ -74,7 +50,7 @@ const fn = async classList => {
 	// 遍历类名列表
 	for (let i = 0; i < classList.length; i++) {
 		const className1 = classList[i];
-		const { test, match } = await getReg(className1);
+		const { test, match } = getReg(className1);
 
 		// 检查类名是否匹配正则表达式，并且之前没有被使用过
 		if (test && !used.includes(className1)) {
@@ -83,7 +59,7 @@ const fn = async classList => {
 			// 遍历剩余的类名以查找匹配项
 			for (let j = i + 1; j < classList.length; j++) {
 				const className2 = classList[j];
-				const { test: test2, match: match2 } = await getReg(className2);
+				const { test: test2, match: match2 } = getReg(className2);
 
 				// 检查第二个类名是否匹配正则表达式，并且不同于第一个类名
 				if (test2 && className1 !== className2) {

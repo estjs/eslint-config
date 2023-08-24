@@ -41,7 +41,6 @@
 	"dependencies": {
 		"@unocss/config": "^0.55.2",
 		"@unocss/core": "^0.55.2",
-		"@unocss/preset-uno": "^0.55.2",
 		"magic-string": "^0.30.3",
 		"synckit": "^0.8.5"
 	},
