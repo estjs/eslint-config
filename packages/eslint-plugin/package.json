@@ -41,13 +41,13 @@
 	"dependencies": {
 		"@unocss/config": "^0.55.2",
 		"@unocss/core": "^0.55.2",
+		"@unocss/preset-uno": "^0.55.2",
 		"magic-string": "^0.30.3",
 		"synckit": "^0.8.5"
 	},
 	"devDependencies": {
 		"eslint": "^8.47.0",
 		"unbuild": "^1.2.1",
-		"vitest": "^0.34.2",
-		"unocss": "^0.55.1"
+		"vitest": "^0.34.2"
 	}
 }

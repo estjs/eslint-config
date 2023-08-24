@@ -1,7 +1,7 @@
 import { loadConfig } from '@unocss/config';
 import { createGenerator } from '@unocss/core';
 import { runAsWorker } from 'synckit';
-import customUnoConfig from "../../unocss.config"
+import customUnoConfig from './unocss.config';
 
 /**
  * TODO:
@@ -31,8 +31,11 @@ function isDirection(dir1, dir2) {
 
 // 异步
 async function getGenerator() {
-	const { config } = await loadConfig();
-	return createGenerator(config || customUnoConfig);
+	let unoConfig = await loadConfig();
+	if (!unoConfig.config) {
+		unoConfig  = await loadConfig(process.cwd, "./unocss.config.js")
+	}
+	return createGenerator(unoConfig.config);
 }
 
 // 初始化一个 Promise 用于保存生成器
