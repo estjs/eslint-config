@@ -35,12 +35,10 @@
 	"scripts": {
 		"build": "unbuild",
 		"lint": "eslint ./src",
-		"test":	"vitest",
-		"test:watch":"vitest --watch"
+		"test": "vitest",
+		"test:watch": "vitest --watch"
 	},
 	"dependencies": {
-		"@unocss/config": "^0.55.2",
-		"@unocss/core": "^0.55.2",
 		"magic-string": "^0.30.3",
 		"synckit": "^0.8.5"
 	},

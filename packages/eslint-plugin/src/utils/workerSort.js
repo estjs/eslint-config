@@ -1,65 +1,164 @@
-import { loadConfig } from '@unocss/config';
-import { collapseVariantGroup, createGenerator, notNull, parseVariantGroup } from '@unocss/core';
 import { runAsWorker } from 'synckit';
+import { sanitizeNode, stripString } from './utils';
+import orderList from './orderConfig.json';
 
-let promise = null;
+// 边缘情况映射
+const edgeCaseMap = {
+	border: '(border-width)',
+	outline: '(outline-style)',
+	ring: '(ring-width)',
+	shadow: '(box-shadow)',
+};
 
-// 异步函数，用于获取 Unocss 生成器
-async function getGenerator() {
-	if (!promise) {
-		const { config } = await loadConfig();
-		promise = createGenerator(config);
-	}
-	return promise;
+// 特殊情况映射
+const specialCaseMap = {
+	'flex': '(flex-width)',
+	'decoration': '(text-decoration-thickness)',
+	'font': '(font-weight)',
+	'bg': {
+		img: '(bg-image)',
+		color: '(bg-color)',
+	},
+	'border': '(border-width)',
+	'text': '(font-size)',
+	'outline': {
+		width: '(outline-width)',
+		color: '(outline-color)',
+	},
+	'ring': '(ring-width)',
+	'ring-offset': '(ring-offset-width)',
+	'stroke': {
+		width: '(stroke-width)',
+		color: '(stroke-color)',
+	},
+	'shadow': {
+		width: '(box-shadow)',
+		color: '(box-shadow-color)',
+	},
+	'max': '(max-width)',
+	'supports': '(supports)',
+	'aria': '(aria)',
+	'data': '(data)',
+};
+
+// 检查立即边缘情况
+function checkImmediateEdgeCases(className) {
+	return edgeCaseMap[className] !== undefined
+		? orderList.priority.findIndex(elem => elem.includes(edgeCaseMap[className]))
+		: null;
 }
 
-// 运行 worker，处理类名
-runAsWorker(async classes => {
-	const uno = await getGenerator();
-	return await sortRules(classes, uno);
-});
-
-// 排序规则
-async function sortRules(rules, uno) {
-	const unknown = []; // 存储未知的规则（无法解析的类名）
-
-	if (!uno.config.details) {
-		uno.config.details = true;
+// 清理任意内容
+function cleanArbitraryContent(className) {
+	if (className.includes('[') && className.includes(']')) {
+		return className.replace(/\[.*]/, '[value]');
 	}
-	const expandedResult = parseVariantGroup(rules); // 解析和展开规则
-	rules = expandedResult.expanded;
+	return className;
+}
 
-	const result = await Promise.all(
-		rules.split(/\s+/g).map(async i => {
-			const token = await uno.parseToken(i); // 解析类名为 token
-			if (token == null) {
-				unknown.push(i);
-				return undefined;
+// 查找原子类
+function findAtomicClass(className) {
+	const regex = new RegExp(`((?!-)( |^))${className}(($| )(?!-))`, 'gm');
+	return orderList.priority.findIndex(elem => regex.test(elem));
+}
+
+// 移除修饰符
+function removeModifier(className) {
+	if (new RegExp(/^-.*/).test(className)) {
+		className = className.substr(1);
+	}
+	return className.replace('!', '');
+}
+
+// 检查边缘情况
+function checkEdgeCases(className) {
+	const edgeCase = specialCaseMap[className];
+	if (edgeCase !== undefined) {
+		if (typeof edgeCase === 'string') {
+			return orderList.priority.findIndex(elem => elem.includes(edgeCase));
+		} else if (typeof edgeCase === 'object') {
+			for (const key in edgeCase) {
+				if (className.includes(key)) {
+					return orderList.priority.findIndex(elem => elem.includes(edgeCase[key]));
+				}
 			}
-			// 计算变体处理程序权重
-			const variantRank = (token[0][5]?.variantHandlers?.length || 0) * 100_000;
-			const order = token[0][0] + variantRank;
-			return [order, i];
-		}),
+		}
+	}
+
+	return null;
+}
+
+// 获取类优先级
+function getClassPriority(className, iteration = 0) {
+	if (iteration === 0) {
+		const immediateEdgeCase = checkImmediateEdgeCases(className);
+		if (immediateEdgeCase !== null) {
+			return immediateEdgeCase;
+		}
+
+		className = cleanArbitraryContent(className);
+
+		if (className.includes(':')) {
+			return getPrefixClassPriority(className);
+		}
+
+		className = removeModifier(className);
+	}
+
+	const classPrio = findAtomicClass(className);
+	if (classPrio !== -1) {
+		return classPrio;
+	}
+
+	if (iteration === 0) {
+		const edgeCase = checkEdgeCases(className);
+		if (edgeCase !== null) {
+			return edgeCase;
+		}
+	}
+
+	const strippedClassName = stripString(className, '-');
+	if (strippedClassName === null) {
+		return orderList.priority.indexOf('(predefined)');
+	}
+	return getClassPriority(strippedClassName, iteration + 1);
+}
+
+// 获取前缀类优先级
+function getPrefixClassPriority(className) {
+	const splitClassName = className.split(':');
+	const amountPrio = splitClassName.length - 1;
+
+	return (
+		getClassPriority(splitClassName[0]) +
+		amountPrio / 100 +
+		getClassPriority(splitClassName[splitClassName.length - 1]) / 100000
 	);
-
-	const sorted = result
-		.filter(element => notNull(element))
-		.sort((a, b) => {
-			let result = a[0] - b[0];
-			if (result === 0) {
-				result = a[1].localeCompare(b[1]);
-			}
-			return result;
-		})
-		.map(i => i[1])
-		.join(' ');
-
-	let combined = sorted;
-
-	if (expandedResult?.prefixes.length) {
-		combined = collapseVariantGroup(sorted, expandedResult.prefixes);
-	}
-
-	return [...unknown, combined].join(' ').trim();
 }
+
+// 排序函数
+export function order(classNames) {
+	classNames = sanitizeNode(classNames);
+
+	const sortedClassNames = Array.from(classNames).sort((a, b) => {
+		const aPrio = getClassPriority(a);
+		const bPrio = getClassPriority(b);
+		if (aPrio < bPrio) {
+			return -1;
+		}
+		if (aPrio > bPrio) {
+			return 1;
+		}
+		return 0;
+	});
+
+	return {
+		isSorted: sortedClassNames.join(' ') === classNames.join(' '),
+		orderedClassNames: sortedClassNames,
+	};
+}
+
+// 运行 worker 处理类名
+runAsWorker(async classes => {
+	return await order(classes);
+});
