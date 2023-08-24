@@ -12,6 +12,7 @@
 	},
 	"devDependencies": {
 		"@estjs/eslint-config": "*",
+	
 		"bumpp": "^9.2.0",
 		"eslint": "^8.47.0",
 		"prettier": "^3.0.2",
