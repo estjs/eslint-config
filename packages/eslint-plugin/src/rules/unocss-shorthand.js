@@ -1,7 +1,6 @@
 import { join } from 'node:path';
 import { createSyncFn } from 'synckit';
-import { distDir } from '../utils/utils';
-import { CLASS_FIELDS } from '../utils/utils';
+import { CLASS_FIELDS, distDir } from '../utils/utils';
 
 const parserUnocssShort = createSyncFn(join(distDir, 'unocssShorthand.cjs'));
 

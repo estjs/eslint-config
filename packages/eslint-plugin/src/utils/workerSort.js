@@ -42,14 +42,14 @@ const specialCaseMap = {
 };
 
 // 检查立即边缘情况
-function checkImmediateEdgeCases(className) {
+export function checkImmediateEdgeCases(className) {
 	return edgeCaseMap[className] !== undefined
 		? orderList.priority.findIndex(elem => elem.includes(edgeCaseMap[className]))
 		: null;
 }
 
 // 清理任意内容
-function cleanArbitraryContent(className) {
+export function cleanArbitraryContent(className) {
 	if (className.includes('[') && className.includes(']')) {
 		return className.replace(/\[.*]/, '[value]');
 	}
@@ -57,13 +57,13 @@ function cleanArbitraryContent(className) {
 }
 
 // 查找原子类
-function findAtomicClass(className) {
+export function findAtomicClass(className) {
 	const regex = new RegExp(`((?!-)( |^))${className}(($| )(?!-))`, 'gm');
 	return orderList.priority.findIndex(elem => regex.test(elem));
 }
 
 // 移除修饰符
-function removeModifier(className) {
+export function removeModifier(className) {
 	if (new RegExp(/^-.*/).test(className)) {
 		className = className.substr(1);
 	}
@@ -71,7 +71,7 @@ function removeModifier(className) {
 }
 
 // 检查边缘情况
-function checkEdgeCases(className) {
+export function checkEdgeCases(className) {
 	const edgeCase = specialCaseMap[className];
 	if (edgeCase !== undefined) {
 		if (typeof edgeCase === 'string') {
@@ -89,7 +89,7 @@ function checkEdgeCases(className) {
 }
 
 // 获取类优先级
-function getClassPriority(className, iteration = 0) {
+export function getClassPriority(className, iteration = 0) {
 	if (iteration === 0) {
 		const immediateEdgeCase = checkImmediateEdgeCases(className);
 		if (immediateEdgeCase !== null) {
@@ -125,7 +125,7 @@ function getClassPriority(className, iteration = 0) {
 }
 
 // 获取前缀类优先级
-function getPrefixClassPriority(className) {
+export function getPrefixClassPriority(className) {
 	const splitClassName = className.split(':');
 	const amountPrio = splitClassName.length - 1;
 
@@ -140,6 +140,13 @@ function getPrefixClassPriority(className) {
 export function order(classNames) {
 	classNames = sanitizeNode(classNames);
 
+	if (!classNames || !classNames.length) {
+		return {
+			isSorted: false,
+			orderedClassNames: [],
+		};
+	}
+
 	const sortedClassNames = Array.from(classNames).sort((a, b) => {
 		const aPrio = getClassPriority(a);
 		const bPrio = getClassPriority(b);
@@ -153,7 +160,7 @@ export function order(classNames) {
 	});
 
 	return {
-		isSorted: sortedClassNames.join(' ') === classNames.join(' '),
+		isSorted: sortedClassNames.join(' ') !== classNames.join(' '),
 		orderedClassNames: sortedClassNames,
 	};
 }

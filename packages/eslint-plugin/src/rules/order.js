@@ -1,7 +1,6 @@
 import { join } from 'node:path';
 import { createSyncFn } from 'synckit';
-import { distDir } from '../utils/utils';
-import { CLASS_FIELDS } from '../utils/utils';
+import { CLASS_FIELDS, distDir } from '../utils/utils';
 
 const sortClasses = createSyncFn(join(distDir, 'workerSort.cjs'));
 
@@ -26,13 +25,13 @@ export default {
 				return;
 			}
 			const input = node.value;
-			const sorted = sortClasses(input);
-			if (sorted !== input) {
+			const { isSorted, orderedClassNames } = sortClasses(input);
+			if (isSorted !== input) {
 				context.report({
 					node,
 					messageId: 'invalid-order',
 					fix(fixer) {
-						return fixer.replaceText(node, `'${sorted.trim()}'`);
+						return fixer.replaceText(node, `'${orderedClassNames}'`);
 					},
 				});
 			}
