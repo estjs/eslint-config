@@ -47,7 +47,7 @@ For example:
 }
 ```
 
-### Config VSCode auto fix
+### Config VS Code auto fix
 
 Create `.vscode/settings.json`
 

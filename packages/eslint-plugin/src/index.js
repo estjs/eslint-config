@@ -1,15 +1,15 @@
-import order from './rules/order';
 import configsRecommended from './configs/recommended';
-import orderAttributify from './rules/order-attributify';
-import shorthand from './rules/shorthand';
-import unocssShorthand from './rules/unocss-shorthand';
+import AtomicOrder from './rules/atomic-order';
+import AtomicOrderAtt from './rules/atomic-order-attr';
+import Shorthand from './rules/atomic-shorthand';
+import UnocssShorthand from './rules/unocss-shorthand';
 
 export default {
 	rules: {
-		order,
-		'order-attributify': orderAttributify,
-		'shorthand': shorthand,
-		'unocss-shorthand': unocssShorthand,
+		'atomic-order': AtomicOrder,
+		'atomic-order-attr': AtomicOrderAtt,
+		'atomic-shorthand': Shorthand,
+		'unocss-shorthand': UnocssShorthand,
 	},
 	configs: {
 		recommended: configsRecommended,
