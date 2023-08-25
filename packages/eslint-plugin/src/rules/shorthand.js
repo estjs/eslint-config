@@ -5,7 +5,7 @@ import { CLASS_FIELDS, distDir } from '../utils/utils';
 const parserShort = createSyncFn(join(distDir, 'parserShorthand.cjs'));
 
 export default {
-	name: 'shorthand',
+	name: 'atomic-shorthand',
 	meta: {
 		docs: {
 			description: 'Enforces the usage of shorthand Atomic CSS classnames',

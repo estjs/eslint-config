@@ -2,7 +2,20 @@ import { runAsWorker } from 'synckit';
 import { collapseVariantGroup } from '@unocss/core';
 
 // 支持简写的 token
-const shortTokens = ['dark:', 'flex-', 'grid-', 'text-', 'bg-', 'border-', 'ring-'];
+const shortTokens = [
+	'dark:',
+	'flex-',
+	'grid-',
+	'text-',
+	'bg-',
+	'border-',
+	'ring-',
+	'm',
+	'p',
+	'b-',
+	'rd-',
+	'rounded-',
+];
 
 runAsWorker(async classList => {
 	// 用于存储已使用过的类名

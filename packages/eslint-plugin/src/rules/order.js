@@ -5,7 +5,7 @@ import { CLASS_FIELDS, distDir } from '../utils/utils';
 const sortClasses = createSyncFn(join(distDir, 'workerSort.cjs'));
 
 export default {
-	name: 'order',
+	name: 'atomic-order',
 	meta: {
 		type: 'layout',
 		fixable: 'code',

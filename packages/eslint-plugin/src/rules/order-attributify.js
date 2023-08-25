@@ -8,7 +8,7 @@ const sortClasses = createSyncFn(join(distDir, 'workerSort.cjs'));
 const INGORE_ATTRIBUTES = ['style', 'class', 'classname', 'value'];
 
 export default {
-	name: 'order-attributify',
+	name: 'atomic-order-attributify',
 	meta: {
 		type: 'layout',
 		fixable: 'code',

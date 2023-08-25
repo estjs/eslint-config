@@ -12,6 +12,7 @@ export function sanitizeNode(classArr) {
 	if (!classArr || !classArr.length) {
 		return [];
 	}
+	classArr = Array.from(new Set(classArr.split(' ')));
 	classArr = classArr.filter(Boolean).map(elem => {
 		return elem.replace(/\r?\n|\r/g, '');
 	});
