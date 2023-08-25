@@ -9,6 +9,9 @@ export const distDir = fileURLToPath(new URL('../dist', import.meta.url));
  * @returns {Array<string>} formatted array of classNames
  */
 export function sanitizeNode(classArr) {
+	if (!classArr || !classArr.length) {
+		return [];
+	}
 	classArr = classArr.filter(Boolean).map(elem => {
 		return elem.replace(/\r?\n|\r/g, '');
 	});
