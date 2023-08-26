@@ -143,7 +143,7 @@ export function order(classNames) {
 	if (classNames.length > 2) {
 		return {
 			isSorted: false,
-			orderedClassNames: [],
+			orderedClassNames: classNames,
 		};
 	}
 
