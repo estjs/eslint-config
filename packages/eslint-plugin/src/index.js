@@ -1,6 +1,6 @@
 import configsRecommended from './configs/recommended';
 import AtomicOrder from './rules/atomic-order';
-import AtomicOrderAtt from './rules/atomic-order-attr';
+import AtomicOrderAtt from './rules/atomic-order-attributify';
 import Shorthand from './rules/atomic-shorthand';
 import UnocssShorthand from './rules/unocss-shorthand';
 
