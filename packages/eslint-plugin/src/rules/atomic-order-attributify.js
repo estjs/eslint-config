@@ -46,7 +46,7 @@ export default {
 						node,
 						messageId: 'invalid-order',
 						fix(fixer) {
-							return fixer.replaceText(node, `'${orderedClassNames}'`);
+							return fixer.replaceText(node, `'${orderedClassNames.join(' ')}'`);
 						},
 					});
 				}

@@ -140,7 +140,7 @@ export function getPrefixClassPriority(className) {
 export function order(classNames) {
 	classNames = sanitizeNode(classNames);
 
-	if (!classNames.length) {
+	if (classNames.length > 2) {
 		return {
 			isSorted: false,
 			orderedClassNames: [],
