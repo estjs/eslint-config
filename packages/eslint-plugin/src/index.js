@@ -7,7 +7,7 @@ import UnocssShorthand from './rules/unocss-shorthand';
 export default {
 	rules: {
 		'atomic-order': AtomicOrder,
-		'atomic-order-attr': AtomicOrderAtt,
+		'atomic-order-attributify': AtomicOrderAtt,
 		'atomic-shorthand': Shorthand,
 		'unocss-shorthand': UnocssShorthand,
 	},
