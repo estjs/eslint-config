@@ -34,7 +34,7 @@ export default {
 			}
 			const { unused, used, generated } = parserShort(classList);
 
-			if (generated.length > 0) {
+			if (generated && generated.length > 0) {
 				context.report({
 					node,
 					message: 'Utility classes like {{className}} should be replaced ',

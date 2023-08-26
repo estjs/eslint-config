@@ -26,7 +26,7 @@ export default {
 			}
 			const input = node.value;
 			const { isSorted, orderedClassNames } = sortClasses(input);
-			if (isSorted !== input) {
+			if (isSorted) {
 				context.report({
 					node,
 					messageId: 'invalid-order',
