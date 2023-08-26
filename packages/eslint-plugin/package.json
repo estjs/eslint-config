@@ -39,7 +39,6 @@
 		"test:watch": "vitest --watch"
 	},
 	"dependencies": {
-		"magic-string": "^0.30.3",
 		"synckit": "^0.8.5"
 	},
 	"devDependencies": {
