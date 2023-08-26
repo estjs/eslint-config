@@ -1,6 +1,6 @@
 {
 	"name": "@estjs/eslint-config-monorepo",
-	"version": "0.8.0-beta.9",
+	"version": "0.8.0-beta.10",
 	"private": true,
 	"author": "estjs",
 	"license": "MIT",
