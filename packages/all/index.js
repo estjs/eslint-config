@@ -24,14 +24,6 @@ if (isVueExists) {
 if (isAtomicExists) {
 	eslintExtends.push('plugin:@estjs/recommended');
 }
-
-const atomicRules = {
-	'@estjs/unocss-order': isUnoCssExists ? 'warn' : 'off',
-	// TODO: need support tailwind css .
-	'@estjs/atomic-order': isUnoCssExists ? 'off' : 'warn',
-};
-
 module.exports = {
 	extends: eslintExtends,
-	rules: isAtomicExists ? atomicRules : {},
 };
