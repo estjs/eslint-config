@@ -230,8 +230,8 @@ describe('order', () => {
 		`);
 	});
 
-	it("should work with",()=>{
-		const classNames = "relative h-full w-full bg-white";
+	it('should work with', () => {
+		const classNames = 'relative h-full w-full bg-white';
 		expect(order(classNames)).toMatchInlineSnapshot(`
 			{
 			  "isSorted": true,
@@ -242,8 +242,8 @@ describe('order', () => {
 			    "h-full",
 			  ],
 			}
-		`)
-		const classNames2 = "relative  w-full h-full bg-white";
+		`);
+		const classNames2 = 'relative  w-full h-full bg-white';
 		expect(order(classNames2)).toMatchInlineSnapshot(`
 			{
 			  "isSorted": true,
@@ -254,7 +254,6 @@ describe('order', () => {
 			    "h-full",
 			  ],
 			}
-		`)
-
-	})
+		`);
+	});
 });

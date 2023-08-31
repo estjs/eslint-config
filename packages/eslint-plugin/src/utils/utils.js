@@ -1,13 +1,9 @@
 import { fileURLToPath } from 'node:url';
 
-export const CLASS_FIELDS = ['class', 'classname'];
+export const CLASS_FIELDS = ['class', 'className'];
 
 export const distDir = fileURLToPath(new URL('../dist', import.meta.url));
-/**
- * Removes empty-string array slots and possible linebreaks
- * @param classArr raw className array from node
- * @returns {Array<string>} formatted array of classNames
- */
+
 export function sanitizeNode(classArr) {
 	if (!classArr || !classArr.length) {
 		return [];
