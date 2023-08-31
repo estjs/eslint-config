@@ -73,10 +73,12 @@ function removeModifier(className) {
 // 检查是否为边缘情况，返回优先级索引
 function checkEdgeCases(className) {
 	const edgeCase = specialCaseMap[className];
-	if (edgeCase !== undefined) {
+	if (edgeCase) {
 		if (typeof edgeCase === 'string') {
+			console.log({ edgeCase });
 			return orderList.priority.findIndex(elem => elem.includes(edgeCase));
 		} else if (typeof edgeCase === 'object') {
+			console.log({ edgeCase });
 			for (const key in edgeCase) {
 				if (className.includes(key)) {
 					return orderList.priority.findIndex(elem => elem.includes(edgeCase[key]));
