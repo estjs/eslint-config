@@ -59,7 +59,7 @@ describe('parse class with shorthand', () => {
 
 		expect(resultBX.generated).toMatchInlineSnapshot(`
 			[
-			  "b-x-10px",
+			  b-x-10px",
 			]
 		`);
 		expect(resultBY.generated).toMatchInlineSnapshot(`
