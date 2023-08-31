@@ -191,11 +191,11 @@ describe('order', () => {
 
 		expect(order(classNames)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": true,
+			  "isSorted": false,
 			  "orderedClassNames": [
-			    "bg-gray-200",
 			    "font-bold",
 			    "text-red-500",
+			    "bg-gray-200",
 			    "border-1",
 			    "shadow-md",
 			  ],
@@ -219,11 +219,11 @@ describe('order', () => {
 
 		expect(order(classNames)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": false,
+			  "isSorted": true,
 			  "orderedClassNames": [
-			    "bg-gray-200",
 			    "font-bold",
 			    "text-red-500",
+			    "bg-gray-200",
 			    "shadow-md",
 			  ],
 			}
@@ -236,22 +236,36 @@ describe('order', () => {
 			{
 			  "isSorted": true,
 			  "orderedClassNames": [
-			    "bg-white",
 			    "relative",
 			    "w-full",
 			    "h-full",
+			    "bg-white",
 			  ],
 			}
 		`);
 		const classNames2 = 'relative  w-full h-full bg-white';
 		expect(order(classNames2)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": true,
+			  "isSorted": false,
 			  "orderedClassNames": [
-			    "bg-white",
 			    "relative",
 			    "w-full",
 			    "h-full",
+			    "bg-white",
+			  ],
+			}
+		`);
+	});
+
+	it('should work have not atomic class', () => {
+		const classNames = 'w-full search-list-wrap border-b-1px';
+		expect(order(classNames)).toMatchInlineSnapshot(`
+			{
+			  "isSorted": true,
+			  "orderedClassNames": [
+			    "search-list-wrap",
+			    "w-full",
+			    "border-b-1px",
 			  ],
 			}
 		`);

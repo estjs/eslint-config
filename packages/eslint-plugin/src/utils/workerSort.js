@@ -75,10 +75,8 @@ function checkEdgeCases(className) {
 	const edgeCase = specialCaseMap[className];
 	if (edgeCase) {
 		if (typeof edgeCase === 'string') {
-			console.log({ edgeCase });
 			return orderList.priority.findIndex(elem => elem.includes(edgeCase));
 		} else if (typeof edgeCase === 'object') {
-			console.log({ edgeCase });
 			for (const key in edgeCase) {
 				if (className.includes(key)) {
 					return orderList.priority.findIndex(elem => elem.includes(edgeCase[key]));
