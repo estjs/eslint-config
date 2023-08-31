@@ -229,4 +229,32 @@ describe('order', () => {
 			}
 		`);
 	});
+
+	it("should work with",()=>{
+		const classNames = "relative h-full w-full bg-white";
+		expect(order(classNames)).toMatchInlineSnapshot(`
+			{
+			  "isSorted": true,
+			  "orderedClassNames": [
+			    "bg-white",
+			    "relative",
+			    "w-full",
+			    "h-full",
+			  ],
+			}
+		`)
+		const classNames2 = "relative  w-full h-full bg-white";
+		expect(order(classNames2)).toMatchInlineSnapshot(`
+			{
+			  "isSorted": true,
+			  "orderedClassNames": [
+			    "bg-white",
+			    "relative",
+			    "w-full",
+			    "h-full",
+			  ],
+			}
+		`)
+
+	})
 });
