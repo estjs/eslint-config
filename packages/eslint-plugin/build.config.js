@@ -5,6 +5,7 @@ export default defineBuildConfig({
 		'src/utils/utils',
 		'src/index',
 		'src/utils/workerSort',
+		'src/utils/unocssSort',
 		'src/utils/parserShorthand',
 		'src/utils/unocssShorthand',
 	],
