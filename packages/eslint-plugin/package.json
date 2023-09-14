@@ -42,8 +42,8 @@
 		"synckit": "^0.8.5"
 	},
 	"devDependencies": {
-		"eslint": "^8.47.0",
-		"unbuild": "^1.2.1",
-		"vitest": "^0.34.2"
+		"eslint": "^8.49.0",
+		"unbuild": "^2.0.0",
+		"vitest": "^0.34.4"
 	}
 }
