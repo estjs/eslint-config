@@ -46,7 +46,7 @@ module.exports = {
 		'vue/prefer-import-from-vue': 'off',
 		'vue/no-v-text-v-html-on-component': 'off',
 		// reactivity transform
-		'vue/no-setup-props-destructure': 'off',
+    'vue/no-setup-props-reactivity-loss': 'off',
 
 		'vue/block-tag-newline': [
 			'error',
