@@ -145,6 +145,26 @@ module.exports = {
 			},
 		},
 		{
+			files: ['*.d.ts'],
+			rules: {
+				'import/no-duplicates': 'off',
+			},
+		},
+		{
+			files: ['*.js', '*.cjs', '*.jsx'],
+			rules: {
+				'@typescript-eslint/no-var-requires': 'off',
+				'@typescript-eslint/no-require-imports': 'off',
+			},
+		},
+		{
+			files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
+			rules: {
+				'no-void': ['error', { allowAsStatement: true }],
+				'dot-notation': 'off',
+			},
+		},
+		{
 			files: ['scripts/**/*.*', 'cli.*'],
 			rules: {
 				'no-console': 'off',
@@ -154,6 +174,7 @@ module.exports = {
 			files: ['*.test.ts', '*.test.js', '*.spec.ts', '*.spec.js'],
 			rules: {
 				'no-unused-expressions': 'off',
+				'no-only-tests/no-only-tests': 'error',
 			},
 		},
 		{
@@ -177,8 +198,7 @@ module.exports = {
 				'no-undef': 'off',
 				'no-unused-expressions': 'off',
 				'no-unused-vars': 'off',
-				'antfu/no-cjs-exports': 'off',
-				'antfu/no-ts-export-equal': 'off',
+				'n/prefer-global/process': 'off',
 			},
 		},
 	],
@@ -366,7 +386,22 @@ module.exports = {
 		'n/no-path-concat': 'error',
 		'n/process-exit-as-throw': 'error',
 
+		// promise
 		'promise/param-names': 'error',
+
+		// jsdoc
+		'jsdoc/require-jsdoc': 'off',
+		'jsdoc/require-param': 'off',
+		'jsdoc/require-param-type': 'off',
+		'jsdoc/require-param-description': 'off',
+		'jsdoc/require-yields': 'off',
+		'jsdoc/tag-lines': 'off',
+		'jsdoc/check-values': 'off',
+		'jsdoc/check-tag-names': 'off',
+		'jsdoc/no-undefined-types': 'off',
+		'jsdoc/require-returns': 'off',
+		'jsdoc/require-returns-type': 'off',
+		'jsdoc/require-throws': 'off',
 
 		// prettier
 		'prettier/prettier': [
