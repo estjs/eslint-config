@@ -2,6 +2,9 @@ import { loadConfig } from '@unocss/config';
 import { collapseVariantGroup, createGenerator, notNull, parseVariantGroup } from '@unocss/core';
 import { runAsWorker } from 'synckit';
 
+/**
+ *
+ */
 async function getGenerator() {
 	const { config } = await loadConfig();
 	return createGenerator(config);
@@ -14,6 +17,11 @@ runAsWorker(async classes => {
 	return await sortRules(classes, uno);
 });
 
+/**
+ *
+ * @param rules
+ * @param uno
+ */
 export async function sortRules(rules, uno) {
 	const unknown = [];
 

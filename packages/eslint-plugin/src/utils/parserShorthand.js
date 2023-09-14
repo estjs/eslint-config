@@ -17,6 +17,11 @@ const dirMap = {
 };
 
 // 函数：检查两个方向是否可以合并成一个方向
+/**
+ *
+ * @param dir1
+ * @param dir2
+ */
 function isDirection(dir1, dir2) {
 	for (const dir of dirVal) {
 		if (dirMap[dir].includes(dir1) && dirMap[dir].includes(dir2)) {

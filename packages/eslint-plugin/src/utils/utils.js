@@ -4,6 +4,10 @@ export const CLASS_FIELDS = ['class', 'className'];
 
 export const distDir = fileURLToPath(new URL('../dist', import.meta.url));
 
+/**
+ *
+ * @param classArr
+ */
 export function sanitizeNode(classArr) {
 	if (!classArr || !classArr.length) {
 		return [];
@@ -15,6 +19,12 @@ export function sanitizeNode(classArr) {
 	});
 	return classArr;
 }
+
+/**
+ *
+ * @param className
+ * @param at
+ */
 export function stripString(className, at) {
 	if (!className.includes(at)) {
 		return null;

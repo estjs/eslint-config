@@ -1,6 +1,16 @@
+/**
+ *
+ * @param value
+ */
 export function notNull(value) {
 	return value != null;
 }
+
+/**
+ *
+ * @param str
+ * @param prefixes
+ */
 export function collapseVariantGroup(str, prefixes) {
 	const collection = new Map();
 	const sortedPrefix = prefixes.sort((a, b) => b.length - a.length);

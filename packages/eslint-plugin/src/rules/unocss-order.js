@@ -20,6 +20,10 @@ export default {
 	},
 	defaultOptions: [],
 	create(context) {
+		/**
+		 *
+		 * @param node
+		 */
 		function checkLiteral(node) {
 			if (typeof node.value !== 'string') {
 				return;

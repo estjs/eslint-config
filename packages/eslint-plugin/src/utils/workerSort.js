@@ -41,7 +41,10 @@ const specialCaseMap = {
 	'data': '(data)',
 };
 
-// 检查是否为立即边缘情况，返回优先级索引
+/**
+ * 检查是否为立即边缘情况，返回优先级索引
+ * @param className
+ */
 function checkImmediateEdgeCases(className) {
 	return edgeCaseMap[className] !== undefined
 		? orderList.priority.findIndex(elem => elem.includes(edgeCaseMap[className]))
@@ -49,6 +52,10 @@ function checkImmediateEdgeCases(className) {
 }
 
 // 清理任意内容，将 [.*] 替换为 [value]
+/**
+ *
+ * @param className
+ */
 function cleanArbitraryContent(className) {
 	if (className.includes('[') && className.includes(']')) {
 		return className.replace(/\[.*]/, '[value]');
@@ -57,12 +64,20 @@ function cleanArbitraryContent(className) {
 }
 
 // 查找原子类，返回优先级索引
+/**
+ *
+ * @param className
+ */
 function findAtomicClass(className) {
 	const regex = new RegExp(`((?!-)( |^))${className}(($| )(?!-))`, 'gm');
 	return orderList.priority.findIndex(elem => regex.test(elem));
 }
 
 // 移除修饰符，例如 '-' 和 '!'
+/**
+ *
+ * @param className
+ */
 function removeModifier(className) {
 	if (new RegExp(/^-.*/).test(className)) {
 		className = className.substr(1);
@@ -71,6 +86,10 @@ function removeModifier(className) {
 }
 
 // 检查是否为边缘情况，返回优先级索引
+/**
+ *
+ * @param className
+ */
 function checkEdgeCases(className) {
 	const edgeCase = specialCaseMap[className];
 	if (edgeCase) {
@@ -88,6 +107,11 @@ function checkEdgeCases(className) {
 }
 
 // 获取类的优先级
+/**
+ *
+ * @param className
+ * @param iteration
+ */
 function getClassPriority(className, iteration = 0) {
 	if (iteration === 0) {
 		const immediateEdgeCase = checkImmediateEdgeCases(className);
@@ -118,6 +142,10 @@ function getClassPriority(className, iteration = 0) {
 }
 
 // 获取带前缀类的优先级
+/**
+ *
+ * @param className
+ */
 function getPrefixClassPriority(className) {
 	const splitClassName = className.split(':');
 	const amountPrio = splitClassName.length - 1;
@@ -130,6 +158,10 @@ function getPrefixClassPriority(className) {
 }
 
 // 对类名数组进行排序
+/**
+ *
+ * @param classNames
+ */
 function order(classNames) {
 	classNames = sanitizeNode(classNames);
 

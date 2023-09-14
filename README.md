@@ -24,7 +24,7 @@ pnpm add -D eslint @estjs/eslint-config
 
 ```json
 {
-  "extends": ["@estjs/eslint-config"]
+	"extends": ["@estjs/eslint-config"]
 }
 ```
 
@@ -41,9 +41,9 @@ For example:
 
 ```json
 {
-  "scripts": {
-    "lint": "eslint \"**/*.{vue,ts.tsx,js,jsx}\""
-  }
+	"scripts": {
+		"lint": "eslint \"**/*.{vue,ts.tsx,js,jsx}\""
+	}
 }
 ```
 
@@ -53,9 +53,9 @@ Create `.vscode/settings.json`
 
 ```json
 {
-  "prettier.enable": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
+	"prettier.enable": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	}
 }
 ```

@@ -12,6 +12,7 @@ module.exports = {
 		'plugin:yml/standard',
 		'plugin:prettier/recommended',
 		'plugin:markdown/recommended',
+		'plugin:jsdoc/recommended',
 	],
 	ignorePatterns: [
 		'*.min.*',
@@ -31,7 +32,17 @@ module.exports = {
 		// force exclude
 		'**/.vitepress/cache',
 	],
-	plugins: ['html', 'unicorn', 'import', 'n', 'prettier', 'promise'],
+	plugins: [
+		'html',
+		'unicorn',
+		'import',
+		'n',
+		'prettier',
+		'promise',
+		'no-only-tests',
+		'unused-imports',
+		'jsdoc',
+	],
 	settings: {
 		'import/resolver': {
 			node: { extensions: ['.js', '.mjs', '.ts', '.d.ts'] },
@@ -39,12 +50,25 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: ['*.json', '*.json5', '*.jsonc', '*rc'],
+			files: ['*.json', '*.json5', '*.jsonc'],
 			parser: 'jsonc-eslint-parser',
 			rules: {
-				'jsonc/quotes': ['warn', 'double'],
-				'jsonc/quote-props': ['warn', 'always'],
+				'jsonc/array-bracket-spacing': ['warn', 'never'],
 				'jsonc/comma-dangle': ['warn', 'never'],
+				'jsonc/comma-style': ['warn', 'last'],
+				'jsonc/indent': ['warn', 'tab'],
+				'jsonc/key-spacing': ['warn', { beforeColon: false, afterColon: true }],
+				'jsonc/no-octal-escape': 'warn',
+				'jsonc/object-curly-newline': ['warn', { multiline: true, consistent: true }],
+				'jsonc/object-curly-spacing': ['warn', 'always'],
+				'jsonc/object-property-newline': ['warn', { allowMultiplePropertiesPerLine: true }],
+			},
+		},
+		{
+			files: ['*.yaml', '*.yml'],
+			parser: 'yaml-eslint-parser',
+			rules: {
+				'spaced-comment': 'off',
 			},
 		},
 		{
@@ -103,6 +127,14 @@ module.exports = {
 					},
 					{
 						pathPattern: '^(?:dev|peer|optional|bundled)?[Dd]ependencies$',
+						order: { type: 'asc' },
+					},
+					{
+						pathPattern: '^resolutions$',
+						order: { type: 'asc' },
+					},
+					{
+						pathPattern: '^pnpm.overrides$',
 						order: { type: 'asc' },
 					},
 					{
