@@ -3,10 +3,10 @@ const basic = require('@estjs/eslint-config-basic');
 module.exports = {
 	extends: ['@estjs/eslint-config-basic', 'plugin:@typescript-eslint/recommended'],
 	settings: {
-    'import/resolver': {
-      node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'] },
-    },
-  },
+		'import/resolver': {
+			node: { extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.d.ts'] },
+		},
+	},
 	overrides: [
 		...basic.overrides,
 		{

@@ -17,12 +17,9 @@ module.exports = {
 			rules: {
 				'no-unused-vars': 'off',
 				'no-undef': 'off',
-				...(isTsExists
-					? { '@typescript-eslint/no-unused-vars': 'off' }
-					: null),
+				...(isTsExists ? { '@typescript-eslint/no-unused-vars': 'off' } : null),
 			},
 		},
-
 	],
 	extends: [
 		'plugin:vue/recommended',

@@ -7,15 +7,13 @@ module.exports = {
 		{
 			files: ['*.vue'],
 			parser: 'vue-eslint-parser',
-      parserOptions: {
-        parser: isTsExists ? '@typescript-eslint/parser' : null,
-      },
+			parserOptions: {
+				parser: isTsExists ? '@typescript-eslint/parser' : null,
+			},
 			rules: {
 				'no-unused-vars': 'off',
 				'no-undef': 'off',
-				...(isTsExists
-          ? { '@typescript-eslint/no-unused-vars': 'off' }
-          : null),
+				...(isTsExists ? { '@typescript-eslint/no-unused-vars': 'off' } : null),
 			},
 		},
 	],
@@ -46,7 +44,7 @@ module.exports = {
 		'vue/prefer-import-from-vue': 'off',
 		'vue/no-v-text-v-html-on-component': 'off',
 		// reactivity transform
-    'vue/no-setup-props-reactivity-loss': 'off',
+		'vue/no-setup-props-reactivity-loss': 'off',
 
 		'vue/block-tag-newline': [
 			'error',
