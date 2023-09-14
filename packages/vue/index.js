@@ -7,13 +7,15 @@ module.exports = {
 		{
 			files: ['*.vue'],
 			parser: 'vue-eslint-parser',
-			parserOptions: {
-				parser: '@typescript-eslint/parser',
-			},
+      parserOptions: {
+        parser: isTsExists ? '@typescript-eslint/parser' : null,
+      },
 			rules: {
 				'no-unused-vars': 'off',
 				'no-undef': 'off',
-				'@typescript-eslint/no-unused-vars': 'off',
+				...(isTsExists
+          ? { '@typescript-eslint/no-unused-vars': 'off' }
+          : null),
 			},
 		},
 	],
@@ -87,7 +89,7 @@ module.exports = {
 		'vue/dot-location': ['error', 'property'],
 		'vue/dot-notation': ['error', { allowKeywords: true }],
 		'vue/eqeqeq': ['error', 'smart'],
-		'vue/func-call-spacing': ['off', 'never'],
+		// 'vue/func-call-spacing': ['off', 'never'],
 		'vue/key-spacing': ['warn', { beforeColon: false, afterColon: true }],
 		'vue/keyword-spacing': ['warn', { before: true, after: true }],
 		'vue/no-constant-condition': 'warn',
