@@ -8,24 +8,27 @@ module.exports = {
 			files: ['*.vue'],
 			parser: 'vue-eslint-parser',
 			parserOptions: {
-				parser: '@typescript-eslint/parser',
+				parser: isTsExists ? '@typescript-eslint/parser' : null,
 				extraFileExtensions: ['.vue'],
 				ecmaFeatures: {
 					jsx: true,
 				},
 			},
+			rules: {
+				'no-unused-vars': 'off',
+				'no-undef': 'off',
+				...(isTsExists
+					? { '@typescript-eslint/no-unused-vars': 'off' }
+					: null),
+			},
 		},
+
 	],
 	extends: [
 		'plugin:vue/recommended',
 		isTsExists ? '@estjs/eslint-config-ts' : '@estjs/eslint-config-basic',
 	],
 	rules: {
-		'@typescript-eslint/no-unused-vars': [
-			'warn',
-			{ varsIgnorePattern: '^h$', argsIgnorePattern: '^h$' },
-		],
-
 		'vue/html-self-closing': [
 			'error',
 			{
