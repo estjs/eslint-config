@@ -37,11 +37,11 @@ module.exports = {
 		'unicorn',
 		'import',
 		'n',
-		'prettier',
 		'promise',
 		'no-only-tests',
 		'unused-imports',
 		'jsdoc',
+		'prettier',
 	],
 	settings: {
 		'import/resolver': {
@@ -56,7 +56,7 @@ module.exports = {
 				'jsonc/array-bracket-spacing': ['warn', 'never'],
 				'jsonc/comma-dangle': ['warn', 'never'],
 				'jsonc/comma-style': ['warn', 'last'],
-				'jsonc/indent': ['warn', 'tab'],
+				'jsonc/indent': 'off',
 				'jsonc/key-spacing': ['warn', { beforeColon: false, afterColon: true }],
 				'jsonc/no-octal-escape': 'warn',
 				'jsonc/object-curly-newline': ['warn', { multiline: true, consistent: true }],
