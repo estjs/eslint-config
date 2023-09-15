@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url';
 
 export const CLASS_FIELDS = ['class', 'className'];
 
-export const distDir = fileURLToPath(new URL('../dist', import.meta.url));
+export const distDir = fileURLToPath(new URL('../utils', import.meta.url));
 
 /**
  *
