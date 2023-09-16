@@ -2,7 +2,7 @@ import { join } from 'node:path';
 import { createSyncFn } from 'synckit';
 import { CLASS_FIELDS, distDir } from '../utils/utils';
 
-const sortClasses = createSyncFn(join(distDir, 'workerSort.cjs'));
+const sortClasses = createSyncFn(join(distDir, 'atomicOrder.cjs'));
 
 export default {
 	name: 'atomic-order',

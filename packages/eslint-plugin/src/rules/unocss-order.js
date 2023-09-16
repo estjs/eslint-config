@@ -2,7 +2,7 @@ import { join } from 'node:path';
 import { createSyncFn } from 'synckit';
 import { CLASS_FIELDS, distDir } from '../utils/utils';
 
-const sortClasses = createSyncFn(join(distDir, 'unocssSort.cjs'));
+const sortClasses = createSyncFn(join(distDir, 'unocssOrder.cjs'));
 
 export default {
 	name: 'unocss-order',

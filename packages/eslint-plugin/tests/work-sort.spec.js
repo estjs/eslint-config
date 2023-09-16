@@ -1,32 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { order, removeModifier } from '../src/utils/workerSort';
-
-describe('removeModifier', () => {
-	it('should remove leading hyphen from className', () => {
-		const className = '-text-red-500';
-		const expected = 'text-red-500';
-		expect(removeModifier(className)).toEqual(expected);
-	});
-
-	it('should not remove hyphen from className without leading hyphen', () => {
-		const className = 'font-bold';
-		const expected = 'font-bold';
-		expect(removeModifier(className)).toEqual(expected);
-	});
-
-	it('should remove negation symbol from className', () => {
-		const className = '!hidden';
-		const expected = 'hidden';
-		expect(removeModifier(className)).toEqual(expected);
-	});
-
-	it('should not remove negation symbol from className without negation', () => {
-		const className = 'flex';
-		const expected = 'flex';
-		expect(removeModifier(className)).toEqual(expected);
-	});
-});
+import { order } from '../src/utils/atomicOrder';
 
 describe('order', () => {
 	it('should order class names correctly', () => {
@@ -34,12 +8,12 @@ describe('order', () => {
 
 		expect(order(classNames)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": false,
+			  "isSorted": true,
 			  "orderedClassNames": [
-			    "font-bold",
 			    "text-red-500",
 			    "bg-gray-200",
 			    "border-1",
+			    "font-bold",
 			    "shadow-md",
 			  ],
 			}
@@ -64,9 +38,9 @@ describe('order', () => {
 			{
 			  "isSorted": true,
 			  "orderedClassNames": [
-			    "font-bold",
-			    "text-red-500",
 			    "bg-gray-200",
+			    "text-red-500",
+			    "font-bold",
 			    "shadow-md",
 			  ],
 			}
@@ -79,22 +53,22 @@ describe('order', () => {
 			{
 			  "isSorted": true,
 			  "orderedClassNames": [
-			    "relative",
-			    "w-full",
 			    "h-full",
+			    "w-full",
 			    "bg-white",
+			    "relative",
 			  ],
 			}
 		`);
 		const classNames2 = 'relative  w-full h-full bg-white';
 		expect(order(classNames2)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": false,
+			  "isSorted": true,
 			  "orderedClassNames": [
-			    "relative",
 			    "w-full",
 			    "h-full",
 			    "bg-white",
+			    "relative",
 			  ],
 			}
 		`);
@@ -104,10 +78,10 @@ describe('order', () => {
 		const classNames = 'w-full search-list-wrap border-b-1px';
 		expect(order(classNames)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": true,
+			  "isSorted": false,
 			  "orderedClassNames": [
-			    "search-list-wrap",
 			    "w-full",
+			    "search-list-wrap",
 			    "border-b-1px",
 			  ],
 			}
