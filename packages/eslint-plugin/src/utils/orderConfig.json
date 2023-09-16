@@ -1,7 +1,6 @@
 {
 	"priority": [
 		"(predefined)",
-		"box",
 		"peer",
 		"group",
 		"static fixed absolute relative sticky",
@@ -146,6 +145,7 @@
 		"rd",
 		"rounded",
 		"(border-color) border",
+		"box",
 		"divide-x",
 		"divide-y",
 		"divide",
