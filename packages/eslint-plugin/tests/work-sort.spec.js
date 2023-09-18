@@ -87,4 +87,20 @@ describe('order', () => {
 			}
 		`);
 	});
+	it('should work sorted with prefix classNames', () => {
+		const classNames = 'sm:p-1 md:m-2 lg:text-white xl:font-200 2xl:bg-white dark:bg-dark';
+		expect(order(classNames)).toMatchInlineSnapshot(`
+			{
+			  "isSorted": true,
+			  "orderedClassNames": [
+			    "sm:p-1",
+			    "lg:text-white",
+			    "xl:font-200",
+			    "2xl:bg-white",
+			    "md:m-2",
+			    "dark:bg-dark",
+			  ],
+			}
+		`);
+	});
 });

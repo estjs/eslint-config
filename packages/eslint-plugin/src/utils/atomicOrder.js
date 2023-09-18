@@ -16,7 +16,6 @@ const orderList = [
 	'bottom',
 	'visible invisible',
 	'z-index',
-	'(flex-width) flex-1 flex-auto flex-initial flex-none',
 	'basis',
 	'grow',
 	'shrink',
@@ -29,6 +28,7 @@ const orderList = [
 	'max-h',
 	'aspect',
 	'block inline-block inline flex inline-flex table inline-table table-caption table-cell table-column table-column-group table-footer-group table-header-group table-row-group table-row flow-root grid inline-grid contents list-item hidden',
+	'(flex-width) flex-1 flex-auto flex-initial flex-none',
 	'flex-row flex-row-reverse flex-col flex-col-reverse',
 	'flex-wrap flex-wrap-reverse flex-nowrap',
 	'grid-cols',
@@ -176,6 +176,8 @@ const orderList = [
 	'invert',
 	'saturate',
 	'sepia',
+	'selection',
+	'backdrop',
 	'backdrop-blur',
 	'backdrop-brightness',
 	'backdrop-contrast',
@@ -253,10 +255,9 @@ const orderList = [
 	'after',
 	'first-letter',
 	'first-line',
+
 	'marker',
-	'selection',
 	'file',
-	'backdrop',
 	'placeholder',
 	'rtl',
 	'ltr',
@@ -274,7 +275,6 @@ const orderList = [
 	'max-lg',
 	'max-xl',
 	'max-2xl',
-	'(max-width) max-',
 	'dark',
 	'portrait',
 	'landscape',
@@ -283,7 +283,7 @@ const orderList = [
 	'motion-more',
 	'contrast-less',
 	'print',
-	'(supports) supports-',
+	'supports-',
 	'aria-checked',
 	'aria-disabled',
 	'aria-expanded',
@@ -292,8 +292,7 @@ const orderList = [
 	'aria-readonly',
 	'aria-required',
 	'aria-selected',
-	'(aria) aria-',
-	'(data) data-',
+	'data-',
 ];
 
 /**
@@ -311,7 +310,10 @@ const priorityCache = new Map();
 function getClassPriority(className, iteration = 0) {
 	if (iteration === 0) {
 		className = className.replace(/\[.*]/, '[value]').replace(/^-/, '').replace('!', '');
+
 		if (className.includes(':')) {
+			console.log(className);
+
 			return getPrefixClassPriority(className);
 		}
 	}
@@ -375,7 +377,6 @@ function order(classNames) {
 	};
 }
 
-// 导出模块的函数
 export { order };
 
 // 运行 worker 处理类名
