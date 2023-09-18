@@ -1,8 +1,5 @@
-import { join } from 'node:path';
-import { createSyncFn } from 'synckit';
-import { CLASS_FIELDS, distDir } from '../utils/utils';
-
-const sortClasses = createSyncFn(join(distDir, 'atomicOrder.cjs'));
+import { CLASS_FIELDS } from '../utils/utils';
+import { order } from '../utils/atomicOrder';
 
 export default {
 	name: 'atomic-order',
@@ -25,7 +22,7 @@ export default {
 				return;
 			}
 			const input = node.value;
-			const { isSorted, orderedClassNames } = sortClasses(input);
+			const { isSorted, orderedClassNames } = order(input);
 			if (isSorted) {
 				context.report({
 					node,

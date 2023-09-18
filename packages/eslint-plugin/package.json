@@ -38,9 +38,6 @@
 		"test": "vitest",
 		"test:watch": "vitest --watch"
 	},
-	"dependencies": {
-		"synckit": "^0.8.5"
-	},
 	"devDependencies": {
 		"eslint": "^8.49.0",
 		"unbuild": "^2.0.0",

@@ -1,4 +1,3 @@
-import { runAsWorker } from 'synckit';
 import { sanitizeNode, stripString } from './utils';
 
 /**
@@ -376,8 +375,3 @@ function order(classNames) {
 }
 
 export { order };
-
-// 运行 worker 处理类名
-runAsWorker(async classes => {
-	return await order(classes);
-});

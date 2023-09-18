@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import parseShort from '../src/utils/parserShorthand';
+import { parserShorthand } from '../src/utils/parserShorthand';
 
 describe('parse class with shorthand', () => {
 	it('should work with margin shorthand', () => {
@@ -7,9 +7,9 @@ describe('parse class with shorthand', () => {
 		const classY = ['m-t-10px', 'm-b-10px'];
 		const classA = ['m-x-10px', 'm-y-10px'];
 
-		const resultMX = parseShort(classX);
-		const resultMY = parseShort(classY);
-		const resultMA = parseShort(classA);
+		const resultMX = parserShorthand(classX);
+		const resultMY = parserShorthand(classY);
+		const resultMA = parserShorthand(classA);
 		expect(resultMX.generated).toMatchInlineSnapshot(`
 			[
 			  "m-x-10px",
@@ -36,9 +36,9 @@ describe('parse class with shorthand', () => {
 		const classY = ['p-t-10px', 'p-b-10px'];
 		const classA = ['p-x-10px', 'p-y-10px'];
 
-		const resultPX = parseShort(classX);
-		const resultPY = parseShort(classY);
-		const resultPA = parseShort(classA);
+		const resultPX = parserShorthand(classX);
+		const resultPY = parserShorthand(classY);
+		const resultPA = parserShorthand(classA);
 
 		expect(resultPX.generated).toMatchInlineSnapshot(['p-x-10px']);
 		expect(resultPY.generated).toMatchInlineSnapshot(['p-y-10px']);
@@ -53,9 +53,9 @@ describe('parse class with shorthand', () => {
 		const classBY = ['b-t-10px', 'b-b-10px'];
 		const classBA = ['b-x-10px', 'b-y-10px'];
 
-		const resultBX = parseShort(classBX);
-		const resultBY = parseShort(classBY);
-		const resultBA = parseShort(classBA);
+		const resultBX = parserShorthand(classBX);
+		const resultBY = parserShorthand(classBY);
+		const resultBA = parserShorthand(classBA);
 
 		expect(resultBX.generated).toMatchInlineSnapshot(`
 			[
@@ -82,9 +82,9 @@ describe('parse class with shorthand', () => {
 		const classBY = ['rd-t-10px', 'rd-b-10px'];
 		const classBA = ['rd-x-10px', 'rd-y-10px'];
 
-		const resultBX = parseShort(classBX);
-		const resultBY = parseShort(classBY);
-		const resultBA = parseShort(classBA);
+		const resultBX = parserShorthand(classBX);
+		const resultBY = parserShorthand(classBY);
+		const resultBA = parserShorthand(classBA);
 
 		expect(resultBX.generated).toMatchInlineSnapshot(`
 			[

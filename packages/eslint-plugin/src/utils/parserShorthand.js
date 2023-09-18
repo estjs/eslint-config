@@ -1,5 +1,3 @@
-import { runAsWorker } from 'synckit';
-
 /**
  * TODO:
  *    合并 shortcuts 配置的css属性到short
@@ -32,7 +30,7 @@ function isDirection(dir1, dir2) {
 }
 
 // 主要处理函数
-const fn = classList => {
+export function parserShorthand(classList) {
 	// 用于匹配类名的正则表达式
 	const reg = /^((m|p)-?)?([blrtxy])(?:-?(-?.+))?$/;
 	const borderReg = /^((border|b|rounded|rd)-?)?([blrtxy])(?:-(.+))?$/;
@@ -94,8 +92,4 @@ const fn = classList => {
 		used,
 		generated,
 	};
-};
-
-runAsWorker(fn);
-// 只是为了测试
-export default fn;
+}

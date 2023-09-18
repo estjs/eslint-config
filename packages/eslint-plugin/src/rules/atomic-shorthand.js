@@ -1,8 +1,5 @@
-import { join } from 'node:path';
-import { createSyncFn } from 'synckit';
-import { CLASS_FIELDS, distDir } from '../utils/utils';
-
-const parserShort = createSyncFn(join(distDir, 'parserShorthand.cjs'));
+import { parserShorthand } from '../utils/parserShorthand';
+import { CLASS_FIELDS } from '../utils/utils';
 
 export default {
 	name: 'atomic-shorthand',
@@ -32,7 +29,7 @@ export default {
 			if (classList.length < 2) {
 				return;
 			}
-			const { unused, used, generated } = parserShort(classList);
+			const { unused, used, generated } = parserShorthand(classList);
 
 			if (generated && generated.length > 0) {
 				context.report({

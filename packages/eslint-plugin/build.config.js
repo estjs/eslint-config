@@ -1,14 +1,7 @@
 import { defineBuildConfig } from 'unbuild';
 
 export default defineBuildConfig({
-	entries: [
-		'src/utils/utils',
-		'src/index',
-		'src/utils/atomicOrder',
-		// 'src/utils/unocssOrder',
-		'src/utils/parserShorthand',
-		// 'src/utils/unocssShorthand',
-	],
+	entries: ['src/index'],
 	clean: true,
 	failOnWarn: false,
 	rollup: {
