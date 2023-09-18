@@ -312,8 +312,6 @@ function getClassPriority(className, iteration = 0) {
 		className = className.replace(/\[.*]/, '[value]').replace(/^-/, '').replace('!', '');
 
 		if (className.includes(':')) {
-			console.log(className);
-
 			return getPrefixClassPriority(className);
 		}
 	}

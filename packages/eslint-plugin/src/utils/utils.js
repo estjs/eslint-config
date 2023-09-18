@@ -26,7 +26,7 @@ export function sanitizeNode(classArr) {
  * @param at
  */
 export function stripString(className, at) {
-	if (!className.includes(at)) {
+	if (!className || !className.includes(at)) {
 		return null;
 	}
 	return className.substr(0, className.lastIndexOf(at));
