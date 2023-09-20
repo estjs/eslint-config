@@ -1,5 +1,5 @@
 {
-	"name": "eslint-plugin-atomic",
+	"name": "@estjs/eslint-plugin",
 	"type": "module",
 	"version": "0.8.14",
 	"description": "",

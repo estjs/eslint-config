@@ -1,9 +1,4 @@
-import { fileURLToPath } from 'node:url';
-
-export const CLASS_FIELDS = ['class', 'className'];
-
-export const distDir = fileURLToPath(new URL('../utils', import.meta.url));
-
+export const CLASS_FIELDS = /test/;
 /**
  *
  * @param classArr

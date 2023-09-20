@@ -1,11 +1,8 @@
-import { join } from 'node:path';
-import { createSyncFn } from 'synckit';
-import { CLASS_FIELDS, distDir } from '../utils/utils';
-
-const sortClasses = createSyncFn(join(distDir, 'unocssOrder.cjs'));
+import { CLASS_FIELDS } from '../utils/shared';
+import { order } from '../utils/atomicOrder';
 
 export default {
-	name: 'unocss-order',
+	name: 'atomic-order',
 	meta: {
 		type: 'layout',
 		fixable: 'code',
@@ -20,22 +17,18 @@ export default {
 	},
 	defaultOptions: [],
 	create(context) {
-		/**
-		 *
-		 * @param node
-		 */
 		function checkLiteral(node) {
 			if (typeof node.value !== 'string') {
 				return;
 			}
 			const input = node.value;
-			const sorted = sortClasses(input);
-			if (sorted !== input) {
+			const { isSorted, orderedClassNames } = order(input);
+			if (isSorted) {
 				context.report({
 					node,
 					messageId: 'invalid-order',
 					fix(fixer) {
-						return fixer.replaceText(node, `'${sorted.trim()}'`);
+						return fixer.replaceText(node, `'${orderedClassNames.join(' ')}'`);
 					},
 				});
 			}
@@ -45,7 +38,7 @@ export default {
 			JSXAttribute(node) {
 				if (
 					typeof node.name.name === 'string' &&
-					CLASS_FIELDS.includes(node.name.name.toLowerCase()) &&
+					CLASS_FIELDS.test(node.name.name.toLowerCase()) &&
 					node.value &&
 					node.value.type === 'Literal'
 				) {

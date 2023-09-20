@@ -1,5 +1,5 @@
 import { parserShorthand } from '../utils/parserShorthand';
-import { CLASS_FIELDS } from '../utils/utils';
+import { CLASS_FIELDS } from '../utils/shared';
 
 export default {
 	name: 'atomic-shorthand',
@@ -49,7 +49,7 @@ export default {
 			JSXAttribute(node) {
 				if (
 					typeof node.name.name === 'string' &&
-					CLASS_FIELDS.includes(node.name.name.toLowerCase()) &&
+					CLASS_FIELDS.test(node.name.name.toLowerCase()) &&
 					node.value &&
 					node.value.type === 'Literal'
 				) {

@@ -8,7 +8,6 @@ const isTaliWindExists = isPackageExists('tailwindcss');
 const isAtomicExists = isUnoCssExists || isTaliWindExists;
 
 const eslintExtends = [];
-const pluginsExtends = []
 if (isVueExists) {
 	const Vue = require('vue');
 	eslintExtends.push(
@@ -22,10 +21,9 @@ if (isVueExists) {
 	eslintExtends.push('@estjs/eslint-config-basic');
 }
 
-// if (isAtomicExists) {
-	pluginsExtends.push('atomic');
-// }
+if (isAtomicExists) {
+	eslintExtends.push('plugin:@estjs/recommended');
+}
 module.exports = {
 	extends: eslintExtends,
-	plugins: pluginsExtends
 };

@@ -1,9 +1,3 @@
-import { sanitizeNode, stripString } from './utils';
-
-/**
- * CSS类名的优先级列表
- * @type {(string[])[]}
- */
 const orderList = [
 	['container'],
 	['peer'],
@@ -370,84 +364,14 @@ const orderList = [
 	['aria-selected'],
 	['data-'],
 ];
-/**
- * 存储已计算的类名优先级的缓存
- * @type {Map<string, number>}
- */
-const priorityCache = new Map();
 
-/**
- * 计算CSS类名的优先级
- * @param {string} className - 要计算优先级的CSS类名
- * @param {number} iteration - 递归迭代次数
- * @returns {number} CSS类名的优先级
- */
-function getClassPriority(className, iteration = 0) {
-	if (iteration === 0) {
-		className = className.replace(/\[.*]/, '[value]').replace(/^-/, '').replace('!', '');
 
-		if (className.includes(':')) {
-			return getPrefixClassPriority(className);
-		}
-	}
+const res = orderList.flatMap(item=>{
+	return item
+})
 
-	// 检查缓存
-	if (priorityCache.has(className)) {
-		return priorityCache.get(className);
-	}
 
-	const classPrio = orderList.findIndex(elem => elem.includes(className));
-	if (classPrio !== -1) {
-		// 将结果添加到缓存
-		priorityCache.set(className, classPrio);
-		return classPrio;
-	}
+console.log(res);
 
-	const strippedClassName = stripString(className, '-');
-	const priority = strippedClassName ? 0 : getClassPriority(strippedClassName, iteration + 1);
-
-	// 将结果添加到缓存
-	priorityCache.set(className, priority);
-	return priority;
-}
-
-/**
- * 计算带有前缀的CSS类名的优先级
- * @param {string} className - 要计算优先级的CSS类名
- * @returns {number} 带有前缀的CSS类名的优先级
- */
-function getPrefixClassPriority(className) {
-	const splitClassName = className.split(':');
-	const amountPrio = splitClassName.length - 1;
-	return (
-		getClassPriority(splitClassName[0]) +
-		amountPrio / 100 +
-		getClassPriority(splitClassName[splitClassName.length - 1]) / 100000
-	);
-}
-
-/**
- * 对CSS类名进行排序
- * @param {string[]} classNames - 要排序的CSS类名数组
- * @returns {{ isSorted: boolean, orderedClassNames: string[] }} 排序结果对象
- */
-function order(classNames) {
-	classNames = sanitizeNode(classNames);
-	if (classNames.length < 2) {
-		return {
-			isSorted: false,
-			orderedClassNames: classNames,
-		};
-	}
-	const sortedClassNames = Array.from(classNames).sort((a, b) => {
-		const aPrio = getClassPriority(a);
-		const bPrio = getClassPriority(b);
-		return aPrio - bPrio;
-	});
-	return {
-		isSorted: sortedClassNames.join(' ') !== classNames.join(' '),
-		orderedClassNames: sortedClassNames,
-	};
-}
-
-export { order };
+import fs from "node:fs"
+fs.writeFileSync('./2.json',JSON.stringify(res,null,2),'utf-8')

@@ -11,9 +11,9 @@ describe('order', () => {
 			  "isSorted": true,
 			  "orderedClassNames": [
 			    "text-red-500",
+			    "font-bold",
 			    "bg-gray-200",
 			    "border-1",
-			    "font-bold",
 			    "shadow-md",
 			  ],
 			}
@@ -38,9 +38,9 @@ describe('order', () => {
 			{
 			  "isSorted": true,
 			  "orderedClassNames": [
-			    "bg-gray-200",
 			    "text-red-500",
 			    "font-bold",
+			    "bg-gray-200",
 			    "shadow-md",
 			  ],
 			}
@@ -51,12 +51,12 @@ describe('order', () => {
 		const classNames = 'relative h-full w-full bg-white';
 		expect(order(classNames)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": true,
+			  "isSorted": false,
 			  "orderedClassNames": [
+			    "relative",
 			    "h-full",
 			    "w-full",
 			    "bg-white",
-			    "relative",
 			  ],
 			}
 		`);
@@ -65,10 +65,10 @@ describe('order', () => {
 			{
 			  "isSorted": true,
 			  "orderedClassNames": [
-			    "w-full",
-			    "h-full",
-			    "bg-white",
 			    "relative",
+			    "h-full",
+			    "w-full",
+			    "bg-white",
 			  ],
 			}
 		`);
@@ -78,10 +78,10 @@ describe('order', () => {
 		const classNames = 'w-full search-list-wrap border-b-1px';
 		expect(order(classNames)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": false,
+			  "isSorted": true,
 			  "orderedClassNames": [
-			    "w-full",
 			    "search-list-wrap",
+			    "w-full",
 			    "border-b-1px",
 			  ],
 			}
@@ -91,13 +91,13 @@ describe('order', () => {
 		const classNames = 'sm:p-1 md:m-2 lg:text-white xl:font-200 2xl:bg-white dark:bg-dark';
 		expect(order(classNames)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": false,
+			  "isSorted": true,
 			  "orderedClassNames": [
 			    "sm:p-1",
-			    "md:m-2",
 			    "lg:text-white",
 			    "xl:font-200",
 			    "2xl:bg-white",
+			    "md:m-2",
 			    "dark:bg-dark",
 			  ],
 			}
