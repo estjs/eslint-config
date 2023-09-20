@@ -1,4 +1,3 @@
-
 /**
  * CSS类名的优先级列表
  * @type {(string[])[]}
@@ -108,6 +107,7 @@ const orderList = [
 	'mr',
 	'mb',
 	'ml',
+	'text',
 	'text-left',
 	'text-center',
 	'text-right',
@@ -127,6 +127,7 @@ const orderList = [
 	'text-7xl',
 	'text-8xl',
 	'text-9xl',
+	'color',
 	'antialiased',
 	'subpixel-antialiased',
 	'font',
@@ -465,63 +466,63 @@ const orderList = [
  */
 export function sanitizeNode(classArr) {
 	if (!classArr || !classArr.length) {
-			return [];
+		return [];
 	}
 
 	classArr = Array.from(new Set(Array.isArray(classArr) ? classArr : classArr.split(' ')));
 	classArr = classArr.filter(Boolean).map(elem => {
-			return elem.replace(/\r?\n|\r/g, '');
+		return elem.replace(/\r?\n|\r/g, '');
 	});
 	return classArr;
 }
 
 /**
-* @param className
-* @param at
-*/
+ * @param className
+ * @param at
+ */
 export function stripString(className, at) {
 	if (!className || !className.includes(at)) {
-			return null;
+		return null;
 	}
 	return className.substr(0, className.lastIndexOf(at));
 }
 
 /**
-* 存储已计算的类名优先级的缓存
-* @type {Map<string, number>}
-*/
+ * 存储已计算的类名优先级的缓存
+ * @type {Map<string, number>}
+ */
 const priorityCache = new Map();
 
 /**
-* 计算CSS类名的优先级
-* @param {string} className - 要计算优先级的CSS类名
-* @param {number} iteration - 递归迭代次数
-* @returns {number} CSS类名的优先级
-*/
+ * 计算CSS类名的优先级
+ * @param {string} className - 要计算优先级的CSS类名
+ * @param {number} iteration - 递归迭代次数
+ * @returns {number} CSS类名的优先级
+ */
 function getClassPriority(className, iteration = 0) {
 	if (iteration === 0) {
-			className = className.replace(/\[.*]/, '[value]').replace(/^-/, '').replace('!', '');
+		className = className.replace(/\[.*]/, '[value]').replace(/^-/, '').replace('!', '');
 
-			if (className.includes(':')) {
-					return getPrefixClassPriority(className);
-			}
+		if (className.includes(':')) {
+			return getPrefixClassPriority(className);
+		}
 	}
 
 	// 检查缓存
 	if (priorityCache.has(className)) {
-			return priorityCache.get(className);
+		return priorityCache.get(className);
 	}
 
 	const strippedClassName = stripString(className, '-');
 	let priority = 0;
 
 	if (strippedClassName) {
-			priority = getClassPriority(strippedClassName, iteration + 1);
+		priority = getClassPriority(strippedClassName, iteration + 1);
 	} else {
-			const classPrio = orderList.findIndex(elem => elem.includes(className));
-			if (classPrio !== -1) {
-					priority = classPrio;
-			}
+		const classPrio = orderList.findIndex(elem => elem.includes(className));
+		if (classPrio !== -1) {
+			priority = classPrio;
+		}
 	}
 
 	// 将结果添加到缓存
@@ -530,43 +531,41 @@ function getClassPriority(className, iteration = 0) {
 }
 
 /**
-* 计算带有前缀的CSS类名的优先级
-* @param {string} className - 要计算优先级的CSS类名
-* @returns {number} 带有前缀的CSS类名的优先级
-*/
+ * 计算带有前缀的CSS类名的优先级
+ * @param {string} className - 要计算优先级的CSS类名
+ * @returns {number} 带有前缀的CSS类名的优先级
+ */
 function getPrefixClassPriority(className) {
 	const splitClassName = className.split(':');
 	const amountPrio = splitClassName.length - 1;
 	return (
-			getClassPriority(splitClassName[0]) +
-			amountPrio / 100 +
-			getClassPriority(splitClassName[splitClassName.length - 1]) / 100000
+		getClassPriority(splitClassName[0]) +
+		amountPrio / 100 +
+		getClassPriority(splitClassName[splitClassName.length - 1]) / 100000
 	);
 }
 
 /**
-* 对CSS类名进行排序
-* @param {string[]} classNames - 要排序的CSS类名数组
-* @returns {{ isSorted: boolean, orderedClassNames: string[] }} 排序结果对象
-*/
+ * 对CSS类名进行排序
+ * @param {string[]} classNames - 要排序的CSS类名数组
+ * @returns {{ isSorted: boolean, orderedClassNames: string[] }} 排序结果对象
+ */
 function order(classNames) {
 	classNames = sanitizeNode(classNames);
 	if (classNames.length < 2) {
-			return {
-					isSorted: false,
-					orderedClassNames: classNames,
-			};
+		return {
+			isSorted: false,
+			orderedClassNames: classNames,
+		};
 	}
 	const sortedClassNames = Array.from(classNames).sort((a, b) => {
-			const aPrio = getClassPriority(a);
-			const bPrio = getClassPriority(b);
-			return aPrio - bPrio;
+		const aPrio = getClassPriority(a);
+		const bPrio = getClassPriority(b);
+		return aPrio - bPrio;
 	});
 	return {
-			isSorted: sortedClassNames.join(' ') !== classNames.join(' '),
-			orderedClassNames: sortedClassNames,
+		isSorted: sortedClassNames.join(' ') !== classNames.join(' '),
+		orderedClassNames: sortedClassNames,
 	};
 }
-
-
 export { order };
