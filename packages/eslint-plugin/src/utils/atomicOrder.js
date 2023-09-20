@@ -519,7 +519,7 @@ function getClassPriority(className, iteration = 0) {
 	if (strippedClassName) {
 		priority = getClassPriority(strippedClassName, iteration + 1);
 	} else {
-		const classPrio = orderList.findIndex(elem => elem.includes(className));
+		const classPrio = orderList.findIndex(elem => elem === className);
 		if (classPrio !== -1) {
 			priority = classPrio;
 		}
