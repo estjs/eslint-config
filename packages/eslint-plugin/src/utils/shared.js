@@ -1,4 +1,4 @@
-export const CLASS_FIELDS = /test/;
+export const CLASS_FIELDS = /class/;
 /**
  *
  * @param classArr
