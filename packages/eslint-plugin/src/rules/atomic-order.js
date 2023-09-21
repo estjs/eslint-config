@@ -49,7 +49,7 @@ export default {
 
 		const templateBodyVisitor = {
 			VAttribute(node) {
-				if (node.key.name === 'class' && node.value.type === 'VLiteral') {
+				if (node.key.name === 'class' && node.value && node.value.type === 'VLiteral') {
 					checkLiteral(node.value);
 				}
 			},
