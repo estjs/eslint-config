@@ -502,33 +502,33 @@ const priorityCache = new Map();
  */
 
 function getClassPriority(className, iteration = 0, checkCache = true) {
-    if (checkCache && priorityCache.has(className)) {
-        return priorityCache.get(className);
-    }
+	if (checkCache && priorityCache.has(className)) {
+		return priorityCache.get(className);
+	}
 
-    if (iteration === 0) {
-        className = className.replace(/\[.*]/, '[value]').replace(/^-/, '').replace('!', '');
+	if (iteration === 0) {
+		className = className.replace(/\[.*]/, '[value]').replace(/^-/, '').replace('!', '');
 
-        if (className.includes(':')) {
-            return getPrefixClassPriority(className);
-        }
-    }
+		if (className.includes(':')) {
+			return getPrefixClassPriority(className);
+		}
+	}
 
-    const strippedClassName = stripString(className, '-');
-    let priority = 0;
+	const strippedClassName = stripString(className, '-');
+	let priority = 0;
 
-    if (strippedClassName) {
-        priority = getClassPriority(strippedClassName, iteration + 1, false);
-    } else {
-        const classPrio = orderList.findIndex(elem => elem === className);
-        if (classPrio !== -1) {
-            priority = classPrio;
-        }
-    }
+	if (strippedClassName) {
+		priority = getClassPriority(strippedClassName, iteration + 1, false);
+	} else {
+		const classPrio = orderList.findIndex(elem => elem === className);
+		if (classPrio !== -1) {
+			priority = classPrio;
+		}
+	}
 
-    // 将结果添加到缓存
-    priorityCache.set(className, priority);
-    return priority;
+	// 将结果添加到缓存
+	priorityCache.set(className, priority);
+	return priority;
 }
 
 /**
@@ -552,21 +552,21 @@ function getPrefixClassPriority(className) {
  * @returns {{ isSorted: boolean, orderedClassNames: string[] }} 排序结果对象
  */
 function order(classNames) {
-    classNames = sanitizeNode(classNames);
-    if (classNames.length < 2) {
-        return {
-            isSorted: false,
-            orderedClassNames: classNames,
-        };
-    }
-    classNames.sort((a, b) => {
-        const aPrio = getClassPriority(a);
-        const bPrio = getClassPriority(b);
-        return aPrio - bPrio;
-    });
-    return {
-        isSorted: classNames.join(' ') !== classNames.join(' '),
-        orderedClassNames: classNames,
-    };
+	classNames = sanitizeNode(classNames);
+	if (classNames.length < 2) {
+		return {
+			isSorted: false,
+			orderedClassNames: classNames,
+		};
+	}
+	classNames.sort((a, b) => {
+		const aPrio = getClassPriority(a);
+		const bPrio = getClassPriority(b);
+		return aPrio - bPrio;
+	});
+	return {
+		isSorted: classNames.join(' ') !== classNames.join(' '),
+		orderedClassNames: classNames,
+	};
 }
 export { order };
