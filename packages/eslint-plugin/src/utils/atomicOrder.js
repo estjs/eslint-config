@@ -497,37 +497,38 @@ const priorityCache = new Map();
  * 计算CSS类名的优先级
  * @param {string} className - 要计算优先级的CSS类名
  * @param {number} iteration - 递归迭代次数
+ * @param {boolean} checkCache - 是否检查缓存
  * @returns {number} CSS类名的优先级
  */
-function getClassPriority(className, iteration = 0) {
-	if (iteration === 0) {
-		className = className.replace(/\[.*]/, '[value]').replace(/^-/, '').replace('!', '');
 
-		if (className.includes(':')) {
-			return getPrefixClassPriority(className);
-		}
-	}
+function getClassPriority(className, iteration = 0, checkCache = true) {
+    if (checkCache && priorityCache.has(className)) {
+        return priorityCache.get(className);
+    }
 
-	// 检查缓存
-	if (priorityCache.has(className)) {
-		return priorityCache.get(className);
-	}
+    if (iteration === 0) {
+        className = className.replace(/\[.*]/, '[value]').replace(/^-/, '').replace('!', '');
 
-	const strippedClassName = stripString(className, '-');
-	let priority = 0;
+        if (className.includes(':')) {
+            return getPrefixClassPriority(className);
+        }
+    }
 
-	if (strippedClassName) {
-		priority = getClassPriority(strippedClassName, iteration + 1);
-	} else {
-		const classPrio = orderList.findIndex(elem => elem === className);
-		if (classPrio !== -1) {
-			priority = classPrio;
-		}
-	}
+    const strippedClassName = stripString(className, '-');
+    let priority = 0;
 
-	// 将结果添加到缓存
-	priorityCache.set(className, priority);
-	return priority;
+    if (strippedClassName) {
+        priority = getClassPriority(strippedClassName, iteration + 1, false);
+    } else {
+        const classPrio = orderList.findIndex(elem => elem === className);
+        if (classPrio !== -1) {
+            priority = classPrio;
+        }
+    }
+
+    // 将结果添加到缓存
+    priorityCache.set(className, priority);
+    return priority;
 }
 
 /**
@@ -551,21 +552,21 @@ function getPrefixClassPriority(className) {
  * @returns {{ isSorted: boolean, orderedClassNames: string[] }} 排序结果对象
  */
 function order(classNames) {
-	classNames = sanitizeNode(classNames);
-	if (classNames.length < 2) {
-		return {
-			isSorted: false,
-			orderedClassNames: classNames,
-		};
-	}
-	const sortedClassNames = Array.from(classNames).sort((a, b) => {
-		const aPrio = getClassPriority(a);
-		const bPrio = getClassPriority(b);
-		return aPrio - bPrio;
-	});
-	return {
-		isSorted: sortedClassNames.join(' ') !== classNames.join(' '),
-		orderedClassNames: sortedClassNames,
-	};
+    classNames = sanitizeNode(classNames);
+    if (classNames.length < 2) {
+        return {
+            isSorted: false,
+            orderedClassNames: classNames,
+        };
+    }
+    classNames.sort((a, b) => {
+        const aPrio = getClassPriority(a);
+        const bPrio = getClassPriority(b);
+        return aPrio - bPrio;
+    });
+    return {
+        isSorted: classNames.join(' ') !== classNames.join(' '),
+        orderedClassNames: classNames,
+    };
 }
 export { order };

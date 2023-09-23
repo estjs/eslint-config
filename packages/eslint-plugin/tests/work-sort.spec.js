@@ -8,7 +8,7 @@ describe('order', () => {
 
 		expect(order(classNames)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": true,
+			  "isSorted": false,
 			  "orderedClassNames": [
 			    "text-red-500",
 			    "font-bold",
@@ -36,7 +36,7 @@ describe('order', () => {
 
 		expect(order(classNames)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": true,
+			  "isSorted": false,
 			  "orderedClassNames": [
 			    "text-red-500",
 			    "font-bold",
@@ -54,8 +54,8 @@ describe('order', () => {
 			  "isSorted": false,
 			  "orderedClassNames": [
 			    "relative",
-			    "h-full",
 			    "w-full",
+			    "h-full",
 			    "bg-white",
 			  ],
 			}
@@ -63,11 +63,11 @@ describe('order', () => {
 		const classNames2 = 'relative  w-full h-full bg-white';
 		expect(order(classNames2)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": true,
+			  "isSorted": false,
 			  "orderedClassNames": [
 			    "relative",
-			    "h-full",
 			    "w-full",
+			    "h-full",
 			    "bg-white",
 			  ],
 			}
@@ -78,7 +78,7 @@ describe('order', () => {
 		const classNames = 'w-full search-list-wrap border-b-1px';
 		expect(order(classNames)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": true,
+			  "isSorted": false,
 			  "orderedClassNames": [
 			    "search-list-wrap",
 			    "w-full",
@@ -91,13 +91,13 @@ describe('order', () => {
 		const classNames = 'sm:p-1 md:m-2 lg:text-white xl:font-200 2xl:bg-white dark:bg-dark';
 		expect(order(classNames)).toMatchInlineSnapshot(`
 			{
-			  "isSorted": true,
+			  "isSorted": false,
 			  "orderedClassNames": [
 			    "sm:p-1",
+			    "md:m-2",
 			    "lg:text-white",
 			    "xl:font-200",
 			    "2xl:bg-white",
-			    "md:m-2",
 			    "dark:bg-dark",
 			  ],
 			}
