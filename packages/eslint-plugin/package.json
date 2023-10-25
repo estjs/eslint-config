@@ -39,8 +39,8 @@
 		"test:watch": "vitest --watch"
 	},
 	"devDependencies": {
-		"eslint": "^8.49.0",
+		"eslint": "^8.52.0",
 		"unbuild": "^2.0.0",
-		"vitest": "^0.34.4"
+		"vitest": "^0.34.6"
 	}
 }
