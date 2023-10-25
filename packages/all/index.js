@@ -6,6 +6,7 @@ const isTSExists = isPackageExists('typescript');
 const isUnoCssExists = isPackageExists('unocss');
 const isTaliWindExists = isPackageExists('tailwindcss');
 const isAtomicExists = isUnoCssExists || isTaliWindExists;
+const isVitestExists = isPackageExists('vitest');
 
 const eslintExtends = [];
 if (isVueExists) {
@@ -23,6 +24,9 @@ if (isVueExists) {
 
 if (isAtomicExists) {
 	eslintExtends.push('plugin:@estjs/recommended');
+}
+if (isVitestExists) {
+	eslintExtends.push('plugin:vitest/recommended');
 }
 module.exports = {
 	extends: eslintExtends,

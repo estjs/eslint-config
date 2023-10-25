@@ -26,9 +26,9 @@ describe('parse class with shorthand', () => {
 			]
 		`);
 
-		expect(resultMX.unused.length).toEqual(0);
-		expect(resultMY.unused.length).toEqual(0);
-		expect(resultMA.unused.length).toEqual(0);
+		expect(resultMX.unused.length).toBe(0);
+		expect(resultMY.unused.length).toBe(0);
+		expect(resultMA.unused.length).toBe(0);
 	});
 
 	it('should work with padding shorthand', () => {
@@ -43,9 +43,9 @@ describe('parse class with shorthand', () => {
 		expect(resultPX.generated).toMatchInlineSnapshot(['p-x-10px']);
 		expect(resultPY.generated).toMatchInlineSnapshot(['p-y-10px']);
 		expect(resultPA.generated).toMatchInlineSnapshot(['p-a-10px']);
-		expect(resultPX.unused.length).toEqual(0);
-		expect(resultPY.unused.length).toEqual(0);
-		expect(resultPA.unused.length).toEqual(0);
+		expect(resultPX.unused.length).toBe(0);
+		expect(resultPY.unused.length).toBe(0);
+		expect(resultPA.unused.length).toBe(0);
 	});
 
 	it('should work with border shorthand', () => {
@@ -73,9 +73,9 @@ describe('parse class with shorthand', () => {
 			]
 		`);
 
-		expect(resultBX.unused.length).toEqual(0);
-		expect(resultBY.unused.length).toEqual(0);
-		expect(resultBA.unused.length).toEqual(0);
+		expect(resultBX.unused.length).toBe(0);
+		expect(resultBY.unused.length).toBe(0);
+		expect(resultBA.unused.length).toBe(0);
 	});
 	it('should work with borderRadio shorthand', () => {
 		const classBX = ['rd-l-10px', 'rd-r-10px'];
@@ -102,8 +102,8 @@ describe('parse class with shorthand', () => {
 			]
 		`);
 
-		expect(resultBX.unused.length).toEqual(0);
-		expect(resultBY.unused.length).toEqual(0);
-		expect(resultBA.unused.length).toEqual(0);
+		expect(resultBX.unused.length).toBe(0);
+		expect(resultBY.unused.length).toBe(0);
+		expect(resultBA.unused.length).toBe(0);
 	});
 });
