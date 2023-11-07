@@ -402,7 +402,7 @@ module.exports = {
 		'jsdoc/require-returns': 'off',
 		'jsdoc/require-returns-type': 'off',
 		'jsdoc/require-throws': 'off',
-    "jsdoc/require-returns-description":'off',
+		'jsdoc/require-returns-description': 'off',
 
 		// prettier
 		'prettier/prettier': [
