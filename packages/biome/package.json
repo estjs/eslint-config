@@ -1,5 +1,5 @@
 {
-	"name": "@estjs/eslint-plugin",
+	"name": "eslint-plugin-biome",
 	"type": "module",
 	"version": "0.8.21",
 	"description": "",
