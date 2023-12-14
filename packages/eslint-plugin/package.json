@@ -38,6 +38,9 @@
 		"test": "vitest",
 		"test:watch": "vitest --watch"
 	},
+	"dependencies": {
+		"eslint-plugin-biome": "workspaces:*"
+	},
 	"devDependencies": {
 		"eslint": "^8.54.0",
 		"unbuild": "^2.0.0",
