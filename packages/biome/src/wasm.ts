@@ -1,5 +1,5 @@
 export type WasmNodejs = typeof import('@biomejs/wasm-nodejs');
-export async function loadModule(): Promise<WasmNodejs {
+export async function loadModule(): Promise<WasmNodejs> {
 	const modulePromise = import('@biomejs/wasm-nodejs');
 
 	const module = await modulePromise;
