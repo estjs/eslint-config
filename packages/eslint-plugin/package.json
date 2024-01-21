@@ -40,11 +40,11 @@
 	},
 	"dependencies": {
 		"eslint-plugin-biome": "workspace:*",
-		"synckit": "^0.8.5"
+		"synckit": "^0.9.0"
 	},
 	"devDependencies": {
 		"eslint": "^8.56.0",
 		"unbuild": "^2.0.0",
-		"vitest": "^1.0.4"
+		"vitest": "^1.2.1"
 	}
 }

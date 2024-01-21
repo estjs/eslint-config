@@ -18,9 +18,9 @@
 	"dependencies": {
 		"@estjs/eslint-config-basic": "workspace:*",
 		"@estjs/eslint-config-ts": "workspace:*",
-		"eslint-plugin-vue": "^9.19.2"
+		"eslint-plugin-vue": "^9.20.1"
 	},
 	"devDependencies": {
-		"eslint": "8.54.0"
+		"eslint": "8.56.0"
 	}
 }

@@ -13,10 +13,10 @@
 	},
 	"devDependencies": {
 		"@estjs/eslint-config": "*",
-		"bumpp": "^9.2.0",
-		"eslint": "^8.54.0",
-		"prettier": "^3.1.0",
+		"bumpp": "^9.3.0",
+		"eslint": "^8.56.0",
+		"prettier": "^3.2.4",
 		"rimraf": "^5.0.5",
-		"typescript": "^5.3.2"
+		"typescript": "^5.3.3"
 	}
 }
