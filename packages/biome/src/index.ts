@@ -1,4 +1,4 @@
-import BiomeConfig from '../../../../biome.json';
+import BiomeConfig from './biome.json';
 import { Biome } from './biome';
 
 let biome;

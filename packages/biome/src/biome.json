@@ -46,7 +46,12 @@
 		"enabled": true,
 		"rules": {
 			"recommended": true,
-			"useLiteralKeys": false,
+			"complexity": {
+			"useLiteralKeys": "off"
+			},
+			"suspicious": {
+        "noImplicitAnyLet": "off"
+      },
 			"style": {
 				"noParameterAssign": "off",
 				"noUselessElse": "off"
