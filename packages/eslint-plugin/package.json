@@ -1,7 +1,7 @@
 {
 	"name": "@estjs/eslint-plugin",
 	"type": "module",
-	"version": "0.8.31",
+	"version": "0.8.32",
 	"description": "",
 	"author": "jiangxd <jiangxd2016@gmail.com>",
 	"license": "MIT",
@@ -38,12 +38,9 @@
 		"test": "vitest",
 		"test:watch": "vitest --watch"
 	},
-	"dependencies": {
-		"eslint-plugin-biome": "workspaces:*"
-	},
 	"devDependencies": {
-		"eslint": "^8.54.0",
+		"eslint": "^8.56.0",
 		"unbuild": "^2.0.0",
-		"vitest": "^0.34.6"
+		"vitest": "^1.0.4"
 	}
 }

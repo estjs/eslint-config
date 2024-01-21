@@ -1,6 +1,6 @@
 {
 	"name": "@estjs/eslint-config-monorepo",
-	"version": "0.8.31",
+	"version": "0.8.32",
 	"private": true,
 	"author": "estjs",
 	"license": "MIT",
@@ -13,9 +13,9 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.4.1",
 		"@estjs/eslint-config": "*",
-		"bumpp": "^9.2.0",
-		"eslint": "^8.54.0",
-		"prettier": "^3.1.0",
-		"typescript": "^5.3.2"
+		"bumpp": "^9.2.1",
+		"eslint": "^8.56.0",
+		"prettier": "^3.1.1",
+		"typescript": "^5.3.3"
 	}
 }
