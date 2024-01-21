@@ -15,7 +15,8 @@
 	"keywords": [
 		"eslint-plugin",
 		"eslint",
-		"atomic"
+		"biome",
+		"eslint-plugin-biome"
 	],
 	"sideEffects": false,
 	"exports": {
@@ -33,13 +34,20 @@
 		"node": ">=14"
 	},
 	"scripts": {
+		"dev": "tsx ./src/index.ts",
 		"build": "unbuild",
 		"lint": "eslint ./src",
 		"test": "vitest",
 		"test:watch": "vitest --watch"
 	},
+	"dependencies": {
+		"@biomejs/biome": "^1.5.2",
+		"@biomejs/wasm-nodejs": "^1.5.2",
+		"synckit": "^0.8.5"
+	},
 	"devDependencies": {
-		"eslint": "^8.56.0",
+		"eslint": "^8.54.0",
+		"tsx": "^3.14.0",
 		"unbuild": "^2.0.0",
 		"vitest": "^1.0.4"
 	}

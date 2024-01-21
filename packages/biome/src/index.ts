@@ -1,6 +1,7 @@
-import { CLASS_FIELDS } from '../../../biome/src/utils/shared';
-import { order } from '../../../biome/src/utils/atomicOrder';
+import BiomeConfig from '../../../../biome.json';
+import { Biome } from './biome';
 
+let biome;
 export default {
 	name: 'biome',
 	meta: {
@@ -11,24 +12,29 @@ export default {
 			recommended: 'warn',
 		},
 		messages: {
-			'invalid-order': '',
+			'invalid-biome': 'this content is not formatted with Biome',
 		},
 		schema: [],
 	},
 	defaultOptions: [],
-	create(context) {
+	async create(context) {
+		if (!biome) {
+			biome = await Biome.create();
+			biome.applyConfiguration(BiomeConfig);
+		}
 		function checkLiteral(node) {
 			if (typeof node.value !== 'string') {
 				return;
 			}
 			const input = node.value;
-			const { isSorted, orderedClassNames } = order(input);
-			if (isSorted) {
+
+			const formatted = biome.formatContent(input);
+			if (formatted !== input) {
 				context.report({
 					node,
-					messageId: 'invalid-order',
+					messageId: 'invalid-biome',
 					fix(fixer) {
-						return fixer.replaceText(node, `'${orderedClassNames.join(' ')}'`);
+						return fixer.replaceText(node, `${formatted}`);
 					},
 				});
 			}
@@ -36,14 +42,7 @@ export default {
 
 		const scriptVisitor = {
 			JSXAttribute(node) {
-				if (
-					typeof node.name.name === 'string' &&
-					CLASS_FIELDS.test(node.name.name.toLowerCase()) &&
-					node.value &&
-					node.value.type === 'Literal'
-				) {
-					checkLiteral(node.value);
-				}
+				checkLiteral(node.value);
 			},
 		};
 
