@@ -54,7 +54,7 @@ module.exports = {
 			parser: 'jsonc-eslint-parser',
 			rules: {
 				'jsonc/array-bracket-spacing': ['warn', 'never'],
-				'jsonc/comma-dangle': ['warn', 'never'],
+				'jsonc/comma-dangle': ['off', 'never'],
 				'jsonc/comma-style': ['warn', 'last'],
 				'jsonc/indent': 'off',
 				'jsonc/key-spacing': ['warn', { beforeColon: false, afterColon: true }],
