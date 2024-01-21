@@ -15,7 +15,8 @@
 	"keywords": [
 		"eslint-plugin",
 		"eslint",
-		"atomic"
+		"biome",
+		"eslint-plugin-biome"
 	],
 	"sideEffects": false,
 	"exports": {
@@ -37,6 +38,11 @@
 		"lint": "eslint ./src",
 		"test": "vitest",
 		"test:watch": "vitest --watch"
+	},
+	"dependencies": {
+		"@biomejs/biome": "latest",
+		"@biomejs/js-api": "latest",
+		"synckit": "^0.8.5"
 	},
 	"devDependencies": {
 		"eslint": "^8.54.0",
