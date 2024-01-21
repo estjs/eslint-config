@@ -38,7 +38,8 @@
 		"test": "vitest",
 		"test:watch": "vitest --watch"
 	},
-	"dependencies":{
+	"dependencies": {
+		"eslint-plugin-biome": "workspace:*",
 		"synckit": "^0.8.5"
 	},
 	"devDependencies": {
