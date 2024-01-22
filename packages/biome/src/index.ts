@@ -39,7 +39,7 @@ export default {
 		schema: [],
 	},
 	defaultOptions: [],
-	async create(context) {
+	 create(context) {
 
 		const fileInfoOptions =
 		(context.options[1] && context.options[1].fileInfoOptions) || {};
@@ -51,15 +51,18 @@ export default {
 	const onDiskFilepath =
 		context.physicalFilename ?? context.getPhysicalFilename();
 	const source = sourceCode.text;
-		if (!biome) {
-			biome = await Biome.create();
-			biome.applyConfiguration(BiomeConfig);
-		}
 
 		return {
-			Program() {
+			async Program() {
+				if (!biome) {
+					biome = await Biome.create();
+					biome.applyConfiguration(BiomeConfig);
+				}
 				const formatted = biome.formatContent(source);
 
+				if (formatted == null) {
+					return;
+				}
 				if (source !== formatted) {
 					const differences = generateDifferences(source, formatted);
 
