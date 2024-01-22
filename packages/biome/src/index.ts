@@ -2,6 +2,7 @@ import BiomeConfig from './biome.json';
 import { Biome } from './biome';
 import { generateDifferences, showInvisibles } from './helpers';
 
+const { INSERT, DELETE, REPLACE } = generateDifferences;
 function reportDifference(context, difference) {
 	const { operation, offset, deleteText = '', insertText = '' } = difference;
 	const range = /** @type {Range} */ ([offset, offset + deleteText.length]);
@@ -34,7 +35,9 @@ export default {
 			recommended: 'warn',
 		},
 		messages: {
-			'invalid-biome': 'this content is not content with Biome',
+			[INSERT]: 'Insert `{{ insertText }}`',
+			[DELETE]: 'Delete `{{ deleteText }}`',
+			[REPLACE]: 'Replace `{{ deleteText }}` with `{{ insertText }}`',
 		},
 		schema: [],
 	},
@@ -46,7 +49,7 @@ export default {
 
 		const sourceCode = context.sourceCode ?? context.getSourceCode();
 
-		const filepath = context.filename ?? context.getFilename();
+		const filePath = context.filename ?? context.getFilename();
 
 		const onDiskFilepath =
 			context.physicalFilename ?? context.getPhysicalFilename();
@@ -60,7 +63,7 @@ export default {
 				}
 				const { content } = biome.formatContent(source, {
 					...fileInfoOptions,
-					filepath,
+					filePath,
 					onDiskFilepath,
 				});
 
