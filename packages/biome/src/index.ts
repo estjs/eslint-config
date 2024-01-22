@@ -1,5 +1,27 @@
 import BiomeConfig from './biome.json';
 import { Biome } from './biome';
+import { generateDifferences, showInvisibles } from './helpers';
+
+function reportDifference(context, difference) {
+  const { operation, offset, deleteText = '', insertText = '' } = difference;
+  const range = /** @type {Range} */ ([offset, offset + deleteText.length]);
+  // `context.getSourceCode()` was deprecated in ESLint v8.40.0 and replaced
+  // with the `sourceCode` property.
+  // TODO: Only use property when our eslint peerDependency is >=8.40.0.
+  const [start, end] = range.map(index =>
+    (context.sourceCode ?? context.getSourceCode()).getLocFromIndex(index),
+  );
+
+  context.report({
+    messageId: operation,
+    data: {
+      deleteText: showInvisibles(deleteText),
+      insertText: showInvisibles(insertText),
+    },
+    loc: { start, end },
+    fix: fixer => fixer.replaceTextRange(range, insertText),
+  });
+}
 
 let biome;
 export default {
@@ -18,50 +40,34 @@ export default {
 	},
 	defaultOptions: [],
 	async create(context) {
+
+		const fileInfoOptions =
+		(context.options[1] && context.options[1].fileInfoOptions) || {};
+
+	const sourceCode = context.sourceCode ?? context.getSourceCode();
+
+	const filepath = context.filename ?? context.getFilename();
+
+	const onDiskFilepath =
+		context.physicalFilename ?? context.getPhysicalFilename();
+	const source = sourceCode.text;
 		if (!biome) {
 			biome = await Biome.create();
 			biome.applyConfiguration(BiomeConfig);
 		}
-		function checkLiteral(node) {
-			if (typeof node.value !== 'string') {
-				return;
-			}
-			const input = node.value;
 
-			const formatted = biome.formatContent(input);
-			if (formatted !== input) {
-				context.report({
-					node,
-					messageId: 'invalid-biome',
-					fix(fixer) {
-						return fixer.replaceText(node, `${formatted}`);
-					},
-				});
-			}
-		}
+		return {
+			Program() {
+				const formatted = biome.formatContent(source);
 
-		const scriptVisitor = {
-			JSXAttribute(node) {
-				checkLiteral(node.value);
-			},
-		};
+				if (source !== formatted) {
+					const differences = generateDifferences(source, formatted);
 
-		const templateBodyVisitor = {
-			VAttribute(node) {
-				if (node.key.name === 'class' && node.value && node.value.type === 'VLiteral') {
-					checkLiteral(node.value);
+					for (const difference of differences) {
+						reportDifference(context, difference);
+					}
 				}
 			},
 		};
-
-		if (
-			context.parserServices == null ||
-			context.parserServices.defineTemplateBodyVisitor == null
-		) {
-			return scriptVisitor;
-		} else {
-			// For Vue
-			return context.parserServices?.defineTemplateBodyVisitor(templateBodyVisitor, scriptVisitor);
-		}
 	},
 };
