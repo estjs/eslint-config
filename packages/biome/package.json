@@ -1,7 +1,7 @@
 {
 	"name": "eslint-plugin-biome",
 	"type": "module",
-	"version": "0.9.1-beta.7",
+	"version": "0.9.1-beta.8",
 	"description": "",
 	"author": "jiangxd <jiangxd2016@gmail.com>",
 	"license": "MIT",
@@ -43,6 +43,7 @@
 	"dependencies": {
 		"@biomejs/biome": "^1.5.2",
 		"@biomejs/wasm-nodejs": "^1.5.2",
+		"fast-diff": "^1.3.0",
 		"synckit": "^0.9.0"
 	},
 	"devDependencies": {
