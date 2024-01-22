@@ -1,7 +1,7 @@
 {
 	"name": "eslint-plugin-biome",
 	"type": "module",
-	"version": "0.9.1-beta.11",
+	"version": "0.9.1-beta.12",
 	"description": "",
 	"author": "jiangxd <jiangxd2016@gmail.com>",
 	"license": "MIT",
