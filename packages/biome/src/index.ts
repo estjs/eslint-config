@@ -61,11 +61,32 @@ export default {
 					biome = await Biome.create();
 					biome.applyConfiguration(BiomeConfig);
 				}
-				const { content } = biome.formatContent(source, {
-					...fileInfoOptions,
-					filePath,
-					onDiskFilepath,
-				});
+				let content;
+				try {
+					const fromated = biome.formatContent(source, {
+						...fileInfoOptions,
+						filePath,
+						onDiskFilepath,
+					});
+
+					content = fromated.content;
+
+				} catch (err) {
+					if (!(err instanceof SyntaxError)) {
+						throw err;
+					}
+
+					const message = 'Parsing error: ' + err.message;
+
+					const error =
+                /** @type {SyntaxError & {codeFrame: string; loc: SourceLocation}} */ (
+							err
+						);
+
+					context.report({ message, loc: error });
+
+					return;
+				}
 
 				if (content == null) {
 					return;
