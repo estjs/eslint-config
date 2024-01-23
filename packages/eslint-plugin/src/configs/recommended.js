@@ -5,6 +5,5 @@ export default {
 		// '@estjs/unocss-order': 'off',
 		'@estjs/atomic-shorthand': 'warn',
 		// '@estjs/unocss-shorthand': 'off',
-		'@estjs/biome': 'warn',
 	},
 };

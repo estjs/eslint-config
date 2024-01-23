@@ -1,7 +1,5 @@
 # @estjs/eslint-config
 
-Forked from [antfu/eslint-config](https://github.com/antfu/eslint-config)
-
 ## Usage
 
 ```bash

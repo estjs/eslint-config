@@ -1,22 +1,21 @@
 {
 	"name": "@estjs/eslint-config-monorepo",
-	"version": "0.9.1-beta.15",
+	"version": "0.9.0",
 	"private": true,
 	"author": "estjs",
 	"license": "MIT",
 	"scripts": {
 		"build": "pnpm -r build",
 		"test": "pnpm -r test",
-		"clean": "rimraf ./packages/**/dist & rimraf ./packages/**/node_modules rimraf node_modules rimraf pnpm-lock.yaml",
 		"lint": "eslint . --ext .js,.ts,.json,.vue,.md --fix",
 		"release": "pnpm -r run build && bumpp package.json packages/*/package.json --no-git-checks --commit --push --tag && pnpm -r publish --access public"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "1.4.1",
 		"@estjs/eslint-config": "*",
-		"bumpp": "^9.3.0",
+		"bumpp": "^9.2.1",
 		"eslint": "^8.56.0",
-		"prettier": "^3.2.4",
-		"rimraf": "^5.0.5",
+		"prettier": "^3.1.1",
 		"typescript": "^5.3.3"
 	}
 }

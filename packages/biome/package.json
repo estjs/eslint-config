@@ -1,7 +1,7 @@
 {
 	"name": "eslint-plugin-biome",
 	"type": "module",
-	"version": "0.9.1-beta.15",
+	"version": "0.9.0",
 	"description": "",
 	"author": "jiangxd <jiangxd2016@gmail.com>",
 	"license": "MIT",
@@ -15,8 +15,7 @@
 	"keywords": [
 		"eslint-plugin",
 		"eslint",
-		"biome",
-		"eslint-plugin-biome"
+		"atomic"
 	],
 	"sideEffects": false,
 	"exports": {
@@ -34,22 +33,14 @@
 		"node": ">=14"
 	},
 	"scripts": {
-		"dev": "tsx ./src/index.ts",
 		"build": "unbuild",
 		"lint": "eslint ./src",
 		"test": "vitest",
 		"test:watch": "vitest --watch"
 	},
-	"dependencies": {
-		"@biomejs/biome": "^1.5.2",
-		"@biomejs/wasm-nodejs": "^1.5.2",
-		"fast-diff": "^1.3.0",
-		"synckit": "^0.9.0"
-	},
 	"devDependencies": {
 		"eslint": "^8.56.0",
-		"tsx": "^4.7.0",
 		"unbuild": "^2.0.0",
-		"vitest": "^1.2.1"
+		"vitest": "^1.0.4"
 	}
 }
