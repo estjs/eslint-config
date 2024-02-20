@@ -20,16 +20,16 @@ Require Node.js >= 16.14.
 import { estjs } from '@estjs/eslint-config';
 
 export default estjs(
-  [
-    /* your custom config */
-  ],
-  // Features: it'll detect installed dependency and enable necessary features automatically
-  {
-    biome: true,
-    markdown: true,
-    vue: true, // auto detection
-    unocss: false, // auto detection
-  },
+	[
+		/* your custom config */
+	],
+	// Features: it'll detect installed dependency and enable necessary features automatically
+	{
+		biome: true,
+		markdown: true,
+		vue: true, // auto detection
+		unocss: false, // auto detection
+	},
 );
 ```
 
@@ -39,6 +39,6 @@ export default estjs(
 
 ```jsonc
 {
-  "eslint.experimental.useFlatConfig": true
+	"eslint.experimental.useFlatConfig": true
 }
 ```

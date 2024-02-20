@@ -52,7 +52,7 @@ export const react = [
 			'react/no-unescaped-entities': 'error',
 			'react/no-unknown-property': 'error',
 			'react/no-unsafe': 'off',
-			'react/prop-types': 'error',
+			'react/prop-types': 'off',
 			'react/react-in-jsx-scope': 'off',
 			'react/require-render-return': 'error',
 
