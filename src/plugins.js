@@ -1,13 +1,9 @@
 
 import * as _pluginComments from 'eslint-plugin-eslint-comments';
-
 import * as _pluginMarkdown from 'eslint-plugin-markdown';
 import * as _pluginTypeScript from '@typescript-eslint/eslint-plugin';
-
 import * as _pluginUnicorn from 'eslint-plugin-unicorn';
-
 import * as _pluginVue from 'eslint-plugin-vue';
-
 import * as _pluginBiome from 'eslint-plugin-biome';
 import * as pluginImport_1 from 'eslint-plugin-i';
 import * as pluginJsonc_1 from 'eslint-plugin-jsonc';
@@ -22,12 +18,9 @@ import _jsDocPlugin from 'eslint-plugin-jsdoc';
 // react
 
 import _pluginReact from 'eslint-plugin-react';
-
 import _pluginReactHooks from 'eslint-plugin-react-hooks';
-
 import _pluginReactRefresh from 'eslint-plugin-react-refresh';
 import _pluginVitest from 'eslint-plugin-vitest';
-
 import _pluginNotOnlyTests from 'eslint-plugin-no-only-tests';
 import * as _pluginUnocss from '@unocss/eslint-plugin';
 
