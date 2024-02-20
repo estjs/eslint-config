@@ -1,7 +1,7 @@
 {
   "name": "@estjs/eslint-config",
   "type": "module",
-  "version": "0.9.2-beta.0",
+  "version": "0.9.2-beta.1",
   "packageManager": "pnpm@7.33.7",
   "description": "",
   "author": "jiangxd <jiangxd2016@gmail.com>",
