@@ -1,4 +1,3 @@
-import { isPackageExists } from 'local-pkg';
 import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
 import {
 	biome,
@@ -38,9 +37,6 @@ export const presetBasic = [...presetJavaScript, ...sortKeys];
 
 export const presetAll = [...presetBasic, ...presetLangsExtensions, ...vue, ...unocss, ...biome];
 export { presetBasic as basic, presetAll as all };
-export const isReactExists = isPackageExists('react');
-export const isTSExists = isPackageExists('typescript');
-export const isTestExits = isPackageExists('jest') || isPackageExists('vitest');
 
 /**
  * Generates an array of configurations based on the provided options.

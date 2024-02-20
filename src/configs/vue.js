@@ -1,8 +1,7 @@
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import { GLOB_VUE } from '../globs';
 import { parserTypeScript, parserVue, pluginVue } from '../plugins';
-import { isVue3 } from '../env';
-import { isTSExists } from '../presets';
+import { hasTypeScript, isVue3 } from '../env';
 import { typescript } from './typescript';
 
 export const reactivityTransform = [
@@ -92,7 +91,7 @@ export const vue = [
 					jsx: true,
 				},
 				extraFileExtensions: ['.vue'],
-				parser: isTSExists ? parserTypeScript : null,
+				parser: hasTypeScript ? parserTypeScript : null,
 				sourceType: 'module',
 			},
 		},
