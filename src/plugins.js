@@ -22,6 +22,8 @@ import _pluginReactRefresh from 'eslint-plugin-react-refresh';
 import _pluginVitest from 'eslint-plugin-vitest';
 import _pluginNotOnlyTests from 'eslint-plugin-no-only-tests';
 import * as _pluginUnocss from '@unocss/eslint-plugin';
+import * as _pluginNode  from 'eslint-plugin-n';
+
 
 function interopDefault(m) {
 	return m.default || m;
@@ -43,7 +45,7 @@ export { parserYml_1 as parserYml };
 export { parserJsonc_1 as parserJsonc };
 export const jsDocPlugin = interopDefault(_jsDocPlugin);
 
-export { default as pluginNode } from 'eslint-plugin-n';
+export const pluginNode  = interopDefault(_pluginNode)
 export const pluginReact = interopDefault(_pluginReact);
 export const pluginReactHooks = interopDefault(_pluginReactHooks);
 export const pluginReactRefresh = interopDefault(_pluginReactRefresh);
