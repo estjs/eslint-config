@@ -23,16 +23,6 @@ function getOverrides(overrides, key) {
 	return overrides?.[key] || {};
 }
 
-const defaultOptions = {
-	vue: hasVue,
-	biome: true,
-	markdown: true,
-	unocss: hasUnocss,
-	typescript: hasTypeScript,
-	react: hasReact,
-	test: hasTest,
-};
-
 /**
  * Generate the estjs configuration based on the provided options and overrides.
  *
@@ -40,17 +30,18 @@ const defaultOptions = {
  * @param {object} overrides - The overrides for the default options
  * @return {Array} The estjs configuration based on the provided options and overrides
  */
-export function estjs(options = defaultOptions, overrides = {}) {
-	const {
-		vue: enableVue,
-		biome: enableBiome,
-		markdown: enableMarkdown,
-		unocss: enableUnocss,
-		typescript: enableTS,
-		react: enableReact,
-		test: enableTest,
-	} = options;
-
+export function estjs(
+	overrides = {},
+	{
+		vue: enableVue = hasVue,
+		biome: enableBiome = true,
+		markdown: enableMarkdown = true,
+		unocss: enableUnocss = hasUnocss,
+		typescript: enableTS = hasTypeScript,
+		react: enableReact = hasReact,
+		test: enableTest = hasTest,
+	} = {},
+) {
 	const getOverride = key => getOverrides(overrides, key);
 
 	const configs = [
