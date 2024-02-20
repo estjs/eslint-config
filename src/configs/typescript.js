@@ -50,7 +50,7 @@ export function typescript(overrides = {}) {
 				'eslint-comments/no-unlimited-disable': 'off',
 				'import/no-duplicates': 'off',
 				'unused-imports/no-unused-vars': 'off',
-        ...overrides,
+				...overrides,
 			},
 		},
 		{

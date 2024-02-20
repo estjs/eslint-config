@@ -14,9 +14,7 @@
 	},
 	"author": "jiangxd <jiangxd2016@gmail.com>",
 	"funding": "https://github.com/sponsors/estjs",
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"main": "./dist/index.js",
 	"module": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -29,10 +27,7 @@
 	},
 	"typesVersions": {
 		"*": {
-			"*": [
-				"./dist/*",
-				"./dist/index.d.ts"
-			]
+			"*": ["./dist/*", "./dist/index.d.ts"]
 		}
 	},
 	"sideEffects": false,
