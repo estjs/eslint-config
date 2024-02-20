@@ -13,5 +13,5 @@ export * from './unocss';
 export * from './vue';
 export * from './yml';
 export * from './react';
-export * from "./jsdoc"
-export * from "./test"
+export * from './jsdoc';
+export * from './test';

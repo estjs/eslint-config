@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["bumpp", "pnpm", "vitest", "estjs", "unocss"]
+	"cSpell.words": ["bumpp", "pnpm", "vitest", "estjs", "unocss"],
+	"eslint.experimental.useFlatConfig": true
 }

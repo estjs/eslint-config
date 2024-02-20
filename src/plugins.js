@@ -1,4 +1,3 @@
-
 import * as _pluginComments from 'eslint-plugin-eslint-comments';
 import * as _pluginMarkdown from 'eslint-plugin-markdown';
 import * as _pluginTypeScript from '@typescript-eslint/eslint-plugin';
@@ -25,7 +24,7 @@ import _pluginNotOnlyTests from 'eslint-plugin-no-only-tests';
 import * as _pluginUnocss from '@unocss/eslint-plugin';
 
 function interopDefault(m) {
-    return m.default || m;
+	return m.default || m;
 }
 export const pluginComments = interopDefault(_pluginComments);
 export const pluginMarkdown = interopDefault(_pluginMarkdown);

@@ -1,8 +1,34 @@
 import { isPackageExists } from 'local-pkg';
-import { hasVue, hasunocss } from './env';
-import { biome, comments, ignores, imports, javascript, jsdoc, jsonc, markdown, react, sortKeys, sortPackageJson, sortTsconfig, test, typescript, unicorn,unocss,vue,yml } from './configs';
+import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
+import {
+	biome,
+	comments,
+	ignores,
+	imports,
+	javascript,
+	jsdoc,
+	jsonc,
+	markdown,
+	react,
+	sortKeys,
+	sortPackageJson,
+	sortTsconfig,
+	test,
+	typescript,
+	unicorn,
+	unocss,
+	vue,
+	yml,
+} from './configs';
 /** Ignore common files and include javascript support */
-export const presetJavaScript = [...ignores, ...javascript, ...comments, ...imports, ...unicorn,...jsdoc];
+export const presetJavaScript = [
+	...ignores,
+	...javascript,
+	...comments,
+	...imports,
+	...unicorn,
+	...jsdoc,
+];
 /** Includes basic json(c) file support and sorting json keys */
 export const presetJsonc = [...jsonc, ...sortPackageJson, ...sortTsconfig];
 /** Includes markdown, yaml + `presetJsonc` support */
@@ -14,7 +40,7 @@ export const presetAll = [...presetBasic, ...presetLangsExtensions, ...vue, ...u
 export { presetBasic as basic, presetAll as all };
 export const isReactExists = isPackageExists('react');
 export const isTSExists = isPackageExists('typescript');
-export const isTestExits = isPackageExists('jest')|| isPackageExists('vitest');
+export const isTestExits = isPackageExists('jest') || isPackageExists('vitest');
 
 /**
  * Generates an array of configurations based on the provided options.
@@ -30,31 +56,42 @@ export const isTestExits = isPackageExists('jest')|| isPackageExists('vitest');
  * @param {boolean} options.test - flag to enable Test configuration
  * @return {Array} an array of configurations
  */
-export function estjs(config = [], { vue: enableVue = hasVue, biome: enableBiome = true, markdown: enableMarkdown = true, unocss: enableUnocss = hasunocss, typescript: enableTS = isTSExists, react: enableReact = isReactExists, test:enableTest=isTestExits} = {}) {
-    const configs = [...presetBasic, ...yml, ...presetJsonc];
-    if (enableVue) {
-        configs.push(...vue);
-    }
-    if (enableMarkdown) {
-        configs.push(...markdown);
-    }
-    if (enableUnocss) {
-        configs.push(...unocss);
-    }
-    if (enableBiome) {
-        configs.push(...biome);
-    }
-    if (enableReact) {
-        configs.push(...react);
-    }
-    if (enableTS) {
-        configs.push(...typescript);
-    }
-    if(enableTest){
-        configs.push(...test)
-    }
-    if (Object.keys(config).length > 0) {
-        configs.push(...(Array.isArray(config) ? config : [config]));
-    }
-    return configs;
+export function estjs(
+	config = [],
+	{
+		vue: enableVue = hasVue,
+		biome: enableBiome = true,
+		markdown: enableMarkdown = true,
+		unocss: enableUnocss = hasUnocss,
+		typescript: enableTS = hasTypeScript,
+		react: enableReact = hasReact,
+		test: enableTest = hasTest,
+	} = {},
+) {
+	const configs = [...presetBasic, ...yml, ...presetJsonc];
+	if (enableVue) {
+		configs.push(...vue);
+	}
+	if (enableMarkdown) {
+		configs.push(...markdown);
+	}
+	if (enableUnocss) {
+		configs.push(...unocss);
+	}
+	if (enableBiome) {
+		configs.push(...biome);
+	}
+	if (enableReact) {
+		configs.push(...react);
+	}
+	if (enableTS) {
+		configs.push(...typescript);
+	}
+	if (enableTest) {
+		configs.push(...test);
+	}
+	if (Object.keys(config).length > 0) {
+		configs.push(...(Array.isArray(config) ? config : [config]));
+	}
+	return configs;
 }
