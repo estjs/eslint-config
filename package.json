@@ -51,7 +51,7 @@
     "typecheck": "tsc  --noEmit",
     "coverage": "vitest run --coverage",
     "prepublishOnly": "pnpm run build",
-    "release": "bumpp --no-git-checks --commit --tag --push && pnpm publish --access public"
+    "release": "bumpp --commit --tag --push && pnpm publish --no-git-checks --access public"
   },
   "peerDependencies": {
     "eslint": ">=8.40.0"
