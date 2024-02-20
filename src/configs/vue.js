@@ -81,37 +81,40 @@ const vue2Rules = {
 	...pluginVue.configs.recommended.rules,
 };
 
-export const vue = [
-	{
-		files: [GLOB_VUE],
-		languageOptions: {
-			parser: parserVue,
-			parserOptions: {
-				ecmaFeatures: {
-					jsx: true,
+export function vue(overrides = {}) {
+	return [
+		{
+			files: [GLOB_VUE],
+			languageOptions: {
+				parser: parserVue,
+				parserOptions: {
+					ecmaFeatures: {
+						jsx: true,
+					},
+					extraFileExtensions: ['.vue'],
+					parser: hasTypeScript ? parserTypeScript : null,
+					sourceType: 'module',
 				},
-				extraFileExtensions: ['.vue'],
-				parser: hasTypeScript ? parserTypeScript : null,
-				sourceType: 'module',
+			},
+			plugins: {
+				'@typescript-eslint': tsPlugin,
+				'vue': pluginVue,
+			},
+			processor: pluginVue.processors['.vue'],
+			rules: {
+				...typescript[0].rules,
 			},
 		},
-		plugins: {
-			'@typescript-eslint': tsPlugin,
-			'vue': pluginVue,
+		{
+			plugins: {
+				vue: pluginVue,
+			},
+			rules: {
+				...(isVue3 ? vue3Rules : vue2Rules),
+				...vueCustomRules,
+				...overrides,
+			},
 		},
-		processor: pluginVue.processors['.vue'],
-		rules: {
-			...typescript[0].rules,
-		},
-	},
-	{
-		plugins: {
-			vue: pluginVue,
-		},
-		rules: {
-			...(isVue3 ? vue3Rules : vue2Rules),
-			...vueCustomRules,
-		},
-	},
-	...reactivityTransform,
-];
+		...reactivityTransform,
+	];
+}

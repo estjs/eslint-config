@@ -17,77 +17,55 @@ import {
 	unicorn,
 	unocss,
 	vue,
-	yml,
 } from './configs';
-/** Ignore common files and include javascript support */
-export const presetJavaScript = [
-	...ignores,
-	...javascript,
-	...comments,
-	...imports,
-	...unicorn,
-	...jsdoc,
-];
-/** Includes basic json(c) file support and sorting json keys */
-export const presetJsonc = [...jsonc, ...sortPackageJson, ...sortTsconfig];
-/** Includes markdown, yaml + `presetJsonc` support */
-export const presetLangsExtensions = [...markdown, ...yml, ...presetJsonc];
-/** Includes `presetJavaScript` and typescript support */
-export const presetBasic = [...presetJavaScript, ...sortKeys];
 
-export const presetAll = [...presetBasic, ...presetLangsExtensions, ...vue, ...unocss, ...biome];
-export { presetBasic as basic, presetAll as all };
+function getOverrides(overrides, key) {
+	return overrides?.[key] || {};
+}
 
-/**
- * Generates an array of configurations based on the provided options.
- *
- * @param {Array} config - an array of configurations
- * @param {object} options - an object containing various enable flags for different configurations
- * @param {boolean} options.vue - flag to enable Vue configuration
- * @param {boolean} options.biome - flag to enable Biome configuration
- * @param {boolean} options.markdown - flag to enable Markdown configuration
- * @param {boolean} options.unocss - flag to enable Unocss configuration
- * @param {boolean} options.typescript - flag to enable TypeScript configuration
- * @param {boolean} options.react - flag to enable React configuration
- * @param {boolean} options.test - flag to enable Test configuration
- * @return {Array} an array of configurations
- */
-export function estjs(
-	config = [],
-	{
-		vue: enableVue = hasVue,
-		biome: enableBiome = true,
-		markdown: enableMarkdown = true,
-		unocss: enableUnocss = hasUnocss,
-		typescript: enableTS = hasTypeScript,
-		react: enableReact = hasReact,
-		test: enableTest = hasTest,
-	} = {},
-) {
-	const configs = [...presetBasic, ...yml, ...presetJsonc];
-	if (enableVue) {
-		configs.push(...vue);
-	}
-	if (enableMarkdown) {
-		configs.push(...markdown);
-	}
-	if (enableUnocss) {
-		configs.push(...unocss);
-	}
-	if (enableBiome) {
-		configs.push(...biome);
-	}
-	if (enableReact) {
-		configs.push(...react);
-	}
-	if (enableTS) {
-		configs.push(...typescript);
-	}
-	if (enableTest) {
-		configs.push(...test);
-	}
-	if (Object.keys(config).length > 0) {
-		configs.push(...(Array.isArray(config) ? config : [config]));
-	}
+const defaultOptions = {
+	vue: hasVue,
+	biome: true,
+	markdown: true,
+	unocss: hasUnocss,
+	typescript: hasTypeScript,
+	react: hasReact,
+	test: hasTest,
+};
+
+export function estjs(options = defaultOptions, overrides = {}) {
+	const {
+		vue: enableVue,
+		biome: enableBiome,
+		markdown: enableMarkdown,
+		unocss: enableUnocss,
+		typescript: enableTS,
+		react: enableReact,
+		test: enableTest,
+	} = options;
+
+	const getOverride = key => getOverrides(overrides, key);
+
+	const configs = [
+		...ignores,
+		...javascript(getOverride('javascript')),
+		...comments,
+		...imports(getOverride('imports')),
+		...unicorn(getOverride('unicorn')),
+		...jsdoc(getOverride('jsdoc')),
+		...sortKeys,
+		...jsonc,
+		...sortPackageJson,
+		...sortTsconfig,
+	];
+
+	if (enableVue) configs.push(...vue(getOverride('vue')));
+	if (enableMarkdown) configs.push(...markdown(getOverride('markdown')));
+	if (enableUnocss) configs.push(...unocss);
+	if (enableBiome) configs.push(...biome);
+	if (enableReact) configs.push(...react(getOverride('react')));
+	if (enableTS) configs.push(...typescript(getOverride('typescript')));
+	if (enableTest) configs.push(...test(getOverride('test')));
+
 	return configs;
 }
