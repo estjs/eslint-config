@@ -20,7 +20,6 @@ export const unicorn = [
 				},
 			],
 			'unicorn/new-for-builtins': 'error',
-			'unicorn/no-array-callback-reference': 'error',
 			'unicorn/no-array-method-this-argument': 'error',
 			'unicorn/no-array-push-push': 'error',
 			'unicorn/no-console-spaces': 'error',
