@@ -33,6 +33,13 @@ const defaultOptions = {
 	test: hasTest,
 };
 
+/**
+ * Generate the estjs configuration based on the provided options and overrides.
+ *
+ * @param {object} options - The default options for the estjs configuration
+ * @param {object} overrides - The overrides for the default options
+ * @return {Array} The estjs configuration based on the provided options and overrides
+ */
 export function estjs(options = defaultOptions, overrides = {}) {
 	const {
 		vue: enableVue,
