@@ -20,15 +20,26 @@ Require Node.js >= 16.14.
 import { estjs } from '@estjs/eslint-config';
 
 export default estjs(
-	[
-		/* your custom config */
-	],
 	// Features: it'll detect installed dependency and enable necessary features automatically
 	{
 		biome: true,
 		markdown: true,
 		vue: true, // auto detection
 		unocss: false, // auto detection
+	},
+	// overrides config
+	{
+		javascript: {
+			'unused-imports/no-unused-imports': 'off',
+			'unused-imports/no-unused-vars': 'off',
+			'no-console': 'off',
+		},
+		unicorn: {
+			'unicorn/filename-case': 'off',
+		},
+		imports: {
+			'import/no-default-export': 'off',
+		},
 	},
 );
 ```
