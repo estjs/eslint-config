@@ -1,59 +1,44 @@
 # @estjs/eslint-config
 
+Flat ESLint config for JavaScript, TypeScript, Vue 2, Vue 3.
+
+## Features
+
+- Format with Biome.
+- Designed to work with TypeScript, Vue 2 and 3 out-of-box.
+- Support JSON(5), YAML, Markdown...
+- Sort imports, `package.json`, `tsconfig.json`...
+- [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
+- Reasonable defaults, best practices, only one-line of config
+
+
+Require Node.js >= 16.14.
+
 ## Usage
 
-```bash
-pnpm i -D @estjs/eslint-config-basic # JavaScript only
-# Or yarn add -D / npm install -D
-pnpm i -D @estjs/eslint-config-ts # JavaScript and TypeScript
-pnpm i -D @estjs/eslint-config-vue # JavaScript, TypeScript and Vue 3
-pnpm i -D @estjs/eslint-config-vue2 # JavaScript, TypeScript and Vue 2
-pnpm i -D @estjs/eslint-config-react # JavaScript, TypeScript and react
-pnpm i -D @estjs/eslint-config # JavaScript, TypeScript, Vue 3&2 and react
+```js
+import { estjs } from '@estjs/eslint-config';
+
+export default estjs(
+  [
+    /* your custom config */
+  ],
+  // Features: it'll detect installed dependency and enable necessary features automatically
+  {
+    biome: true,
+    markdown: true,
+    vue: true, // auto detection
+    unocss: false, // auto detection
+  },
+);
 ```
 
-### Install
 
-```bash
-pnpm add -D eslint @estjs/eslint-config
-```
 
-### Config `.eslintrc`
+## VSCode
 
-```json
+```jsonc
 {
-	"extends": ["@estjs/eslint-config"]
-}
-```
-
-### Config `.eslintignore`
-
-```txt
-dist
-public
-```
-
-### Add script for package.json
-
-For example:
-
-```json
-{
-	"scripts": {
-		"lint": "eslint \"**/*.{vue,ts.tsx,js,jsx}\""
-	}
-}
-```
-
-### Config VS Code auto fix
-
-Create `.vscode/settings.json`
-
-```json
-{
-	"prettier.enable": false,
-	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": true
-	}
+  "eslint.experimental.useFlatConfig": true
 }
 ```
