@@ -71,7 +71,8 @@ export function estjs(
 	if (enableVue) configs.push(...vue(getOverride('vue')));
 	if (enableMarkdown) configs.push(...markdown(getOverride('markdown')));
 	if (enableUnocss) configs.push(...unocss);
-	if (enableBiome) configs.push(...biome);
+	// default first plugin is biome
+	if (enableBiome) configs.unshift(...biome);
 	if (enableReact) configs.push(...react(getOverride('react')));
 	if (enableTS) configs.push(...typescript(getOverride('typescript')));
 	if (enableTest) configs.push(...test(getOverride('test')));
