@@ -25,27 +25,31 @@ function getOverrides(overrides, key) {
 	return overrides?.[key] || {};
 }
 
-const isNode = () =>
-	typeof process !== 'undefined' && !!process.versions && !!process.versions.node;
-
 /**
- * Generate the estjs configuration based on the provided options and overrides.
- *
- * @param {object} options - The default options for the estjs configuration
- * @param {object} overrides - The overrides for the default options
- * @return {Array} The estjs configuration based on the provided options and overrides
+ * Generate ESLint configs based on project environment and overrides.
+ * @param {object} overrides - Custom ESLint configuration overrides.
+ * @param {object} options - Optional feature flags for enabling/disabling specific ESLint configurations.
+ * @param {boolean} options.vue - Enable Vue ESLint configurations.
+ * @param {boolean} options.test - Enable test ESLint configurations.
+ * @param {boolean} options.react - Enable React ESLint configurations.
+ * @param {boolean} options.unocss - Enable Uno.css ESLint configurations.
+ * @param {boolean} options.typescript - Enable TypeScript ESLint configurations.
+ * @param {boolean} options.node - Enable Node.js ESLint configurations.
+ * @param {boolean} options.biome - Enable Biome ESLint configurations.
+ * @param {boolean} options.markdown - Enable Markdown ESLint configurations.
+ * @returns {Array} - Array of ESLint configurations based on the provided options.
  */
 export function estjs(
 	overrides = {},
 	{
 		vue: enableVue = hasVue,
-		biome: enableBiome = true,
-		markdown: enableMarkdown = true,
+		test: enableTest = hasTest,
+		react: enableReact = hasReact,
 		unocss: enableUnocss = hasUnocss,
 		typescript: enableTS = hasTypeScript,
-		react: enableReact = hasReact,
-		test: enableTest = hasTest,
-		node: enableNode = isNode(),
+		node: enableNode = true, // default to true
+		biome: enableBiome = true,
+		markdown: enableMarkdown = true,
 	} = {},
 ) {
 	const getOverride = key => getOverrides(overrides, key);

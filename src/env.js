@@ -1,3 +1,4 @@
+import process from 'node:process';
 import { getPackageInfoSync, isPackageExists } from 'local-pkg';
 
 export const hasReact = isPackageExists('react');
