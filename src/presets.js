@@ -9,6 +9,7 @@ import {
 	jsonc,
 	markdown,
 	node,
+	prettier,
 	react,
 	sortKeys,
 	sortPackageJson,
@@ -37,6 +38,7 @@ function getOverrides(overrides, key) {
  * @param {boolean} options.node - Enable Node.js ESLint configurations.
  * @param {boolean} options.biome - Enable Biome ESLint configurations.
  * @param {boolean} options.markdown - Enable Markdown ESLint configurations.
+ *  @param {boolean} options.prettier - Enable Prettier ESLint configurations.
  * @returns {Array} - Array of ESLint configurations based on the provided options.
  */
 export function estjs(
@@ -48,7 +50,8 @@ export function estjs(
 		unocss: enableUnocss = hasUnocss,
 		typescript: enableTS = hasTypeScript,
 		node: enableNode = true, // default to true
-		biome: enableBiome = true,
+		biome: enableBiome = false,
+		prettier: enablePrettier = true,
 		markdown: enableMarkdown = true,
 	} = {},
 ) {
@@ -73,6 +76,7 @@ export function estjs(
 	if (enableUnocss) configs.push(...unocss);
 	// default first plugin is biome
 	if (enableBiome) configs.unshift(...biome);
+	if (enablePrettier) configs.push(...prettier(getOverride('prettier')));
 	if (enableReact) configs.push(...react(getOverride('react')));
 	if (enableTS) configs.push(...typescript(getOverride('typescript')));
 	if (enableTest) configs.push(...test(getOverride('test')));

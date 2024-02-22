@@ -16,3 +16,4 @@ export * from './react';
 export * from './jsdoc';
 export * from './test';
 export * from './node';
+export * from './prettier';

@@ -24,6 +24,11 @@ import _pluginNotOnlyTests from 'eslint-plugin-no-only-tests';
 import * as _pluginUnocss from '@unocss/eslint-plugin';
 import * as _pluginNode from 'eslint-plugin-n';
 
+import * as _pluginPrettier from 'eslint-plugin-prettier';
+
+// @ts-expect-error missing types
+import * as _configPrettier from 'eslint-config-prettier';
+
 function interopDefault(m) {
 	return m.default || m;
 }
@@ -51,3 +56,5 @@ export const pluginReactRefresh = interopDefault(_pluginReactRefresh);
 export const pluginVitest = interopDefault(_pluginVitest);
 export const pluginNoOnlyTests = interopDefault(_pluginNotOnlyTests);
 export const pluginUnocss = interopDefault(_pluginUnocss);
+export const pluginPrettier = interopDefault(_pluginPrettier);
+export const configPrettier = interopDefault(_configPrettier);
