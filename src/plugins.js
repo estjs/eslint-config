@@ -10,7 +10,6 @@ import _pluginReact from 'eslint-plugin-react';
 import _pluginReactHooks from 'eslint-plugin-react-hooks';
 import _pluginReactRefresh from 'eslint-plugin-react-refresh';
 import _pluginVitest from 'eslint-plugin-vitest';
-import _pluginNotOnlyTests from 'eslint-plugin-no-only-tests';
 import * as _pluginUnocss from '@unocss/eslint-plugin';
 import * as _pluginNode from 'eslint-plugin-n';
 import * as _pluginPrettier from 'eslint-plugin-prettier';
