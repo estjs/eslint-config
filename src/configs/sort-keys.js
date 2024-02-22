@@ -1,9 +1,9 @@
 import { pluginSortKeys } from '../plugins';
 
 export const sortKeys = [
-	{
-		plugins: {
-			'sort-keys': pluginSortKeys,
-		},
-	},
+  {
+    plugins: {
+      'sort-keys': pluginSortKeys,
+    },
+  },
 ];

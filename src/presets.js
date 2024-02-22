@@ -49,8 +49,8 @@ export function estjs(
 		react: enableReact = hasReact,
 		unocss: enableUnocss = hasUnocss,
 		typescript: enableTS = hasTypeScript,
-		node: enableNode = true, // default to true
-		biome: enableBiome = false,
+		node: enableNode = true,
+		biome: enableBiome = false, // off biome,it eslint fix not fixed
 		prettier: enablePrettier = true,
 		markdown: enableMarkdown = true,
 	} = {},
