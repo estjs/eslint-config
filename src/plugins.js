@@ -26,7 +26,7 @@ export * as parserYml from 'yaml-eslint-parser';
 export * as parserJsonc from 'jsonc-eslint-parser';
 
 function interopDefault(m) {
-	return m.default || m;
+  return m.default || m;
 }
 export const pluginComments = interopDefault(_pluginComments);
 export const pluginMarkdown = interopDefault(_pluginMarkdown);

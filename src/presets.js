@@ -1,29 +1,29 @@
 import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
 import {
-	biome,
-	comments,
-	ignores,
-	imports,
-	javascript,
-	jsdoc,
-	jsonc,
-	markdown,
-	node,
-	prettier,
-	react,
-	sortKeys,
-	sortPackageJson,
-	sortTsconfig,
-	test,
-	typescript,
-	unicorn,
-	unocss,
-	vue,
-	yml,
+  // biome,
+  comments,
+  ignores,
+  imports,
+  javascript,
+  jsdoc,
+  jsonc,
+  markdown,
+  node,
+  prettier,
+  react,
+  sortKeys,
+  sortPackageJson,
+  sortTsconfig,
+  test,
+  typescript,
+  unicorn,
+  unocss,
+  vue,
+  yml,
 } from './configs';
 
 function getOverrides(overrides, key) {
-	return overrides?.[key] || {};
+  return overrides?.[key] || {};
 }
 
 /**
@@ -42,45 +42,46 @@ function getOverrides(overrides, key) {
  * @returns {Array} - Array of ESLint configurations based on the provided options.
  */
 export function estjs(
-	overrides = {},
-	{
-		vue: enableVue = hasVue,
-		test: enableTest = hasTest,
-		react: enableReact = hasReact,
-		unocss: enableUnocss = hasUnocss,
-		typescript: enableTS = hasTypeScript,
-		node: enableNode = true,
-		biome: enableBiome = false, // off biome,it eslint fix not fixed
-		prettier: enablePrettier = true,
-		markdown: enableMarkdown = true,
-	} = {},
+  overrides = {},
+  {
+    vue: enableVue = hasVue,
+    test: enableTest = hasTest,
+    react: enableReact = hasReact,
+    unocss: enableUnocss = hasUnocss,
+    typescript: enableTS = hasTypeScript,
+    node: enableNode = true,
+    // eslint-disable-next-line unused-imports/no-unused-vars
+    biome: enableBiome = false, // off biome,it eslint fix not fixed
+    prettier: enablePrettier = true,
+    markdown: enableMarkdown = true,
+  } = {},
 ) {
-	const getOverride = key => getOverrides(overrides, key);
+  const getOverride = key => getOverrides(overrides, key);
 
-	const configs = [
-		...ignores,
-		...javascript(getOverride('javascript')),
-		...comments,
-		...imports(getOverride('imports')),
-		...unicorn(getOverride('unicorn')),
-		...jsdoc(getOverride('jsdoc')),
-		...sortKeys,
-		...jsonc,
-		...sortPackageJson,
-		...sortTsconfig,
-		...yml,
-	];
+  const configs = [
+    ...ignores,
+    ...javascript(getOverride('javascript')),
+    ...comments,
+    ...imports(getOverride('imports')),
+    ...unicorn(getOverride('unicorn')),
+    ...jsdoc(getOverride('jsdoc')),
+    ...sortKeys,
+    ...jsonc,
+    ...sortPackageJson,
+    ...sortTsconfig,
+    ...yml,
+  ];
 
-	if (enableVue) configs.push(...vue(getOverride('vue')));
-	if (enableMarkdown) configs.push(...markdown(getOverride('markdown')));
-	if (enableUnocss) configs.push(...unocss);
-	// default first plugin is biome
-	if (enableBiome) configs.unshift(...biome);
-	if (enablePrettier) configs.push(...prettier(getOverride('prettier')));
-	if (enableReact) configs.push(...react(getOverride('react')));
-	if (enableTS) configs.push(...typescript(getOverride('typescript')));
-	if (enableTest) configs.push(...test(getOverride('test')));
-	if (enableNode) configs.push(...node);
+  if (enableVue) configs.push(...vue(getOverride('vue')));
+  if (enableMarkdown) configs.push(...markdown(getOverride('markdown')));
+  if (enableUnocss) configs.push(...unocss);
+  // default first plugin is biome
+  // if (enableBiome) configs.unshift(...biome);
+  if (enablePrettier) configs.push(...prettier(getOverride('prettier')));
+  if (enableReact) configs.push(...react(getOverride('react')));
+  if (enableTS) configs.push(...typescript(getOverride('typescript')));
+  if (enableTest) configs.push(...test(getOverride('test')));
+  if (enableNode) configs.push(...node);
 
-	return configs;
+  return configs;
 }
