@@ -102,7 +102,7 @@ export function vue(overrides = {}) {
 			},
 			processor: pluginVue.processors['.vue'],
 			rules: {
-				...typescript[0].rules,
+				...typescript()[0].rules,
 			},
 		},
 		{
