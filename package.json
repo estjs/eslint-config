@@ -1,6 +1,6 @@
 {
 	"name": "@estjs/eslint-config",
-	"version": "1.0.5-beta.0",
+	"version": "1.0.5",
 	"packageManager": "pnpm@7.33.7",
 	"description": "",
 	"type": "module",
@@ -55,7 +55,7 @@
 		"@typescript-eslint/eslint-plugin": "^7.0.2",
 		"@typescript-eslint/parser": "^7.0.2",
 		"@unocss/eslint-plugin": "^0.58.5",
-		"eslint-plugin-biome": "^0.9.10",
+		"eslint-plugin-biome": "^0.9.16",
 		"eslint-plugin-eslint-comments": "^3.2.0",
 		"eslint-plugin-i": "^2.29.1",
 		"eslint-plugin-jsdoc": "^48.1.0",
