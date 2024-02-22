@@ -8,7 +8,6 @@ import _jsDocPlugin from 'eslint-plugin-jsdoc';
 // react
 import _pluginReact from 'eslint-plugin-react';
 import _pluginReactHooks from 'eslint-plugin-react-hooks';
-import _pluginReactRefresh from 'eslint-plugin-react-refresh';
 import _pluginVitest from 'eslint-plugin-vitest';
 import * as _pluginUnocss from '@unocss/eslint-plugin';
 import * as _pluginNode from 'eslint-plugin-n';
@@ -38,9 +37,7 @@ export const jsDocPlugin = interopDefault(_jsDocPlugin);
 export const pluginNode = interopDefault(_pluginNode);
 export const pluginReact = interopDefault(_pluginReact);
 export const pluginReactHooks = interopDefault(_pluginReactHooks);
-export const pluginReactRefresh = interopDefault(_pluginReactRefresh);
 export const pluginVitest = interopDefault(_pluginVitest);
-export const pluginNoOnlyTests = interopDefault(_pluginNotOnlyTests);
 export const pluginUnocss = interopDefault(_pluginUnocss);
 export const pluginPrettier = interopDefault(_pluginPrettier);
 export const configPrettier = interopDefault(_configPrettier);

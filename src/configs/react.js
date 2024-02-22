@@ -1,10 +1,6 @@
-import { isPackageExists } from 'local-pkg';
 import { GLOB_JSX, GLOB_TSX } from '../globs';
-import { pluginReact, pluginReactHooks, pluginReactRefresh } from '../plugins';
+import { pluginReact, pluginReactHooks } from '../plugins';
 
-// react refresh
-const ReactRefreshAllowConstantExportPackages = ['vite'];
-const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(i => isPackageExists(i));
 const files = [GLOB_JSX, GLOB_TSX];
 export function react(overrides = {}) {
   return [
@@ -12,7 +8,6 @@ export function react(overrides = {}) {
       plugins: {
         'react': pluginReact,
         'react-hooks': pluginReactHooks,
-        'react-refresh': pluginReactRefresh,
       },
       settings: {
         react: {
@@ -33,12 +28,6 @@ export function react(overrides = {}) {
         // recommended rules react-hooks
         'react-hooks/exhaustive-deps': 'warn',
         'react-hooks/rules-of-hooks': 'error',
-
-        // react refresh
-        'react-refresh/only-export-components': [
-          'warn',
-          { allowConstantExport: isAllowConstantExport },
-        ],
 
         'react/display-name': 'error',
 
