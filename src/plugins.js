@@ -3,7 +3,7 @@ import * as _pluginMarkdown from 'eslint-plugin-markdown';
 import * as _pluginTypeScript from '@typescript-eslint/eslint-plugin';
 import * as _pluginUnicorn from 'eslint-plugin-unicorn';
 import * as _pluginVue from 'eslint-plugin-vue';
-import * as _pluginBiome from 'eslint-plugin-biome';
+// import * as _pluginBiome from 'eslint-plugin-biome';
 import _jsDocPlugin from 'eslint-plugin-jsdoc';
 // react
 import _pluginReact from 'eslint-plugin-react';
@@ -26,14 +26,14 @@ export * as parserYml from 'yaml-eslint-parser';
 export * as parserJsonc from 'jsonc-eslint-parser';
 
 function interopDefault(m) {
-  return m.default || m;
+	return m.default || m;
 }
 export const pluginComments = interopDefault(_pluginComments);
 export const pluginMarkdown = interopDefault(_pluginMarkdown);
 export const pluginTypeScript = interopDefault(_pluginTypeScript);
 export const pluginUnicorn = interopDefault(_pluginUnicorn);
 export const pluginVue = interopDefault(_pluginVue);
-export const pluginBiome = interopDefault(_pluginBiome);
+// export const pluginBiome = interopDefault(_pluginBiome);
 
 export const jsDocPlugin = interopDefault(_jsDocPlugin);
 export const pluginNode = interopDefault(_pluginNode);
