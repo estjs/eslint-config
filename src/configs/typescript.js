@@ -41,7 +41,7 @@ export function typescript(overrides = {}) {
 					{ allowBitwiseExpressions: true },
 				],
 
-				'no-restricted-syntax': ['error', ...restrictedSyntaxJs, 'TSEnumDeclaration[const=true]'],
+				'no-restricted-syntax': ['error', ...restrictedSyntaxJs],
 
 				...overrides,
 			},
