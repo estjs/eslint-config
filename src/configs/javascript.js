@@ -1,7 +1,7 @@
 import globals from 'globals';
 import { pluginUnusedImports } from '../plugins';
 
-export const restrictedSyntaxJs = ['ForInStatement', 'LabeledStatement', 'WithStatement'];
+export const restrictedSyntaxJs = ['LabeledStatement', 'WithStatement'];
 
 export function javascript(overrides = {}) {
   return [
