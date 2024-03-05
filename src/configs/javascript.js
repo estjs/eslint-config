@@ -61,7 +61,7 @@ export function javascript(overrides = {}) {
         'no-inner-declarations': 'error',
         'no-invalid-regexp': 'error',
         'no-irregular-whitespace': 'error',
-        'no-lonely-if': 'error',
+
         'no-loss-of-precision': 'error',
         'no-misleading-character-class': 'error',
         'no-mixed-spaces-and-tabs': 'error',
@@ -96,7 +96,7 @@ export function javascript(overrides = {}) {
           },
         ],
         'no-unused-labels': 'error',
-        'no-unused-vars': 'off',
+
         'no-useless-backreference': 'error',
         'no-useless-catch': 'error',
         'no-useless-escape': 'error',
@@ -132,6 +132,10 @@ export function javascript(overrides = {}) {
         'valid-typeof': ['error', { requireStringLiterals: true }],
         'vars-on-top': 'error',
         'wrap-iife': ['error', 'any', { functionPrototypeMethods: true }],
+
+        // off rule
+        'no-unused-vars': 'off',
+        'no-lonely-if': 'off',
         ...overrides,
       },
     },
