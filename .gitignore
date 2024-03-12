@@ -10,4 +10,3 @@ logs
 node_modules
 temp
 .eslintcache
-pnpm-lock.yaml
