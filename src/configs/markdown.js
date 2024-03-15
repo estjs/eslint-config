@@ -3,6 +3,8 @@ import { GLOB_MARKDOWN, GLOB_SRC, GLOB_VUE } from '../globs';
 
 export function markdown(overrides = {}) {
   return [
+    ...pluginMarkdown.configs.recommended,
+
     {
       files: [GLOB_MARKDOWN],
       plugins: {
@@ -20,8 +22,6 @@ export function markdown(overrides = {}) {
         },
       },
       rules: {
-        ...pluginMarkdown.configs.recommended.overrides[1].rules,
-
         '@typescript-eslint/comma-dangle': 'off',
         '@typescript-eslint/consistent-type-imports': 'off',
         '@typescript-eslint/no-extraneous-class': 'off',
