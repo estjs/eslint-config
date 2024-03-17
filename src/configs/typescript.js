@@ -32,8 +32,8 @@ export function typescript(overrides = {}) {
 
         '@typescript-eslint/no-dynamic-delete': 'off',
 
-        // handled by unused-imports/no-unused-imports
         '@typescript-eslint/no-unused-vars': 'off',
+        "@typescript-eslint/no-unnecessary-type-constraint":"off",
 
         '@typescript-eslint/prefer-as-const': 'warn',
         '@typescript-eslint/prefer-literal-enum-member': [
