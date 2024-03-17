@@ -100,7 +100,6 @@ export function javascript(overrides = {}) {
         'no-useless-backreference': 'error',
         'no-useless-catch': 'error',
         'no-useless-escape': 'error',
-        'no-void': 'error',
         'no-with': 'error',
         'object-shorthand': ['error', 'always', { avoidQuotes: true, ignoreConstructors: false }],
         'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
@@ -134,6 +133,8 @@ export function javascript(overrides = {}) {
         'wrap-iife': ['error', 'any', { functionPrototypeMethods: true }],
 
         // off rule
+        'no-void': 'off',
+
         'no-unused-vars': 'off',
         'no-lonely-if': 'off',
         ...overrides,
