@@ -69,8 +69,8 @@ dependencies:
     specifier: ^3.1.0
     version: 3.1.0(@typescript-eslint/eslint-plugin@7.6.0)(eslint@8.57.0)
   eslint-plugin-vitest:
-    specifier: ^0.4.0
-    version: 0.4.1(@typescript-eslint/eslint-plugin@7.6.0)(eslint@8.57.0)(typescript@5.4.4)
+    specifier: ^0.5.0
+    version: 0.5.0(@typescript-eslint/eslint-plugin@7.6.0)(eslint@8.57.0)(typescript@5.4.4)
   eslint-plugin-vue:
     specifier: ^9.23.0
     version: 9.24.1(eslint@8.57.0)
@@ -1835,12 +1835,12 @@ packages:
       eslint-rule-composer: 0.3.0
     dev: false
 
-  /eslint-plugin-vitest@0.4.1(@typescript-eslint/eslint-plugin@7.6.0)(eslint@8.57.0)(typescript@5.4.4):
-    resolution: {integrity: sha512-+PnZ2u/BS+f5FiuHXz4zKsHPcMKHie+K+1Uvu/x91ovkCMEOJqEI8E9Tw1Wzx2QRz4MHOBHYf1ypO8N1K0aNAA==}
+  /eslint-plugin-vitest@0.5.0(@typescript-eslint/eslint-plugin@7.6.0)(eslint@8.57.0)(typescript@5.4.4):
+    resolution: {integrity: sha512-zaXzIjNUJgAkDUODagPNOcm9tO+CxlB0tnmKMkH3eRioXZ9YGuwr6eQzv9Vodot0qfPwqb5+SMjy7KfwJBd8tw==}
     engines: {node: ^18.0.0 || >= 20.0.0}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': '*'
-      eslint: '>=8.0.0'
+      eslint: ^8.57.0 || ^9.0.0
       vitest: '*'
     peerDependenciesMeta:
       '@typescript-eslint/eslint-plugin':
