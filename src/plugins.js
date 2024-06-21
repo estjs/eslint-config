@@ -3,19 +3,20 @@ import * as _pluginMarkdown from 'eslint-plugin-markdown';
 import * as _pluginTypeScript from '@typescript-eslint/eslint-plugin';
 import * as _pluginUnicorn from 'eslint-plugin-unicorn';
 import * as _pluginVue from 'eslint-plugin-vue';
-// import * as _pluginBiome from 'eslint-plugin-biome';
 import _jsDocPlugin from 'eslint-plugin-jsdoc';
 // react
 import _pluginReact from 'eslint-plugin-react';
+
 import _pluginReactHooks from 'eslint-plugin-react-hooks';
 import _pluginVitest from 'eslint-plugin-vitest';
 import * as _pluginUnocss from '@unocss/eslint-plugin';
 import * as _pluginNode from 'eslint-plugin-n';
 import * as _pluginPrettier from 'eslint-plugin-prettier';
 import * as _configPrettier from 'eslint-config-prettier';
+
+import _pluginUnusedImports from 'eslint-plugin-unused-imports';
 export * as pluginImport from 'eslint-plugin-i';
 export * as pluginJsonc from 'eslint-plugin-jsonc';
-export * as pluginUnusedImports from 'eslint-plugin-unused-imports';
 export * as pluginYml from 'eslint-plugin-yml';
 export * as pluginSortKeys from 'eslint-plugin-sort-keys';
 export * as parserTypeScript from '@typescript-eslint/parser';
@@ -26,6 +27,8 @@ export * as parserJsonc from 'jsonc-eslint-parser';
 function interopDefault(m) {
   return m.default || m;
 }
+
+export const pluginUnusedImports = interopDefault(_pluginUnusedImports);
 export const pluginComments = interopDefault(_pluginComments);
 export const pluginMarkdown = interopDefault(_pluginMarkdown);
 export const pluginTypeScript = interopDefault(_pluginTypeScript);

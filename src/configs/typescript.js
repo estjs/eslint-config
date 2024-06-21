@@ -31,7 +31,6 @@ export function typescript(overrides = {}) {
         '@typescript-eslint/no-redeclare': 'error',
 
         '@typescript-eslint/no-dynamic-delete': 'off',
-        "@typescript-eslint/switch-exhaustiveness-check": "error",
         '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/no-unnecessary-type-constraint': 'off',
 
