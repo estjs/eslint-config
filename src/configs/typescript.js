@@ -32,6 +32,11 @@ export function typescript(overrides = {}) {
 
         '@typescript-eslint/no-dynamic-delete': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
+
+        '@typescript-eslint/no-unused-expressions': 'off',
+        '@typescript-eslint/no-empty-object-type': 'off',
+        '@typescript-eslint/no-unsafe-function-type': 'off',
+
         '@typescript-eslint/no-unnecessary-type-constraint': 'off',
 
         '@typescript-eslint/prefer-as-const': 'warn',

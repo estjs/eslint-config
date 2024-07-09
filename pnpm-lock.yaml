@@ -15,10 +15,10 @@ importers:
         specifier: ^7.5.0
         version: 7.5.0
       '@typescript-eslint/eslint-plugin':
-        specifier: ^8.0.0-alpha.40
+        specifier: ^8.0.0-alpha.41
         version: 8.0.0-alpha.41(@typescript-eslint/parser@8.0.0-alpha.41(eslint@9.6.0)(typescript@5.5.3))(eslint@9.6.0)(typescript@5.5.3)
       '@typescript-eslint/parser':
-        specifier: ^8.0.0-alpha.40
+        specifier: ^8.0.0-alpha.41
         version: 8.0.0-alpha.41(eslint@9.6.0)(typescript@5.5.3)
       '@unocss/eslint-plugin':
         specifier: ^0.61.3
@@ -106,8 +106,8 @@ importers:
         specifier: ^9.6.0
         version: 9.6.0
       pnpm:
-        specifier: ^9.4.0
-        version: 9.4.0
+        specifier: ^9.5.0
+        version: 9.5.0
       tsup:
         specifier: ^8.1.0
         version: 8.1.0(postcss@8.4.38)(typescript@5.5.3)
@@ -1844,8 +1844,8 @@ packages:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
 
-  pnpm@9.4.0:
-    resolution: {integrity: sha512-9Um4pSydK4U2di+ZwHIiBe/Fr5E+d4NdvMw7CwssqefcgCK3gGLBcpHEjoh0nHDOiOtadPH6jEv14Yu0bIvYOg==}
+  pnpm@9.5.0:
+    resolution: {integrity: sha512-FAA2gwEkYY1iSiGHtQ0EKJ1aCH8ybJ7fwMzXM9dsT1LDoxPU/BSHlKKp2BVTAWAE5nQujPhQZwJopzh/wiDJAw==}
     engines: {node: '>=18.12'}
     hasBin: true
 
@@ -4231,7 +4231,7 @@ snapshots:
 
   pluralize@8.0.0: {}
 
-  pnpm@9.4.0: {}
+  pnpm@9.5.0: {}
 
   possible-typed-array-names@1.0.0: {}
 
