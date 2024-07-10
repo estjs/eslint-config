@@ -15,7 +15,7 @@ import * as _pluginPrettier from 'eslint-plugin-prettier';
 import * as _configPrettier from 'eslint-config-prettier';
 
 import _pluginUnusedImports from 'eslint-plugin-unused-imports';
-export * as pluginImport from 'eslint-plugin-i';
+export * as pluginImport from 'eslint-plugin-import-x';
 export * as pluginJsonc from 'eslint-plugin-jsonc';
 export * as pluginYml from 'eslint-plugin-yml';
 export * as pluginSortKeys from 'eslint-plugin-sort-keys';

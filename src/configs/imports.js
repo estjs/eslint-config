@@ -32,7 +32,6 @@ export function imports(overrides = {}) {
         ],
 
         // off
-
         'import/no-default-export': 'off',
         'import/no-mutable-exports': 'off',
         ...overrides,
