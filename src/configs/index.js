@@ -17,3 +17,4 @@ export * from './jsdoc';
 export * from './test';
 export * from './node';
 export * from './prettier';
+export * from './regexp';

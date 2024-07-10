@@ -1,6 +1,7 @@
 import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
+
+// biome
 import {
-  // biome,
   comments,
   ignores,
   imports,
@@ -11,6 +12,7 @@ import {
   node,
   prettier,
   react,
+  regexp,
   sortKeys,
   sortPackageJson,
   sortTsconfig,
@@ -100,6 +102,7 @@ export function estjs(
     ...sortPackageJson,
     ...sortTsconfig,
     ...yml,
+    ...regexp(),
   ];
 
   if (enableVue) configs.push(...vue(vueConfig));
