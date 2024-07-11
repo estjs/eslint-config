@@ -1,3 +1,4 @@
+import { fixupPluginRules } from '@eslint/compat';
 import { GLOB_JSX, GLOB_TSX } from '../globs';
 import { pluginReact, pluginReactHooks } from '../plugins';
 
@@ -7,7 +8,7 @@ export function react(overrides = {}) {
     {
       plugins: {
         'react': pluginReact,
-        'react-hooks': pluginReactHooks,
+        'react-hooks': fixupPluginRules(pluginReactHooks),
       },
       settings: {
         react: {

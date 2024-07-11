@@ -1,11 +1,11 @@
+import { fixupPluginRules } from '@eslint/compat';
 import { pluginImport } from '../plugins';
 import { GLOB_MARKDOWN, GLOB_SRC, GLOB_SRC_EXT } from '../globs';
-
 export function imports(overrides = {}) {
   return [
     {
       plugins: {
-        import: pluginImport,
+        import: fixupPluginRules(pluginImport),
       },
       rules: {
         'import/first': 'error',
