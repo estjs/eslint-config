@@ -22,7 +22,7 @@ importers:
         version: 8.0.0-alpha.52(eslint@9.7.0)(typescript@5.5.4)
       '@unocss/eslint-plugin':
         specifier: ^0.61.5
-        version: 0.61.5(eslint@9.7.0)(typescript@5.5.4)
+        version: 0.61.6(eslint@9.7.0)(typescript@5.5.4)
       eslint-config-prettier:
         specifier: ^9.1.0
         version: 9.1.0(eslint@9.7.0)
@@ -123,8 +123,8 @@ importers:
 
 packages:
 
-  '@antfu/utils@0.7.8':
-    resolution: {integrity: sha512-rWQkqXRESdjXtc+7NRfK9lASQjpXJu1ayp7qi1d23zZorY+wBHVLHHoVcMsEnkqEBWTFqbztO7/QdJFzyEcLTg==}
+  '@antfu/utils@0.7.10':
+    resolution: {integrity: sha512-+562v9k4aI80m1+VuMHehNJWLOFjBnXn3tdOitzD0il5b7smkSBal4+a3oKiQTbrwMmN/TBUMDvbdoWDehgOww==}
 
   '@babel/code-frame@7.24.7':
     resolution: {integrity: sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==}
@@ -352,6 +352,9 @@ packages:
 
   '@jridgewell/sourcemap-codec@1.4.15':
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
+
+  '@jridgewell/sourcemap-codec@1.5.0':
+    resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
@@ -592,15 +595,15 @@ packages:
     resolution: {integrity: sha512-yaw5Df/ptlb6ZU7Em63E/woJBGu2iTxmwF+/0Kj2DxBiHucMPB5sYJ5aEGRgARVUonQU3+vZpKNiTHAzJd5lRQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@unocss/config@0.61.5':
-    resolution: {integrity: sha512-VIIln/1aD9cqU95+3IVZG9U1yO7Ys6RqyqtgD5pIJ77rg57v/2sey+S2ScFx3KB24Bal3FxAgHA5CdjFpQZldA==}
+  '@unocss/config@0.61.6':
+    resolution: {integrity: sha512-uUJj+ObvH1y2CqJ6KK+g9YkZ+insN8jk3xFha2nKOq3hCmUs8F6B06buWn3Nquin5HYP5Y416GaEJtQT4H0wgQ==}
     engines: {node: '>=14'}
 
-  '@unocss/core@0.61.5':
-    resolution: {integrity: sha512-hB8zr2rnrCzz9x8ho2SAXQiYTEjwAPMiBzpaEe2C0+CFWeL1179h9508YVyZHHAzMyZILIG9YrVAWrrMdt2/Xg==}
+  '@unocss/core@0.61.6':
+    resolution: {integrity: sha512-z1O1fnMRvmX1zkvbKVZ7jKUOHZHw/tUBYDNpll1rx9wjmps/MHfv7K5C5FiOTaW9S9H5r2LSjW/MaMs0dxgoCw==}
 
-  '@unocss/eslint-plugin@0.61.5':
-    resolution: {integrity: sha512-t/TKX3C8i2EIHRj9R7jZVEbU+tB4KShSMVAW90fUuttN3KaqujoctEyYpOYD7c5XxSelnFUspTljiH604BGyCg==}
+  '@unocss/eslint-plugin@0.61.6':
+    resolution: {integrity: sha512-vLAAOMB1s5PyBse3jbCExmg40p0kDSa5vPP0MGVyre8IAVC9qUa9ASxWaRxUU0jQYyQbEpx7iiF3KeEt2QBpQA==}
     engines: {node: '>=14'}
 
   acorn-jsx@5.3.2:
@@ -2414,7 +2417,7 @@ packages:
 
 snapshots:
 
-  '@antfu/utils@0.7.8': {}
+  '@antfu/utils@0.7.10': {}
 
   '@babel/code-frame@7.24.7':
     dependencies:
@@ -2573,6 +2576,8 @@ snapshots:
   '@jridgewell/set-array@1.2.1': {}
 
   '@jridgewell/sourcemap-codec@1.4.15': {}
+
+  '@jridgewell/sourcemap-codec@1.5.0': {}
 
   '@jridgewell/trace-mapping@0.3.25':
     dependencies:
@@ -2761,7 +2766,7 @@ snapshots:
       globby: 11.1.0
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.6.2
+      semver: 7.6.3
       ts-api-utils: 1.3.0(typescript@5.5.4)
     optionalDependencies:
       typescript: 5.5.4
@@ -2831,18 +2836,18 @@ snapshots:
       '@typescript-eslint/types': 8.0.0-alpha.52
       eslint-visitor-keys: 3.4.3
 
-  '@unocss/config@0.61.5':
+  '@unocss/config@0.61.6':
     dependencies:
-      '@unocss/core': 0.61.5
+      '@unocss/core': 0.61.6
       unconfig: 0.3.13
 
-  '@unocss/core@0.61.5': {}
+  '@unocss/core@0.61.6': {}
 
-  '@unocss/eslint-plugin@0.61.5(eslint@9.7.0)(typescript@5.5.4)':
+  '@unocss/eslint-plugin@0.61.6(eslint@9.7.0)(typescript@5.5.4)':
     dependencies:
       '@typescript-eslint/utils': 7.17.0(eslint@9.7.0)(typescript@5.5.4)
-      '@unocss/config': 0.61.5
-      '@unocss/core': 0.61.5
+      '@unocss/config': 0.61.6
+      '@unocss/core': 0.61.6
       magic-string: 0.30.10
       synckit: 0.9.1
     transitivePeerDependencies:
@@ -4068,7 +4073,7 @@ snapshots:
 
   magic-string@0.30.10:
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.4.15
+      '@jridgewell/sourcemap-codec': 1.5.0
 
   mdast-util-from-markdown@0.8.5:
     dependencies:
@@ -4811,7 +4816,7 @@ snapshots:
 
   unconfig@0.3.13:
     dependencies:
-      '@antfu/utils': 0.7.8
+      '@antfu/utils': 0.7.10
       defu: 6.1.4
       jiti: 1.21.6
 
