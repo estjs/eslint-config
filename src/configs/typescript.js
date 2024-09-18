@@ -2,7 +2,7 @@ import { GLOB_JS, GLOB_TS, GLOB_TSX } from '../globs';
 import { parserTypeScript, pluginTypeScript } from '../plugins';
 import { restrictedSyntaxJs } from './javascript';
 
-export function typescript(overrides = {}) {
+export function typescript(overrides = {}, globals = {}) {
   return [
     {
       files: [GLOB_TS, GLOB_TSX],
@@ -11,6 +11,7 @@ export function typescript(overrides = {}) {
         parserOptions: {
           sourceType: 'module',
         },
+        globals,
       },
       plugins: {
         '@typescript-eslint': pluginTypeScript,

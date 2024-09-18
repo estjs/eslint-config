@@ -3,7 +3,7 @@ import { pluginUnusedImports } from '../plugins';
 
 export const restrictedSyntaxJs = ['LabeledStatement', 'WithStatement'];
 
-export function javascript(overrides = {}) {
+export function javascript(overrides = {}, global = {}) {
   return [
     {
       languageOptions: {
@@ -11,6 +11,7 @@ export function javascript(overrides = {}) {
           ...globals.browser,
           ...globals.es2021,
           ...globals.node,
+          ...global,
         },
         parserOptions: {
           ecmaFeatures: {
