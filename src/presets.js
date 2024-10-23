@@ -38,6 +38,7 @@ import {
  * @param {object} param1.prettier - Configuration options for prettier.
  * @param {object} param1.react - Configuration options for react.
  * @param {object} param1.test - Configuration options for test.
+ * @param {object} param1.globals - Configuration options for globals.
  *
  * @param {object} param2 - Additional options to enable or disable certain features.
  * @param {boolean} param2.vue - Enable or disable vue.
@@ -63,6 +64,7 @@ export function estjs(
     prettier: prettierConfig = {},
     react: reactConfig = {},
     test: testConfig = {},
+    globals = {},
   } = {},
   {
     vue: enableVue = hasVue ?? false,
@@ -92,7 +94,7 @@ export function estjs(
 
   const configs = [
     ...ignores,
-    ...javascript(jsConfig),
+    ...javascript(jsConfig, globals),
     ...comments,
     ...imports(importsConfig),
     ...unicorn(unicornConfig),
@@ -110,7 +112,7 @@ export function estjs(
   if (enableUnocss) configs.push(...unocss);
   if (enablePrettier) configs.push(...prettier(prettierConfig));
   if (enableReact) configs.push(...react(reactConfig));
-  if (enableTS) configs.push(...typescript(tsConfig));
+  if (enableTS) configs.push(...typescript(tsConfig, globals));
   if (enableTest) configs.push(...test(testConfig));
   if (enableNode) configs.push(...node);
 

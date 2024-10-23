@@ -12,7 +12,6 @@ export function unicorn(overrides = {}) {
         'unicorn/custom-error-definition': 'error',
         'unicorn/error-message': 'error',
         'unicorn/escape-case': 'error',
-        'unicorn/explicit-length-check': 'error',
         'unicorn/filename-case': [
           'error',
           {
@@ -68,6 +67,7 @@ export function unicorn(overrides = {}) {
 
         // off prefer-at rule
         'unicorn/prefer-at': 'off',
+        'unicorn/explicit-length-check': 'off',
 
         ...overrides,
       },
