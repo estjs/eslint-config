@@ -8,7 +8,7 @@ export function test(overrides = {}) {
         test: {
           ...pluginVitest,
           _rules: {
-            ...pluginVitest.rules,
+            ...pluginVitest.configs.recommended.rules,
           },
         },
       },

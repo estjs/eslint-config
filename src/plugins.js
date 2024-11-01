@@ -8,7 +8,7 @@ import _jsDocPlugin from 'eslint-plugin-jsdoc';
 import _pluginReact from 'eslint-plugin-react';
 
 import _pluginReactHooks from 'eslint-plugin-react-hooks';
-import _pluginVitest from 'eslint-plugin-vitest';
+import _pluginVitest from '@vitest/eslint-plugin';
 import * as _pluginUnocss from '@unocss/eslint-plugin';
 import * as _pluginNode from 'eslint-plugin-n';
 import * as _pluginPrettier from 'eslint-plugin-prettier';
