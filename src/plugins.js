@@ -16,6 +16,7 @@ import * as _configPrettier from 'eslint-config-prettier';
 import * as _regexpPlugin from 'eslint-plugin-regexp';
 
 import _pluginUnusedImports from 'eslint-plugin-unused-imports';
+import * as _pluginBiome from 'eslint-plugin-biome';
 export * as pluginImport from 'eslint-plugin-import-x';
 export * as pluginJsonc from 'eslint-plugin-jsonc';
 export * as pluginYml from 'eslint-plugin-yml';
@@ -26,7 +27,7 @@ export * as parserYml from 'yaml-eslint-parser';
 export * as parserJsonc from 'jsonc-eslint-parser';
 
 function interopDefault(m) {
-  return m.default || m;
+	return m.default || m;
 }
 
 export const pluginUnusedImports = interopDefault(_pluginUnusedImports);
@@ -35,7 +36,7 @@ export const pluginMarkdown = interopDefault(_pluginMarkdown);
 export const pluginTypeScript = interopDefault(_pluginTypeScript);
 export const pluginUnicorn = interopDefault(_pluginUnicorn);
 export const pluginVue = interopDefault(_pluginVue);
-// export const pluginBiome = interopDefault(_pluginBiome);
+export const pluginBiome = interopDefault(_pluginBiome);
 
 export const jsDocPlugin = interopDefault(_jsDocPlugin);
 export const pluginNode = interopDefault(_pluginNode);

@@ -29,6 +29,9 @@ importers:
       eslint-config-prettier:
         specifier: ^9.1.0
         version: 9.1.0(eslint@9.13.0(jiti@2.4.0))
+      eslint-plugin-biome:
+        specifier: workspace:*
+        version: link:eslint-plugin-biome
       eslint-plugin-eslint-comments:
         specifier: ^3.2.0
         version: 3.2.0(eslint@9.13.0(jiti@2.4.0))

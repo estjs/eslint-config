@@ -14,9 +14,9 @@ npm install eslint-plugin-biome
 ```js
 // .eslintrc.js
 module.exports = {
-  plugins: ['biome'],
-  rules: {
-    'biome/recommended': 'error'
-  }
-}
+	plugins: ['biome'],
+	rules: {
+		'biome/recommended': 'error',
+	},
+};
 ```

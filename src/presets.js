@@ -1,27 +1,27 @@
 import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
 
-// biome
 import {
-  comments,
-  ignores,
-  imports,
-  javascript,
-  jsdoc,
-  jsonc,
-  markdown,
-  node,
-  prettier,
-  react,
-  regexp,
-  sortKeys,
-  sortPackageJson,
-  sortTsconfig,
-  test,
-  typescript,
-  unicorn,
-  unocss,
-  vue,
-  yml,
+	biome,
+	comments,
+	ignores,
+	imports,
+	javascript,
+	jsdoc,
+	jsonc,
+	markdown,
+	node,
+	prettier,
+	react,
+	regexp,
+	sortKeys,
+	sortPackageJson,
+	sortTsconfig,
+	test,
+	typescript,
+	unicorn,
+	unocss,
+	vue,
+	yml,
 } from './configs';
 
 /**
@@ -39,7 +39,7 @@ import {
  * @param {object} param1.react - Configuration options for react.
  * @param {object} param1.test - Configuration options for test.
  * @param {object} param1.globals - Configuration options for globals.
- *
+ * @param {object} param1.node - Configuration options for node.
  * @param {object} param2 - Additional options to enable or disable certain features.
  * @param {boolean} param2.vue - Enable or disable vue.
  * @param {boolean} param2.test - Enable or disable test.
@@ -53,68 +53,89 @@ import {
  * @return {Array} List of configurations based on the input parameters.
  */
 export function estjs(
-  {
-    typescript: tsConfig = {},
-    javascript: jsConfig = {},
-    imports: importsConfig = {},
-    unicorn: unicornConfig = {},
-    jsdoc: jsdocConfig = {},
-    vue: vueConfig = {},
-    markdown: markdownConfig = {},
-    prettier: prettierConfig = {},
-    react: reactConfig = {},
-    test: testConfig = {},
-    globals = {},
-  } = {},
-  {
-    vue: enableVue = hasVue ?? false,
-    test: enableTest = hasTest ?? false,
-    react: enableReact = hasReact ?? false,
-    unocss: enableUnocss = hasUnocss ?? false,
-    typescript: enableTS = hasTypeScript ?? false,
-    node: enableNode = true,
-    prettier: enablePrettier = true,
-    markdown: enableMarkdown = true,
-  } = {},
+	{
+		typescript: tsConfig = {},
+		javascript: jsConfig = {},
+		imports: importsConfig = {},
+		unicorn: unicornConfig = {},
+		jsdoc: jsdocConfig = {},
+		vue: vueConfig = {},
+		markdown: markdownConfig = {},
+		prettier: prettierConfig = {},
+		react: reactConfig = {},
+		test: testConfig = {},
+		globals = {},
+	} = {},
+	{
+		vue: enableVue = hasVue ?? false,
+		test: enableTest = hasTest ?? false,
+		react: enableReact = hasReact ?? false,
+		unocss: enableUnocss = hasUnocss ?? false,
+		typescript: enableTS = hasTypeScript ?? false,
+		node: enableNode = true,
+		prettier: enablePrettier = true,
+		markdown: enableMarkdown = true,
+		biome: enableBiome = true,
+	} = {},
 ) {
-  if (
-    tsConfig === null ||
-    jsConfig === null ||
-    importsConfig === null ||
-    unicornConfig === null ||
-    jsdocConfig === null ||
-    vueConfig === null ||
-    markdownConfig === null ||
-    prettierConfig === null ||
-    reactConfig === null ||
-    testConfig === null
-  ) {
-    throw new Error('Configuration objects cannot be null');
-  }
+	if (
+		tsConfig === null ||
+		jsConfig === null ||
+		importsConfig === null ||
+		unicornConfig === null ||
+		jsdocConfig === null ||
+		vueConfig === null ||
+		markdownConfig === null ||
+		prettierConfig === null ||
+		reactConfig === null ||
+		testConfig === null
+	) {
+		throw new Error('Configuration objects cannot be null');
+	}
 
-  const configs = [
-    ...ignores,
-    ...javascript(jsConfig, globals),
-    ...comments,
-    ...imports(importsConfig),
-    ...unicorn(unicornConfig),
-    ...jsdoc(jsdocConfig),
-    ...sortKeys,
-    ...jsonc,
-    ...sortPackageJson,
-    ...sortTsconfig,
-    ...yml,
-    ...regexp(),
-  ];
+	const configs = [
+		...ignores,
+		...javascript(jsConfig, globals),
+		...comments,
+		...imports(importsConfig),
+		...unicorn(unicornConfig),
+		...jsdoc(jsdocConfig),
+		...sortKeys,
+		...jsonc,
+		...sortPackageJson,
+		...sortTsconfig,
+		...yml,
+		...regexp(),
+	];
 
-  if (enableVue) configs.push(...vue(vueConfig));
-  if (enableMarkdown) configs.push(...markdown(markdownConfig));
-  if (enableUnocss) configs.push(...unocss);
-  if (enablePrettier) configs.push(...prettier(prettierConfig));
-  if (enableReact) configs.push(...react(reactConfig));
-  if (enableTS) configs.push(...typescript(tsConfig, globals));
-  if (enableTest) configs.push(...test(testConfig));
-  if (enableNode) configs.push(...node);
+	if (enableVue) {
+		configs.push(...vue(vueConfig));
+	}
+	if (enableMarkdown) {
+		configs.push(...markdown(markdownConfig));
+	}
+	if (enableUnocss) {
+		configs.push(...unocss);
+	}
+	if (enablePrettier) {
+		configs.push(...prettier(prettierConfig));
+	}
+	if (enableReact) {
+		configs.push(...react(reactConfig));
+	}
+	if (enableTS) {
+		configs.push(...typescript(tsConfig, globals));
+	}
+	if (enableTest) {
+		configs.push(...test(testConfig));
+	}
+	if (enableNode) {
+		configs.push(...node);
+	}
 
-  return configs;
+	if (enableBiome) {
+		configs.push(...biome);
+	}
+
+	return configs;
 }
