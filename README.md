@@ -43,10 +43,4 @@ export default estjs(
 );
 ```
 
-## VSCode
 
-```jsonc
-{
- "eslint.experimental.useFlatConfig": true
-}
-```
