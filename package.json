@@ -83,7 +83,7 @@
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.4",
-    "@types/node": "^20.17.9",
+    "@types/node": "^22.0.0",
     "bumpp": "^9.8.1",
     "eslint": "^9.16.0",
     "pnpm": "^9.14.4",
