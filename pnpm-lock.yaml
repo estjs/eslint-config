@@ -103,8 +103,8 @@ importers:
         specifier: ^1.2.4
         version: 1.2.4(eslint@9.16.0(jiti@1.21.6))
       '@types/node':
-        specifier: ^20.17.9
-        version: 20.17.9
+        specifier: ^22.0.0
+        version: 22.10.1
       bumpp:
         specifier: ^9.8.1
         version: 9.8.1
@@ -647,8 +647,8 @@ packages:
   '@types/mdast@3.0.15':
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
 
-  '@types/node@20.17.9':
-    resolution: {integrity: sha512-0JOXkRyLanfGPE2QRCwgxhzlBAvaRdCNMcvbd7jFfpmD4eEXll7LRwy5ymJmyeZqk7Nh7eD2LeUyQ68BbndmXw==}
+  '@types/node@22.10.1':
+    resolution: {integrity: sha512-qKgsUwfHZV2WCWLAnVP1JqnpE6Im6h3Y0+fYgMTasNQ7V++CBX5OT1as0g0f+OyubbFqhf6XVNIsmN4IIhEgGQ==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -2518,8 +2518,8 @@ packages:
   unconfig@0.5.5:
     resolution: {integrity: sha512-VQZ5PT9HDX+qag0XdgQi8tJepPhXiR/yVOkn707gJDKo31lGjRilPREiQJ9Z6zd/Ugpv6ZvO5VxVIcatldYcNQ==}
 
-  undici-types@6.19.2:
-    resolution: {integrity: sha512-jvI+p8VJnrOIQ8AU4PyB1ytW68EyrLnI2xvCO3e5umm3nmhNjpugMD1wo+X994PyvUT9dWS/k3vO1wwRIh730Q==}
+  undici-types@6.20.0:
+    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
   unist-util-stringify-position@2.0.3:
     resolution: {integrity: sha512-3faScn5I+hy9VleOq/qNbAd6pAx7iH5jYBMS9I1HgQVijz/4mv5Bvw5iw1sC/90CODiKo81G/ps8AJrISn687g==}
@@ -2956,9 +2956,9 @@ snapshots:
     dependencies:
       '@types/unist': 2.0.10
 
-  '@types/node@20.17.9':
+  '@types/node@22.10.1':
     dependencies:
-      undici-types: 6.19.2
+      undici-types: 6.20.0
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -5139,7 +5139,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  undici-types@6.19.2: {}
+  undici-types@6.20.0: {}
 
   unist-util-stringify-position@2.0.3:
     dependencies:
