@@ -95,7 +95,7 @@ export function estjs(
   }
 
   const configs = [
-    ...ignores.push(ignoresConfig),
+    ...ignores.concat(ignoresConfig),
     ...javascript(jsConfig, globals),
     ...comments,
     ...imports(importsConfig),
