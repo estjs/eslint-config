@@ -39,6 +39,7 @@ import {
  * @param {object} param1.react - Configuration options for react.
  * @param {object} param1.test - Configuration options for test.
  * @param {object} param1.globals - Configuration options for globals.
+ * @param {object} param1.ignores - Configuration options for ignores.
  *
  * @param {object} param2 - Additional options to enable or disable certain features.
  * @param {boolean} param2.vue - Enable or disable vue.
@@ -65,6 +66,7 @@ export function estjs(
     react: reactConfig = {},
     test: testConfig = {},
     globals = {},
+    ignores: ignoresConfig = [],
   } = {},
   {
     vue: enableVue = hasVue ?? false,
@@ -93,7 +95,7 @@ export function estjs(
   }
 
   const configs = [
-    ...ignores,
+    ...ignores.push(ignoresConfig),
     ...javascript(jsConfig, globals),
     ...comments,
     ...imports(importsConfig),
