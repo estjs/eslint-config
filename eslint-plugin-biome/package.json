@@ -45,11 +45,11 @@
   },
   "devDependencies": {
     "@estjs/eslint-config": "workspace:*",
-    "bumpp": "^9.8.0",
-    "eslint": "^9.14.0",
-    "typescript": "^5.6.3",
-    "unbuild": "^2.0.0",
-    "vitest": "^2.1.4"
+    "bumpp": "^9.10.0",
+    "eslint": "^9.17.0",
+    "typescript": "^5.7.3",
+    "unbuild": "^3.2.0",
+    "vitest": "^2.1.8"
   },
   "engines": {
     "node": ">=16"
