@@ -117,6 +117,11 @@ export function estjs(
 	if (enableUnocss) {
 		configs.push(...unocss);
 	}
+
+	if (enableBiome) {
+		enablePrettier = false;
+		configs.push(...biome);
+	}
 	if (enablePrettier) {
 		configs.push(...prettier(prettierConfig));
 	}
@@ -132,10 +137,5 @@ export function estjs(
 	if (enableNode) {
 		configs.push(...node);
 	}
-
-	if (enableBiome) {
-		configs.push(...biome);
-	}
-
 	return configs;
 }
