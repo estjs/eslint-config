@@ -17,6 +17,7 @@ import * as _regexpPlugin from 'eslint-plugin-regexp';
 
 import _pluginUnusedImports from 'eslint-plugin-unused-imports';
 import * as _pluginBiome from 'eslint-plugin-biome';
+import * as _configBiome from 'eslint-config-biome';
 export * as pluginImport from 'eslint-plugin-import-x';
 export * as pluginJsonc from 'eslint-plugin-jsonc';
 export * as pluginYml from 'eslint-plugin-yml';
@@ -27,7 +28,7 @@ export * as parserYml from 'yaml-eslint-parser';
 export * as parserJsonc from 'jsonc-eslint-parser';
 
 function interopDefault(m) {
-	return m.default || m;
+  return m.default || m;
 }
 
 export const pluginUnusedImports = interopDefault(_pluginUnusedImports);
@@ -47,3 +48,4 @@ export const pluginUnocss = interopDefault(_pluginUnocss);
 export const pluginPrettier = interopDefault(_pluginPrettier);
 export const configPrettier = interopDefault(_configPrettier);
 export const pluginRegexp = interopDefault(_regexpPlugin);
+export const configBiome = interopDefault(_configBiome);

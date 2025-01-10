@@ -6,7 +6,7 @@
 		"enabled": true,
 		"useEditorconfig": true,
 		"formatWithErrors": false,
-		"indentStyle": "tab",
+		"indentStyle": "space",
 		"indentWidth": 2,
 		"lineEnding": "lf",
 		"lineWidth": 100,
@@ -76,10 +76,7 @@
 				"noCatchAssign": "error",
 				"noClassAssign": "error",
 				"noCompareNegZero": "error",
-				"noConsole": {
-					"level": "warn",
-					"options": { "allow": ["warn", "error"] }
-				},
+				"noConsole": "warn",
 				"noControlCharactersInRegex": "error",
 				"noDebugger": "warn",
 				"noDoubleEquals": "error",
