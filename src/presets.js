@@ -38,11 +38,8 @@ import {
  * @param {object} param1.react - Configuration options for react.
  * @param {object} param1.test - Configuration options for test.
  * @param {object} param1.globals - Configuration options for globals.
-<<<<<<< HEAD
-=======
  * @param {object} param1.ignores - Configuration options for ignores.
  *
->>>>>>> f44993262614f593cce2e254f41a1ed959729122
  * @param {object} param2 - Additional options to enable or disable certain features.
  * @param {boolean} param2.vue - Enable or disable vue.
  * @param {boolean} param2.test - Enable or disable test.
