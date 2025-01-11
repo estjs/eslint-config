@@ -6,10 +6,10 @@ import fs from 'fs-extra';
 import { afterAll, beforeAll, it } from 'vitest';
 
 beforeAll(async () => {
-  // await fs.rm('_fixtures', { recursive: true, force: true });
+  await fs.rm('_fixtures', { recursive: true, force: true });
 });
 afterAll(async () => {
-  // await fs.rm('_fixtures', { recursive: true, force: true });
+  await fs.rm('_fixtures', { recursive: true, force: true });
 });
 
 runWithConfig('js', {
