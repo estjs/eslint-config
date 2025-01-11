@@ -1,7 +1,7 @@
 import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
 
-// biome
 import {
+  biome,
   comments,
   ignores,
   imports,
@@ -10,7 +10,6 @@ import {
   jsonc,
   markdown,
   node,
-  prettier,
   react,
   regexp,
   sortKeys,
@@ -39,8 +38,11 @@ import {
  * @param {object} param1.react - Configuration options for react.
  * @param {object} param1.test - Configuration options for test.
  * @param {object} param1.globals - Configuration options for globals.
+<<<<<<< HEAD
+=======
  * @param {object} param1.ignores - Configuration options for ignores.
  *
+>>>>>>> f44993262614f593cce2e254f41a1ed959729122
  * @param {object} param2 - Additional options to enable or disable certain features.
  * @param {boolean} param2.vue - Enable or disable vue.
  * @param {boolean} param2.test - Enable or disable test.
@@ -48,7 +50,6 @@ import {
  * @param {boolean} param2.unocss - Enable or disable unocss.
  * @param {boolean} param2.typescript - Enable or disable typescript.
  * @param {boolean} param2.node - Enable or disable node.
- * @param {boolean} param2.prettier - Enable or disable prettier.
  * @param {boolean} param2.markdown - Enable or disable markdown.
  *
  * @return {Array} List of configurations based on the input parameters.
@@ -75,7 +76,6 @@ export function estjs(
     unocss: enableUnocss = hasUnocss ?? false,
     typescript: enableTS = hasTypeScript ?? false,
     node: enableNode = true,
-    prettier: enablePrettier = true,
     markdown: enableMarkdown = true,
   } = {},
 ) {
@@ -107,16 +107,30 @@ export function estjs(
     ...sortTsconfig,
     ...yml,
     ...regexp(),
+    ...biome,
   ];
 
-  if (enableVue) configs.push(...vue(vueConfig));
-  if (enableMarkdown) configs.push(...markdown(markdownConfig));
-  if (enableUnocss) configs.push(...unocss);
-  if (enablePrettier) configs.push(...prettier(prettierConfig));
-  if (enableReact) configs.push(...react(reactConfig));
-  if (enableTS) configs.push(...typescript(tsConfig, globals));
-  if (enableTest) configs.push(...test(testConfig));
-  if (enableNode) configs.push(...node);
+  if (enableVue) {
+    configs.push(...vue(vueConfig));
+  }
+  if (enableMarkdown) {
+    configs.push(...markdown(markdownConfig));
+  }
+  if (enableUnocss) {
+    configs.push(...unocss);
+  }
+  if (enableReact) {
+    configs.push(...react(reactConfig));
+  }
+  if (enableTS) {
+    configs.push(...typescript(tsConfig, globals));
+  }
+  if (enableTest) {
+    configs.push(...test(testConfig));
+  }
+  if (enableNode) {
+    configs.push(...node);
+  }
 
   return configs;
 }

@@ -30,27 +30,12 @@ const vueCustomRules = {
   'vue/block-order': 'off',
   'vue/custom-event-name-casing': ['error', 'camelCase'],
   'vue/eqeqeq': ['error', 'smart'],
-  'vue/html-self-closing': [
-    'error',
-    {
-      html: {
-        component: 'always',
-        normal: 'always',
-        void: 'any',
-      },
-      math: 'always',
-      svg: 'always',
-    },
-  ],
-  'vue/max-attributes-per-line': 'off',
-
   'vue/multi-word-component-names': 'off',
   'vue/no-constant-condition': 'warn',
   'vue/no-empty-pattern': 'error',
   'vue/no-loss-of-precision': 'error',
   'vue/no-unused-refs': 'error',
   'vue/no-useless-v-bind': 'error',
-
   'vue/no-v-html': 'off',
   'vue/object-shorthand': [
     'error',
@@ -98,7 +83,7 @@ export function vue(overrides = {}) {
       },
       plugins: {
         '@typescript-eslint': tsPlugin,
-        'vue': pluginVue,
+        vue: pluginVue,
       },
       processor: pluginVue.processors['.vue'],
       rules: {

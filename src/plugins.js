@@ -11,11 +11,10 @@ import _pluginReactHooks from 'eslint-plugin-react-hooks';
 import _pluginVitest from '@vitest/eslint-plugin';
 import * as _pluginUnocss from '@unocss/eslint-plugin';
 import * as _pluginNode from 'eslint-plugin-n';
-import * as _pluginPrettier from 'eslint-plugin-prettier';
-import * as _configPrettier from 'eslint-config-prettier';
 import * as _regexpPlugin from 'eslint-plugin-regexp';
 
 import _pluginUnusedImports from 'eslint-plugin-unused-imports';
+import * as _pluginBiome from 'eslint-plugin-biome';
 export * as pluginImport from 'eslint-plugin-import-x';
 export * as pluginJsonc from 'eslint-plugin-jsonc';
 export * as pluginYml from 'eslint-plugin-yml';
@@ -35,7 +34,7 @@ export const pluginMarkdown = interopDefault(_pluginMarkdown);
 export const pluginTypeScript = interopDefault(_pluginTypeScript);
 export const pluginUnicorn = interopDefault(_pluginUnicorn);
 export const pluginVue = interopDefault(_pluginVue);
-// export const pluginBiome = interopDefault(_pluginBiome);
+export const pluginBiome = interopDefault(_pluginBiome);
 
 export const jsDocPlugin = interopDefault(_jsDocPlugin);
 export const pluginNode = interopDefault(_pluginNode);
@@ -43,6 +42,4 @@ export const pluginReact = interopDefault(_pluginReact);
 export const pluginReactHooks = interopDefault(_pluginReactHooks);
 export const pluginVitest = interopDefault(_pluginVitest);
 export const pluginUnocss = interopDefault(_pluginUnocss);
-export const pluginPrettier = interopDefault(_pluginPrettier);
-export const configPrettier = interopDefault(_configPrettier);
 export const pluginRegexp = interopDefault(_regexpPlugin);
