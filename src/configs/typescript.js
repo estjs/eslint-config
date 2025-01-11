@@ -1,7 +1,6 @@
 import { GLOB_JS, GLOB_TS, GLOB_TSX } from '../globs';
 import { parserTypeScript, pluginTypeScript } from '../plugins';
 import { restrictedSyntaxJs } from './javascript';
-
 export function typescript(overrides = {}, globals = {}) {
   return [
     {
@@ -29,17 +28,12 @@ export function typescript(overrides = {}, globals = {}) {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-import-type-side-effects': 'error',
         '@typescript-eslint/no-non-null-assertion': 'off',
-        '@typescript-eslint/no-redeclare': 'error',
-
         '@typescript-eslint/no-dynamic-delete': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
-
         '@typescript-eslint/no-unused-expressions': 'off',
         '@typescript-eslint/no-empty-object-type': 'off',
         '@typescript-eslint/no-unsafe-function-type': 'off',
-
         '@typescript-eslint/no-unnecessary-type-constraint': 'off',
-
         '@typescript-eslint/prefer-as-const': 'warn',
         '@typescript-eslint/prefer-literal-enum-member': [
           'error',

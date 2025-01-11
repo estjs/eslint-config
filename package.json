@@ -14,9 +14,7 @@
   },
   "author": "jiangxd <jiangxd2016@gmail.com>",
   "funding": "https://github.com/sponsors/estjs",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -29,10 +27,7 @@
   },
   "typesVersions": {
     "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
+      "*": ["./dist/*", "./dist/index.d.ts"]
     }
   },
   "sideEffects": false,
@@ -42,12 +37,12 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "lint": "pnpm run build &&eslint --cache --fix ./",
+    "lint": "pnpm run build && eslint --cache --fix ./",
     "prepublishOnly": "pnpm run build",
     "release": "bumpp --commit --tag --push && pnpm publish --no-git-checks --access public"
   },
   "peerDependencies": {
-    "eslint": ">=8.40.0"
+    "eslint": ">=9"
   },
   "dependencies": {
     "@eslint-types/jsdoc": "48.2.2",
@@ -56,8 +51,6 @@
     "@typescript-eslint/parser": "^8.19.1",
     "@unocss/eslint-plugin": "^65.4.0",
     "@vitest/eslint-plugin": "^1.1.24",
-    "eslint-config-biome": "^1.9.4",
-    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-biome": "^0.9.15",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import-x": "^4.6.1",
@@ -65,7 +58,6 @@
     "eslint-plugin-jsonc": "^2.18.2",
     "eslint-plugin-markdown": "^5.1.0",
     "eslint-plugin-n": "^17.15.1",
-    "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.3",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.16",
@@ -93,6 +85,6 @@
     "typescript": "^5.7.3"
   },
   "engines": {
-    "node": ">=16.14.0"
+    "node": ">=18"
   }
 }

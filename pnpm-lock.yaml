@@ -26,9 +26,6 @@ importers:
       '@vitest/eslint-plugin':
         specifier: ^1.1.24
         version: 1.1.24(@typescript-eslint/utils@8.19.1)(eslint@9.18.0)(typescript@5.7.3)
-      eslint-config-biome:
-        specifier: ^1.9.4
-        version: 1.9.4
       eslint-config-prettier:
         specifier: ^9.1.0
         version: 9.1.0(eslint@9.18.0)
@@ -2215,10 +2212,6 @@ packages:
     dependencies:
       eslint: 9.18.0
       semver: 7.6.3
-    dev: false
-
-  /eslint-config-biome@1.9.4:
-    resolution: {integrity: sha512-4HX+rfUk1R2rPwN3hcxPxq5sLDLGb/xtu48AggTtxCVoRoD18kjwOwHA1c7gYsbRrEQso+9mlRSS9+G7OfDqFg==}
     dev: false
 
   /eslint-config-prettier@9.1.0(eslint@9.18.0):

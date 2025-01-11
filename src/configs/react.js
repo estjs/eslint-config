@@ -7,7 +7,7 @@ export function react(overrides = {}) {
   return [
     {
       plugins: {
-        'react': pluginReact,
+        react: pluginReact,
         'react-hooks': fixupPluginRules(pluginReactHooks),
       },
       settings: {
@@ -31,7 +31,6 @@ export function react(overrides = {}) {
         'react-hooks/rules-of-hooks': 'error',
 
         'react/display-name': 'error',
-
         'react/no-children-prop': 'error',
         'react/no-danger-with-children': 'error',
         'react/no-deprecated': 'error',
@@ -46,15 +45,6 @@ export function react(overrides = {}) {
         'react/prop-types': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/require-render-return': 'error',
-
-        'react/jsx-key': 'error',
-        'react/jsx-no-comment-textnodes': 'error',
-        'react/jsx-no-duplicate-props': 'error',
-        'react/jsx-no-target-blank': 'error',
-        'react/jsx-uses-react': 'error',
-        'react/jsx-uses-vars': 'error',
-        'react/jsx-no-undef': 'off',
-        'react/prop-type': 'off',
 
         ...overrides,
       },

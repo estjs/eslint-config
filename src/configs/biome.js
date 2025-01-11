@@ -1,4 +1,4 @@
-import { configBiome, pluginBiome } from '../plugins';
+import { pluginBiome } from '../plugins';
 import {
   GLOB_JS,
   GLOB_JSON,
@@ -29,25 +29,6 @@ export const biome = [
     },
     rules: {
       ...pluginBiome.configs.recommended.rules,
-    },
-  },
-];
-
-export const disableBiomeHaveRule = [
-  {
-    files: [
-      GLOB_JSON,
-      GLOB_JSONC,
-      GLOB_JS,
-      GLOB_SRC,
-      GLOB_JSX,
-      GLOB_JSON5,
-      GLOB_TS,
-      GLOB_TSX,
-      GLOB_MARKDOWN,
-    ],
-    rules: {
-      ...configBiome.rules,
     },
   },
 ];

@@ -3,7 +3,6 @@ import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
 import {
   biome,
   comments,
-  disableBiomeHaveRule,
   ignores,
   imports,
   javascript,
@@ -11,7 +10,6 @@ import {
   jsonc,
   markdown,
   node,
-  prettier,
   react,
   regexp,
   sortKeys,
@@ -40,7 +38,6 @@ import {
  * @param {object} param1.react - Configuration options for react.
  * @param {object} param1.test - Configuration options for test.
  * @param {object} param1.globals - Configuration options for globals.
- * @param {object} param1.node - Configuration options for node.
  * @param {object} param2 - Additional options to enable or disable certain features.
  * @param {boolean} param2.vue - Enable or disable vue.
  * @param {boolean} param2.test - Enable or disable test.
@@ -48,7 +45,6 @@ import {
  * @param {boolean} param2.unocss - Enable or disable unocss.
  * @param {boolean} param2.typescript - Enable or disable typescript.
  * @param {boolean} param2.node - Enable or disable node.
- * @param {boolean} param2.prettier - Enable or disable prettier.
  * @param {boolean} param2.markdown - Enable or disable markdown.
  *
  * @return {Array} List of configurations based on the input parameters.
@@ -74,9 +70,7 @@ export function estjs(
     unocss: enableUnocss = hasUnocss ?? false,
     typescript: enableTS = hasTypeScript ?? false,
     node: enableNode = true,
-    prettier: enablePrettier = true,
     markdown: enableMarkdown = true,
-    biome: enableBiome = true,
   } = {},
 ) {
   if (
@@ -107,6 +101,7 @@ export function estjs(
     ...sortTsconfig,
     ...yml,
     ...regexp(),
+    ...biome,
   ];
 
   if (enableVue) {
@@ -117,14 +112,6 @@ export function estjs(
   }
   if (enableUnocss) {
     configs.push(...unocss);
-  }
-
-  if (enableBiome) {
-    enablePrettier = false;
-    configs.push(...biome);
-  }
-  if (enablePrettier) {
-    configs.push(...prettier(prettierConfig));
   }
   if (enableReact) {
     configs.push(...react(reactConfig));
@@ -137,10 +124,6 @@ export function estjs(
   }
   if (enableNode) {
     configs.push(...node);
-  }
-
-  if (enableBiome) {
-    configs.push(...disableBiomeHaveRule);
   }
 
   return configs;
