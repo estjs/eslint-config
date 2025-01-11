@@ -41,3 +41,33 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+  test:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node: [lts/*]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set node ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install
+        run: pnpm install --no-frozen-lockfile
+
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Test
+        run: pnpm run test

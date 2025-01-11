@@ -58,10 +58,7 @@ export function javascript(overrides = {}, global = {}) {
           },
         ],
         'unused-imports/no-unused-imports': 'warn',
-        'unused-imports/no-unused-vars': [
-          'error',
-          { args: 'after-used', ignoreRestSiblings: true },
-        ],
+        'unused-imports/no-unused-vars': ['warn', { args: 'after-used', ignoreRestSiblings: true }],
         'use-isnan': ['error', { enforceForIndexOf: true, enforceForSwitchCase: true }],
         'valid-typeof': ['error', { requireStringLiterals: true }],
         'vars-on-top': 'error',

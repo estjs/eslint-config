@@ -34,7 +34,7 @@ import {
  * @param {object} param1.jsdoc - Configuration options for jsdoc.
  * @param {object} param1.vue - Configuration options for vue.
  * @param {object} param1.markdown - Configuration options for markdown.
- * @param {object} param1.prettier - Configuration options for prettier.
+ * @param {object} param1.biome - Configuration options for biome.
  * @param {object} param1.react - Configuration options for react.
  * @param {object} param1.test - Configuration options for test.
  * @param {object} param1.globals - Configuration options for globals.
@@ -60,7 +60,7 @@ export function estjs(
     jsdoc: jsdocConfig = {},
     vue: vueConfig = {},
     markdown: markdownConfig = {},
-    prettier: prettierConfig = {},
+    biome: biomeConfig = {},
     react: reactConfig = {},
     test: testConfig = {},
     globals = {},
@@ -84,7 +84,7 @@ export function estjs(
     jsdocConfig === null ||
     vueConfig === null ||
     markdownConfig === null ||
-    prettierConfig === null ||
+    biomeConfig === null ||
     reactConfig === null ||
     testConfig === null
   ) {
@@ -92,7 +92,7 @@ export function estjs(
   }
 
   const configs = [
-    ...ignores.concat(ignoresConfig),
+    ...ignores(ignoresConfig),
     ...javascript(jsConfig, globals),
     ...comments,
     ...imports(importsConfig),

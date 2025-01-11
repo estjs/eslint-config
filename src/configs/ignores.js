@@ -1,3 +1,9 @@
 import { GLOB_EXCLUDE } from '../globs';
 
-export const ignores = [{ ignores: GLOB_EXCLUDE }];
+export function ignores(userIgores = []) {
+  return [
+    {
+      ignores: [...GLOB_EXCLUDE, ...userIgores],
+    },
+  ];
+}

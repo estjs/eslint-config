@@ -26,8 +26,6 @@ export function react(overrides = {}) {
         },
       },
       rules: {
-        // recommended rules react-hooks
-        'react-hooks/exhaustive-deps': 'warn',
         'react-hooks/rules-of-hooks': 'error',
 
         'react/display-name': 'error',
@@ -39,13 +37,16 @@ export function react(overrides = {}) {
         'react/no-is-mounted': 'error',
         'react/no-render-return-value': 'error',
         'react/no-string-refs': 'error',
-        'react/no-unescaped-entities': 'error',
-        'react/no-unknown-property': 'error',
+
+        'react/no-unescaped-entities': 'warn',
+        'react/no-unknown-property': 'warn',
+        'react-hooks/exhaustive-deps': 'warn',
+
+        'react/require-render-return': 'error',
+
         'react/no-unsafe': 'off',
         'react/prop-types': 'off',
         'react/react-in-jsx-scope': 'off',
-        'react/require-render-return': 'error',
-
         ...overrides,
       },
     },
