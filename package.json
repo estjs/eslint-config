@@ -39,7 +39,9 @@
     "build": "tsup",
     "lint": "pnpm run build && eslint --cache --fix ./",
     "prepublishOnly": "pnpm run build",
-    "release": "bumpp --commit --tag --push && pnpm publish --no-git-checks --access public"
+    "release": "bumpp --commit --tag --push && pnpm publish --no-git-checks --access public",
+    "test": "vitest",
+    "test:watch": "vitest watch"
   },
   "peerDependencies": {
     "eslint": ">=9"
@@ -72,6 +74,7 @@
     "globals": "^15.14.0",
     "jsonc-eslint-parser": "^2.4.0",
     "local-pkg": "^1.0.0",
+    "vitest": "^2.1.6",
     "vue-eslint-parser": "^9.4.3",
     "yaml-eslint-parser": "^1.2.3"
   },
@@ -81,6 +84,8 @@
     "bumpp": "^9.10.0",
     "eslint": "^9.18.0",
     "pnpm": "^9.15.3",
+    "fast-glob": "^3.3.3",
+    "fs-extra": "^11.2.0",
     "tsup": "^8.3.5",
     "typescript": "^5.7.3"
   },

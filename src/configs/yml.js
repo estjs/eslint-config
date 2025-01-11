@@ -12,7 +12,6 @@ export const yml = [
     },
     rules: {
       ...pluginYml.configs.standard.rules,
-      ...pluginYml.configs.prettier.rules,
       'yml/no-empty-mapping-value': 'off',
     },
   },

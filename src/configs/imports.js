@@ -44,7 +44,7 @@ export function imports(overrides = {}) {
         `**/{index,vite,esbuild,rollup,webpack,rspack}.ts`,
         '**/*.d.ts',
         `${GLOB_MARKDOWN}/**`,
-        '**/.prettierrc*',
+        '**/biome*',
       ],
       plugins: {
         import: pluginImport,
