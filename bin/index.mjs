@@ -42,7 +42,6 @@ const eslintBiomeConfig =
   eslintConfig.find(item => item?.plugins?.biome)?.rules?.['biome/biome']?.[1] || {};
 // ...biomeConfigParser,
 const mergedBiomeConfig = { ...eslintBiomeConfig };
-console.log(mergedBiomeConfig);
 if (!mergedBiomeConfig.files) {
   mergedBiomeConfig.files = {};
 }
