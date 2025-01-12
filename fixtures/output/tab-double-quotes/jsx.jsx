@@ -9,7 +9,7 @@ export function HelloWorld({
   }
 
   // TODO: Don't use random in render
-  let num = Math.floor(Math.random() * 1e7)
+  const num = Math.floor(Math.random() * 1e7)
     .toString()
     .replaceAll(/\.\d+/g, '');
 

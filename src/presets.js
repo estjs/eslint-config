@@ -1,4 +1,4 @@
-import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
+import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue, loadBiomeConfig } from './env';
 
 import {
   biome,
@@ -89,7 +89,7 @@ export function estjs(
     ...sortTsconfig,
     ...yml,
     ...regexp(),
-    ...biome(biomeConfig),
+    ...biome({ ...loadBiomeConfig, ...biomeConfig }),
   ];
 
   if (enableVue) {

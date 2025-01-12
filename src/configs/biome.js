@@ -11,9 +11,9 @@ import {
   GLOB_TSX,
 } from '../globs';
 
-import biomeDefaultConfig from '../../biome.json';
-
 export function biome(customerConfig) {
+  console.log(customerConfig);
+
   return [
     {
       files: [
@@ -34,7 +34,6 @@ export function biome(customerConfig) {
         'biome/biome': [
           'warn',
           {
-            ...biomeDefaultConfig,
             ...customerConfig,
           },
         ],

@@ -11,11 +11,11 @@ const currentDir = process.cwd();
 const libraryDir = path.dirname(fileURLToPath(import.meta.url));
 
 // Check if biome.json exists in the current directory
-let biomeConfigPath = path.join(currentDir, 'biome.json');
-if (!fs.existsSync(biomeConfigPath)) {
-  // If not, use the biome.json from the library directory
-  biomeConfigPath = path.join(libraryDir, 'biome.json');
-}
+// let biomeConfigPath = path.join(currentDir, "biome.json");
+// if (!fs.existsSync(biomeConfigPath)) {
+// 	// If not, use the biome.json from the library directory
+// 	biomeConfigPath = path.join(libraryDir, "biome.json");
+// }
 
 const eslintConfigFiles = fs
   .readdirSync(currentDir)
@@ -31,15 +31,18 @@ if (eslintConfigFiles.length > 0) {
 
 // Dynamically import the ESLint configuration
 const { default: eslintConfig } = await import(eslintConfigPath);
-const biomeConfig = fs.readFileSync(biomeConfigPath);
+// const biomeConfig = fs.readFileSync(biomeConfigPath);
 
-const biomeConfigParser = JSON.parse(biomeConfig);
+// const biomeConfigParser = JSON.parse(biomeConfig);
 // Read the ignore settings from the ESLint config file and add them to the biome config
-const ignores = eslintConfig.ignores || [];
-// Read the biome configuration from the ESLint config
-const eslintBiomeConfig = eslintConfig.plugin?.biome?.rules['biome/biome']?.[1] || {};
+const ignores = eslintConfig.find(item => item.ignores)?.ignores || [];
 
-const mergedBiomeConfig = { ...biomeConfigParser, ...eslintBiomeConfig };
+// Read the biome configuration from the ESLint config
+const eslintBiomeConfig =
+  eslintConfig.find(item => item?.plugins?.biome)?.rules?.['biome/biome']?.[1] || {};
+
+// ...biomeConfigParser,
+const mergedBiomeConfig = { ...eslintBiomeConfig };
 
 if (!mergedBiomeConfig.files) {
   mergedBiomeConfig.files = {};
@@ -87,6 +90,6 @@ try {
   // do nothing
 }
 
-fs.unlinkSync(generateFilePath);
+// fs.unlinkSync(generateFilePath);
 logMessage('Formatting Complete');
 process.exit(0);

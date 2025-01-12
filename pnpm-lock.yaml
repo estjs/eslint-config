@@ -27,8 +27,8 @@ dependencies:
     specifier: ^1.1.24
     version: 1.1.24(@typescript-eslint/utils@8.19.1)(eslint@9.18.0)(typescript@5.7.3)(vitest@2.1.8)
   eslint-plugin-biome:
-    specifier: link:../eslint-plugin-biome
-    version: link:../eslint-plugin-biome
+    specifier: ^0.9.19
+    version: 0.9.19
   eslint-plugin-eslint-comments:
     specifier: ^3.2.0
     version: 3.2.0(eslint@9.18.0)
@@ -229,6 +229,10 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@biomejs/wasm-nodejs@1.9.4:
+    resolution: {integrity: sha512-ZqNlhKcZW6MW1LxWIOfh9YVrBykvzyFad3bOh6JJFraDnNa3NXboRDiaI8dmrbb0ZHXCU1Tsq6WQsKV2Vpp5dw==}
+    dev: false
 
   /@es-joy/jsdoccomment@0.49.0:
     resolution: {integrity: sha512-xjZTSFgECpb9Ohuk5yMX5RhUEbfeQcuOp8IF60e+wyzWEF0M5xeSgqsfLtvPEX8BIyOX9saZqzuGPmZ8oWc+5Q==}
@@ -2227,6 +2231,14 @@ packages:
       jsonc-eslint-parser: 2.4.0
     dev: false
 
+  /eslint-plugin-biome@0.9.19:
+    resolution: {integrity: sha512-ThSfF1Pc5CNG43OaP4ZNXOQq8Thi6zvMbCFcHsnzYgeVuXB2To6pfkzH1MYx/idwpJRmGDKH/+r1OuPgvGitcQ==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@biomejs/wasm-nodejs': 1.9.4
+      fast-diff: 1.3.0
+    dev: false
+
   /eslint-plugin-es-x@7.8.0(eslint@9.18.0):
     resolution: {integrity: sha512-7Ds8+wAAoV3T+LAKeu39Y5BzXCrGKrcISfgKEqTS4BDN8SFEDQd0S43jiQ8vIa3wUKD07qitZdfzlenSi8/0qQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -2617,6 +2629,10 @@ packages:
 
   /fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
+
+  /fast-diff@1.3.0:
+    resolution: {integrity: sha512-VxPP4NqbUjj6MaAOafWeUn2cXWLcCtljklUtZf0Ind4XQ+QPtmA0b18zZy0jIQx+ExRVCR/ZQpBmik5lXshNsw==}
+    dev: false
 
   /fast-glob@3.3.3:
     resolution: {integrity: sha512-7MptL8U0cqcFdzIzwOTHoilX9x5BrNqye7Z/LuC7kCMRio1EMSyqRK3BEAUD7sXRq4iT4AzTVuZdhgQ2TCvYLg==}

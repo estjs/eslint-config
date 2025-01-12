@@ -1,18 +1,18 @@
 // Define a TypeScript interface
-interface Person { 
-  name: string; age: number;
+interface Person {
+  name: string;
+  age: number;
 }
 
 // Create an array of objects with the defined interface
 const people: Person[] = [
   { name: 'Alice', age: 30 },
- { name: 'Bob', age: 25 },
-  { name: 'Charlie', 
-  age: 35 }
+  { name: 'Bob', age: 25 },
+  { name: 'Charlie', age: 35 },
 ];
 
 // eslint-disable-next-line no-console
-var log = console.log
+var log = console.log;
 
 // Use a for...of loop to iterate over the array
 for (const person of people) {
@@ -20,13 +20,12 @@ for (const person of people) {
 }
 
 // Define a generic function
-function identity< T  >(arg: T): T {
+function identity<T>(arg: T): T {
   return arg;
 }
 
 // Use the generic function with type inference
-const result = identity(
-  'TypeScript is awesome');
+const result = identity('TypeScript is awesome');
 log(result);
 
 // Use optional properties in an interface
@@ -37,8 +36,10 @@ interface Car {
 
 // Create objects using the interface
 const car1: Car = { make: 'Toyota' };
-const car2:  Car = { 
-  make: 'Ford', model: 'Focus' };
+const car2: Car = {
+  make: 'Ford',
+  model: 'Focus',
+};
 
 // Use union types
 type Fruit = 'apple' | 'banana' | 'orange';
@@ -73,8 +74,7 @@ const dog = new Dog('Buddy');
 dog.bark();
 
 var fn = (): string => {
-  return 'hello' + 1
-}
+  return 'hello' + 1;
+};
 
-log(car1, car2, favoriteFruit, numericValue, fn())
-
+log(car1, car2, favoriteFruit, numericValue, fn());
