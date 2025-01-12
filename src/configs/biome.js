@@ -1,4 +1,3 @@
-import { pluginBiome } from '../plugins';
 import {
   GLOB_JS,
   GLOB_JSON,
@@ -10,10 +9,9 @@ import {
   GLOB_TS,
   GLOB_TSX,
 } from '../globs';
+import { pluginBiome } from '../plugins';
 
 export function biome(customerConfig) {
-  console.log(customerConfig);
-
   return [
     {
       files: [

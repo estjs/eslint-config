@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
+import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
-import process from 'process';
 import { fileURLToPath } from 'url';
+import process from 'process';
 
 // Get the current working directory and library directory
 const currentDir = process.cwd();
@@ -40,10 +40,9 @@ const ignores = eslintConfig.find(item => item.ignores)?.ignores || [];
 // Read the biome configuration from the ESLint config
 const eslintBiomeConfig =
   eslintConfig.find(item => item?.plugins?.biome)?.rules?.['biome/biome']?.[1] || {};
-
 // ...biomeConfigParser,
 const mergedBiomeConfig = { ...eslintBiomeConfig };
-
+console.log(mergedBiomeConfig);
 if (!mergedBiomeConfig.files) {
   mergedBiomeConfig.files = {};
 }
@@ -67,6 +66,7 @@ const args = process.argv.slice(2).join(' ');
 function logMessage(message) {
   console.log(`\n========= ${message} =========\n`);
 }
+const env = { ...process.env, ...{ ESTHS_ESLINT_GLOBAL_FORMAT: 'true' } };
 
 // Run the biomejs bin command to format code
 try {
@@ -75,6 +75,7 @@ try {
   // Pass arguments to biome
   execSync(`${biomePath} check --write --config-path ${generateFilePath}`, {
     stdio: 'inherit',
+    env,
   });
 } catch {
   // do nothing
@@ -85,11 +86,12 @@ try {
   logMessage('Running ESLint');
   execSync(`${eslintPath} ${args}`, {
     stdio: 'inherit',
+    env,
   });
 } catch {
   // do nothing
 }
 
-// fs.unlinkSync(generateFilePath);
+fs.unlinkSync(generateFilePath);
 logMessage('Formatting Complete');
 process.exit(0);

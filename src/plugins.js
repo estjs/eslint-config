@@ -1,20 +1,20 @@
-import * as _pluginComments from 'eslint-plugin-eslint-comments';
-import * as _pluginMarkdown from 'eslint-plugin-markdown';
 import * as _pluginTypeScript from '@typescript-eslint/eslint-plugin';
-import * as _pluginUnicorn from 'eslint-plugin-unicorn';
-import * as _pluginVue from 'eslint-plugin-vue';
+import * as _pluginComments from 'eslint-plugin-eslint-comments';
 import _jsDocPlugin from 'eslint-plugin-jsdoc';
+import * as _pluginMarkdown from 'eslint-plugin-markdown';
 // react
 import _pluginReact from 'eslint-plugin-react';
+import * as _pluginUnicorn from 'eslint-plugin-unicorn';
+import * as _pluginVue from 'eslint-plugin-vue';
 
-import _pluginReactHooks from 'eslint-plugin-react-hooks';
-import _pluginVitest from '@vitest/eslint-plugin';
 import * as _pluginUnocss from '@unocss/eslint-plugin';
+import _pluginVitest from '@vitest/eslint-plugin';
 import * as _pluginNode from 'eslint-plugin-n';
+import _pluginReactHooks from 'eslint-plugin-react-hooks';
 import * as _regexpPlugin from 'eslint-plugin-regexp';
 
-import _pluginUnusedImports from 'eslint-plugin-unused-imports';
 import * as _pluginBiome from 'eslint-plugin-biome';
+import _pluginUnusedImports from 'eslint-plugin-unused-imports';
 export * as pluginImport from 'eslint-plugin-import-x';
 export * as pluginJsonc from 'eslint-plugin-jsonc';
 export * as pluginYml from 'eslint-plugin-yml';

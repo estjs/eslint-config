@@ -1,7 +1,7 @@
 import tsPlugin from '@typescript-eslint/eslint-plugin';
+import { hasTypeScript, isVue3 } from '../env';
 import { GLOB_VUE } from '../globs';
 import { parserTypeScript, parserVue, pluginVue } from '../plugins';
-import { hasTypeScript, isVue3 } from '../env';
 import { typescript } from './typescript';
 
 export const reactivityTransform = [

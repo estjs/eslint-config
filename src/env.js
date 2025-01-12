@@ -1,5 +1,5 @@
-import process from 'node:process';
 import fs from 'fs';
+import process from 'node:process';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { getPackageInfoSync, isPackageExists } from 'local-pkg';
@@ -35,3 +35,5 @@ if (!fs.existsSync(biomeConfigPath)) {
   biomeConfigPath = path.join(libraryDir, 'biome.json');
 }
 export const loadBiomeConfig = JSON.parse(fs.readFileSync(biomeConfigPath, 'utf-8'));
+
+export const isGlobalFormat = process.env.ESTHS_ESLINT_GLOBAL_FORMAT === 'true';

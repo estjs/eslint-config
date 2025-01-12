@@ -1,5 +1,3 @@
-import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue, loadBiomeConfig } from './env';
-
 import {
   biome,
   comments,
@@ -22,6 +20,15 @@ import {
   vue,
   yml,
 } from './configs';
+import {
+  hasReact,
+  hasTest,
+  hasTypeScript,
+  hasUnocss,
+  hasVue,
+  isGlobalFormat,
+  loadBiomeConfig,
+} from './env';
 
 /**
  * Generates a list of configurations based on the input parameters.
@@ -89,9 +96,11 @@ export function estjs(
     ...sortTsconfig,
     ...yml,
     ...regexp(),
-    ...biome({ ...loadBiomeConfig, ...biomeConfig }),
   ];
 
+  if (!isGlobalFormat) {
+    configs.push(...biome({ ...loadBiomeConfig, ...biomeConfig }));
+  }
   if (enableVue) {
     configs.push(...vue(vueConfig));
   }
