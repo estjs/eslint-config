@@ -14,7 +14,7 @@
   },
   "author": "jiangxd <jiangxd2016@gmail.com>",
   "funding": "https://github.com/sponsors/estjs",
-  "files": ["dist"],
+  "files": ["bin", "biome.json", "defaultConfig.js", "dist"],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -31,13 +31,16 @@
     }
   },
   "sideEffects": false,
+  "bin": {
+    "estlint": "./bin/index.cjs"
+  },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "lint": "pnpm run build && eslint --cache --fix ./",
+    "lint": "pnpm run build && eslint --cache --fix ./ ",
     "prepublishOnly": "pnpm run build",
     "release": "bumpp --commit --tag --push && pnpm publish --no-git-checks --access public",
     "test": "vitest",
@@ -47,13 +50,14 @@
     "eslint": ">=9"
   },
   "dependencies": {
+    "@biomejs/biome": "1.9.4",
     "@eslint-types/jsdoc": "48.2.2",
     "@eslint-types/typescript-eslint": "^7.5.0",
     "@typescript-eslint/eslint-plugin": "^8.19.1",
     "@typescript-eslint/parser": "^8.19.1",
     "@unocss/eslint-plugin": "^65.4.0",
     "@vitest/eslint-plugin": "^1.1.24",
-    "eslint-plugin-biome": "^0.9.17",
+    "eslint-plugin-biome": "^0.9.19",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import-x": "^4.6.1",
     "eslint-plugin-jsdoc": "^50.6.1",

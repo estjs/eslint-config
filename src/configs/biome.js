@@ -11,29 +11,34 @@ import {
   GLOB_TSX,
 } from '../globs';
 
-export const biome = [
-  {
-    files: [
-      GLOB_JSON,
-      GLOB_JSONC,
-      GLOB_JS,
-      GLOB_SRC,
-      GLOB_JSX,
-      GLOB_JSON5,
-      GLOB_TS,
-      GLOB_TSX,
-      GLOB_MARKDOWN,
-    ],
-    plugins: {
-      biome: pluginBiome,
-    },
-    rules: {
-      'biome/biome': [
-        'warn',
-        {
-          length: 80,
-        },
+import biomeDefaultConfig from '../../biome.json';
+
+export function biome(customerConfig) {
+  return [
+    {
+      files: [
+        GLOB_JSON,
+        GLOB_JSONC,
+        GLOB_JS,
+        GLOB_SRC,
+        GLOB_JSX,
+        GLOB_JSON5,
+        GLOB_TS,
+        GLOB_TSX,
+        GLOB_MARKDOWN,
       ],
+      plugins: {
+        biome: pluginBiome,
+      },
+      rules: {
+        'biome/biome': [
+          'warn',
+          {
+            ...biomeDefaultConfig,
+            ...customerConfig,
+          },
+        ],
+      },
     },
-  },
-];
+  ];
+}

@@ -42,3 +42,16 @@ export default estjs(
   },
 );
 ```
+
+
+## biome config
+
+use can create biome.json
+```json
+{
+  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["node_modules/@estjs/eslint-config/biome.json"]
+}
+```
+
+

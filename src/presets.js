@@ -76,21 +76,6 @@ export function estjs(
     markdown: enableMarkdown = true,
   } = {},
 ) {
-  if (
-    tsConfig === null ||
-    jsConfig === null ||
-    importsConfig === null ||
-    unicornConfig === null ||
-    jsdocConfig === null ||
-    vueConfig === null ||
-    markdownConfig === null ||
-    biomeConfig === null ||
-    reactConfig === null ||
-    testConfig === null
-  ) {
-    throw new Error('Configuration objects cannot be null');
-  }
-
   const configs = [
     ...ignores(ignoresConfig),
     ...javascript(jsConfig, globals),
@@ -104,7 +89,7 @@ export function estjs(
     ...sortTsconfig,
     ...yml,
     ...regexp(),
-    ...biome,
+    ...biome(biomeConfig),
   ];
 
   if (enableVue) {
@@ -128,6 +113,5 @@ export function estjs(
   if (enableNode) {
     configs.push(...node);
   }
-
   return configs;
 }
