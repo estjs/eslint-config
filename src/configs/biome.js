@@ -28,7 +28,12 @@ export const biome = [
       biome: pluginBiome,
     },
     rules: {
-      ...pluginBiome.configs.recommended.rules,
+      'biome/biome': [
+        'warn',
+        {
+          length: 80,
+        },
+      ],
     },
   },
 ];
