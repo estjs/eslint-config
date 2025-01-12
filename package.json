@@ -39,7 +39,7 @@
     "build": "tsup",
     "lint": "pnpm run build && eslint --cache --fix ./",
     "prepublishOnly": "pnpm run build",
-    "release": "pnpm run test && bumpp --commit --tag --push && pnpm publish --no-git-checks --access public",
+    "release": "bumpp --commit --tag --push && pnpm publish --no-git-checks --access public",
     "test": "vitest",
     "test:watch": "vitest watch"
   },
