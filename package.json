@@ -32,7 +32,7 @@
   },
   "sideEffects": false,
   "bin": {
-    "estlint": "./bin/index.cjs"
+    "estlint": "./bin/index.mjs"
   },
   "publishConfig": {
     "access": "public"
