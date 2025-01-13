@@ -19,6 +19,7 @@ import {
   unocss,
   vue,
   yml,
+  tailwind,
 } from './configs';
 import {
   hasReact,
@@ -28,6 +29,7 @@ import {
   hasVue,
   isGlobalFormat,
   loadBiomeConfig,
+  hasTailwindCSS,
 } from './env';
 
 /**
@@ -79,6 +81,7 @@ export function estjs(
     react: enableReact = hasReact ?? false,
     unocss: enableUnocss = hasUnocss ?? false,
     typescript: enableTS = hasTypeScript ?? false,
+    tailwind: enableTailwind = hasTailwindCSS ?? false,
     node: enableNode = true,
     markdown: enableMarkdown = true,
   } = {},
@@ -122,5 +125,9 @@ export function estjs(
   if (enableNode) {
     configs.push(...node);
   }
+  if (enableTailwind) {
+    configs.push(...tailwind());
+  }
   return configs;
 }
+
