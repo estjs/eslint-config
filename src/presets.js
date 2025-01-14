@@ -48,7 +48,6 @@ import {
  * @param {object} param1.test - Configuration options for test.
  * @param {object} param1.globals - Configuration options for globals.
  * @param {object} param1.ignores - Configuration options for ignores.
- *
  * @param {object} param2 - Additional options to enable or disable certain features.
  * @param {boolean} param2.vue - Enable or disable vue.
  * @param {boolean} param2.test - Enable or disable test.
@@ -57,6 +56,7 @@ import {
  * @param {boolean} param2.typescript - Enable or disable typescript.
  * @param {boolean} param2.node - Enable or disable node.
  * @param {boolean} param2.markdown - Enable or disable markdown.
+ * @param {boolean} param2.tailwind - Enable or disable tailwind.
  *
  * @return {Array} List of configurations based on the input parameters.
  */
@@ -130,4 +130,3 @@ export function estjs(
   }
   return configs;
 }
-

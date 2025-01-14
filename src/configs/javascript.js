@@ -58,8 +58,14 @@ export function javascript(overrides = {}, global = {}) {
           },
         ],
         'unused-imports/no-unused-imports': 'warn',
-        'unused-imports/no-unused-vars': ['warn', { args: 'after-used', ignoreRestSiblings: true }],
-        'use-isnan': ['error', { enforceForIndexOf: true, enforceForSwitchCase: true }],
+        'unused-imports/no-unused-vars': [
+          'warn',
+          { args: 'after-used', ignoreRestSiblings: true },
+        ],
+        'use-isnan': [
+          'error',
+          { enforceForIndexOf: true, enforceForSwitchCase: true },
+        ],
         'valid-typeof': ['error', { requireStringLiterals: true }],
         'vars-on-top': 'error',
         'wrap-iife': ['error', 'any', { functionPrototypeMethods: true }],
@@ -72,7 +78,7 @@ export function javascript(overrides = {}, global = {}) {
       },
     },
     {
-      files: ['**/scripts/*', '**/cli.*'],
+      files: ['**/scripts/*', '**/cli.*', '**/bin/**'],
       rules: {
         'no-console': 'off',
       },

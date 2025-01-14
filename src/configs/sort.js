@@ -82,7 +82,14 @@ export const sortTsconfig = [
       'jsonc/sort-keys': [
         'error',
         {
-          order: ['extends', 'compilerOptions', 'references', 'files', 'include', 'exclude'],
+          order: [
+            'extends',
+            'compilerOptions',
+            'references',
+            'files',
+            'include',
+            'exclude',
+          ],
           pathPattern: '^$',
         },
         {

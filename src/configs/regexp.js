@@ -6,7 +6,9 @@ export function regexp() {
   };
 
   for (const key in rules) {
-    if (rules[key] === 'error') rules[key] = 'warn';
+    if (rules[key] === 'error') {
+      rules[key] = 'warn';
+    }
   }
   return [
     {

@@ -10,7 +10,7 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
-    "lineWidth": 100,
+    "lineWidth": 80,
     "attributePosition": "auto",
     "bracketSpacing": true
   },
@@ -69,7 +69,7 @@
         "useExplicitLengthCheck": "off",
         "useExponentiationOperator": "error",
         "useForOf": "error",
-        "useNodejsImportProtocol": "error",
+        "useNodejsImportProtocol": "warn",
         "useNumberNamespace": "error",
         "useTemplate": "error",
         "useThrowNewError": "error"
@@ -79,7 +79,7 @@
         "noCatchAssign": "error",
         "noClassAssign": "error",
         "noCompareNegZero": "error",
-        "noConsole": "warn",
+        "noConsole": "off",
         "noControlCharactersInRegex": "error",
         "noDebugger": "warn",
         "noDoubleEquals": "error",

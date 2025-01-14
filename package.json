@@ -14,12 +14,7 @@
   },
   "author": "jiangxd <jiangxd2016@gmail.com>",
   "funding": "https://github.com/sponsors/estjs",
-  "files": [
-    "bin",
-    "biome.json",
-    "defaultConfig.js",
-    "dist"
-  ],
+  "files": ["bin", "biome.json", "defaultConfig.js", "dist"],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -32,10 +27,7 @@
   },
   "typesVersions": {
     "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
+      "*": ["./dist/*", "./dist/index.d.ts"]
     }
   },
   "sideEffects": false,
@@ -47,7 +39,7 @@
   },
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
+    "build": "tsup && cp biome.json dist",
     "lint": "pnpm run build && eslint --cache --fix ./ ",
     "prepublishOnly": "pnpm run build",
     "release": "bumpp --commit --tag --push && pnpm publish --no-git-checks --access public",

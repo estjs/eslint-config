@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import { execSync } from 'child_process';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import process from 'process';
+import { execSync } from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import process from 'node:process';
 
 // Get the current working directory and library directory
 const currentDir = process.cwd();
@@ -29,8 +29,11 @@ if (eslintConfigFiles.length > 0) {
   eslintConfigPath = path.join(libraryDir, 'defaultConfig.js');
 }
 
-// Dynamically import the ESLint configuration
-const { default: eslintConfig } = await import(eslintConfigPath);
+// 将文件路径转换为 URL 格式
+const configUrl = pathToFileURL(eslintConfigPath).href;
+
+// 动态导入 ESLint 配置
+const { default: eslintConfig } = await import(configUrl);
 // const biomeConfig = fs.readFileSync(biomeConfigPath);
 
 // const biomeConfigParser = JSON.parse(biomeConfig);
@@ -39,7 +42,9 @@ const ignores = eslintConfig.find(item => item.ignores)?.ignores || [];
 
 // Read the biome configuration from the ESLint config
 const eslintBiomeConfig =
-  eslintConfig.find(item => item?.plugins?.biome)?.rules?.['biome/biome']?.[1] || {};
+  eslintConfig.find(item => item?.plugins?.biome)?.rules?.[
+    'biome/biome'
+  ]?.[1] || {};
 // ...biomeConfigParser,
 const mergedBiomeConfig = { ...eslintBiomeConfig };
 if (!mergedBiomeConfig.files) {
@@ -48,7 +53,10 @@ if (!mergedBiomeConfig.files) {
 if (!mergedBiomeConfig.files.ignore) {
   mergedBiomeConfig.files.ignore = [];
 }
-mergedBiomeConfig.files.ignore = [...mergedBiomeConfig.files.ignore, ...ignores];
+mergedBiomeConfig.files.ignore = [
+  ...mergedBiomeConfig.files.ignore,
+  ...ignores,
+];
 
 const generateFilePath = path.join(libraryDir, 'biome.json');
 // Generate a temporary file
@@ -65,17 +73,20 @@ const args = process.argv.slice(2).join(' ');
 function logMessage(message) {
   console.log(`\n========= ${message} =========\n`);
 }
-const env = { ...process.env, ...{ ESTHS_ESLINT_GLOBAL_FORMAT: 'true' } };
+const env = { ...process.env, ...{ ESTLINT_ESLINT_GLOBAL_FORMAT: 'true' } };
 
 // Run the biomejs bin command to format code
 try {
   logMessage('Running Biome');
 
   // Pass arguments to biome
-  execSync(`${biomePath} check --write --config-path ${generateFilePath}`, {
-    stdio: 'inherit',
-    env,
-  });
+  execSync(
+    `${biomePath} check --fix --unsafe --config-path ${generateFilePath}`,
+    {
+      stdio: 'inherit',
+      env,
+    },
+  );
 } catch {
   // do nothing
 }
