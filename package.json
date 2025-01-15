@@ -47,10 +47,10 @@
     "test:watch": "vitest watch"
   },
   "peerDependencies": {
+    "@biomejs/biome": ">=1.9.4",
     "eslint": ">=9"
   },
   "dependencies": {
-    "@biomejs/biome": "1.9.4",
     "@eslint-types/jsdoc": "48.2.2",
     "@eslint-types/typescript-eslint": "^7.5.0",
     "@typescript-eslint/eslint-plugin": "^8.19.1",

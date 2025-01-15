@@ -1,4 +1,5 @@
 {
+  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
   "vcs": {
     "enabled": false
   },
@@ -149,7 +150,17 @@
       "include": ["**/scripts/*", "**/cli.*"],
       "linter": { "rules": { "suspicious": { "noConsole": "off" } } }
     },
-    { "include": ["**/*.{test,spec}.js?(x)"], "linter": { "rules": {} } },
+    {
+      "include": ["**/*.{test,spec}.([cm])[jt]s?(x)"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUndeclaredVariables": "off",
+            "noUnusedVariables": "off"
+          }
+        }
+      }
+    },
     {
       "include": [
         "**/*config*.?([cm])[jt]s?(x)",

@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@biomejs/biome':
-        specifier: 1.9.4
+        specifier: '>=1.9.4'
         version: 1.9.4
       '@eslint-types/jsdoc':
         specifier: 48.2.2

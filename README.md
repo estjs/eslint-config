@@ -55,3 +55,38 @@ use can create biome.json
 ```
 
 
+## benchmark
+### project
+
+> benchmark with [vue github project](https://github.com/vuejs/core)(commit 2e6ec398114bef171984782cb9cee36d460b047a)
+
+```
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+TypeScript                     481          12770           9430         118422
+YAML                            16           1621              6           5845
+Markdown                        31           2196              0           4302
+HTML                            26            193             26           2153
+JavaScript                      34            268            493           1970
+JSON                            32              2              0           1082
+Vuejs Component                 11             77             15            707
+CSS                              1             15              0             81
+JSON5                            1              6             10             59
+SVG                              1              0              0              4
+SCSS                             1              0              0              3
+TOML                             1              0              0              3
+-------------------------------------------------------------------------------
+SUM:                           636          17148           9980         134631
+```
+
+before use prettier and eslint (eslint . --fix)
+real    1m42.396s
+user    0m0.106s
+sys     0m0.076s
+
+after use biome and estlint (estlint . --fix)
+real    0m17.829s
+user    0m0.000s
+sys     0m0.121s
+

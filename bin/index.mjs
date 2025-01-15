@@ -78,7 +78,6 @@ const env = { ...process.env, ...{ ESTLINT_ESLINT_GLOBAL_FORMAT: 'true' } };
 // Run the biomejs bin command to format code
 try {
   logMessage('Running Biome');
-
   // Pass arguments to biome
   execSync(
     `${biomePath} check --fix --unsafe --config-path ${generateFilePath}`,
