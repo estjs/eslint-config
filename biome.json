@@ -53,13 +53,14 @@
         "noUnreachableSuper": "error",
         "noUnsafeFinally": "error",
         "noUnsafeOptionalChaining": "error",
-        "noUnusedImports": "warn",
         "noUnusedLabels": "error",
-        "noUnusedVariables": "off",
         "useIsNan": "error",
         "useValidForDirection": "error",
         "useYield": "error",
-        "useHookAtTopLevel": "error"
+        "useHookAtTopLevel": "error",
+
+        "noUnusedVariables": "off",
+        "noUnusedImports": "off"
       },
       "style": {
         "noArguments": "error",
@@ -274,6 +275,16 @@
     {
       "include": ["**/*.d.ts"],
       "linter": { "rules": { "correctness": { "noUnusedVariables": "off" } } }
+    },
+    {
+      "include": ["**/*.vue"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUndeclaredVariables": "off"
+          }
+        }
+      }
     },
     { "include": ["**/*.{test,spec}.ts?(x)"], "linter": { "rules": {} } },
     { "include": ["**/*.?([cm])js", "**/*.cjs"], "linter": { "rules": {} } },

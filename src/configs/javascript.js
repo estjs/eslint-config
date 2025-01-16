@@ -57,6 +57,7 @@ export function javascript(overrides = {}, global = {}) {
             allowTernary: true,
           },
         ],
+        // enable this rule in eslint ,because biome format vue file it delete used import
         'unused-imports/no-unused-imports': 'warn',
         'unused-imports/no-unused-vars': [
           'warn',
