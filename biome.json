@@ -21,7 +21,6 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": false,
       "complexity": {
         "noExtraBooleanCast": "error",
         "noMultipleSpacesInRegularExpressionLiterals": "error",
@@ -59,7 +58,8 @@
         "noUnusedVariables": "off",
         "useIsNan": "error",
         "useValidForDirection": "error",
-        "useYield": "error"
+        "useYield": "error",
+        "useHookAtTopLevel": "error"
       },
       "style": {
         "noArguments": "error",

@@ -41,7 +41,7 @@ export function imports(overrides = {}) {
         `**/*config*.${GLOB_SRC_EXT}`,
         `**/views/${GLOB_SRC}`,
         `**/pages/${GLOB_SRC}`,
-        `**/{index,vite,esbuild,rollup,webpack,rspack}.ts`,
+        '**/{index,vite,esbuild,rollup,webpack,rspack}.ts',
         '**/*.d.ts',
         `${GLOB_MARKDOWN}/**`,
         '**/biome*',

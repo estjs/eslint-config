@@ -1,6 +1,5 @@
-import { fixupPluginRules } from '@eslint/compat';
 import { GLOB_JSX, GLOB_TSX } from '../globs';
-import { pluginReact, pluginReactHooks } from '../plugins';
+import { pluginReact } from '../plugins';
 
 const files = [GLOB_JSX, GLOB_TSX];
 export function react(overrides = {}) {
@@ -8,7 +7,6 @@ export function react(overrides = {}) {
     {
       plugins: {
         react: pluginReact,
-        'react-hooks': fixupPluginRules(pluginReactHooks),
       },
       settings: {
         react: {
@@ -26,8 +24,6 @@ export function react(overrides = {}) {
         },
       },
       rules: {
-        'react-hooks/rules-of-hooks': 'error',
-
         'react/display-name': 'error',
         'react/no-children-prop': 'error',
         'react/no-danger-with-children': 'error',

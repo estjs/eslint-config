@@ -10,7 +10,6 @@ import * as _pluginVue from 'eslint-plugin-vue';
 import * as _pluginUnocss from '@unocss/eslint-plugin';
 import _pluginVitest from '@vitest/eslint-plugin';
 import * as _pluginNode from 'eslint-plugin-n';
-import _pluginReactHooks from 'eslint-plugin-react-hooks';
 import * as _regexpPlugin from 'eslint-plugin-regexp';
 
 import * as _pluginBiome from 'eslint-plugin-biome';
@@ -39,7 +38,6 @@ export const pluginBiome = interopDefault(_pluginBiome);
 export const jsDocPlugin = interopDefault(_jsDocPlugin);
 export const pluginNode = interopDefault(_pluginNode);
 export const pluginReact = interopDefault(_pluginReact);
-export const pluginReactHooks = interopDefault(_pluginReactHooks);
 export const pluginVitest = interopDefault(_pluginVitest);
 export const pluginRegexp = interopDefault(_regexpPlugin);
 export const pluginUnocss = interopDefault(_pluginUnocss);
