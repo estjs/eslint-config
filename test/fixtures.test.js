@@ -6,48 +6,42 @@ import fs from 'fs-extra';
 import { afterAll, beforeAll, it } from 'vitest';
 
 beforeAll(async () => {
-  // await fs.rm('_fixtures', { recursive: true, force: true });
+  await fs.rm('_fixtures', { recursive: true, force: true });
 });
 afterAll(async () => {
-  // await fs.rm('_fixtures', { recursive: true, force: true });
+  await fs.rm('_fixtures', { recursive: true, force: true });
 });
 
 runWithConfig('js', {
   vue: false,
-  unocss: true,
 });
 runWithConfig('all', {
   typescript: true,
   vue: true,
-  unocss: true,
   react: true,
 });
 runWithConfig('no-style', {
   typescript: true,
-  unocss: true,
   vue: true,
 });
 runWithConfig('tab-double-quotes', {
   typescript: true,
-  unocss: true,
+
   vue: true,
 });
 
 runWithConfig('ts-override', {
   typescript: true,
-  unocss: true,
 });
 
 runWithConfig('ts-strict', {});
 
 runWithConfig('ts-strict-with-react', {
   react: true,
-  unocss: true,
 });
 
 runWithConfig('with-formatters', {
   typescript: true,
-  unocss: true,
   vue: true,
 });
 

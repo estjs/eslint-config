@@ -4,7 +4,7 @@ Header
 _Look,_ code blocks are formatted *too!*
 
 ```js
-// This should be handled by ESLint instead of Prettier
+// This should be handled by ESLint instead of Biome
 function identity(x) {
   if (foo) {
     console.log('bar');
@@ -13,7 +13,7 @@ function identity(x) {
 ```
 
 ```css
-/* This should be handled by Prettier */
+/* This should be handled by Biome */
 .foo { color:red;}
 ```
 
