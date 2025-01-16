@@ -36,8 +36,6 @@ export function react(overrides = {}) {
 
         'react/no-unescaped-entities': 'warn',
         'react/no-unknown-property': 'warn',
-        'react-hooks/exhaustive-deps': 'warn',
-
         'react/require-render-return': 'error',
 
         'react/no-unsafe': 'off',
