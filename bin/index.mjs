@@ -58,7 +58,9 @@ mergedBiomeConfig.files.ignore = [
   ...ignores,
 ];
 
-const generateFilePath = path.join(libraryDir, 'biome.json');
+const RadomName = `.biome.temp.${Math.random().toString(36).slice(2, 15)}${Date.now().toString(36)}.json`;
+const generateFilePath = path.join(libraryDir, RadomName);
+
 // Generate a temporary file
 fs.writeFileSync(generateFilePath, JSON.stringify(mergedBiomeConfig), 'utf-8');
 

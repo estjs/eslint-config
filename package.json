@@ -40,7 +40,7 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup && cp biome.json dist",
-    "lint": "pnpm run build && eslint --cache --fix ./ ",
+    "lint": "pnpm run build && node ./bin/index.mjs --cache --fix ./ ",
     "prepublishOnly": "pnpm run build",
     "release": "bumpp --commit --tag --push && pnpm publish --no-git-checks --access public",
     "test": "vitest",
@@ -69,7 +69,6 @@
     "eslint-plugin-react-refresh": "^0.4.18",
     "eslint-plugin-regexp": "^2.7.0",
     "eslint-plugin-sort-keys": "^2.3.5",
-    "eslint-plugin-tailwindcss": "^3.17.5",
     "eslint-plugin-unicorn": "^56.0.1",
     "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-vue": "^9.32.0",
@@ -81,6 +80,7 @@
     "yaml-eslint-parser": "^1.2.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
     "@eslint/compat": "^1.2.5",
     "@types/node": "^22.10.5",
     "bumpp": "^9.10.0",

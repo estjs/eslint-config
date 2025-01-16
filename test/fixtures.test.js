@@ -6,55 +6,58 @@ import fs from 'fs-extra';
 import { afterAll, beforeAll, it } from 'vitest';
 
 beforeAll(async () => {
-  await fs.rm('_fixtures', { recursive: true, force: true });
+  // await fs.rm('_fixtures', { recursive: true, force: true });
 });
 afterAll(async () => {
-  await fs.rm('_fixtures', { recursive: true, force: true });
+  // await fs.rm('_fixtures', { recursive: true, force: true });
 });
 
 runWithConfig('js', {
   vue: false,
+  unocss: true,
 });
 runWithConfig('all', {
   typescript: true,
   vue: true,
+  unocss: true,
+  react: true,
 });
 runWithConfig('no-style', {
   typescript: true,
+  unocss: true,
   vue: true,
 });
 runWithConfig('tab-double-quotes', {
   typescript: true,
+  unocss: true,
   vue: true,
 });
 
 runWithConfig('ts-override', {
   typescript: true,
+  unocss: true,
 });
 
 runWithConfig('ts-strict', {});
 
 runWithConfig('ts-strict-with-react', {
   react: true,
+  unocss: true,
 });
 
 runWithConfig('with-formatters', {
   typescript: true,
+  unocss: true,
   vue: true,
-  astro: true,
-  formatters: true,
 });
 
-runWithConfig('no-markdown-with-formatters', {
-  jsx: false,
-  vue: false,
-  markdown: true,
-});
+runWithConfig('no-markdown-with-formatters', {});
 
 function runWithConfig(name, configs = {}, items = {}) {
   it.concurrent(
     name,
     async ({ expect }) => {
+      const binPath = resolve('./bin/index.mjs');
       const from = resolve('fixtures/input');
       const output = resolve('fixtures/output', name);
       const target = resolve('_fixtures', name);
@@ -77,7 +80,7 @@ export default estjs(
   `,
       );
 
-      await execa('npx', ['eslint', '.', '--fix'], {
+      await execa('node', [binPath, '.', '--fix'], {
         cwd: target,
         stdio: 'pipe',
       });
@@ -94,7 +97,7 @@ export default estjs(
           const outputPath = join(output, file);
           if (content === source) {
             if (fs.existsSync(outputPath)) {
-              await fs.remove(outputPath);
+              // await fs.remove(outputPath);
             }
             return;
           }

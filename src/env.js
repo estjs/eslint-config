@@ -16,7 +16,6 @@ export const hasUnocss =
   isPackageExists('unocss') ||
   isPackageExists('@unocss/webpack') ||
   isPackageExists('@unocss/nuxt');
-export const hasTailwindCSS = isPackageExists('tailwindcss');
 
 export function getVueVersion() {
   const pkg = getPackageInfoSync('vue', { paths: [process.cwd()] });

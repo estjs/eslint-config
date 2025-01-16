@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h1 >{{ greeting }}</h1>
+    <h1  class="p-2 text-2xl font-bold m-2 flex justify-center items-center grid-flow-row grid-cols-2 grid">{{ greeting }}</h1>
     <button @click="incrementCounter">Click me!
     </button>
+
     <p>Counter: {{ counter }}</p>
   </div>
 </template>

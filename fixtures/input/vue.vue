@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class=" font-200 text-12 text-red-500 text-center z-100 left-0 top-0 absolute ">
     <h1>
       {{ greeting }}</h1>
     <button @click="incrementCounter">Click me!</button>

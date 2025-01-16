@@ -15,7 +15,6 @@ import * as _regexpPlugin from 'eslint-plugin-regexp';
 
 import * as _pluginBiome from 'eslint-plugin-biome';
 import _pluginUnusedImports from 'eslint-plugin-unused-imports';
-import * as _pluginTailwindCSS from 'eslint-plugin-tailwindcss';
 export * as pluginImport from 'eslint-plugin-import-x';
 export * as pluginJsonc from 'eslint-plugin-jsonc';
 export * as pluginYml from 'eslint-plugin-yml';
@@ -44,4 +43,3 @@ export const pluginReactHooks = interopDefault(_pluginReactHooks);
 export const pluginVitest = interopDefault(_pluginVitest);
 export const pluginRegexp = interopDefault(_regexpPlugin);
 export const pluginUnocss = interopDefault(_pluginUnocss);
-export const pluginTailwindCSS = interopDefault(_pluginTailwindCSS);
