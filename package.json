@@ -1,7 +1,7 @@
 {
   "name": "@estjs/eslint-config",
   "version": "2.0.0-beta.9",
-  "packageManager": "pnpm@9.15.4",
+  "packageManager": "pnpm@10.2.0",
   "description": "",
   "type": "module",
   "keywords": [],
@@ -53,15 +53,15 @@
   "dependencies": {
     "@eslint-types/jsdoc": "48.2.2",
     "@eslint-types/typescript-eslint": "^7.5.0",
-    "@typescript-eslint/eslint-plugin": "^8.19.1",
-    "@typescript-eslint/parser": "^8.19.1",
-    "@unocss/eslint-plugin": "^65.4.0",
+    "@typescript-eslint/eslint-plugin": "^8.23.0",
+    "@typescript-eslint/parser": "^8.23.0",
+    "@unocss/eslint-plugin": "^65.4.3",
     "@vitest/eslint-plugin": "^1.1.25",
     "eslint-plugin-biome": "^0.9.19",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import-x": "^4.6.1",
-    "eslint-plugin-jsdoc": "^50.6.1",
-    "eslint-plugin-jsonc": "^2.18.2",
+    "eslint-plugin-jsdoc": "^50.6.3",
+    "eslint-plugin-jsonc": "^2.19.1",
     "eslint-plugin-markdown": "^5.1.0",
     "eslint-plugin-n": "^17.15.1",
     "eslint-plugin-react": "^7.37.4",
@@ -80,16 +80,15 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@eslint/compat": "^1.2.5",
-    "@types/node": "^22.10.5",
-    "bumpp": "^9.10.0",
-    "eslint": "^9.18.0",
+    "@types/node": "^22.13.1",
+    "bumpp": "^10.0.2",
+    "eslint": "^9.19.0",
     "fast-glob": "^3.3.3",
-    "fs-extra": "^11.2.0",
-    "pnpm": "^9.15.3",
-    "tsup": "^8.3.5",
+    "fs-extra": "^11.3.0",
+    "pnpm": "^10.2.0",
+    "tsup": "^8.3.6",
     "typescript": "^5.7.3",
-    "vitest": "^2.1.8"
+    "vitest": "^3.0.5"
   },
   "engines": {
     "node": ">=18"

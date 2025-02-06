@@ -45,7 +45,7 @@ export function javascript(overrides = {}, global = {}) {
         'no-self-assign': 'error',
         'no-shadow-restricted-names': 'error',
         'no-sparse-arrays': 'error',
-        'no-undef': 'off', // it use in biome noUndeclaredVariables
+        'no-undef': 'error',
         'no-unsafe-finally': 'error',
         'no-unsafe-negation': 'error',
         'no-unsafe-optional-chaining': 'error',
@@ -59,14 +59,8 @@ export function javascript(overrides = {}, global = {}) {
         ],
         // enable this rule in eslint ,because biome format vue file it delete used import
         'unused-imports/no-unused-imports': 'warn',
-        'unused-imports/no-unused-vars': [
-          'warn',
-          { args: 'after-used', ignoreRestSiblings: true },
-        ],
-        'use-isnan': [
-          'error',
-          { enforceForIndexOf: true, enforceForSwitchCase: true },
-        ],
+        'unused-imports/no-unused-vars': ['warn', { args: 'after-used', ignoreRestSiblings: true }],
+        'use-isnan': ['error', { enforceForIndexOf: true, enforceForSwitchCase: true }],
         'valid-typeof': ['error', { requireStringLiterals: true }],
         'vars-on-top': 'error',
         'wrap-iife': ['error', 'any', { functionPrototypeMethods: true }],

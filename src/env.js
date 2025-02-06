@@ -19,11 +19,7 @@ export const hasUnocss =
 
 export function getVueVersion() {
   const pkg = getPackageInfoSync('vue', { paths: [process.cwd()] });
-  if (
-    pkg &&
-    typeof pkg.version === 'string' &&
-    !Number.isNaN(+pkg.version[0])
-  ) {
+  if (pkg && typeof pkg.version === 'string' && !Number.isNaN(+pkg.version[0])) {
     return +pkg.version[0];
   }
   return 3;
@@ -38,9 +34,6 @@ if (!fs.existsSync(biomeConfigPath)) {
   // If not, use the biome.json from the library directory
   biomeConfigPath = path.join(libraryDir, 'biome.json');
 }
-export const loadBiomeConfig = JSON.parse(
-  fs.readFileSync(biomeConfigPath, 'utf-8'),
-);
+export const loadBiomeConfig = JSON.parse(fs.readFileSync(biomeConfigPath, 'utf-8'));
 
-export const isGlobalFormat =
-  process.env.ESTLINT_ESLINT_GLOBAL_FORMAT === 'true';
+export const isGlobalFormat = process.env.ESTLINT_ESLINT_GLOBAL_FORMAT === 'true';

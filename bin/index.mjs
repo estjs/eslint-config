@@ -42,9 +42,7 @@ const ignores = eslintConfig.find(item => item.ignores)?.ignores || [];
 
 // Read the biome configuration from the ESLint config
 const eslintBiomeConfig =
-  eslintConfig.find(item => item?.plugins?.biome)?.rules?.[
-    'biome/biome'
-  ]?.[1] || {};
+  eslintConfig.find(item => item?.plugins?.biome)?.rules?.['biome/biome']?.[1] || {};
 // ...biomeConfigParser,
 const mergedBiomeConfig = { ...eslintBiomeConfig };
 if (!mergedBiomeConfig.files) {
@@ -53,10 +51,7 @@ if (!mergedBiomeConfig.files) {
 if (!mergedBiomeConfig.files.ignore) {
   mergedBiomeConfig.files.ignore = [];
 }
-mergedBiomeConfig.files.ignore = [
-  ...mergedBiomeConfig.files.ignore,
-  ...ignores,
-];
+mergedBiomeConfig.files.ignore = [...mergedBiomeConfig.files.ignore, ...ignores];
 
 const RadomName = `.biome.temp.${Math.random().toString(36).slice(2, 15)}${Date.now().toString(36)}.json`;
 const generateFilePath = path.join(libraryDir, RadomName);
@@ -81,13 +76,10 @@ const env = { ...process.env, ...{ ESTLINT_ESLINT_GLOBAL_FORMAT: 'true' } };
 try {
   logMessage('Running Biome');
   // Pass arguments to biome
-  execSync(
-    `${biomePath} check --fix --unsafe --config-path ${generateFilePath}`,
-    {
-      stdio: 'inherit',
-      env,
-    },
-  );
+  execSync(`${biomePath} check --fix --unsafe --config-path ${generateFilePath}`, {
+    stdio: 'inherit',
+    env,
+  });
 } catch {
   // do nothing
 }
