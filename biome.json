@@ -105,7 +105,8 @@
         "useErrorMessage": "error",
         "useGetterReturn": "error",
         "useIsArray": "error",
-        "useValidTypeof": "error"
+        "useValidTypeof": "error",
+        "noAssignInExpressions": "off"
       }
     },
     "ignore": [
@@ -152,29 +153,7 @@
       "include": ["**/scripts/*", "**/cli.*"],
       "linter": { "rules": { "suspicious": { "noConsole": "off" } } }
     },
-    {
-      "include": ["**/*.{test,spec}.([cm])[jt]s?(x)"],
-      "linter": {
-        "rules": {
-          "correctness": {
-            "noUndeclaredVariables": "off",
-            "noUnusedVariables": "off"
-          }
-        }
-      }
-    },
-    {
-      "include": [
-        "**/*config*.?([cm])[jt]s?(x)",
-        "**/views/**/*.?([cm])[jt]s?(x)",
-        "**/pages/**/*.?([cm])[jt]s?(x)",
-        "**/{index,vite,esbuild,rollup,webpack,rspack}.ts",
-        "**/*.d.ts",
-        "**/*.md/**",
-        "**/.prettierrc*"
-      ],
-      "linter": { "rules": { "style": { "noDefaultExport": "off" } } }
-    },
+
     {
       "include": ["**/*.json", "**/*.json5", "**/*.jsonc"],
       "javascript": { "globals": [] },
@@ -190,9 +169,8 @@
       "javascript": { "globals": [] },
       "linter": { "rules": {} }
     },
-    { "include": ["**/*.md"] },
     {
-      "include": ["**/*.md/**"],
+      "include": ["**/*.md"],
       "javascript": { "globals": [] },
       "linter": {
         "rules": {
@@ -203,26 +181,8 @@
         }
       }
     },
-    { "include": ["**/*.md"] },
     {
-      "include": ["**/*.md/**/*.?([cm])[jt]s?(x)", "**/*.md/**/*.vue"],
-      "javascript": { "globals": [] },
-      "linter": {
-        "rules": {
-          "complexity": { "noStaticOnlyClass": "off" },
-          "correctness": {
-            "noInvalidUseBeforeDeclaration": "off",
-            "noUndeclaredVariables": "off",
-            "noUnusedImports": "off",
-            "noUnusedVariables": "off"
-          },
-          "style": { "noNamespace": "off" },
-          "suspicious": { "noConsole": "off", "noRedeclare": "off" }
-        }
-      }
-    },
-    {
-      "include": ["**/*.?([cm])ts", "**/*.?([cm])tsx"],
+      "include": ["**/*.ts", "**/*.mts", "**/*.cts", "**/*.tsx", "**/*.mtsx", "**/*.ctsx"],
       "javascript": { "globals": [] },
       "linter": {
         "rules": {
@@ -287,21 +247,51 @@
         }
       }
     },
-    { "include": ["**/*.{test,spec}.ts?(x)"], "linter": { "rules": {} } },
-    { "include": ["**/*.?([cm])js", "**/*.cjs"], "linter": { "rules": {} } },
     { "include": ["**/*.d.ts"], "linter": { "rules": {} } },
     {
       "include": [
-        "**/__tests__/**/*.?([cm])[jt]s?(x)",
-        "**/*.spec.?([cm])[jt]s?(x)",
-        "**/*.test.?([cm])[jt]s?(x)",
-        "**/*.bench.?([cm])[jt]s?(x)",
-        "**/*.benchmark.?([cm])[jt]s?(x)"
+        "**/*.spec.js",
+        "**/*.spec.ts",
+        "**/*.spec.jsx",
+        "**/*.spec.tsx",
+        "**/*.spec.mjs",
+        "**/*.spec.mts",
+        "**/*.spec.cts",
+        "**/*.spec.mjsx",
+        "**/*.spec.mtsx",
+        "**/*.test.js",
+        "**/*.test.ts",
+        "**/*.test.jsx",
+        "**/*.test.tsx",
+        "**/*.test.mjs",
+        "**/*.test.mts",
+        "**/*.test.cts",
+        "**/*.test.mjsx",
+        "**/*.test.mtsx",
+        "**/*.bench.js",
+        "**/*.bench.ts",
+        "**/*.bench.jsx",
+        "**/*.bench.tsx",
+        "**/*.bench.mjs",
+        "**/*.bench.mts",
+        "**/*.bench.cts",
+        "**/*.bench.mjsx",
+        "**/*.bench.mtsx",
+        "**/*.benchmark.js",
+        "**/*.benchmark.ts",
+        "**/*.benchmark.jsx",
+        "**/*.benchmark.tsx",
+        "**/*.benchmark.mjs",
+        "**/*.benchmark.mts",
+        "**/*.benchmark.cts",
+        "**/*.benchmark.mjsx",
+        "**/*.benchmark.mtsx"
       ],
       "linter": {
         "rules": {
           "correctness": {
-            "noUndeclaredVariables": "off"
+            "noUndeclaredVariables": "off",
+            "noUnusedVariables": "off"
           },
           "suspicious": {
             "noEmptyBlockStatements": "off"
