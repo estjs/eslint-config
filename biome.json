@@ -46,9 +46,9 @@
         "noNonoctalDecimalEscape": "error",
         "noPrecisionLoss": "error",
         "noSelfAssign": "error",
+        "noUndeclaredVariables": "error",
         "noSetterReturn": "error",
         "noSwitchDeclarations": "error",
-        "noUndeclaredVariables": "off",
         "noUnreachable": "error",
         "noUnreachableSuper": "error",
         "noUnsafeFinally": "error",
@@ -74,7 +74,8 @@
         "useNodejsImportProtocol": "warn",
         "useNumberNamespace": "error",
         "useTemplate": "error",
-        "useThrowNewError": "error"
+        "useThrowNewError": "error",
+        "noParameterAssign": "off"
       },
       "suspicious": {
         "noAsyncPromiseExecutor": "error",
@@ -297,7 +298,16 @@
         "**/*.bench.?([cm])[jt]s?(x)",
         "**/*.benchmark.?([cm])[jt]s?(x)"
       ],
-      "linter": { "rules": {} }
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUndeclaredVariables": "off"
+          },
+          "suspicious": {
+            "noEmptyBlockStatements": "off"
+          }
+        }
+      }
     }
   ]
 }

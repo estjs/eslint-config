@@ -45,7 +45,7 @@ export function javascript(overrides = {}, global = {}) {
         'no-self-assign': 'error',
         'no-shadow-restricted-names': 'error',
         'no-sparse-arrays': 'error',
-        'no-undef': 'error',
+        'no-undef': 'off',
         'no-unsafe-finally': 'error',
         'no-unsafe-negation': 'error',
         'no-unsafe-optional-chaining': 'error',
