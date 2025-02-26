@@ -90,9 +90,6 @@ importers:
       '@biomejs/biome':
         specifier: ^1.9.4
         version: 1.9.4
-      '@eslint/compat':
-        specifier: ^1.2.6
-        version: 1.2.6(eslint@9.19.0(jiti@2.4.2))
       '@types/node':
         specifier: ^22.13.1
         version: 22.13.1
@@ -110,7 +107,7 @@ importers:
         version: 11.3.0
       pnpm:
         specifier: ^10.2.0
-        version: 10.2.0
+        version: 10.5.1
       tsup:
         specifier: ^8.3.6
         version: 8.3.6(jiti@2.4.2)(postcss@8.5.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
@@ -641,15 +638,6 @@ packages:
 
   '@eslint-types/typescript-eslint@7.5.0':
     resolution: {integrity: sha512-zKvsPBDq6o0L4p2sRtq8fxOtGc+mm37aZSXLsiD4DIRl2kYUxKNO9CKDTAgmuMYUzih9J7lbLxAomreLrdAiVQ==}
-
-  '@eslint/compat@1.2.6':
-    resolution: {integrity: sha512-k7HNCqApoDHM6XzT30zGoETj+D+uUcZUb+IVAJmar3u6bvHf7hhHJcWx09QHj4/a2qrKZMWU0E16tvkiAdv06Q==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      eslint: ^9.10.0
-    peerDependenciesMeta:
-      eslint:
-        optional: true
 
   '@eslint/config-array@0.19.1':
     resolution: {integrity: sha512-fo6Mtm5mWyKjA/Chy1BYTdn5mGJoDNjC7C64ug20ADsRDGrA85bN3uK3MaKbeRkRuuIEAR5N33Jr1pbm411/PA==}
@@ -2216,8 +2204,8 @@ packages:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
 
-  pnpm@10.2.0:
-    resolution: {integrity: sha512-DSc2TgE5xqre7WWtoVMTXgypbI2kISO9UAR/lhM53Hp1j8LpRLQo9SvlcNG9M3JFXBxl+i56oL+/kxGQ+VUgAQ==}
+  pnpm@10.5.1:
+    resolution: {integrity: sha512-xCTAdr0lwaWxiMN7scpWzB4Tb79TDZi8syiZgqCP0lUnuMnE7BE75eM5PDmvBFId1ke88dCAHq+KxqexTaMTrw==}
     engines: {node: '>=18.12'}
     hasBin: true
 
@@ -3103,10 +3091,6 @@ snapshots:
   '@eslint-types/jsdoc@48.2.2': {}
 
   '@eslint-types/typescript-eslint@7.5.0': {}
-
-  '@eslint/compat@1.2.6(eslint@9.19.0(jiti@2.4.2))':
-    optionalDependencies:
-      eslint: 9.19.0(jiti@2.4.2)
 
   '@eslint/config-array@0.19.1':
     dependencies:
@@ -4977,7 +4961,7 @@ snapshots:
 
   pluralize@8.0.0: {}
 
-  pnpm@10.2.0: {}
+  pnpm@10.5.1: {}
 
   possible-typed-array-names@1.0.0: {}
 
