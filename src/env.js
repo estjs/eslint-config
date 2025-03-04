@@ -35,5 +35,3 @@ if (!fs.existsSync(biomeConfigPath)) {
   biomeConfigPath = path.join(libraryDir, 'biome.json');
 }
 export const loadBiomeConfig = JSON.parse(fs.readFileSync(biomeConfigPath, 'utf-8'));
-
-export const isGlobalFormat = process.env.ESTLINT_ESLINT_GLOBAL_FORMAT === 'true';

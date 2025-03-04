@@ -1,3 +1,5 @@
+import process from 'node:process';
+import { deepmerge } from 'deepmerge-ts';
 import {
   biome,
   comments,
@@ -20,15 +22,8 @@ import {
   vue,
   yml,
 } from './configs';
-import {
-  hasReact,
-  hasTest,
-  hasTypeScript,
-  hasUnocss,
-  hasVue,
-  isGlobalFormat,
-  loadBiomeConfig,
-} from './env';
+import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue, loadBiomeConfig } from './env';
+import { runBiomeFormat } from './biome';
 
 /**
  * Generates a list of configurations based on the input parameters.
@@ -82,6 +77,18 @@ export function estjs(
     markdown: enableMarkdown = true,
   } = {},
 ) {
+  const isGlobalFormat = !process.argv.includes('--node-ipc');
+
+  const mergedBiomeConfig = deepmerge(loadBiomeConfig, biomeConfig, {
+    files: { ignore: ignoresConfig },
+  });
+
+  if (isGlobalFormat) {
+    // get commend line paths
+    const paths = process.argv.slice(2).filter(arg => !arg.startsWith('-'));
+    runBiomeFormat(paths, mergedBiomeConfig);
+  }
+
   const configs = [
     ...ignores(ignoresConfig),
     ...javascript(jsConfig, globals),
@@ -98,7 +105,7 @@ export function estjs(
   ];
 
   if (!isGlobalFormat) {
-    configs.push(...biome({ ...loadBiomeConfig, ...biomeConfig }));
+    configs.push(...biome(mergedBiomeConfig));
   }
   if (enableVue) {
     configs.push(...vue(vueConfig));
