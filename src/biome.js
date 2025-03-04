@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 // Run biome format
-export function runBiomeFormat(paths = ['.'], biomeConfig = {}) {
+export function runBiomeFormat(biomeConfig = {}) {
   const currentDir = process.cwd();
   const biomePath = path.join(currentDir, 'node_modules', '.bin', 'biome');
   if (!fs.existsSync(biomePath)) {
