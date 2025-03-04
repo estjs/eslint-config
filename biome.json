@@ -3,7 +3,35 @@
   "vcs": {
     "enabled": false
   },
-  "files": { "ignoreUnknown": false, "ignore": [], "maxSize": 3145728 },
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": [
+      "**/node_modules",
+      "**/dist",
+      "**/package-lock.json",
+      "**/yarn.lock",
+      "**/pnpm-lock.yaml",
+      "**/bun.lockb",
+      "**/output",
+      "**/coverage",
+      "**/temp",
+      "**/fixtures",
+      "**/.vitepress/cache",
+      "**/.nuxt",
+      "**/.vercel",
+      "**/.changeset",
+      "**/.idea",
+      "**/.output",
+      "**/.vite-inspect",
+      "**/CHANGELOG*.md",
+      "**/*.min.*",
+      "**/LICENSE*",
+      "**/__snapshots__",
+      "**/auto-import?(s).d.ts",
+      "**/components.d.ts"
+    ],
+    "maxSize": 3145728
+  },
   "formatter": {
     "enabled": true,
     "useEditorconfig": true,
@@ -108,32 +136,7 @@
         "useValidTypeof": "error",
         "noAssignInExpressions": "off"
       }
-    },
-    "ignore": [
-      "**/node_modules",
-      "**/dist",
-      "**/package-lock.json",
-      "**/yarn.lock",
-      "**/pnpm-lock.yaml",
-      "**/bun.lockb",
-      "**/output",
-      "**/coverage",
-      "**/temp",
-      "**/fixtures",
-      "**/.vitepress/cache",
-      "**/.nuxt",
-      "**/.vercel",
-      "**/.changeset",
-      "**/.idea",
-      "**/.output",
-      "**/.vite-inspect",
-      "**/CHANGELOG*.md",
-      "**/*.min.*",
-      "**/LICENSE*",
-      "**/__snapshots__",
-      "**/auto-import?(s).d.ts",
-      "**/components.d.ts"
-    ]
+    }
   },
   "javascript": {
     "formatter": {
