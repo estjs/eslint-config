@@ -31,9 +31,6 @@
     }
   },
   "sideEffects": false,
-  "bin": {
-    "estlint": "./bin/index.mjs"
-  },
   "publishConfig": {
     "access": "public"
   },

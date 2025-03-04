@@ -85,7 +85,7 @@ real    1m42.396s
 user    0m0.106s
 sys     0m0.076s
 
-after use biome and estlint (estlint . --fix)
+after use biome and eslint (eslint . --fix)
 real    0m17.829s
 user    0m0.000s
 sys     0m0.121s
