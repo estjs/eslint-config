@@ -59,7 +59,8 @@
         "useDateNow": "error",
         "useFlatMap": "error",
         "useLiteralKeys": "warn",
-        "useRegexLiterals": "error"
+        "useRegexLiterals": "error",
+        "noForEach": "off"
       },
       "correctness": {
         "noConstAssign": "error",

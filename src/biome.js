@@ -42,12 +42,11 @@ export function runBiomeFormat(paths = ['.'], biomeConfig = {}) {
   try {
     fs.writeFileSync(tempConfigPath, JSON.stringify(biomeConfig), 'utf-8');
 
-    const targetPaths = paths.length ? paths : ['.'];
-
     // Build biome command arguments
     const biomeArgs = [
       'check',
-      '--apply',
+      '--fix',
+      '--unsafe',
       '--formatter-enabled=true',
       '--config-path',
       tempConfigPath,
@@ -69,8 +68,6 @@ export function runBiomeFormat(paths = ['.'], biomeConfig = {}) {
 
       // Color support
       ...(flags.noColor ? ['--colors=off'] : []),
-
-      ...targetPaths,
     ].filter(Boolean);
 
     // Execute command

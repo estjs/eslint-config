@@ -84,9 +84,7 @@ export function estjs(
   });
 
   if (isGlobalFormat) {
-    // get commend line paths
-    const paths = process.argv.slice(2).filter(arg => !arg.startsWith('-'));
-    runBiomeFormat(paths, mergedBiomeConfig);
+    runBiomeFormat(mergedBiomeConfig);
   }
 
   const configs = [
