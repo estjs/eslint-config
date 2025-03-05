@@ -40,8 +40,8 @@
     "lint": "pnpm run build && eslint --cache --fix ./ ",
     "prepublishOnly": "pnpm run build",
     "release": "bumpp --commit --tag --push && pnpm publish --no-git-checks --access public",
-    "test": "vitest",
-    "test:watch": "vitest watch"
+    "test": "pnpm run build && vitest",
+    "test:watch": "pnpm run build && vitest watch"
   },
   "peerDependencies": {
     "@biomejs/biome": ">=1.9.4",

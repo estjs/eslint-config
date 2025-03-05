@@ -51,7 +51,6 @@ function runWithConfig(name, configs = {}, items = {}) {
   it.concurrent(
     name,
     async ({ expect }) => {
-      const binPath = resolve('./bin/index.mjs');
       const from = resolve('fixtures/input');
       const output = resolve('fixtures/output', name);
       const target = resolve('_fixtures', name);
@@ -65,7 +64,7 @@ function runWithConfig(name, configs = {}, items = {}) {
         join(target, 'eslint.config.js'),
         `
 // @eslint-disable
-import {estjs} from '@estjs/eslint-config'
+import {estjs} from '../dist/index.js'
 
 export default estjs(
   ${JSON.stringify(items) ?? {}},
