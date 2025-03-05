@@ -74,9 +74,10 @@ export default estjs(
   `,
       );
 
-      await execa('node', [binPath, '.', '--fix'], {
+      await execa('pnpx', ['eslint', '.', '--fix'], {
         cwd: target,
         stdio: 'pipe',
+        reject: false,
       });
 
       const files = await fg('**/*', {
