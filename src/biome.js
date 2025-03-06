@@ -2,6 +2,7 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+
 // Run biome format
 export function runBiomeFormat(biomeConfig = {}) {
   const currentDir = process.cwd();
@@ -13,14 +14,18 @@ export function runBiomeFormat(biomeConfig = {}) {
   // Parse command line arguments
   const args = process.argv.slice(2);
   const flags = {
+    // Command type
+    format: args[0] === 'format',
+
     // Basic parameters
     fix: args.includes('--fix'),
+    write: args.includes('--write'),
     quiet: args.includes('--quiet'),
 
+    // Target paths (all non-flag arguments after the command)
+    paths: args.filter(arg => !arg.startsWith('-') && arg !== 'format'),
+
     // Output related
-    format: args.some(arg => arg === '-f' || arg === '--format')
-      ? args[args.findIndex(arg => arg === '-f' || arg === '--format') + 1]
-      : null,
     outputFile: args.some(arg => arg === '-o' || arg === '--output-file')
       ? args[args.findIndex(arg => arg === '-o' || arg === '--output-file') + 1]
       : null,
@@ -38,18 +43,26 @@ export function runBiomeFormat(biomeConfig = {}) {
     errorOnWarnings: args.includes('--error-on-warnings'),
   };
 
-  const tempConfigPath = path.join(currentDir, `.biome.${Date.now()}.json`);
+  const tempConfigPath = path.join(currentDir, 'node_modules', `.biome.${Date.now()}.json`);
   try {
     fs.writeFileSync(tempConfigPath, JSON.stringify(biomeConfig), 'utf-8');
 
     // Build biome command arguments
     const biomeArgs = [
-      'check',
-      '--fix',
-      '--unsafe',
+      // Command type
+      flags.format ? 'format' : 'check',
+
+      // Write/Fix flags
+      ...(flags.write ? ['--write'] : []),
+      ...(!flags.format && flags.fix ? ['--fix'] : []),
+
+      // Config and formatter
       '--formatter-enabled=true',
       '--config-path',
       tempConfigPath,
+
+      // Target paths
+      ...(flags.paths.length > 0 ? flags.paths : ['.']),
 
       // Output format support
       ...(flags.reporter ? [`--reporter=${flags.reporter}`] : []),
@@ -72,13 +85,10 @@ export function runBiomeFormat(biomeConfig = {}) {
 
     // Execute command
     execSync(`${biomePath} ${biomeArgs.join(' ')}`, {
-      stdio: flags.debug ? 'inherit' : 'pipe',
+      stdio: 'inherit',
       env: process.env,
     });
   } catch (error) {
-    if (!flags.quiet) {
-      console.error('Biome formatting failed:', error.message);
-    }
     // Exit based on error level
     if (flags.errorOnWarnings) {
       process.exit(1);
