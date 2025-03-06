@@ -52,14 +52,14 @@ const vueCustomRules = {
   'vue/require-prop-types': 'off',
 };
 
-const vue3Rules = {
+const vue2Rules = {
   ...pluginVue.configs.base.rules,
-  ...pluginVue.configs['vue3-essential'].rules,
-  ...pluginVue.configs['vue3-strongly-recommended'].rules,
-  ...pluginVue.configs['vue3-recommended'].rules,
+  ...pluginVue.configs['vue2-essential'].rules,
+  ...pluginVue.configs['vue2-strongly-recommended'].rules,
+  ...pluginVue.configs['vue2-recommended'].rules,
 };
 
-const vue2Rules = {
+const vue3Rules = {
   ...pluginVue.configs.base.rules,
   ...pluginVue.configs.essential.rules,
   ...pluginVue.configs['strongly-recommended'].rules,

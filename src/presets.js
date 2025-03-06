@@ -81,6 +81,7 @@ export function estjs(
 
   const mergedBiomeConfig = deepmerge(loadBiomeConfig, biomeConfig, {
     files: { ignore: ignoresConfig },
+    javascript: { globals },
   });
 
   if (isGlobalFormat) {

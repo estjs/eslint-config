@@ -43,6 +43,12 @@
     "attributePosition": "auto",
     "bracketSpacing": true
   },
+
+  "json": {
+    "formatter": {
+      "enabled": true
+    }
+  },
   "organizeImports": {
     "enabled": false
   },
