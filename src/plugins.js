@@ -14,6 +14,9 @@ import * as _regexpPlugin from 'eslint-plugin-regexp';
 
 import * as _pluginBiome from 'eslint-plugin-biome';
 import _pluginUnusedImports from 'eslint-plugin-unused-imports';
+
+import * as _pluginPrettier from 'eslint-plugin-prettier';
+import * as _configPrettier from 'eslint-config-prettier';
 export * as pluginImport from 'eslint-plugin-import-x';
 export * as pluginJsonc from 'eslint-plugin-jsonc';
 export * as pluginYml from 'eslint-plugin-yml';
@@ -41,3 +44,6 @@ export const pluginReact = interopDefault(_pluginReact);
 export const pluginVitest = interopDefault(_pluginVitest);
 export const pluginRegexp = interopDefault(_regexpPlugin);
 export const pluginUnocss = interopDefault(_pluginUnocss);
+
+export const pluginPrettier = interopDefault(_pluginPrettier);
+export const configPrettier = interopDefault(_configPrettier);

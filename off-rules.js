@@ -5,7 +5,7 @@ const prettierRules = {
     // information. These are marked with `0` instead of `"off"` so that a
     // script can distinguish them. Note that there are a few more of these
     // in the deprecated section below.
-    curly: 'off',
+    'curly': 'off',
     'no-unexpected-multiline': 'off',
     '@typescript-eslint/lines-around-comment': 'off',
     '@typescript-eslint/quotes': 'off',
@@ -115,7 +115,7 @@ module.exports = {
     'default-case-last': 'off',
     'default-param-last': 'off',
     'dot-notation': 'off',
-    eqeqeq: 'off',
+    'eqeqeq': 'off',
     'for-direction': 'off',
     'getter-return': 'off',
     'no-async-promise-executor': 'off',

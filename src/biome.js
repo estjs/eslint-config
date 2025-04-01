@@ -88,7 +88,7 @@ export function runBiomeFormat(biomeConfig = {}) {
       stdio: 'inherit',
       env: process.env,
     });
-  } catch (error) {
+  } catch {
     // Exit based on error level
     if (flags.errorOnWarnings) {
       process.exit(1);

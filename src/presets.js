@@ -21,6 +21,7 @@ import {
   unocss,
   vue,
   yml,
+  prettier,
 } from './configs';
 import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue, loadBiomeConfig } from './env';
 import { runBiomeFormat } from './biome';
@@ -37,6 +38,7 @@ import { runBiomeFormat } from './biome';
  * @param {object} param1.vue - Configuration options for vue.
  * @param {object} param1.markdown - Configuration options for markdown.
  * @param {object} param1.biome - Configuration options for biome.
+ * @param {object} param1.prettier - Configuration options for prettier.
  * @param {object} param1.react - Configuration options for react.
  * @param {object} param1.test - Configuration options for test.
  * @param {object} param1.globals - Configuration options for globals.
@@ -49,6 +51,8 @@ import { runBiomeFormat } from './biome';
  * @param {boolean} param2.typescript - Enable or disable typescript.
  * @param {boolean} param2.node - Enable or disable node.
  * @param {boolean} param2.markdown - Enable or disable markdown.
+ * @param {boolean} param2.biome - Enable or disable biome.
+ * @param {boolean} param2.prettier - Enable or disable prettier.
  *
  * @return {Array} List of configurations based on the input parameters.
  */
@@ -62,6 +66,7 @@ export function estjs(
     vue: vueConfig = {},
     markdown: markdownConfig = {},
     biome: biomeConfig = {},
+    prettier: prettierConfig = {},
     react: reactConfig = {},
     test: testConfig = {},
     globals = {},
@@ -74,18 +79,22 @@ export function estjs(
     unocss: enableUnocss = hasUnocss ?? false,
     typescript: enableTS = hasTypeScript ?? false,
     node: enableNode = true,
+    biome: enableBiome = false,
+    prettier: enablePrettier = true,
     markdown: enableMarkdown = true,
   } = {},
 ) {
   const isGlobalFormat = !process.argv.includes('--node-ipc');
 
-  const mergedBiomeConfig = deepmerge(loadBiomeConfig, biomeConfig, {
-    files: { ignore: ignoresConfig },
-    javascript: { globals: Object.keys(globals) },
-  });
+  if (enableBiome) {
+    const mergedBiomeConfig = deepmerge(loadBiomeConfig, biomeConfig, {
+      files: { ignore: ignoresConfig },
+      javascript: { globals: Object.keys(globals) },
+    });
 
-  if (isGlobalFormat) {
-    runBiomeFormat(mergedBiomeConfig);
+    if (isGlobalFormat) {
+      runBiomeFormat(mergedBiomeConfig);
+    }
   }
 
   const configs = [
@@ -103,8 +112,13 @@ export function estjs(
     ...regexp(),
   ];
 
-  if (!isGlobalFormat) {
+  if (!isGlobalFormat && enableBiome) {
     configs.push(...biome(mergedBiomeConfig));
+  }
+
+  // if enable biome, using prettier format vue
+  if (enablePrettier || enableBiome) {
+    configs.push(...prettier(prettierConfig, enableBiome));
   }
   if (enableVue) {
     configs.push(...vue(vueConfig));

@@ -1,7 +1,7 @@
 {
   "name": "@estjs/eslint-config",
   "version": "2.0.0-beta.16",
-  "packageManager": "pnpm@10.5.2",
+  "packageManager": "pnpm@10.7.0",
   "description": "",
   "type": "module",
   "keywords": [],
@@ -14,7 +14,10 @@
   },
   "author": "jiangxd <jiangxd2016@gmail.com>",
   "funding": "https://github.com/sponsors/estjs",
-  "files": ["biome.json", "dist"],
+  "files": [
+    "biome.json",
+    "dist"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -27,7 +30,10 @@
   },
   "typesVersions": {
     "*": {
-      "*": ["./dist/*", "./dist/index.d.ts"]
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
     }
   },
   "sideEffects": false,
@@ -45,25 +51,28 @@
   },
   "peerDependencies": {
     "@biomejs/biome": ">=1.9.4",
-    "eslint": ">=9"
+    "eslint": ">=9",
+    "prettier": ">=3"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.26.0",
-    "@typescript-eslint/parser": "^8.26.0",
+    "@typescript-eslint/eslint-plugin": "^8.29.0",
+    "@typescript-eslint/parser": "^8.29.0",
     "@unocss/eslint-plugin": "^66.0.0",
-    "@vitest/eslint-plugin": "^1.1.36",
+    "@vitest/eslint-plugin": "^1.1.38",
     "deepmerge-ts": "^7.1.5",
+    "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-biome": "^0.9.19",
     "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-import-x": "^4.6.1",
-    "eslint-plugin-jsdoc": "^50.6.3",
-    "eslint-plugin-jsonc": "^2.19.1",
+    "eslint-plugin-import-x": "^4.9.4",
+    "eslint-plugin-jsdoc": "^50.6.9",
+    "eslint-plugin-jsonc": "^2.20.0",
     "eslint-plugin-markdown": "^5.1.0",
-    "eslint-plugin-n": "^17.16.2",
+    "eslint-plugin-n": "^17.17.0",
+    "eslint-plugin-prettier": "^5.2.5",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-regexp": "^2.7.0",
     "eslint-plugin-sort-keys": "^2.3.5",
-    "eslint-plugin-unicorn": "^57.0.0",
+    "eslint-plugin-unicorn": "^58.0.0",
     "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-vue": "^10.0.0",
     "eslint-plugin-yml": "^1.17.0",
@@ -75,15 +84,15 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@types/node": "^22.13.9",
-    "bumpp": "^10.0.3",
-    "eslint": "^9.21.0",
+    "@types/node": "^22.13.14",
+    "bumpp": "^10.1.0",
+    "eslint": "^9.23.0",
     "fast-glob": "^3.3.3",
     "fs-extra": "^11.3.0",
-    "pnpm": "^10.5.2",
+    "pnpm": "^10.7.0",
     "tsup": "^8.4.0",
     "typescript": ">=5.8.2",
-    "vitest": "^3.0.7"
+    "vitest": "^3.1.1"
   },
   "engines": {
     "node": ">=18"
