@@ -1,7 +1,7 @@
 import { configPrettier, pluginPrettier } from '../plugins';
-
+import { GLOB_VUE } from '../globs';
 const prettierConflictRules = { ...configPrettier.rules };
-delete prettierConflictRules['vue/html-self-closing'];
+prettierConflictRules['vue/html-self-closing'] = undefined;
 
 export function prettier(overrides = {}, enableBiome = false) {
   return [

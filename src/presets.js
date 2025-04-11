@@ -10,6 +10,7 @@ import {
   jsonc,
   markdown,
   node,
+  prettier,
   react,
   regexp,
   sortKeys,
@@ -21,10 +22,10 @@ import {
   unocss,
   vue,
   yml,
-  prettier,
 } from './configs';
 import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue, loadBiomeConfig } from './env';
 import { runBiomeFormat } from './biome';
+import { configBiome } from './plugins';
 
 /**
  * Generates a list of configurations based on the input parameters.
@@ -42,6 +43,7 @@ import { runBiomeFormat } from './biome';
  * @param {object} param1.react - Configuration options for react.
  * @param {object} param1.test - Configuration options for test.
  * @param {object} param1.globals - Configuration options for globals.
+ * @param {object} param1.regexp - Configuration options for regexp.
  * @param {object} param1.ignores - Configuration options for ignores.
  * @param {object} param2 - Additional options to enable or disable certain features.
  * @param {boolean} param2.vue - Enable or disable vue.
@@ -70,6 +72,7 @@ export function estjs(
     react: reactConfig = {},
     test: testConfig = {},
     globals = {},
+    regexp: regexpConfig = {},
     ignores: ignoresConfig = [],
   } = {},
   {
@@ -86,17 +89,6 @@ export function estjs(
 ) {
   const isGlobalFormat = !process.argv.includes('--node-ipc');
 
-  if (enableBiome) {
-    const mergedBiomeConfig = deepmerge(loadBiomeConfig, biomeConfig, {
-      files: { ignore: ignoresConfig },
-      javascript: { globals: Object.keys(globals) },
-    });
-
-    if (isGlobalFormat) {
-      runBiomeFormat(mergedBiomeConfig);
-    }
-  }
-
   const configs = [
     ...ignores(ignoresConfig),
     ...javascript(jsConfig, globals),
@@ -109,11 +101,19 @@ export function estjs(
     ...sortPackageJson,
     ...sortTsconfig,
     ...yml,
-    ...regexp(),
+    ...regexp(regexpConfig),
   ];
 
-  if (!isGlobalFormat && enableBiome) {
-    configs.push(...biome(mergedBiomeConfig));
+  if (enableBiome) {
+    const mergedBiomeConfig = deepmerge(loadBiomeConfig, biomeConfig, {
+      files: { ignore: ignoresConfig },
+      javascript: { globals: Object.keys(globals) },
+    });
+    if (isGlobalFormat) {
+      runBiomeFormat(mergedBiomeConfig);
+    } else {
+      configs.push(...biome(mergedBiomeConfig));
+    }
   }
 
   // if enable biome, using prettier format vue
@@ -140,6 +140,11 @@ export function estjs(
   }
   if (enableNode) {
     configs.push(...node);
+  }
+
+  // if enable biome, off eslint include rules
+  if (enableBiome) {
+    configs.push(configBiome);
   }
 
   return configs;

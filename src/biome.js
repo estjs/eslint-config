@@ -56,9 +56,12 @@ export function runBiomeFormat(biomeConfig = {}) {
       ...(flags.write ? ['--write'] : []),
       ...(!flags.format && flags.fix ? ['--fix'] : []),
 
+      // default unsafe
+      ' --unsafe',
       // Config and formatter
       '--formatter-enabled=true',
       '--config-path',
+
       tempConfigPath,
 
       // Target paths

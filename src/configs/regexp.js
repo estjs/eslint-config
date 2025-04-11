@@ -1,5 +1,5 @@
 import { pluginRegexp } from '../plugins';
-export function regexp() {
+export function regexp(overrides) {
   const config = pluginRegexp.configs['flat/recommended'];
   const rules = {
     ...config.rules,
@@ -14,6 +14,7 @@ export function regexp() {
     {
       ...config,
       rules,
+      ...overrides,
     },
   ];
 }

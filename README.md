@@ -4,7 +4,7 @@ Flat ESLint config for JavaScript, TypeScript, Vue 2, Vue 3,React, Node, Regexp,
 
 ## Features
 
-- Format with Biome,[off Biome include rules](./off-rules.js).
+- Format with Biome,[off Biome include rules](https://github.com/ftzi/eslint-config-biome).
 - Designed to work with TypeScript, Vue 2 and 3 out-of-box.
 - Support JSON(5), YAML, Markdown...
 - Sort imports, `package.json`, `tsconfig.json`...
