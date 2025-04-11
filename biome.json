@@ -40,7 +40,7 @@
     "indentWidth": 2,
     "lineEnding": "lf",
     "lineWidth": 100,
-    "attributePosition": "auto",
+    "attributePosition": "multiline",
     "bracketSpacing": true
   },
 
@@ -147,14 +147,14 @@
   },
   "javascript": {
     "formatter": {
-      "jsxQuoteStyle": "double",
+      "jsxQuoteStyle": "single",
       "quoteProperties": "asNeeded",
       "trailingCommas": "all",
       "semicolons": "always",
       "arrowParentheses": "asNeeded",
       "bracketSameLine": false,
       "quoteStyle": "single",
-      "attributePosition": "auto",
+      "attributePosition": "multiline",
       "bracketSpacing": true
     }
   },
