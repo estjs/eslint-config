@@ -10,7 +10,7 @@ export function jsx2() {
         Inline Text
       </div>
       <Component1>Block Text</Component1>
-      <div>
+      <div className="  text-bold text-12 blur-sm text-red-500 text-center  w-10px h-10px  ">
         Mixed
         <div>Foo</div>
         Text<b> Bar</b>

@@ -1,9 +1,13 @@
 <template>
   <div>
-    <h1>{{ greeting }}</h1>
-    <button @click="incrementCounter">
-      Click me!
-    </button>
+    <h1
+      class="p-2 text-2xl font-bold m-2 flex justify-center items-center grid-flow-row grid-cols-2 grid"
+    >
+      {{ greeting }}
+    </h1>
+    <button @click="incrementCounter">Click me!
+</button>
+
     <p>Counter: {{ counter }}</p>
   </div>
 </template>
@@ -22,14 +26,17 @@ const incrementCounter = () => {
 </script>
 
 <style>
-.a {  color:   red }
+.a {
+  color: red;
+}
 </style>
 
 <style lang="scss">
 $font-stack: Helvetica, sans-serif;
-$primary-color:   #333;
+$primary-color: #333;
 
-body { font: 100% $font-stack;
+body {
+  font: 100% $font-stack;
   color: $primary-color;
 }
 </style>

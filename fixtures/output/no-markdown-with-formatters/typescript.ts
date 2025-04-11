@@ -11,6 +11,17 @@ const people: Person[] = [
   { name: 'Charlie', age: 35 },
 ];
 
+// Define a JSON object
+const jsonFormat = {
+  'name': 'John',
+  'nick name': 'John Doe',
+  'nick_name': 'John Doe',
+  'nick-name': 'John Doe',
+  '1age': 30,
+
+  '@estjs/eslint-config': true,
+};
+
 // eslint-disable-next-line no-console
 const log = console.log;
 
@@ -74,7 +85,7 @@ const dog = new Dog('Buddy');
 dog.bark();
 
 const fn = (): string => {
-  return 'hello' + 1;
+  return `hello${1}`;
 };
 
-log(car1, car2, favoriteFruit, numericValue, fn());
+log(car1, car2, favoriteFruit, numericValue, fn(), jsonFormat);

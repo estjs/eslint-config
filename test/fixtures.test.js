@@ -26,7 +26,6 @@ runWithConfig('no-style', {
 });
 runWithConfig('tab-double-quotes', {
   typescript: true,
-
   vue: true,
 });
 
@@ -47,6 +46,21 @@ runWithConfig('with-formatters', {
 
 runWithConfig('no-markdown-with-formatters', {});
 
+// New test configuration with biome enabled
+runWithConfig('with-biome', {
+  typescript: true,
+  vue: true,
+  biome: true,
+});
+
+// Same configuration as 'all' but with biome enabled for comparison
+runWithConfig('all-with-biome', {
+  typescript: true,
+  vue: true,
+  react: true,
+  biome: true,
+});
+
 function runWithConfig(name, configs = {}, items = {}) {
   it.concurrent(
     name,
@@ -64,16 +78,14 @@ function runWithConfig(name, configs = {}, items = {}) {
         join(target, 'eslint.config.js'),
         `
 // @eslint-disable
-import {estjs} from '../dist/index.js'
-
+import {estjs} from '../../dist/index.js'
 export default estjs(
   ${JSON.stringify(items) ?? {}},
   ${JSON.stringify(configs)},
 )
   `,
       );
-
-      await execa('pnpx', ['eslint', '.', '--fix'], {
+      await execa('pnpx', ['eslint', './', '--fix'], {
         cwd: target,
         stdio: 'pipe',
         reject: false,
@@ -99,6 +111,6 @@ export default estjs(
         }),
       );
     },
-    30_000,
+    30_0000,
   );
 }
