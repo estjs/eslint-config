@@ -21,6 +21,8 @@ export const GLOB_VUE = '**/*.vue';
 export const GLOB_YAML = '**/*.y?(a)ml';
 export const GLOB_HTML = '**/*.htm?(l)';
 
+export const GLOB_ALL = '**/*';
+
 export const GLOB_ALL_SRC = [
   GLOB_SRC,
   GLOB_STYLE,
