@@ -24,7 +24,8 @@ import * as _regexpPlugin from 'eslint-plugin-regexp';
 import _pluginUnusedImports from 'eslint-plugin-unused-imports';
 import * as _pluginComments from 'eslint-plugin-eslint-comments';
 import _jsDocPlugin from 'eslint-plugin-jsdoc';
-import * as _pluginMarkdown from 'eslint-plugin-markdown';
+import * as _pluginMarkdown from '@eslint/markdown';
+import * as _pluginPnpm from 'eslint-plugin-pnpm';
 export * as parserTypeScript from '@typescript-eslint/parser';
 export * as parserVue from 'vue-eslint-parser';
 export * as pluginImport from 'eslint-plugin-import-x';
@@ -33,7 +34,6 @@ export * as pluginYml from 'eslint-plugin-yml';
 export * as pluginSortKeys from 'eslint-plugin-sort-keys';
 export * as parserYml from 'yaml-eslint-parser';
 export * as parserJsonc from 'jsonc-eslint-parser';
-
 function interopDefault(m) {
   return m.default || m;
 }
@@ -64,3 +64,4 @@ export const pluginNode = interopDefault(_pluginNode);
 export const pluginVitest = interopDefault(_pluginVitest);
 export const pluginRegexp = interopDefault(_regexpPlugin);
 export const pluginUnocss = interopDefault(_pluginUnocss);
+export const pluginPnpm = interopDefault(_pluginPnpm);

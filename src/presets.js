@@ -10,6 +10,7 @@ import {
   jsonc,
   markdown,
   node,
+  pnpm,
   prettier,
   react,
   regexp,
@@ -44,6 +45,7 @@ import { configBiome } from './plugins';
  * @param {object} param1.test - Configuration options for test.
  * @param {object} param1.globals - Configuration options for globals.
  * @param {object} param1.regexp - Configuration options for regexp.
+ * @param {{yaml:object,josm:object}} param1.pnpm - Configuration options for pnpm.
  * @param {object} param1.ignores - Configuration options for ignores.
  * @param {object} param2 - Additional options to enable or disable certain features.
  * @param {boolean} param2.vue - Enable or disable vue.
@@ -53,8 +55,9 @@ import { configBiome } from './plugins';
  * @param {boolean} param2.typescript - Enable or disable typescript.
  * @param {boolean} param2.node - Enable or disable node.
  * @param {boolean} param2.markdown - Enable or disable markdown.
- * @param {boolean} param2.biome - Enable or disable biome.
+ * @param {boolean} param2.biome - Enable or disable biome, if enable biome, default disabled prettier
  * @param {boolean} param2.prettier - Enable or disable prettier.
+ * @param {boolean} param2.pnpm - Enable or disable pnpm.
  *
  * @return {Array} List of configurations based on the input parameters.
  */
@@ -73,6 +76,7 @@ export function estjs(
     test: testConfig = {},
     globals = {},
     regexp: regexpConfig = {},
+    pnpm: pnpmConfig = {},
     ignores: ignoresConfig = [],
   } = {},
   {
@@ -85,6 +89,7 @@ export function estjs(
     biome: enableBiome = false,
     prettier: enablePrettier = true,
     markdown: enableMarkdown = true,
+    pnpm: enablePnpm = false,
   } = {},
 ) {
   const isGlobalFormat = !process.argv.includes('--node-ipc');
@@ -114,6 +119,10 @@ export function estjs(
     } else {
       configs.push(...biome(mergedBiomeConfig));
     }
+  }
+
+  if (enablePnpm) {
+    configs.push(...pnpm(pnpmConfig));
   }
 
   // if enable biome, using prettier format vue
