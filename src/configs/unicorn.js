@@ -7,7 +7,6 @@ export function unicorn(overrides = {}) {
         unicorn: pluginUnicorn,
       },
       rules: {
-        'unicorn/better-regex': 'error',
         'unicorn/catch-error-name': 'error',
         'unicorn/custom-error-definition': 'error',
         'unicorn/error-message': 'error',
@@ -68,6 +67,7 @@ export function unicorn(overrides = {}) {
         // off prefer-at rule
         'unicorn/prefer-at': 'off',
         'unicorn/explicit-length-check': 'off',
+        'unicorn/better-regex': 'off', // use eslint-plugin-regexp instead
 
         ...overrides,
       },
