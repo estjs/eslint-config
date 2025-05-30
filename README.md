@@ -177,7 +177,7 @@ The second parameter controls which features to enable:
 | `react`      | `auto`     | Enable React support                        |
 | `node`       | `true`     | Enable Node.js specific rules               |
 | `prettier`   | `true`     | Enable Prettier formatting                  |
-| `pnpm`       | `false`    | Enable PNPM specific rules                  |
+| `pnpm`       | `false`    | Enable PNPM specific rules [see](https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm)                  |
 | `test`       | `auto`     | Enable testing rules                        |
 
 > **Note**: When `biome` is enabled, it will automatically disable certain ESLint rules that conflict with Biome's rules. If using global formatting, it will run `biome format` on your files.
@@ -237,9 +237,7 @@ export default estjs({
     'no-console': 'warn',
   },
   globals: {
-    // Define global variables for your React app
     React: true,
-    ReactDOM: true,
   },
 }); // Auto-detects React and Node.js
 ```
