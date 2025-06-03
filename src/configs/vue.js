@@ -51,6 +51,8 @@ const vueCustomRules = {
   'vue/require-default-prop': 'off',
   'vue/require-prop-types': 'off',
   'vue/html-self-closing': 'off',
+  'vue/singleline-html-element-content-newline': 'off',
+  'vue/max-attributes-per-line': 'off',
 };
 
 const vue2Rules = {
