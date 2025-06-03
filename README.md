@@ -280,6 +280,10 @@ export default estjs(
 );
 ```
 
+### TODO
+  [ ] to turn off biome's react configuration when in a vue project
+
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
