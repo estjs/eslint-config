@@ -1,7 +1,5 @@
 import process from 'node:process';
-import { deepmerge } from 'deepmerge-ts';
 import {
-  biome,
   comments,
   ignores,
   imports,
@@ -24,9 +22,9 @@ import {
   vue,
   yml,
 } from './configs';
-import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue, loadBiomeConfig } from './env';
-import { runBiomeFormat } from './biome';
-import { configBiome } from './plugins';
+import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
+import { runOxlintFormat } from './oxc';
+import { pluginOxlint } from './plugins';
 
 /**
  * Generates a list of configurations based on the input parameters.
@@ -39,7 +37,6 @@ import { configBiome } from './plugins';
  * @param {object} param1.jsdoc - Configuration options for jsdoc.
  * @param {object} param1.vue - Configuration options for vue.
  * @param {object} param1.markdown - Configuration options for markdown.
- * @param {object} param1.biome - Configuration options for biome.
  * @param {object} param1.prettier - Configuration options for prettier.
  * @param {object} param1.react - Configuration options for react.
  * @param {object} param1.test - Configuration options for test.
@@ -55,7 +52,7 @@ import { configBiome } from './plugins';
  * @param {boolean} param2.typescript - Enable or disable typescript.
  * @param {boolean} param2.node - Enable or disable node.
  * @param {boolean} param2.markdown - Enable or disable markdown.
- * @param {boolean} param2.biome - Enable or disable biome, if enable biome, default disabled prettier
+ * @param {boolean} param2.oxlint - Enable or disable oxlint.
  * @param {boolean} param2.prettier - Enable or disable prettier.
  * @param {boolean} param2.pnpm - Enable or disable pnpm.
  *
@@ -70,7 +67,6 @@ export function estjs(
     jsdoc: jsdocConfig = {},
     vue: vueConfig = {},
     markdown: markdownConfig = {},
-    biome: biomeConfig = {},
     prettier: prettierConfig = {},
     react: reactConfig = {},
     test: testConfig = {},
@@ -86,7 +82,7 @@ export function estjs(
     unocss: enableUnocss = hasUnocss ?? false,
     typescript: enableTS = hasTypeScript ?? false,
     node: enableNode = true,
-    biome: enableBiome = false,
+    oxlint: enableOxlint = false,
     prettier: enablePrettier = true,
     markdown: enableMarkdown = true,
     pnpm: enablePnpm = false,
@@ -109,15 +105,9 @@ export function estjs(
     ...regexp(regexpConfig),
   ];
 
-  if (enableBiome) {
-    const mergedBiomeConfig = deepmerge(loadBiomeConfig, biomeConfig, {
-      files: { ignore: ignoresConfig },
-      javascript: { globals: Object.keys(globals) },
-    });
+  if (enableOxlint) {
     if (isGlobalFormat) {
-      runBiomeFormat(mergedBiomeConfig);
-    } else {
-      configs.push(...biome(mergedBiomeConfig));
+      runOxlintFormat();
     }
   }
 
@@ -125,9 +115,8 @@ export function estjs(
     configs.push(...pnpm(pnpmConfig));
   }
 
-  // if enable biome, using prettier format vue
-  if (enablePrettier || enableBiome) {
-    configs.push(...prettier(prettierConfig, enableBiome));
+  if (enablePrettier) {
+    configs.push(...prettier(prettierConfig, enableOxlint));
   }
   if (enableVue) {
     configs.push(...vue(vueConfig));
@@ -151,9 +140,8 @@ export function estjs(
     configs.push(...node);
   }
 
-  // if enable biome, off eslint include rules
-  if (enableBiome) {
-    configs.push(configBiome);
+  if (enableOxlint) {
+    configs.push(pluginOxlint.configs['flat/recommended']);
   }
 
   return configs;

@@ -8,13 +8,12 @@ import _pluginReactHooks from 'eslint-plugin-react-hooks';
 // vue
 import * as _pluginVue from 'eslint-plugin-vue';
 
-// biome
-import * as _pluginBiome from 'eslint-plugin-biome';
-import * as _configBiome from 'eslint-config-biome';
-
 // prettier
 import * as _pluginPrettier from 'eslint-plugin-prettier';
 import * as _configPrettier from 'eslint-config-prettier';
+
+// oxlint
+import * as _pluginOxlint from 'eslint-plugin-oxlint';
 
 // others
 import * as _pluginUnocss from '@unocss/eslint-plugin';
@@ -45,13 +44,12 @@ export const pluginReactHooks = interopDefault(_pluginReactHooks);
 // vue
 export const pluginVue = interopDefault(_pluginVue);
 
-// biome
-export const pluginBiome = interopDefault(_pluginBiome);
-export const configBiome = interopDefault(_configBiome);
-
 // prettier
 export const pluginPrettier = interopDefault(_pluginPrettier);
 export const configPrettier = interopDefault(_configPrettier);
+
+// oxlint
+export const pluginOxlint = interopDefault(_pluginOxlint);
 
 // others
 export const pluginUnusedImports = interopDefault(_pluginUnusedImports);

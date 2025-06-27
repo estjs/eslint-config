@@ -25,13 +25,3 @@ export function getVueVersion() {
   return 3;
 }
 export const isVue3 = getVueVersion() === 3;
-
-// Get the current working directory and library directory
-const currentDir = process.cwd();
-const libraryDir = path.dirname(fileURLToPath(import.meta.url));
-let biomeConfigPath = path.join(currentDir, 'biome.json');
-if (!fs.existsSync(biomeConfigPath)) {
-  // If not, use the biome.json from the library directory
-  biomeConfigPath = path.join(libraryDir, 'biome.json');
-}
-export const loadBiomeConfig = JSON.parse(fs.readFileSync(biomeConfigPath, 'utf-8'));

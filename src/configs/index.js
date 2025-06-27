@@ -4,7 +4,6 @@ export * from './imports';
 export * from './javascript';
 export * from './jsonc';
 export * from './markdown';
-export * from './biome';
 export * from './sort-keys';
 export * from './sort';
 export * from './typescript';
