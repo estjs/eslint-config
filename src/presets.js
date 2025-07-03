@@ -24,7 +24,7 @@ import {
 } from './configs';
 import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
 import { runOxlintFormat } from './oxc';
-import { pluginOxlint } from './plugins';
+import { pluginOxlint, pluginOxlintX } from './plugins';
 
 /**
  * Generates a list of configurations based on the input parameters.
@@ -36,6 +36,7 @@ import { pluginOxlint } from './plugins';
  * @param {object} param1.unicorn - Configuration options for unicorn.
  * @param {object} param1.jsdoc - Configuration options for jsdoc.
  * @param {object} param1.vue - Configuration options for vue.
+ * @param {object} param1.oxlint - Configuration options to pass to oxlint.
  * @param {object} param1.markdown - Configuration options for markdown.
  * @param {object} param1.prettier - Configuration options for prettier.
  * @param {object} param1.react - Configuration options for react.
@@ -74,6 +75,7 @@ export function estjs(
     regexp: regexpConfig = {},
     pnpm: pnpmConfig = {},
     ignores: ignoresConfig = [],
+    oxlint: oxlintConfig = {},
   } = {},
   {
     vue: enableVue = hasVue ?? false,
@@ -107,7 +109,7 @@ export function estjs(
 
   if (enableOxlint) {
     if (isGlobalFormat) {
-      runOxlintFormat();
+      runOxlintFormat(oxlintConfig);
     }
   }
 
@@ -141,7 +143,11 @@ export function estjs(
   }
 
   if (enableOxlint) {
-    configs.push(pluginOxlint.configs['flat/recommended']);
+    const oxlintRecommended = pluginOxlint.configs['flat/recommended'] || pluginOxlint.configs.recommended;
+    if (oxlintRecommended) {
+      configs.push(...oxlintRecommended);
+    }
+    configs.push(...oxlint(oxlintConfig));
   }
 
   return configs;

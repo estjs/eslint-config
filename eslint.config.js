@@ -5,6 +5,6 @@ export default estjs(
     ignores: ['**/fixtures/**'],
   },
   {
-    biome: true,
+    oxlint: true,
   },
 );

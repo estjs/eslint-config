@@ -13,6 +13,7 @@ import * as _pluginPrettier from 'eslint-plugin-prettier';
 import * as _configPrettier from 'eslint-config-prettier';
 
 // oxlint
+import  _pluginOxlintX from 'eslint-plugin-oxlint-x';
 import * as _pluginOxlint from 'eslint-plugin-oxlint';
 
 // others
@@ -50,6 +51,7 @@ export const configPrettier = interopDefault(_configPrettier);
 
 // oxlint
 export const pluginOxlint = interopDefault(_pluginOxlint);
+export const pluginOxlintX = interopDefault(_pluginOxlintX);
 
 // others
 export const pluginUnusedImports = interopDefault(_pluginUnusedImports);
