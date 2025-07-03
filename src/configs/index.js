@@ -18,3 +18,4 @@ export * from './node';
 export * from './prettier';
 export * from './regexp';
 export * from './pnpm';
+export * from './oxlint';

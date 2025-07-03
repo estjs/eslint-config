@@ -76,7 +76,7 @@ export function prettier(overrides = {}, enableOxlint = false) {
 
   return [
     {
-      files: [GLOB_JS, GLOB_JSX],
+      files: [GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX],
       plugins: {
         prettier: pluginPrettier,
       },
@@ -87,23 +87,6 @@ export function prettier(overrides = {}, enableOxlint = false) {
           {
             ...prettierOptions,
             parser: 'oxc',
-            plugins: ['@prettier/plugin-oxc'],
-          },
-        ],
-      },
-    },
-    {
-      files: [GLOB_TS, GLOB_TSX],
-      plugins: {
-        prettier: pluginPrettier,
-      },
-      rules: {
-        ...prettierConflictRules,
-        'prettier/prettier': [
-          'warn',
-          {
-            ...prettierOptions,
-            parser: 'oxc-ts',
             plugins: ['@prettier/plugin-oxc'],
           },
         ],

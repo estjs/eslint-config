@@ -1,7 +1,6 @@
 import pkg from '../package.json' with { type: 'json' };
 import { generateDifferences, showInvisibles } from './helpers.js';
-import { format } from './oxlint.js';
-
+import { format, runAllOxlintFormat } from './oxlint.js';
 const { INSERT, DELETE, REPLACE } = generateDifferences;
 
 /**
@@ -54,15 +53,8 @@ const eslintPluginOxlint = {
         schema: [
           {
             type: 'object',
-            properties: {
-              'config': {
-                type: 'string',
-              },
-              'deny-warnings': {
-                type: 'boolean',
-              },
-            },
-            additionalProperties: false,
+            properties: {},
+            additionalProperties: true,
           },
         ],
       },
@@ -75,7 +67,9 @@ const eslintPluginOxlint = {
         return {
           async Program() {
             try {
-              const formatted = await format(source, filePath, options);
+              const formatted = await format(source, options);
+              console.log(`Formatting file: ${filePath}`, source, formatted);
+
               if (source !== formatted) {
                 const differences = generateDifferences(source, formatted);
                 for (const difference of differences) {
@@ -95,4 +89,4 @@ const eslintPluginOxlint = {
   },
 };
 
-export default eslintPluginOxlint;
+export { eslintPluginOxlint as default, runAllOxlintFormat };

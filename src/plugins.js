@@ -13,7 +13,7 @@ import * as _pluginPrettier from 'eslint-plugin-prettier';
 import * as _configPrettier from 'eslint-config-prettier';
 
 // oxlint
-import  _pluginOxlintX from 'eslint-plugin-oxlint-x';
+import _pluginOxlintX from 'eslint-plugin-oxlint-x';
 import * as _pluginOxlint from 'eslint-plugin-oxlint';
 
 // others

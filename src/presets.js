@@ -1,4 +1,3 @@
-import process from 'node:process';
 import {
   comments,
   ignores,
@@ -8,6 +7,7 @@ import {
   jsonc,
   markdown,
   node,
+  oxlint,
   pnpm,
   prettier,
   react,
@@ -22,9 +22,9 @@ import {
   vue,
   yml,
 } from './configs';
-import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
-import { runOxlintFormat } from './oxc';
-import { pluginOxlint, pluginOxlintX } from './plugins';
+import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue, isGlobalFormat } from './env';
+import { pluginOxlint } from './plugins';
+import { GLOB_EXCLUDE } from './globs';
 
 /**
  * Generates a list of configurations based on the input parameters.
@@ -90,8 +90,6 @@ export function estjs(
     pnpm: enablePnpm = false,
   } = {},
 ) {
-  const isGlobalFormat = !process.argv.includes('--node-ipc');
-
   const configs = [
     ...ignores(ignoresConfig),
     ...javascript(jsConfig, globals),
@@ -108,9 +106,18 @@ export function estjs(
   ];
 
   if (enableOxlint) {
-    if (isGlobalFormat) {
-      runOxlintFormat(oxlintConfig);
-    }
+    oxlintConfig.ignorePatterns = [
+      ...(oxlintConfig.ignorePatterns || []),
+      ...GLOB_EXCLUDE,
+      ...ignoresConfig,
+    ];
+
+    oxlintConfig.globals = {
+      ...oxlintConfig.globals,
+      ...globals,
+    };
+
+    oxlint(configs, oxlintConfig);
   }
 
   if (enablePnpm) {
@@ -142,12 +149,12 @@ export function estjs(
     configs.push(...node);
   }
 
-  if (enableOxlint) {
-    const oxlintRecommended = pluginOxlint.configs['flat/recommended'] || pluginOxlint.configs.recommended;
+  if (enableOxlint && !isGlobalFormat) {
+    const oxlintRecommended =
+      pluginOxlint.configs['flat/recommended'] || pluginOxlint.configs.recommended;
     if (oxlintRecommended) {
       configs.push(...oxlintRecommended);
     }
-    configs.push(...oxlint(oxlintConfig));
   }
 
   return configs;

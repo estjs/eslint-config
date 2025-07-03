@@ -1,7 +1,4 @@
-import fs from 'node:fs';
 import process from 'node:process';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { getPackageInfoSync, isPackageExists } from 'local-pkg';
 
 export const hasReact = isPackageExists('react');
@@ -25,3 +22,4 @@ export function getVueVersion() {
   return 3;
 }
 export const isVue3 = getVueVersion() === 3;
+export const isGlobalFormat = !process.argv.includes('--node-ipc');
