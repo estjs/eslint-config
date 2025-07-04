@@ -236,12 +236,7 @@ export function deepMergeConfig(target = {}, source = {}) {
  */
 export function resolveOxlintBinary() {
   const current = process.cwd();
-  const candidate = join(
-    current,
-    'node_modules',
-    '.bin',
-    process.platform === 'win32' ? 'oxlint.cmd' : 'oxlint',
-  );
+  const candidate = join(current, 'node_modules', '.bin', 'oxlint');
 
   return candidate;
 }

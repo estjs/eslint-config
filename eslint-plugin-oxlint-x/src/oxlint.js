@@ -1,9 +1,9 @@
 import { execSync } from 'node:child_process';
 import { promises as fs } from 'node:fs';
 import process from 'node:process';
-import { getConfig, resolveOxlintBinary } from './helpers';
 import path from 'node:path';
 import os from 'node:os';
+import { getConfig, resolveOxlintBinary } from './helpers';
 
 export async function format(code, options = {}) {
   const tempConfigPath = getConfig(options);
@@ -16,14 +16,7 @@ export async function format(code, options = {}) {
   await fs.writeFile(tmpFilePath, code, 'utf8');
 
   try {
-    const args = [
-      'lint',
-      '--fix',
-      '--silent',
-      '--config',
-      tempConfigPath,
-      tmpFilePath,
-    ];
+    const args = ['lint', '--fix', '--config', tempConfigPath, tmpFilePath];
 
     execSync(`${binPath} ${args.join(' ')}`, {
       stdio: 'inherit',
@@ -89,6 +82,15 @@ export async function runAllOxlintFormat(oxlintConfig = {}) {
       stdio: 'inherit',
       env: process.env,
     });
+  } catch (error) {
+    // Allow non-zero exit codes (e.g. when oxlint reports diagnostics)
+    if (typeof error.status === 'number') {
+      // Exit code represents lint result – log and continue instead of throwing
+      console.warn(`oxlint exited with code ${error.status}. Continuing…`);
+    } else {
+      // Re-throw unexpected failures (e.g. binary missing)
+      throw error;
+    }
   } finally {
     // Clean up temporary config file
     try {

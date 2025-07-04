@@ -1,30 +1,6 @@
 import pkg from '../package.json' with { type: 'json' };
-import { generateDifferences, showInvisibles } from './helpers.js';
-import { format, runAllOxlintFormat } from './oxlint.js';
-const { INSERT, DELETE, REPLACE } = generateDifferences;
-
-/**
- * Reports a difference.
- *
- * @param {import('eslint').Rule.RuleContext} context - The ESLint rule context.
- * @param {import('prettier-linter-helpers').Difference} difference - The difference object.
- * @returns {void}
- */
-function reportDifference(context, difference) {
-  const { operation, offset, deleteText = '', insertText = '' } = difference;
-  const range = [offset, offset + deleteText.length];
-  const [start, end] = range.map(index => context.sourceCode.getLocFromIndex(index));
-
-  context.report({
-    messageId: operation,
-    data: {
-      deleteText: showInvisibles(deleteText),
-      insertText: showInvisibles(insertText),
-    },
-    loc: { start, end },
-    fix: fixer => fixer.replaceTextRange(range, insertText),
-  });
-}
+import { getClient } from './lsp.js';
+import { runAllOxlintFormat } from './oxlint.js';
 
 const eslintPluginOxlint = {
   meta: { name: pkg.name, version: pkg.version },
@@ -45,11 +21,7 @@ const eslintPluginOxlint = {
           description: 'Format files with oxlint.',
           recommended: 'warn',
         },
-        messages: {
-          [INSERT]: 'Insert `{{ insertText }}`',
-          [DELETE]: 'Delete `{{ deleteText }}`',
-          [REPLACE]: 'Replace `{{ deleteText }}` with `{{ insertText }}`',
-        },
+        messages: {},
         schema: [
           {
             type: 'object',
@@ -59,7 +31,6 @@ const eslintPluginOxlint = {
         ],
       },
       create(context) {
-        const options = context.options?.[0] || {};
         const sourceCode = context.sourceCode ?? context.getSourceCode();
         const filePath = context.filename ?? context.getFilename();
         const source = sourceCode.text;
@@ -67,18 +38,46 @@ const eslintPluginOxlint = {
         return {
           async Program() {
             try {
-              const formatted = await format(source, options);
-              console.log(`Formatting file: ${filePath}`, source, formatted);
+              const client = getClient();
+              const uri = `file://${filePath}`;
+              const diagnostics = await client.lint({ uri, text: source });
 
-              if (source !== formatted) {
-                const differences = generateDifferences(source, formatted);
-                for (const difference of differences) {
-                  reportDifference(context, difference);
+              for (const diag of diagnostics) {
+                const start = {
+                  line: diag.range.start.line + 1,
+                  column: diag.range.start.character,
+                };
+                const end = { line: diag.range.end.line + 1, column: diag.range.end.character };
+                const loc = { start, end };
+
+                // Attempt to derive fix from `diag.data?.fix` (oxlint custom) or `diag.relatedInformation` etc.
+                let fix;
+                if (diag.data && diag.data.fix) {
+                  const edit = diag.data.fix;
+                  const startIdx = sourceCode.getIndexFromLoc({
+                    line: edit.range.start.line + 1,
+                    column: edit.range.start.character,
+                  });
+                  const endIdx = sourceCode.getIndexFromLoc({
+                    line: edit.range.end.line + 1,
+                    column: edit.range.end.character,
+                  });
+                  fix = fixer => fixer.replaceTextRange([startIdx, endIdx], edit.newText);
                 }
+
+                context.report(
+                  fix
+                    ? {
+                        message: diag.message,
+                        loc,
+                        fix,
+                      }
+                    : { message: diag.message, loc },
+                );
               }
             } catch (error) {
               context.report({
-                message: `oxlint error: ${error.message}`,
+                message: `oxlint LSP error: ${error.message}`,
                 loc: { start: { line: 1, column: 0 }, end: { line: 1, column: 0 } },
               });
             }

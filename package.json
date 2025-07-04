@@ -42,7 +42,7 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "lint": "pnpm run build && eslint --cache --fix ./",
+    "lint": "cross-env NAPI_RS_FORCE_WASI=1 pnpm run build && eslint --cache --fix ./",
     "prepublishOnly": "pnpm run build",
     "release": "bumpp --commit --tag --push && pnpm publish --no-git-checks --access public",
     "test": "pnpm run build && vitest",
@@ -87,7 +87,10 @@
   "devDependencies": {
     "@prettier/plugin-oxc": "^0.0.4",
     "@types/node": "^22.15.26",
+    "@unrs/resolver-binding-wasm32-wasi": "^1.7.2",
+    "@unrs/resolver-binding-win32-x64-msvc": "1.7.2",
     "bumpp": "^10.1.1",
+    "cross-env": "^7.0.3",
     "eslint": "^9.27.0",
     "execa": "^9.6.0",
     "fast-glob": "^3.3.3",

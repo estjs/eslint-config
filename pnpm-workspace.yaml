@@ -1,2 +1,5 @@
 packages:
   - eslint-plugin-oxlint-x
+onlyBuiltDependencies:
+  - esbuild
+  - unrs-resolver
