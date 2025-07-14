@@ -1,5 +1,5 @@
 import tsPlugin from '@typescript-eslint/eslint-plugin';
-import { hasTypeScript, isVue3 } from '../env';
+import { isVue3 } from '../env';
 import { GLOB_VUE } from '../globs';
 import { parserTypeScript, parserVue, pluginVue } from '../plugins';
 import { typescript } from './typescript';
@@ -69,7 +69,7 @@ const vue3Rules = {
   ...pluginVue.configs.recommended.rules,
 };
 
-export function vue(overrides = {}) {
+export function vue(overrides = {}, enableTS) {
   return [
     {
       files: [GLOB_VUE],
@@ -80,13 +80,13 @@ export function vue(overrides = {}) {
             jsx: true,
           },
           extraFileExtensions: ['.vue'],
-          parser: hasTypeScript ? parserTypeScript : null,
+          parser: enableTS ? parserTypeScript : null,
           sourceType: 'module',
         },
       },
       plugins: {
         '@typescript-eslint': tsPlugin,
-        vue: pluginVue,
+        'vue': pluginVue,
       },
       processor: pluginVue.processors['.vue'],
       rules: {

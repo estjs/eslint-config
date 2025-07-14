@@ -130,7 +130,7 @@ export function estjs(
     configs.push(...prettier(prettierConfig, enableBiome));
   }
   if (enableVue) {
-    configs.push(...vue(vueConfig));
+    configs.push(...vue(vueConfig, enableTS));
   }
   if (enableMarkdown) {
     configs.push(...markdown(markdownConfig));
