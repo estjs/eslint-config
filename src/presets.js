@@ -111,7 +111,13 @@ export function estjs(
 
   if (enableBiome) {
     const mergedBiomeConfig = deepmerge(loadBiomeConfig, biomeConfig, {
-      files: { ignore: ignoresConfig },
+      files: {
+        includes: [
+          ...(loadBiomeConfig.files.includes || []),
+          ...(biomeConfig.includes || []),
+          ...(ignoresConfig || []).map(item => `!${item}`),
+        ],
+      },
       javascript: { globals: Object.keys(globals) },
     });
     if (isGlobalFormat) {

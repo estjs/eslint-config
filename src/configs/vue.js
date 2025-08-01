@@ -86,7 +86,7 @@ export function vue(overrides = {}, enableTS) {
       },
       plugins: {
         '@typescript-eslint': tsPlugin,
-        'vue': pluginVue,
+        vue: pluginVue,
       },
       processor: pluginVue.processors['.vue'],
       rules: {
