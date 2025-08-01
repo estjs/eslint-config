@@ -58,6 +58,7 @@ import { configBiome } from './plugins';
  * @param {boolean} param2.biome - Enable or disable biome, if enable biome, default disabled prettier
  * @param {boolean} param2.prettier - Enable or disable prettier.
  * @param {boolean} param2.pnpm - Enable or disable pnpm.
+ * @param {boolean} param2.oxlint - Enable or disable oxlint.
  *
  * @return {Array} List of configurations based on the input parameters.
  */
