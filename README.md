@@ -10,13 +10,33 @@ A unified, easy-to-use ESLint configuration package supporting JavaScript, TypeS
 
 ## ✨ Features
 
-- 🔍 **Modern Format Engine** - Powered by [Biome](https://biomejs.dev/) with optimized rules
-- 🚀 **Zero Configuration** - Works out-of-the-box with TypeScript, Vue 2/3, and more
-- 📦 **Broad Support** - Handles JSON(5), YAML, Markdown, and other file formats
-- 🧹 **Smart Organization** - Automatically sorts imports, `package.json`, `tsconfig.json`, etc.
-- 🔧 **Flat Config System** - Uses [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new) for easy composition
-- ⚙️ **Auto Detection** - Intelligently enables features based on your project dependencies
-- 💻 **Dev Experience** - Reasonable defaults and best practices with minimal configuration
+- 🔍 **Multiple Format Engines**
+  - [Prettier](https://github.com/prettier/prettier) - Default formatter with broad language support
+  - [Biome](https://biomejs.dev/) - Fast Rust-based formatter (optional)
+- 🚀 **Zero Configuration** - Works out-of-the-box with TypeScript, Vue 2/3, React and more
+- 📦 **Broad Support** 
+  - JavaScript/TypeScript
+  - Vue 2/3, React
+  - JSON(5), YAML, Markdown
+  - RegExp, JSDoc
+  - UnoCSS
+- 🧹 **Smart Organization** 
+  - Auto-sorts imports
+  - Organizes package.json
+  - Structures tsconfig.json
+  - Formats workspace files
+- 🔧 **Modern Config System** 
+  - Uses [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new)
+  - Easy composition and extension
+  - TypeScript-friendly configuration
+- ⚙️ **Intelligent Detection** 
+  - Auto-detects project features
+  - Configures rules based on dependencies
+  - Smart preset selection
+- 💻 **Enhanced Dev Experience** 
+  - Sensible defaults
+  - Minimal configuration needed
+  - Extensive IDE integration
 
 ## 📋 Requirements
 
@@ -60,7 +80,7 @@ export default estjs(
 
   // Configure features - auto-detected by default
   {
-    biome: true, // default: false
+    biome: true, // default: false,use prettier
     markdown: true, // default: true
     vue: true, // auto-detected based on dependencies
     unocss: false, // auto-detected based on dependencies
@@ -182,6 +202,7 @@ The second parameter controls which features to enable:
 
 > **Note**: When `biome` is enabled, it will automatically disable certain ESLint rules that conflict with Biome's rules. If using global formatting, it will run `biome format` on your files.
 
+
 ## 🔧 Biome Configuration
 
 You can extend the default Biome configuration by creating a `biome.json` file in your project root:
@@ -214,6 +235,59 @@ The config includes several additional features that are automatically applied:
 - **Sort TSConfig**: Automatic organization of tsconfig.json files
 - **YAML**: Support for YAML files
 - **RegExp**: Validation for regular expressions
+
+## 🛠 Integrations
+
+### Oxlint Integration
+
+[Oxlint](https://github.com/oxc-project/oxc) is a super-fast JavaScript linter written in Rust. To enable Oxlint:
+
+```js
+// eslint.config.js
+import { estjs } from '@estjs/eslint-config';
+
+export default estjs({
+  oxlint: {
+    // Oxlint specific configurations
+    rules: {
+      // Your custom rules
+    },
+  },
+});
+```
+
+### IDE Integration
+
+For the best development experience, we recommend:
+
+- VS Code with [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- Enable `editor.formatOnSave` in VS Code settings
+- Install recommended extensions for your IDE
+
+## ❓ FAQ
+
+### Which formatter should I choose?
+
+- **Prettier**: Best for projects that need broad language support
+- **Biome**: Ideal for JavaScript/TypeScript projects that need faster formatting
+- **Oxlint**: Great for projects that need ultra-fast linting
+
+### How to debug configuration issues?
+
+1. Enable ESLint debug mode:
+   ```bash
+   DEBUG=eslint:* eslint .
+   ```
+
+2. Check resolved configuration:
+   ```bash
+   npx eslint --print-config path/to/file.js
+   ```
+
+3. Common issues:
+   - Conflicting plugins
+   - Missing peer dependencies
+   - Incorrect file extensions
 
 ## 📚 Examples
 
@@ -280,9 +354,6 @@ export default estjs(
 );
 ```
 
-### TODO
-  [ ] to turn off biome's react configuration when in a vue project
-
 
 ## 🤝 Contributing
 
@@ -290,6 +361,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-[MIT](LICENSE) License © 2023-present [Est.js](https://github.com/estjs)
+[MIT](LICENSE) License © 2023-present [Estjs](https://github.com/estjs)
 
 

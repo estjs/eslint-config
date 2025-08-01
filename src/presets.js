@@ -89,6 +89,7 @@ export function estjs(
     biome: enableBiome = false,
     prettier: enablePrettier = true,
     markdown: enableMarkdown = true,
+    oxlint: enableOxlint = false,
     pnpm: enablePnpm = false,
   } = {},
 ) {
@@ -133,7 +134,7 @@ export function estjs(
 
   // if enable biome, using prettier format vue
   if (enablePrettier || enableBiome) {
-    configs.push(...prettier(prettierConfig, enableBiome));
+    configs.push(...prettier(prettierConfig, enableBiome, enableOxlint));
   }
   if (enableVue) {
     configs.push(...vue(vueConfig, enableTS));
