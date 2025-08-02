@@ -56,7 +56,7 @@
     "@unocss/eslint-plugin": "^66.3.3",
     "@vitest/eslint-plugin": "^1.3.4",
     "deepmerge-ts": "^7.1.5",
-    "eslint-config-biome": "^1.9.4",
+    "eslint-config-biome": "^2.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-biome": "^0.9.19",
     "eslint-plugin-eslint-comments": "^3.2.0",
