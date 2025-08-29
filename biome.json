@@ -58,6 +58,7 @@
         "noVoid": "off",
         "useDateNow": "error",
         "useFlatMap": "error",
+        "useIndexOf": "error",
         "useLiteralKeys": "warn",
         "useRegexLiterals": "error"
       },
@@ -85,6 +86,7 @@
         "noUnusedVariables": "error",
         "useHookAtTopLevel": "error",
         "useIsNan": "error",
+        "useSingleJsDocAsterisk": "warn",
         "useValidForDirection": "error",
         "useValidTypeof": "error",
         "useYield": "error"
@@ -134,11 +136,13 @@
         "noShadowRestrictedNames": "error",
         "noSparseArray": "error",
         "noUnsafeNegation": "error",
+        "noUselessRegexBackrefs": "error",
         "noWith": "error",
         "useAwait": "error",
         "useErrorMessage": "error",
         "useGetterReturn": "error",
-        "useIsArray": "error"
+        "useIsArray": "error",
+        "useIterableCallbackReturn": "error"
       }
     },
     "includes": [
@@ -164,7 +168,31 @@
       "!**/*.min.*",
       "!**/LICENSE*",
       "!**/__snapshots__",
-      "!**/components.d.ts"
+      "!**/components.d.ts",
+      "**",
+      "!**/node_modules",
+      "!**/dist",
+      "!**/package-lock.json",
+      "!**/yarn.lock",
+      "!**/pnpm-lock.yaml",
+      "!**/bun.lockb",
+      "!**/output",
+      "!**/coverage",
+      "!**/temp",
+      "!**/fixtures",
+      "!**/.vitepress/cache",
+      "!**/.nuxt",
+      "!**/.vercel",
+      "!**/.changeset",
+      "!**/.idea",
+      "!**/.output",
+      "!**/.vite-inspect",
+      "!**/CHANGELOG*.md",
+      "!**/*.min.*",
+      "!**/LICENSE*",
+      "!**/__snapshots__",
+      "!**/components.d.ts",
+      "!**/fixtures/**"
     ]
   },
   "javascript": {
@@ -508,6 +536,110 @@
             "useAsConstAssertion": "warn",
             "useConst": "error",
             "useLiteralEnumMembers": "error"
+          },
+          "suspicious": {
+            "noClassAssign": "off",
+            "noConfusingVoidType": "error",
+            "noDuplicateClassMembers": "off",
+            "noDuplicateObjectKeys": "off",
+            "noDuplicateParameters": "off",
+            "noExplicitAny": "off",
+            "noExtraNonNullAssertion": "error",
+            "noFunctionAssign": "off",
+            "noImportAssign": "off",
+            "noMisleadingInstantiator": "error",
+            "noRedeclare": "error",
+            "noUnsafeDeclarationMerging": "error",
+            "noUnsafeNegation": "off",
+            "noVar": "error",
+            "noWith": "off",
+            "useGetterReturn": "off",
+            "useNamespaceKeyword": "error"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/*.d.ts"],
+      "linter": { "rules": { "correctness": { "noUnusedVariables": "off" } } }
+    },
+    { "linter": { "rules": {} } },
+    { "includes": ["**/*.cjs"], "linter": { "rules": { "style": { "noCommonJs": "off" } } } },
+    { "includes": ["**/*.d.ts"], "linter": { "rules": {} } },
+    { "linter": { "rules": {} } },
+    {
+      "includes": ["**/scripts/*", "**/cli.*"],
+      "linter": { "rules": { "suspicious": { "noConsole": "off" } } }
+    },
+    { "linter": { "rules": {} } },
+    {
+      "includes": [
+        "**/{index,vite,esbuild,rollup,webpack,rspack}.ts",
+        "**/*.d.ts",
+        "**/*.md/**",
+        "**/.prettierrc*"
+      ],
+      "linter": { "rules": { "style": { "noDefaultExport": "off" } } }
+    },
+    {
+      "includes": ["**/*.json", "**/*.json5", "**/*.jsonc"],
+      "javascript": { "globals": [] },
+      "linter": { "rules": {} }
+    },
+    { "includes": ["**/package.json"], "linter": { "rules": {} } },
+    { "includes": ["**/tsconfig.json", "**/tsconfig.*.json"], "linter": { "rules": {} } },
+    { "javascript": { "globals": [] }, "linter": { "rules": {} } },
+    { "includes": ["**/*"], "linter": { "rules": { "style": { "useBlockStatements": "off" } } } },
+    { "includes": ["**/*.md"], "linter": { "rules": {} } },
+    { "includes": ["**/*.md"] },
+    {
+      "includes": ["**/*.md/**/*.vue"],
+      "javascript": { "globals": [] },
+      "linter": {
+        "rules": {
+          "complexity": { "noStaticOnlyClass": "off" },
+          "correctness": {
+            "noInvalidUseBeforeDeclaration": "off",
+            "noUndeclaredVariables": "off",
+            "noUnusedImports": "off",
+            "noUnusedVariables": "off"
+          },
+          "style": { "noCommonJs": "off", "noNamespace": "off", "noRestrictedImports": "off" },
+          "suspicious": { "noAlert": "off", "noConsole": "off", "noRedeclare": "off" }
+        }
+      }
+    },
+    {
+      "javascript": { "globals": [] },
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noArguments": "error",
+            "noBannedTypes": "off",
+            "noStaticOnlyClass": "error",
+            "noUselessConstructor": "error",
+            "noUselessTypeConstraint": "off"
+          },
+          "correctness": {
+            "noConstAssign": "off",
+            "noGlobalObjectCalls": "off",
+            "noInvalidBuiltinInstantiation": "off",
+            "noInvalidConstructorSuper": "off",
+            "noSetterReturn": "off",
+            "noUndeclaredVariables": "off",
+            "noUnreachable": "off",
+            "noUnreachableSuper": "off",
+            "noUnusedVariables": "off"
+          },
+          "style": {
+            "noCommonJs": "error",
+            "noNamespace": "error",
+            "noNonNullAssertion": "off",
+            "useArrayLiterals": "error",
+            "useAsConstAssertion": "warn",
+            "useConst": "error",
+            "useLiteralEnumMembers": "error",
+            "useUnifiedTypeSignatures": "error"
           },
           "suspicious": {
             "noClassAssign": "off",
