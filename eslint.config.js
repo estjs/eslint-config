@@ -4,7 +4,5 @@ export default estjs(
   {
     ignores: ['**/fixtures/**'],
   },
-  {
-    biome: true,
-  },
+  { biome: true },
 );
