@@ -12,9 +12,13 @@ export function regexp(overrides) {
   }
   return [
     {
-      ...config,
-      rules,
-      ...overrides,
+      plugins: {
+        regexp: pluginRegexp,
+      },
+      rules: {
+        ...rules,
+        ...overrides,
+      },
     },
   ];
 }
