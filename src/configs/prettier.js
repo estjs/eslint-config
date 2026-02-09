@@ -1,4 +1,3 @@
-import { configPrettier, pluginPrettier } from '../plugins';
 import {
   GLOB_ALL,
   GLOB_CSS,
@@ -16,11 +15,12 @@ import {
   GLOB_VUE,
   GLOB_YAML,
 } from '../globs';
+import { configPrettier, pluginPrettier } from '../plugins';
 
 const prettierConflictRules = { ...configPrettier.rules };
 prettierConflictRules['vue/html-self-closing'] = 'off';
 
-export function prettier(overrides = {}, enableBiome = false, enableOxlint = false) {
+export function prettier(overrides = {}, enableOxlint = false) {
   const prettierOptions = {
     // 一行最多 100 字符
     printWidth: 100,
@@ -65,7 +65,7 @@ export function prettier(overrides = {}, enableBiome = false, enableOxlint = fal
         plugins: {
           prettier: pluginPrettier,
         },
-        files: [enableBiome ? GLOB_VUE : GLOB_ALL],
+        files: [GLOB_ALL],
         rules: {
           ...prettierConflictRules,
           'prettier/prettier': ['warn', prettierOptions],

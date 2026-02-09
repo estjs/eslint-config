@@ -1,39 +1,38 @@
 // typescript
+
+import * as _pluginMarkdown from '@eslint/markdown';
 import * as _pluginTypeScript from '@typescript-eslint/eslint-plugin';
-
-// react
-import _pluginReact from 'eslint-plugin-react';
-import * as _pluginUnicorn from 'eslint-plugin-unicorn';
-import _pluginReactHooks from 'eslint-plugin-react-hooks';
-// vue
-import * as _pluginVue from 'eslint-plugin-vue';
-
-// biome
-import * as _pluginBiome from 'eslint-plugin-biome';
-import * as _configBiome from 'eslint-config-biome';
-
-// prettier
-import * as _pluginPrettier from 'eslint-plugin-prettier';
-import * as _configPrettier from 'eslint-config-prettier';
-
 // others
 import * as _pluginUnocss from '@unocss/eslint-plugin';
 import _pluginVitest from '@vitest/eslint-plugin';
-import * as _pluginNode from 'eslint-plugin-n';
-import * as _regexpPlugin from 'eslint-plugin-regexp';
-import _pluginUnusedImports from 'eslint-plugin-unused-imports';
+import * as _configBiome from 'eslint-config-biome';
+import * as _configPrettier from 'eslint-config-prettier';
+// biome
+import * as _pluginBiome from 'eslint-plugin-biome';
 import * as _pluginComments from 'eslint-plugin-eslint-comments';
 import _jsDocPlugin from 'eslint-plugin-jsdoc';
-import * as _pluginMarkdown from '@eslint/markdown';
+import * as _pluginNode from 'eslint-plugin-n';
 import * as _pluginPnpm from 'eslint-plugin-pnpm';
+// prettier
+import * as _pluginPrettier from 'eslint-plugin-prettier';
+// react
+import _pluginReact from 'eslint-plugin-react';
+import _pluginReactHooks from 'eslint-plugin-react-hooks';
+import * as _regexpPlugin from 'eslint-plugin-regexp';
+import * as _pluginUnicorn from 'eslint-plugin-unicorn';
+import _pluginUnusedImports from 'eslint-plugin-unused-imports';
+// vue
+import * as _pluginVue from 'eslint-plugin-vue';
+
 export * as parserTypeScript from '@typescript-eslint/parser';
-export * as parserVue from 'vue-eslint-parser';
 export * as pluginImport from 'eslint-plugin-import-x';
 export * as pluginJsonc from 'eslint-plugin-jsonc';
-export * as pluginYml from 'eslint-plugin-yml';
 export * as pluginSortKeys from 'eslint-plugin-sort-keys';
-export * as parserYml from 'yaml-eslint-parser';
+export * as pluginYml from 'eslint-plugin-yml';
 export * as parserJsonc from 'jsonc-eslint-parser';
+export * as parserVue from 'vue-eslint-parser';
+export * as parserYml from 'yaml-eslint-parser';
+
 function interopDefault(m) {
   return m.default || m;
 }

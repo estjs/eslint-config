@@ -1,6 +1,6 @@
 import fs from 'node:fs';
-import process from 'node:process';
 import path from 'node:path';
+import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import { getPackageInfoSync, isPackageExists } from 'local-pkg';
 

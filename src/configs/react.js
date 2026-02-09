@@ -7,7 +7,7 @@ export function react(overrides = {}) {
   return [
     {
       plugins: {
-        react: pluginReact,
+        'react': pluginReact,
         'react-hooks': fixupPluginRules(pluginReactHooks),
       },
       settings: {

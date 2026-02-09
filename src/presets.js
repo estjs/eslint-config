@@ -1,5 +1,6 @@
 import process from 'node:process';
 import { deepmerge } from 'deepmerge-ts';
+import { runBiomeFormat } from './biome';
 import {
   biome,
   comments,
@@ -25,7 +26,6 @@ import {
   yml,
 } from './configs';
 import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue, loadBiomeConfig } from './env';
-import { runBiomeFormat } from './biome';
 import { configBiome } from './plugins';
 
 /**
@@ -134,8 +134,13 @@ export function estjs(
   }
 
   // if enable biome, using prettier format vue
-  if (enablePrettier || enableBiome) {
-    configs.push(...prettier(prettierConfig, enableBiome, enableOxlint));
+  if (enablePrettier) {
+    if (enableBiome) {
+      console.warn(
+        'Biome format is enabled, prettier will be disabled. If you need to use prettier, please disable Biome format.',
+      );
+    }
+    configs.push(...prettier(prettierConfig, enableOxlint));
   }
   if (enableVue) {
     configs.push(...vue(vueConfig, enableTS));

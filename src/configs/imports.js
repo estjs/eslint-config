@@ -1,5 +1,5 @@
-import { pluginImport } from '../plugins';
 import { GLOB_MARKDOWN, GLOB_SRC, GLOB_SRC_EXT } from '../globs';
+import { pluginImport } from '../plugins';
 export function imports(overrides = {}) {
   return [
     {
