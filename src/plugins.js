@@ -5,10 +5,8 @@ import * as _pluginTypeScript from '@typescript-eslint/eslint-plugin';
 // others
 import * as _pluginUnocss from '@unocss/eslint-plugin';
 import _pluginVitest from '@vitest/eslint-plugin';
-import * as _configBiome from 'eslint-config-biome';
 import * as _configPrettier from 'eslint-config-prettier';
 // biome
-import * as _pluginBiome from 'eslint-plugin-biome';
 import * as _pluginComments from 'eslint-plugin-eslint-comments';
 import _jsDocPlugin from 'eslint-plugin-jsdoc';
 import * as _pluginNode from 'eslint-plugin-n';
@@ -23,6 +21,10 @@ import * as _pluginUnicorn from 'eslint-plugin-unicorn';
 import _pluginUnusedImports from 'eslint-plugin-unused-imports';
 // vue
 import * as _pluginVue from 'eslint-plugin-vue';
+
+// oxlint
+import _pluginOxlintX from 'eslint-plugin-oxlint-x';
+import * as _pluginOxlint from 'eslint-plugin-oxlint';
 
 export * as parserTypeScript from '@typescript-eslint/parser';
 export * as pluginImport from 'eslint-plugin-import-x';
@@ -44,9 +46,9 @@ export const pluginReactHooks = interopDefault(_pluginReactHooks);
 // vue
 export const pluginVue = interopDefault(_pluginVue);
 
-// biome
-export const pluginBiome = interopDefault(_pluginBiome);
-export const configBiome = interopDefault(_configBiome);
+// oxlint
+export const pluginOxlintX = interopDefault(_pluginOxlintX);
+export const pluginOxlint = interopDefault(_pluginOxlint);
 
 // prettier
 export const pluginPrettier = interopDefault(_pluginPrettier);

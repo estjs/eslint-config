@@ -1,8 +1,6 @@
 import process from 'node:process';
-import { deepmerge } from 'deepmerge-ts';
-import { runBiomeFormat } from './biome';
+import { getOxlintConfig, runOxlintFormat } from './oxlint';
 import {
-  biome,
   comments,
   ignores,
   imports,
@@ -11,6 +9,7 @@ import {
   jsonc,
   markdown,
   node,
+  oxlint,
   pnpm,
   prettier,
   react,
@@ -25,9 +24,7 @@ import {
   vue,
   yml,
 } from './configs';
-import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue, loadBiomeConfig } from './env';
-import { configBiome } from './plugins';
-
+import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
 /**
  * Generates a list of configurations based on the input parameters.
  *
@@ -39,7 +36,6 @@ import { configBiome } from './plugins';
  * @param {object} param1.jsdoc - Configuration options for jsdoc.
  * @param {object} param1.vue - Configuration options for vue.
  * @param {object} param1.markdown - Configuration options for markdown.
- * @param {object} param1.biome - Configuration options for biome.
  * @param {object} param1.prettier - Configuration options for prettier.
  * @param {object} param1.react - Configuration options for react.
  * @param {object} param1.test - Configuration options for test.
@@ -47,6 +43,7 @@ import { configBiome } from './plugins';
  * @param {object} param1.regexp - Configuration options for regexp.
  * @param {{yaml:object,josm:object}} param1.pnpm - Configuration options for pnpm.
  * @param {object} param1.ignores - Configuration options for ignores.
+ * @param {object} param1.oxlint - Configuration options for oxlint.
  * @param {object} param2 - Additional options to enable or disable certain features.
  * @param {boolean} param2.vue - Enable or disable vue.
  * @param {boolean} param2.test - Enable or disable test.
@@ -55,7 +52,6 @@ import { configBiome } from './plugins';
  * @param {boolean} param2.typescript - Enable or disable typescript.
  * @param {boolean} param2.node - Enable or disable node.
  * @param {boolean} param2.markdown - Enable or disable markdown.
- * @param {boolean} param2.biome - Enable or disable biome, if enable biome, default disabled prettier
  * @param {boolean} param2.prettier - Enable or disable prettier.
  * @param {boolean} param2.pnpm - Enable or disable pnpm.
  * @param {boolean} param2.oxlint - Enable or disable oxlint.
@@ -71,13 +67,13 @@ export function estjs(
     jsdoc: jsdocConfig = {},
     vue: vueConfig = {},
     markdown: markdownConfig = {},
-    biome: biomeConfig = {},
     prettier: prettierConfig = {},
     react: reactConfig = {},
     test: testConfig = {},
     globals = {},
     regexp: regexpConfig = {},
     pnpm: pnpmConfig = {},
+    oxlint: oxlintConfig = {},
     ignores: ignoresConfig = [],
   } = {},
   {
@@ -87,15 +83,12 @@ export function estjs(
     unocss: enableUnocss = hasUnocss ?? false,
     typescript: enableTS = hasTypeScript ?? false,
     node: enableNode = true,
-    biome: enableBiome = false,
     prettier: enablePrettier = true,
     markdown: enableMarkdown = true,
     oxlint: enableOxlint = false,
     pnpm: enablePnpm = false,
   } = {},
 ) {
-  const isGlobalFormat = !process.argv.includes('--node-ipc');
-
   const configs = [
     ...ignores(ignoresConfig),
     ...javascript(jsConfig, globals),
@@ -111,35 +104,10 @@ export function estjs(
     ...regexp(regexpConfig),
   ];
 
-  if (enableBiome) {
-    const mergedBiomeConfig = deepmerge(loadBiomeConfig, biomeConfig, {
-      files: {
-        includes: [
-          ...(loadBiomeConfig.files.includes || []),
-          ...(biomeConfig.includes || []),
-          ...(ignoresConfig || []).map(item => `!${item}`),
-        ],
-      },
-      javascript: { globals: Object.keys(globals) },
-    });
-    if (isGlobalFormat) {
-      runBiomeFormat(mergedBiomeConfig);
-    } else {
-      configs.push(...biome(mergedBiomeConfig));
-    }
-  }
-
   if (enablePnpm) {
     configs.push(...pnpm(pnpmConfig));
   }
-
-  // if enable biome, using prettier format vue
   if (enablePrettier) {
-    if (enableBiome) {
-      console.warn(
-        'Biome format is enabled, prettier will be disabled. If you need to use prettier, please disable Biome format.',
-      );
-    }
     configs.push(...prettier(prettierConfig, enableOxlint));
   }
   if (enableVue) {
@@ -163,10 +131,16 @@ export function estjs(
   if (enableNode) {
     configs.push(...node);
   }
+  const isGlobalFormat = !process.argv.includes('--node-ipc');
 
-  // if enable biome, off eslint include rules
-  if (enableBiome) {
-    configs.push(configBiome);
+  if (enableOxlint) {
+    const oxlintOptions = {
+      ignorePatterns: [...(oxlintConfig.ignorePatterns || []), ...(ignoresConfig || [])],
+      globals,
+      ...oxlintConfig,
+    };
+
+    configs.push(...oxlint(oxlintOptions));
   }
 
   return configs;

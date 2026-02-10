@@ -1,4 +1,3 @@
-export * from './biome';
 export * from './comments';
 export * from './ignores';
 export * from './imports';
@@ -7,6 +6,7 @@ export * from './jsdoc';
 export * from './jsonc';
 export * from './markdown';
 export * from './node';
+export * from './oxlint';
 export * from './pnpm';
 export * from './prettier';
 export * from './react';
