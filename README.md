@@ -12,7 +12,6 @@ A unified, easy-to-use ESLint configuration package supporting JavaScript, TypeS
 
 - 🔍 **Multiple Format Engines**
   - [Prettier](https://github.com/prettier/prettier) - Default formatter with broad language support
-  - [Biome](https://biomejs.dev/) - Fast Rust-based formatter (optional)
 - 🚀 **Zero Configuration** - Works out-of-the-box with TypeScript, Vue 2/3, React and more
 - 📦 **Broad Support** 
   - JavaScript/TypeScript
@@ -80,7 +79,7 @@ export default estjs(
 
   // Configure features - auto-detected by default
   {
-    biome: true, // default: false,use prettier
+
     markdown: true, // default: true
     vue: true, // auto-detected based on dependencies
     unocss: false, // auto-detected based on dependencies
@@ -137,10 +136,7 @@ export default estjs({
     // Override Markdown related rules
   },
 
-  // Biome configuration options
-  biome: {
-    // Override Biome config
-  },
+
 
   // Prettier configuration
   prettier: {
@@ -189,7 +185,7 @@ The second parameter controls which features to enable:
 
 | Option       | Default    | Description                                 |
 |--------------|------------|---------------------------------------------|
-| `biome`      | `false`    | Enable Biome formatting integration         |
+
 | `markdown`   | `true`     | Enable Markdown linting                     |
 | `vue`        | `auto`     | Enable Vue support                          |
 | `unocss`     | `auto`     | Enable UnoCSS support                       |
@@ -200,29 +196,10 @@ The second parameter controls which features to enable:
 | `pnpm`       | `false`    | Enable PNPM specific rules [see](https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm)                  |
 | `test`       | `auto`     | Enable testing rules                        |
 
-> **Note**: When `biome` is enabled, it will automatically disable certain ESLint rules that conflict with Biome's rules. If using global formatting, it will run `biome format` on your files.
 
 
-## 🔧 Biome Configuration
 
-You can extend the default Biome configuration by creating a `biome.json` file in your project root:
 
-```json
-{
-  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["node_modules/@estjs/eslint-config/biome.json"],
-  "organizeImports": {
-    "enabled": true
-  },
-  "linter": {
-    "rules": {
-      // Your custom rules here
-    }
-  }
-}
-```
-
-When `biome` is enabled and global formatting is active, `biome format` will run on your files. The configuration is merged with any Biome configuration found in your project.
 
 ## 📊 Additional Features
 
@@ -269,7 +246,7 @@ For the best development experience, we recommend:
 ### Which formatter should I choose?
 
 - **Prettier**: Best for projects that need broad language support
-- **Biome**: Ideal for JavaScript/TypeScript projects that need faster formatting
+
 - **Oxlint**: Great for projects that need ultra-fast linting
 
 ### How to debug configuration issues?
@@ -316,22 +293,7 @@ export default estjs({
 }); // Auto-detects React and Node.js
 ```
 
-### Project with Biome for Formatting
 
-```js
-// eslint.config.js
-import { estjs } from '@estjs/eslint-config';
-
-export default estjs(
-  {
-    // Your rule overrides
-  },
-  {
-    biome: true, // Enable Biome
-    prettier: false, // Disable Prettier (optional as Biome will be used)
-  },
-);
-```
 
 ### PNPM Workspace
 

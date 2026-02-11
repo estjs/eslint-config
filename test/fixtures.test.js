@@ -46,21 +46,6 @@ runWithConfig('with-formatters', {
 
 runWithConfig('no-markdown-with-formatters', {});
 
-// New test configuration with biome enabled
-runWithConfig('with-biome', {
-  typescript: true,
-  vue: true,
-  biome: true,
-});
-
-// Same configuration as 'all' but with biome enabled for comparison
-runWithConfig('all-with-biome', {
-  typescript: true,
-  vue: true,
-  react: true,
-  biome: true,
-});
-
 function runWithConfig(name, configs = {}, items = {}) {
   it.concurrent(
     name,

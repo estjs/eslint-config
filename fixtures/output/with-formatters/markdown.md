@@ -12,10 +12,6 @@ function identity(x) {
 }
 ```
 
-```css
-/* This should be handled by Biome */
-.foo { color:red;}
-```
 
 Pilot|Airport|Hours
 --|:--:|--:

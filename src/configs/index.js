@@ -1,4 +1,3 @@
-export * from './biome';
 export * from './comments';
 export * from './ignores';
 export * from './imports';

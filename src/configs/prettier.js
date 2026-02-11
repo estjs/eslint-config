@@ -1,26 +1,10 @@
-import {
-  GLOB_ALL,
-  GLOB_CSS,
-  GLOB_HTML,
-  GLOB_JS,
-  GLOB_JSON,
-  GLOB_JSON5,
-  GLOB_JSONC,
-  GLOB_JSX,
-  GLOB_LESS,
-  GLOB_MARKDOWN,
-  GLOB_SCSS,
-  GLOB_TS,
-  GLOB_TSX,
-  GLOB_VUE,
-  GLOB_YAML,
-} from '../globs';
+import { GLOB_ALL } from '../globs';
 import { configPrettier, pluginPrettier } from '../plugins';
 
 const prettierConflictRules = { ...configPrettier.rules };
 prettierConflictRules['vue/html-self-closing'] = 'off';
 
-export function prettier(overrides = {}, enableOxlint = false) {
+export function prettier(overrides = {}) {
   const prettierOptions = {
     // 一行最多 100 字符
     printWidth: 100,
@@ -59,54 +43,12 @@ export function prettier(overrides = {}, enableOxlint = false) {
     ...overrides,
   };
 
-  if (!enableOxlint) {
-    return [
-      {
-        plugins: {
-          prettier: pluginPrettier,
-        },
-        files: [GLOB_ALL],
-        rules: {
-          ...prettierConflictRules,
-          'prettier/prettier': ['warn', prettierOptions],
-        },
-      },
-    ];
-  }
   return [
     {
-      files: [GLOB_JS, GLOB_JSX, GLOB_TS, GLOB_TSX],
       plugins: {
         prettier: pluginPrettier,
       },
-      rules: {
-        ...prettierConflictRules,
-        'prettier/prettier': [
-          'warn',
-          {
-            ...prettierOptions,
-            parser: 'oxc',
-            plugins: ['@prettier/plugin-oxc'],
-          },
-        ],
-      },
-    },
-    {
-      files: [
-        GLOB_VUE,
-        GLOB_CSS,
-        GLOB_LESS,
-        GLOB_SCSS,
-        GLOB_HTML,
-        GLOB_JSON,
-        GLOB_JSON5,
-        GLOB_JSONC,
-        GLOB_MARKDOWN,
-        GLOB_YAML,
-      ],
-      plugins: {
-        prettier: pluginPrettier,
-      },
+      files: [GLOB_ALL],
       rules: {
         ...prettierConflictRules,
         'prettier/prettier': ['warn', prettierOptions],
