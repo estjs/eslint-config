@@ -129,11 +129,10 @@ function runWithOxlint(name, configs = {}, items = {}) {
         },
       });
 
-
       await execa('node', [resolve('src/oxlint.js'), '--fix', '--quiet'], {
         cwd: target,
         stdio: 'pipe',
-        reject: false
+        reject: false,
       });
 
       const files = await fg('**/*', {

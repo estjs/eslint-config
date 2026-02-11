@@ -54,8 +54,8 @@ importers:
         specifier: ^1.43.0
         version: 1.43.0
       eslint-plugin-oxlint-x:
-        specifier: ^0.0.1
-        version: 0.0.1(oxlint@1.43.0)
+        specifier: ^0.0.2
+        version: 0.0.2(oxlint@1.43.0)
       eslint-plugin-pnpm:
         specifier: ^1.5.0
         version: 1.5.0(eslint@9.39.2(jiti@2.6.1))
@@ -2189,8 +2189,8 @@ packages:
     peerDependencies:
       eslint: '>=8.23.0'
 
-  eslint-plugin-oxlint-x@0.0.1:
-    resolution: {integrity: sha512-TDBPUvMDJP0EIVzR4W85WyDLakjLidiiMwxtjuAwQLSwjqisR+72ZOlPkTLNFGeBFT7WVVwh4gWe+OESO176Jg==}
+  eslint-plugin-oxlint-x@0.0.2:
+    resolution: {integrity: sha512-4f2rekhBHVZC4JeCBDIrl7Sxi3L0oLdTZj526CYMqa0JiMEwD6H+yo+TwCE01AIFvZAjgmQVtwnRUOicU3XzZA==}
     engines: {node: '>=18'}
     peerDependencies:
       oxlint: '>=1.3.0'
@@ -6151,7 +6151,7 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  eslint-plugin-oxlint-x@0.0.1(oxlint@1.43.0):
+  eslint-plugin-oxlint-x@0.0.2(oxlint@1.43.0):
     dependencies:
       fast-diff: 1.3.0
       oxlint: 1.43.0

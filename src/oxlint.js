@@ -1,8 +1,8 @@
-import { createSyncFn } from 'synckit';
 import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import { createSyncFn } from 'synckit';
 import { deepmerge } from 'deepmerge-ts';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,32 +17,19 @@ const runOxlintWorker = createSyncFn(path.join(__dirname, 'oxlint-worker.js'));
 export function getOxlintConfig(overrides = {}) {
   const currentDir = process.cwd();
   const configFiles = ['.oxlintrc.json', '.oxlintrc'];
-  let fileConfig = {};
-  let configPath = null;
+  let loadConfig = {};
 
   for (const file of configFiles) {
     const p = path.join(currentDir, file);
     if (fs.existsSync(p)) {
-      configPath = p;
-      try {
-        const content = fs.readFileSync(p, 'utf-8');
-        fileConfig = JSON.parse(content);
-      } catch (error) {
-        console.warn(`Warning: Failed to parse ${file}: ${error.message}`);
-      }
+      loadConfig = JSON.parse(fs.readFileSync(p, 'utf-8'));
       break;
     }
   }
 
-  const mergedConfig = deepmerge(fileConfig, overrides);
-  return { mergedConfig, configPath, hasConfigFile: !!configPath };
+  const mergedConfig = deepmerge(loadConfig, overrides);
+  return mergedConfig;
 }
-
-/**
- * Load oxlint configuration from .oxlintrc.json
- * @returns {object} Oxlint configuration
- */
-export const loadOxlintConfig = getOxlintConfig().mergedConfig;
 
 /**
  * Run oxlint format/check on all files
@@ -54,10 +41,7 @@ export const loadOxlintConfig = getOxlintConfig().mergedConfig;
 export function runOxlintFormat(options = {}) {
   const currentDir = process.cwd();
 
-  // Handle both old signature (oxlintConfig) and new options object
-  const isOptionsObject =
-    'config' in options || 'ignorePatterns' in options || 'ignorePath' in options;
-  const oxlintConfig = isOptionsObject ? options.config || {} : options;
+  const oxlintConfig = getOxlintConfig(options);
   const ignorePatterns = options.ignorePatterns || [];
   const ignorePath = options.ignorePath;
 
@@ -224,7 +208,6 @@ export function runOxlintFormat(options = {}) {
           ? ['--ignore-path', ignorePath]
           : []),
       ...flags.ignorePattern.flatMap(pattern => ['--ignore-pattern', pattern]),
-      ...ignorePatterns.flatMap(pattern => ['--ignore-pattern', pattern]),
       ...(flags.noIgnore ? ['--no-ignore'] : []),
 
       // Warning handling
@@ -241,9 +224,9 @@ export function runOxlintFormat(options = {}) {
       ...(flags.reportUnusedDisableDirectives ? ['--report-unused-disable-directives'] : []),
       ...(flags.reportUnusedDisableDirectivesSeverity
         ? [
-          '--report-unused-disable-directives-severity',
-          flags.reportUnusedDisableDirectivesSeverity,
-        ]
+            '--report-unused-disable-directives-severity',
+            flags.reportUnusedDisableDirectivesSeverity,
+          ]
         : []),
 
       // Advanced options
@@ -259,14 +242,13 @@ export function runOxlintFormat(options = {}) {
     const command = oxlintPath.includes('npx') ? 'npx' : oxlintPath;
     const finalArgs = oxlintPath.includes('npx') ? ['oxlint', ...oxlintArgs] : oxlintArgs;
 
-    // eslint-disable-next-line no-console
     console.log(`Running: oxlint ${oxlintArgs.join(' ')}\n`);
 
     const result = runOxlintWorker(command, finalArgs, {
       stdio: 'pipe', // Capture output to print it here
       env: process.env,
       shell: true,
-      reject: false
+      reject: false,
     });
 
     if (result.stdout) {
@@ -283,11 +265,10 @@ export function runOxlintFormat(options = {}) {
         process.exit(result.exitCode || 1);
       }
     } else {
-      // eslint-disable-next-line no-console
       console.log('\n✓ Oxlint completed successfully');
     }
-  } catch (err) {
-    console.error('Unexpected error running oxlint:', err);
+  } catch (error) {
+    console.error('Unexpected error running oxlint:', error);
     process.exit(1);
   } finally {
     // Clean up temporary config file

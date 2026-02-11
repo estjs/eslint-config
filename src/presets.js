@@ -1,5 +1,4 @@
 import process from 'node:process';
-import { getOxlintConfig, runOxlintFormat } from './oxlint';
 import {
   comments,
   ignores,
@@ -25,6 +24,8 @@ import {
   yml,
 } from './configs';
 import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
+import { pluginOxlint } from './plugins';
+import { runOxlintFormat } from './oxlint';
 /**
  * Generates a list of configurations based on the input parameters.
  *
@@ -140,7 +141,13 @@ export function estjs(
       ...oxlintConfig,
     };
 
-    configs.push(...oxlint(oxlintOptions));
+    // global format run oxlint,off eslint-plugin-oxlint rule,off disabled oxlint based eslint rules
+    if (isGlobalFormat) {
+      runOxlintFormat(oxlintOptions);
+    } else {
+      configs.push(...oxlint(oxlintOptions));
+    }
+    configs.push(...pluginOxlint.configs['flat/recommended']);
   }
 
   return configs;
