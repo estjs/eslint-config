@@ -84,7 +84,7 @@
     "yaml-eslint-parser": "^2.0.0"
   },
   "devDependencies": {
-    "@types/node": "^24.10.12",
+    "@types/node": "^25.0.0",
     "bumpp": "^10.4.1",
     "eslint": "^9.35.0",
     "execa": "^9.6.1",
