@@ -1,7 +1,6 @@
-/// to-function
-const foo = async msg => {
+async function foo(msg) {
   console.log(msg);
-};
+}
 
 function bar(x) {
   return x * x;
