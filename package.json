@@ -1,6 +1,6 @@
 {
   "name": "@estjs/eslint-config",
-  "version": "2.1.6",
+  "version": "2.2.0",
   "packageManager": "pnpm@10.30.3",
   "description": "",
   "type": "module",
