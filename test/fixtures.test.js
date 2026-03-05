@@ -44,6 +44,14 @@ runWithConfig('with-formatters', {
   vue: true,
 });
 
+runWithConfig('comments', {
+  unocss: false,
+});
+
+runWithConfig('command', {
+  unocss: false,
+});
+
 runWithConfig('no-markdown-with-formatters', {});
 
 function runWithConfig(name, configs = {}, items = {}) {
@@ -70,7 +78,7 @@ export default estjs(
 )
   `,
       );
-      await execa('pnpx', ['eslint', './', '--fix'], {
+      await execa('npx', ['eslint', './', '--fix'], {
         cwd: target,
         stdio: 'pipe',
         reject: false,
@@ -92,7 +100,7 @@ export default estjs(
             }
             return;
           }
-          await expect.soft(content).toMatchFileSnapshot(join(output, file));
+          await expect.soft(content).toMatchFileSnapshot(outputPath);
         }),
       );
     },

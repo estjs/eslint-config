@@ -163,6 +163,16 @@ export default estjs({
   regexp: {
     // Override RegExp related rules
   },
+  
+  // ESlint Comments rules
+  comments: {
+    // Override eslint-comments related rules
+  },
+  
+  // ESlint Plugin Command rules
+  command: {
+    // Override eslint-plugin-command related rules
+  },
 
   // PNPM specific rules
   pnpm: {
@@ -185,7 +195,6 @@ The second parameter controls which features to enable:
 
 | Option       | Default    | Description                                 |
 |--------------|------------|---------------------------------------------|
-
 | `markdown`   | `true`     | Enable Markdown linting                     |
 | `vue`        | `auto`     | Enable Vue support                          |
 | `unocss`     | `auto`     | Enable UnoCSS support                       |
@@ -193,10 +202,46 @@ The second parameter controls which features to enable:
 | `react`      | `auto`     | Enable React support                        |
 | `node`       | `true`     | Enable Node.js specific rules               |
 | `prettier`   | `true`     | Enable Prettier formatting                  |
-| `pnpm`       | `false`    | Enable PNPM specific rules [see](https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm)                  |
+| `pnpm`       | `false`    | Enable PNPM specific rules                  |
 | `test`       | `auto`     | Enable testing rules                        |
 
 
+
+
+## command
+
+Powered by [`eslint-plugin-command`](https://github.com/antfu/eslint-plugin-command). It is not a typical rule for linting, but an on-demand micro-codemod tool that triggers by specific comments.
+
+For a few triggers, for example:
+
+- `/// to-function` - converts an arrow function to a normal function
+- `/// to-arrow` - converts a normal function to an arrow function
+- `/// to-for-each` - converts a for-in/for-of loop to `.forEach()`
+- `/// to-for-of` - converts a `.forEach()` to a for-of loop
+- `/// keep-sorted` - sorts an object/array/interface
+- ... etc. - refer to the [documentation](https://github.com/antfu/eslint-plugin-command#built-in-commands)
+
+You can add the trigger comment one line above the code you want to transform, for example (note the triple slash):
+
+<!-- eslint-skip -->
+
+```ts
+/// to-function
+const foo = async (msg: string): void => {
+  console.log(msg)
+}
+```
+
+Will be transformed to this when you hit save with your editor or run `eslint --fix`:
+
+```ts
+// eslint-disable-next-line require-await
+async function foo(msg: string): void {
+  console.log(msg)
+}
+```
+
+The command comments are usually one-off and will be removed along with the transformation.
 
 
 
@@ -213,25 +258,6 @@ The config includes several additional features that are automatically applied:
 - **YAML**: Support for YAML files
 - **RegExp**: Validation for regular expressions
 
-## 🛠 Integrations
-
-### Oxlint Integration
-
-[Oxlint](https://github.com/oxc-project/oxc) is a super-fast JavaScript linter written in Rust. To enable Oxlint:
-
-```js
-// eslint.config.js
-import { estjs } from '@estjs/eslint-config';
-
-export default estjs({
-  oxlint: {
-    // Oxlint specific configurations
-    rules: {
-      // Your custom rules
-    },
-  },
-});
-```
 
 ### IDE Integration
 
@@ -245,9 +271,7 @@ For the best development experience, we recommend:
 
 ### Which formatter should I choose?
 
-- **Prettier**: Best for projects that need broad language support
-
-- **Oxlint**: Great for projects that need ultra-fast linting
+- **Prettier**: Best for projects that need broad language support. It's enabled by default.
 
 ### How to debug configuration issues?
 

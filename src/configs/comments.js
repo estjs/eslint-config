@@ -1,13 +1,19 @@
 import { pluginComments } from '../plugins';
 
-export const comments = [
-  {
-    plugins: {
-      'eslint-comments': pluginComments,
+export const comments = function (overrides = {}) {
+  return [
+    {
+      plugins: {
+        '@eslint-community/eslint-comments': pluginComments,
+      },
+      rules: {
+        ...pluginComments.configs.recommended.rules,
+        '@eslint-community/eslint-comments/disable-enable-pair': [
+          'error',
+          { allowWholeFile: true },
+        ],
+        ...overrides,
+      },
     },
-    rules: {
-      ...pluginComments.configs.recommended.rules,
-      'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
-    },
-  },
-];
+  ];
+};

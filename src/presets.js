@@ -1,4 +1,5 @@
 import {
+  command,
   comments,
   ignores,
   imports,
@@ -40,6 +41,8 @@ import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
  * @param {object} param1.globals - Configuration options for globals.
  * @param {object} param1.regexp - Configuration options for regexp.
  * @param {{yaml:object,josm:object}} param1.pnpm - Configuration options for pnpm.
+ * @param {object} param1.comments - Configuration options for eslint-comments.
+ * @param {object} param1.command - Configuration options for eslint-plugin-command.
  * @param {object} param1.ignores - Configuration options for ignores.
  * @param {object} param2 - Additional options to enable or disable certain features.
  * @param {boolean} param2.vue - Enable or disable vue.
@@ -51,7 +54,6 @@ import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
  * @param {boolean} param2.markdown - Enable or disable markdown.
  * @param {boolean} param2.prettier - Enable or disable prettier.
  * @param {boolean} param2.pnpm - Enable or disable pnpm.
- * @param {boolean} param2.oxlint - Enable or disable oxlint.
  *
  * @return {Array} List of configurations based on the input parameters.
  */
@@ -70,6 +72,8 @@ export function estjs(
     globals = {},
     regexp: regexpConfig = {},
     pnpm: pnpmConfig = {},
+    comments: commentsConfig = {},
+    command: commandConfig = {},
     ignores: ignoresConfig = [],
   } = {},
   {
@@ -87,7 +91,7 @@ export function estjs(
   const configs = [
     ...ignores(ignoresConfig),
     ...javascript(jsConfig, globals),
-    ...comments,
+    ...comments(commentsConfig),
     ...imports(importsConfig),
     ...unicorn(unicornConfig),
     ...jsdoc(jsdocConfig),
@@ -97,6 +101,7 @@ export function estjs(
     ...sortTsconfig,
     ...yml,
     ...regexp(regexpConfig),
+    ...command(commandConfig),
   ];
 
   if (enablePnpm) {

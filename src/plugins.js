@@ -6,10 +6,11 @@ import * as _pluginTypeScript from '@typescript-eslint/eslint-plugin';
 import * as _pluginUnocss from '@unocss/eslint-plugin';
 import _pluginVitest from '@vitest/eslint-plugin';
 import * as _configPrettier from 'eslint-config-prettier';
-import * as _pluginComments from 'eslint-plugin-eslint-comments';
+import * as _pluginComments from '@eslint-community/eslint-plugin-eslint-comments';
 import _jsDocPlugin from 'eslint-plugin-jsdoc';
 import * as _pluginNode from 'eslint-plugin-n';
 import * as _pluginPnpm from 'eslint-plugin-pnpm';
+
 // prettier
 import * as _pluginPrettier from 'eslint-plugin-prettier';
 // react
@@ -29,6 +30,7 @@ export * as pluginYml from 'eslint-plugin-yml';
 export * as parserJsonc from 'jsonc-eslint-parser';
 export * as parserVue from 'vue-eslint-parser';
 export * as parserYml from 'yaml-eslint-parser';
+export { default as configCommand } from 'eslint-plugin-command/config';
 
 function interopDefault(m) {
   return m.default || m;
