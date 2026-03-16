@@ -96,27 +96,83 @@ export default estjs(
 
 ```js
 export default estjs({
-  javascript: {},
-  typescript: {},
-  imports: {},
-  unicorn: {},
-  jsdoc: {},
-  vue: {},
-  markdown: {},
-  prettier: {},
-  react: {},
-  test: {},
-  regexp: {},
-  comments: {},
-  command: {},
-  pnpm: {
-    yaml: {},
-    json: {},
+  javascript: {
+    // 覆盖规则
+    // @see https://eslint.org/docs/latest/rules/
+    // @see https://github.com/sindresorhus/eslint-plugin-unicorn#rules
+    // @see https://github.com/sweepline/eslint-plugin-unused-imports#supported-rules
+  },
+  typescript: {
+    // 覆盖规则
+    // @see https://typescript-eslint.io/rules/
+  },
+  imports: {
+    // 覆盖规则
+    // @see https://github.com/un-ts/eslint-plugin-import-x?tab=readme-ov-file#rules
+  },
+  unicorn: {
+    // 覆盖规则
+    // @see https://github.com/sindresorhus/eslint-plugin-unicorn#rules
+  },
+  jsdoc: {
+    // 覆盖规则
+    // @see https://github.com/gajus/eslint-plugin-jsdoc#rules
+  },
+  vue: {
+    // 覆盖规则
+    // @see https://eslint.vuejs.org/rules/
+  },
+  markdown: {
+    // 覆盖规则
+    // @see https://github.com/eslint/markdown#rules
+  },
+  prettier: {
+    // 覆盖规则
+    // @see https://github.com/prettier/eslint-plugin-prettier#options
+  },
+  react: {
+    // 覆盖规则
+    // @see https://www.eslint-react.xyz/docs/rules/overview
+    // @see https://www.eslint-react.xyz/docs/rules/jsx-key-before-spread
+  },
+  test: {
+    // 覆盖规则
+    // @see https://github.com/vitest-dev/eslint-plugin-vitest#rules
+  },
+  regexp: {
+    // 覆盖规则
+    // @see https://ota-meshi.github.io/eslint-plugin-regexp/rules/
+  },
+  comments: {
+    // 覆盖规则
+    // @see https://eslint-community.github.io/eslint-plugin-eslint-comments/rules/
+  },
+  command: {
+    // 覆盖规则
+    // @see https://github.com/antfu/eslint-plugin-command
+  },
+    yaml: {
+      // 覆盖规则
+      // @see https://ota-meshi.github.io/eslint-plugin-yml/rules/
+    },
+    json: {
+      // 覆盖规则
+      // @see https://ota-meshi.github.io/eslint-plugin-jsonc/rules/
+    },
+   pnpm: {
+    // 覆盖规则
+    // @see https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules
   },
   globals: {
+    // 额外全局变量
+    // @see https://eslint.org/docs/latest/use/configure/language-options#specifying-globals
     MyGlobal: 'readonly',
   },
-  ignores: ['dist', '.cache'],
+  ignores: [
+    // 额外忽略路径
+    'dist',
+    '.cache',
+  ],
 });
 ```
 
@@ -347,6 +403,13 @@ export default estjs(
   {
     javascript: {
       'no-console': 'warn',
+    },
+    react: {
+      // 覆盖规则
+      // @see https://www.eslint-react.xyz/docs/rules/overview
+      // @see https://www.eslint-react.xyz/docs/rules/jsx-key-before-spread
+      '@eslint-react/jsx-key-before-spread': 'error',
+      '@eslint-react/no-array-index-key': 'off',
     },
     globals: {
       React: 'readonly',

@@ -71,7 +71,6 @@
     "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-pnpm": "^1.6.0",
     "eslint-plugin-prettier": "^5.5.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-regexp": "^3.1.0",
     "eslint-plugin-sort-keys": "^2.3.5",
     "eslint-plugin-unicorn": "^63.0.0",

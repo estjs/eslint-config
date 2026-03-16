@@ -1,3 +1,5 @@
 import { pluginUnocss } from '../plugins';
 
-export const unocss = [pluginUnocss.configs.flat];
+export function unocss() {
+  return [pluginUnocss.configs.flat];
+}

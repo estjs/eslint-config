@@ -12,18 +12,15 @@ import * as _pluginNode from 'eslint-plugin-n';
 import * as _pluginPnpm from 'eslint-plugin-pnpm';
 
 // prettier
-
 import * as _pluginPrettier from 'eslint-plugin-prettier';
 // react
-import _pluginReactHooks from 'eslint-plugin-react-hooks';
+import * as _eslintReact from '@eslint-react/eslint-plugin';
 // others
 import * as _regexpPlugin from 'eslint-plugin-regexp';
 import * as _pluginUnicorn from 'eslint-plugin-unicorn';
 import _pluginUnusedImports from 'eslint-plugin-unused-imports';
 // vue
 import * as _pluginVue from 'eslint-plugin-vue';
-// react
-export * as eslintReact from '@eslint-react/eslint-plugin';
 
 export * as parserTypeScript from '@typescript-eslint/parser';
 export * as pluginImport from 'eslint-plugin-import-x';
@@ -39,11 +36,10 @@ function interopDefault(m) {
   return m.default || m;
 }
 
-// react
-export const pluginReactHooks = interopDefault(_pluginReactHooks);
-
 // vue
 export const pluginVue = interopDefault(_pluginVue);
+// react
+export const eslintReact = interopDefault(_eslintReact);
 
 // prettier
 export const pluginPrettier = interopDefault(_pluginPrettier);

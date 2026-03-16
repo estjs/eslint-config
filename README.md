@@ -96,27 +96,83 @@ Use the first argument to override rules or config fragments:
 
 ```js
 export default estjs({
-  javascript: {},
-  typescript: {},
-  imports: {},
-  unicorn: {},
-  jsdoc: {},
-  vue: {},
-  markdown: {},
-  prettier: {},
-  react: {},
-  test: {},
-  regexp: {},
-  comments: {},
-  command: {},
+  javascript: {
+    // overrides rules
+    // @see https://eslint.org/docs/latest/rules/
+    // @see https://github.com/sindresorhus/eslint-plugin-unicorn#rules
+    // @see https://github.com/sweepline/eslint-plugin-unused-imports#supported-rules
+  },
+  typescript: {
+    // overrides rules
+    // @see https://typescript-eslint.io/rules/
+  },
+  imports: {
+    // overrides rules
+    // @see https://github.com/un-ts/eslint-plugin-import-x?tab=readme-ov-file#rules
+  },
+  unicorn: {
+    // overrides rules
+    // @see https://github.com/sindresorhus/eslint-plugin-unicorn#rules
+  },
+  jsdoc: {
+    // overrides rules
+    // @see https://github.com/gajus/eslint-plugin-jsdoc#rules
+  },
+  vue: {
+    // overrides rules
+    // @see https://eslint.vuejs.org/rules/
+  },
+  markdown: {
+    // overrides rules
+    // @see https://github.com/eslint/markdown#rules
+  },
+  prettier: {
+    // overrides rules
+    // @see https://github.com/prettier/eslint-plugin-prettier#options
+  },
+  react: {
+    // overrides rules
+    // @see https://www.eslint-react.xyz/docs/rules/overview
+    // @see https://www.eslint-react.xyz/docs/rules/jsx-key-before-spread
+  },
+  test: {
+    // overrides rules
+    // @see https://github.com/vitest-dev/eslint-plugin-vitest#rules
+  },
+  regexp: {
+    // overrides rules
+    // @see https://ota-meshi.github.io/eslint-plugin-regexp/rules/
+  },
+  comments: {
+    // overrides rules
+    // @see https://eslint-community.github.io/eslint-plugin-eslint-comments/rules/
+  },
+  command: {
+    // overrides rules
+    // @see https://github.com/antfu/eslint-plugin-command
+  },
+    yaml: {
+      // overrides rules
+      // @see https://ota-meshi.github.io/eslint-plugin-yml/rules/
+    },
+    json: {
+      // overrides rules
+      // @see https://ota-meshi.github.io/eslint-plugin-jsonc/rules/
+    },
   pnpm: {
-    yaml: {},
-    json: {},
+    // overrides rules
+    // @see https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules
   },
   globals: {
+    // extra globals
+    // @see https://eslint.org/docs/latest/use/configure/language-options#specifying-globals
     MyGlobal: 'readonly',
   },
-  ignores: ['dist', '.cache'],
+  ignores: [
+    // extra ignore patterns
+    'dist',
+    '.cache',
+  ],
 });
 ```
 
@@ -347,6 +403,13 @@ export default estjs(
   {
     javascript: {
       'no-console': 'warn',
+    },
+    react: {
+      // overrides rules
+      // @see https://www.eslint-react.xyz/docs/rules/overview
+      // @see https://www.eslint-react.xyz/docs/rules/jsx-key-before-spread
+      '@eslint-react/jsx-key-before-spread': 'error',
+      '@eslint-react/no-array-index-key': 'off',
     },
     globals: {
       React: 'readonly',

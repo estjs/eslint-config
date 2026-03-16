@@ -40,7 +40,7 @@ import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
  * @param {object} param1.test - Configuration options for test.
  * @param {object} param1.globals - Configuration options for globals.
  * @param {object} param1.regexp - Configuration options for regexp.
- * @param {{yaml:object,josm:object}} param1.pnpm - Configuration options for pnpm.
+ * @param {{yaml:object,json:object}} param1.pnpm - Configuration options for pnpm.
  * @param {object} param1.comments - Configuration options for eslint-comments.
  * @param {object} param1.command - Configuration options for eslint-plugin-command.
  * @param {object} param1.ignores - Configuration options for ignores.
@@ -104,32 +104,22 @@ export function estjs(
     ...command(commandConfig),
   ];
 
-  if (enablePnpm) {
-    configs.push(...pnpm(pnpmConfig));
-  }
-  if (enablePrettier) {
-    configs.push(...prettier(prettierConfig));
-  }
-  if (enableVue) {
-    configs.push(...vue(vueConfig, enableTS));
-  }
-  if (enableMarkdown) {
-    configs.push(...markdown(markdownConfig));
-  }
-  if (enableUnocss) {
-    configs.push(...unocss);
-  }
-  if (enableReact) {
-    configs.push(...react(reactConfig));
-  }
-  if (enableTS) {
-    configs.push(...typescript(tsConfig, globals));
-  }
-  if (enableTest) {
-    configs.push(...test(testConfig));
-  }
-  if (enableNode) {
-    configs.push(...node);
+  const optionalConfigs = [
+    [enablePnpm, () => pnpm(pnpmConfig)],
+    [enablePrettier, () => prettier(prettierConfig)],
+    [enableVue, () => vue(vueConfig, enableTS)],
+    [enableMarkdown, () => markdown(markdownConfig)],
+    [enableUnocss, () => unocss()],
+    [enableReact, () => react(reactConfig)],
+    [enableTS, () => typescript(tsConfig, globals)],
+    [enableTest, () => test(testConfig)],
+    [enableNode, () => node],
+  ];
+
+  for (const [enabled, createConfig] of optionalConfigs) {
+    if (enabled) {
+      configs.push(...createConfig());
+    }
   }
 
   return configs;
