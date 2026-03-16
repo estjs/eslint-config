@@ -12,6 +12,7 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v6
         with:
@@ -27,16 +28,14 @@ jobs:
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: PNPM build
+      - name: Build
         run: pnpm run build
 
-      - name: Publish to NPM
+      - name: Publish to npm
         run: pnpm publish --no-git-checks --access public
-        env:
-          NPM_CONFIG_PROVENANCE: true
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
