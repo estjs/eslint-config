@@ -16,8 +16,8 @@ export function prettier(overrides = {}) {
     singleQuote: true,
     // 如果对象中至少有一个属性需要引号，则所有的都添加
     quoteProps: 'consistent',
-    // 箭头函数仅在有必要时(x) => x
-    arrowParens: 'avoid',
+    // 箭头函数必须(x) => x
+    arrowParens: 'always',
     // 大括号内的首尾需要空格
     bracketSpacing: true,
     // 末尾需要有逗号
@@ -39,6 +39,9 @@ export function prettier(overrides = {}) {
     vueIndentScriptAndStyle: false,
     // html, vue, jsx 中每个属性占一行
     singleAttributePerLine: false,
+
+    // JSX 标签闭合时保持在同一行
+    bracketSameLine: true,
 
     ...overrides,
   };
