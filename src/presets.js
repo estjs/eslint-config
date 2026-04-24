@@ -86,6 +86,7 @@ export function estjs(
     prettier: enablePrettier = true,
     markdown: enableMarkdown = true,
     pnpm: enablePnpm = false,
+    regexp: enableRegexp = true,
   } = {},
 ) {
   const configs = [
@@ -100,7 +101,6 @@ export function estjs(
     ...sortPackageJson,
     ...sortTsconfig,
     ...yml,
-    ...regexp(regexpConfig),
     ...command(commandConfig),
   ];
 
@@ -114,6 +114,7 @@ export function estjs(
     [enableTS, () => typescript(tsConfig, globals)],
     [enableTest, () => test(testConfig)],
     [enableNode, () => node],
+    [enableRegexp, () => regexp(regexpConfig)],
   ];
 
   for (const [enabled, createConfig] of optionalConfigs) {
