@@ -94,7 +94,7 @@ describe('format consistency', () => {
     expect(Object.keys(results)).toContain('same-logic.tsx');
     expect(Object.keys(results)).toContain('same-logic.vue');
     expect(Object.keys(results)).toContain('same-logic-ts.vue');
-  }, 30_000);
+  }, 30_0000);
 
   it('core logic formatting is consistent across js / jsx / vue', async ({ expect }) => {
     const { results: jsxResults } = await runFormat('all-jsx-vue', {
