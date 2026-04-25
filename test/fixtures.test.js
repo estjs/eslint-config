@@ -55,6 +55,7 @@ runWithConfig('command', {
 runWithConfig('no-markdown-with-formatters', {});
 
 function runWithConfig(name, configs = {}, items = {}) {
+  /* eslint-disable vitest/valid-title */
   it.concurrent(
     name,
     async ({ expect }) => {
@@ -106,4 +107,5 @@ export default estjs(
     },
     30_0000,
   );
+  /* eslint-enable vitest/valid-title */
 }

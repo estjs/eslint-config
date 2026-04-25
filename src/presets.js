@@ -53,6 +53,7 @@ import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
  * @param {boolean} param2.node - Enable or disable node.
  * @param {boolean} param2.markdown - Enable or disable markdown.
  * @param {boolean} param2.prettier - Enable or disable prettier.
+ * @param {boolean} param2.regexp - Enable or disable regexp.
  * @param {boolean} param2.pnpm - Enable or disable pnpm.
  *
  * @return {Array} List of configurations based on the input parameters.
