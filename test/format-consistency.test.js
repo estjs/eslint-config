@@ -26,7 +26,7 @@ async function runFormat(name, configs = {}, items = {}) {
       return !src.includes('node_modules');
     },
   });
-  const distPath = relative(target, resolve('dist/index.js'));
+  const distPath = relative(target, resolve('dist/index.js')).replaceAll('\\', '/');
   await fs.writeFile(
     join(target, 'eslint.config.js'),
     `
