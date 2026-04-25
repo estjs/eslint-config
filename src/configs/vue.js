@@ -81,6 +81,7 @@ export function vue(overrides = {}, enableTS) {
           },
           extraFileExtensions: ['.vue'],
           parser: enableTS ? parserTypeScript : null,
+
           sourceType: 'module',
         },
       },
@@ -89,11 +90,15 @@ export function vue(overrides = {}, enableTS) {
         'vue': pluginVue,
       },
       processor: pluginVue.processors['.vue'],
-      rules: {
-        ...typescript()[0].rules,
-      },
+      rules: enableTS
+        ? {
+            ...typescript()[0].rules,
+            '@typescript-eslint/consistent-type-imports': 'off',
+          }
+        : {},
     },
     {
+      files: [GLOB_VUE],
       plugins: {
         vue: pluginVue,
       },

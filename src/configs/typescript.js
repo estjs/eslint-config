@@ -30,16 +30,21 @@ export function typescript(overrides = {}, globals = {}) {
         '@typescript-eslint/no-import-type-side-effects': 'error',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-redeclare': 'error',
+        '@typescript-eslint/no-unused-expressions': [
+          'error',
+          {
+            allowShortCircuit: true,
+            allowTaggedTemplates: true,
+            allowTernary: true,
+          },
+        ],
 
         '@typescript-eslint/no-dynamic-delete': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
-
-        '@typescript-eslint/no-unused-expressions': 'off',
         '@typescript-eslint/no-empty-object-type': 'off',
         '@typescript-eslint/no-unsafe-function-type': 'off',
 
         '@typescript-eslint/no-unnecessary-type-constraint': 'off',
-
         '@typescript-eslint/prefer-as-const': 'warn',
         '@typescript-eslint/prefer-literal-enum-member': [
           'error',
@@ -47,6 +52,7 @@ export function typescript(overrides = {}, globals = {}) {
         ],
 
         'no-restricted-syntax': ['error', ...restrictedSyntaxJs],
+        'no-unused-expressions': 'off',
 
         ...overrides,
       },
@@ -54,7 +60,7 @@ export function typescript(overrides = {}, globals = {}) {
     {
       files: ['**/*.d.ts'],
       rules: {
-        'eslint-comments/no-unlimited-disable': 'off',
+        '@eslint-community/eslint-comments/no-unlimited-disable': 'off',
         'import/no-duplicates': 'off',
         'unused-imports/no-unused-vars': 'off',
         ...overrides,
@@ -63,6 +69,7 @@ export function typescript(overrides = {}, globals = {}) {
     {
       files: ['**/*.{test,spec}.ts?(x)'],
       rules: {
+        '@typescript-eslint/no-unused-expressions': 'off',
         'no-unused-expressions': 'off',
       },
     },

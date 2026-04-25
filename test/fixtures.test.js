@@ -63,7 +63,7 @@ function runWithConfig(name, configs = {}, items = {}) {
       const target = resolve('_fixtures', name);
 
       await fs.copy(from, target, {
-        filter: src => {
+        filter: (src) => {
           return !src.includes('node_modules');
         },
       });
@@ -90,7 +90,7 @@ export default estjs(
       });
 
       await Promise.all(
-        files.map(async file => {
+        files.map(async (file) => {
           const content = await fs.readFile(join(target, file), 'utf-8');
           const source = await fs.readFile(join(from, file), 'utf-8');
           const outputPath = join(output, file);

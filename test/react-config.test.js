@@ -73,14 +73,14 @@ describe('react config', () => {
       }
     `);
 
-    const ruleIds = messages.map(message => message.ruleId);
+    const ruleIds = messages.map((message) => message.ruleId);
 
     expect(ruleIds).toEqual(
       expect.arrayContaining([
-        '@eslint-react/jsx-key-before-spread',
-        '@eslint-react/dom/no-dangerously-set-innerhtml',
-        '@eslint-react/web-api/no-leaked-timeout',
-        '@eslint-react/naming-convention/context-name',
+        '@eslint-react/jsx-no-key-after-spread',
+        '@eslint-react/dom-no-dangerously-set-innerhtml',
+        '@eslint-react/web-api-no-leaked-timeout',
+        '@eslint-react/naming-convention-context-name',
       ]),
     );
   });
@@ -93,14 +93,14 @@ describe('react config', () => {
         }
       `,
       {
-        '@eslint-react/jsx-key-before-spread': 'error',
+        '@eslint-react/jsx-no-key-after-spread': 'error',
       },
     );
 
     expect(messages).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          ruleId: '@eslint-react/jsx-key-before-spread',
+          ruleId: '@eslint-react/jsx-no-key-after-spread',
           severity: 2,
         }),
       ]),
