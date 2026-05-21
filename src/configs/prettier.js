@@ -40,8 +40,8 @@ export function prettier(overrides = {}) {
     // html, vue, jsx 中每个属性占一行
     singleAttributePerLine: false,
 
-    // JSX 标签闭合时保持在同一行
-    bracketSameLine: true,
+    // jsx 里把 > 单独放在下一行
+   bracketSameLine: false,
 
     ...overrides,
   };
