@@ -10,3 +10,7 @@ logs
 node_modules
 temp
 .eslintcache
+_fixtures
+_fixtures-format-consistency
+_fixtures-type-support
+AGENTS.md

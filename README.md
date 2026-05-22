@@ -14,10 +14,12 @@ A unified ESLint flat config for JavaScript, TypeScript, Vue 2/3, React, Node.js
 
 - **Flat config first**
   - Built for ESLint 9+
-  - One entry point: `estjs(overrides?, options?)`
+  - One entry point: `defineConfig(options?)`
 - **Auto-detected features**
   - Detects `typescript`, `react`, `vue`, `vitest`/`jest`, and `unocss` from installed dependencies
-  - Keeps `node`, `markdown`, and `prettier` enabled by default
+  - Keeps `node`, `markdown`, `regexp`, and `prettier` enabled by default
+- **Short rule names**
+  - Write `'no-unused-vars'` instead of `'@typescript-eslint/no-unused-vars'` inside the matching plugin group
 - **Broad file coverage**
   - JavaScript, TypeScript, JSX, TSX, Vue
   - Markdown, HTML
@@ -58,172 +60,128 @@ pnpm add -D eslint prettier @estjs/eslint-config
 Create an `eslint.config.js` file in your project root:
 
 ```js
-import { estjs } from '@estjs/eslint-config';
+import { defineConfig } from '@estjs/eslint-config';
 
-export default estjs();
+export default defineConfig();
 ```
 
 Typical customization:
 
 ```js
-import { estjs } from '@estjs/eslint-config';
+import { defineConfig } from '@estjs/eslint-config';
 
-export default estjs(
-  {
+export default defineConfig({
+  typescript: true,
+  react: true,
+  vue: false,
+  test: true,
+  pnpm: false,
+
+  ignores: ['dist', 'coverage'],
+
+  rules: {
     javascript: {
       'no-console': 'off',
     },
+    typescript: {
+      'no-unused-vars': 'off',
+    },
+    vue: {
+      'html-self-closing': 'off',
+    },
     imports: {
-      'import/no-default-export': 'off',
+      'no-default-export': 'off',
     },
-    ignores: ['dist', 'coverage'],
   },
-  {
-    typescript: true,
-    react: true,
-    vue: false,
-    test: true,
-    pnpm: false,
-  },
-);
-```
-
-## 🔄 Configuration
-
-### First argument: overrides
-
-Use the first argument to override rules or config fragments:
-
-```js
-export default estjs({
-  javascript: {
-    // overrides rules
-    // @see https://eslint.org/docs/latest/rules/
-    // @see https://github.com/sindresorhus/eslint-plugin-unicorn#rules
-    // @see https://github.com/sweepline/eslint-plugin-unused-imports#supported-rules
-  },
-  typescript: {
-    // overrides rules
-    // @see https://typescript-eslint.io/rules/
-  },
-  imports: {
-    // overrides rules
-    // @see https://github.com/un-ts/eslint-plugin-import-x?tab=readme-ov-file#rules
-  },
-  unicorn: {
-    // overrides rules
-    // @see https://github.com/sindresorhus/eslint-plugin-unicorn#rules
-  },
-  jsdoc: {
-    // overrides rules
-    // @see https://github.com/gajus/eslint-plugin-jsdoc#rules
-  },
-  vue: {
-    // overrides rules
-    // @see https://eslint.vuejs.org/rules/
-  },
-  markdown: {
-    // overrides rules
-    // @see https://github.com/eslint/markdown#rules
-  },
-  prettier: {
-    // overrides rules
-    // @see https://github.com/prettier/eslint-plugin-prettier#options
-  },
-  react: {
-    // overrides rules
-    // @see https://www.eslint-react.xyz/docs/rules/overview
-    // @see https://www.eslint-react.xyz/docs/rules/jsx-key-before-spread
-  },
-  test: {
-    // overrides rules
-    // @see https://github.com/vitest-dev/eslint-plugin-vitest#rules
-  },
-  regexp: {
-    // overrides rules
-    // @see https://ota-meshi.github.io/eslint-plugin-regexp/rules/
-  },
-  comments: {
-    // overrides rules
-    // @see https://eslint-community.github.io/eslint-plugin-eslint-comments/rules/
-  },
-  command: {
-    // overrides rules
-    // @see https://github.com/antfu/eslint-plugin-command
-  },
-    yaml: {
-      // overrides rules
-      // @see https://ota-meshi.github.io/eslint-plugin-yml/rules/
-    },
-    json: {
-      // overrides rules
-      // @see https://ota-meshi.github.io/eslint-plugin-jsonc/rules/
-    },
-  pnpm: {
-    // overrides rules
-    // @see https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules
-  },
-  globals: {
-    // extra globals
-    // @see https://eslint.org/docs/latest/use/configure/language-options#specifying-globals
-    MyGlobal: 'readonly',
-  },
-  ignores: [
-    // extra ignore patterns
-    'dist',
-    '.cache',
-  ],
 });
 ```
 
-Supported override keys:
+Short rule names are supported in plugin groups such as `typescript`, `vue`, `react`,
+`test`, `imports`, `jsdoc`, `comments`, `regexp`, `pnpm`, and `unicorn`. Fully prefixed
+names (e.g. `'@typescript-eslint/no-unused-vars'`) continue to work.
 
-- `javascript`
-- `typescript`
-- `imports`
-- `unicorn`
-- `jsdoc`
-- `vue`
-- `markdown`
-- `prettier`
-- `react`
-- `test`
-- `regexp`
-- `comments`
-- `command`
-- `pnpm`
-- `globals`
-- `ignores`
+## 🔄 Configuration
 
-### Second argument: feature flags
+`defineConfig` takes a single options object. The shape is:
 
-The second argument controls which optional groups are enabled:
+```ts
+defineConfig({
+  // Feature toggles — every flag is optional.
+  typescript: boolean,   // default: auto-detected
+  vue: boolean,          // default: auto-detected
+  react: boolean,        // default: auto-detected
+  test: boolean,         // default: auto-detected
+  unocss: boolean,       // default: auto-detected
+  node: boolean,         // default: true
+  markdown: boolean,     // default: true
+  regexp: boolean,       // default: true
+  pnpm: boolean,         // default: false
+  prettier: boolean | PrettierOptions, // default: true — pass false to disable, or an object to merge into defaults
+
+  // Project-wide settings.
+  ignores: string[],
+  globals: Record<string, 'readonly' | 'writable' | 'off'>,
+
+  // Per-group rule overrides. Each key accepts short or fully prefixed names.
+  rules: {
+    javascript: { /* ESLint core + unused-imports */ },
+    typescript: { /* @see https://typescript-eslint.io/rules/ */ },
+    imports:    { /* @see https://github.com/un-ts/eslint-plugin-import-x */ },
+    unicorn:    { /* @see https://github.com/sindresorhus/eslint-plugin-unicorn */ },
+    jsdoc:      { /* @see https://github.com/gajus/eslint-plugin-jsdoc */ },
+    vue:        { /* @see https://eslint.vuejs.org/rules/ */ },
+    markdown:   { /* @see https://github.com/eslint/markdown */ },
+    react:      { /* @see https://www.eslint-react.xyz/docs/rules/overview */ },
+    test:       { /* @see https://github.com/vitest-dev/eslint-plugin-vitest */ },
+    regexp:     { /* @see https://ota-meshi.github.io/eslint-plugin-regexp/rules/ */ },
+    comments:   { /* @see https://eslint-community.github.io/eslint-plugin-eslint-comments/rules/ */ },
+    command:    { /* @see https://github.com/antfu/eslint-plugin-command */ },
+    pnpm: {
+      json:     { /* rules for package.json */ },
+      yaml:     { /* rules for pnpm-workspace.yaml */ },
+    },
+  },
+});
+```
+
+### Feature toggles
 
 | Option | Default | Description |
 | --- | --- | --- |
-| `markdown` | `true` | Enable Markdown linting |
-| `vue` | `auto` | Enable Vue support |
-| `unocss` | `auto` | Enable UnoCSS support |
-| `typescript` | `auto` | Enable TypeScript support |
-| `react` | `auto` | Enable React support |
-| `node` | `true` | Enable Node.js specific rules |
-| `prettier` | `true` | Enable Prettier formatting |
-| `pnpm` | `false` | Enable PNPM-specific rules |
-| `test` | `auto` | Enable test rules |
+| `markdown` | `true` | Markdown linting |
+| `node` | `true` | Node-specific rules |
+| `prettier` | `true` | Prettier integration (also accepts a `PrettierOptions` object) |
+| `regexp` | `true` | RegExp linting |
+| `pnpm` | `false` | pnpm catalog / workspace rules |
+| `typescript` | `auto` | Enabled when `typescript` is installed |
+| `react` | `auto` | Enabled when `react` is installed |
+| `vue` | `auto` | Enabled when `vue`, `nuxt`, `vitepress`, or `@slidev/cli` is installed |
+| `test` | `auto` | Enabled when `vitest` or `jest` is installed |
+| `unocss` | `auto` | Enabled when `unocss`, `@unocss/webpack`, or `@unocss/nuxt` is installed |
 
-### Auto detection
+### Per-group rule overrides
 
-If a feature flag is not set explicitly:
+Pass overrides under `rules.<group>`. The same key accepts both bare and fully prefixed
+rule names:
 
-- `typescript` is enabled when `typescript` is installed
-- `react` is enabled when `react` is installed
-- `vue` is enabled when `vue`, `nuxt`, `vitepress`, or `@slidev/cli` is installed
-- `test` is enabled when `vitest` or `jest` is installed
-- `unocss` is enabled when `unocss`, `@unocss/webpack`, or `@unocss/nuxt` is installed
+```js
+defineConfig({
+  rules: {
+    typescript: {
+      'no-unused-vars': 'off',                        // short name — resolved to @typescript-eslint/no-unused-vars
+      '@typescript-eslint/no-explicit-any': 'error',  // fully-prefixed name also works
+    },
+    pnpm: {
+      json: { 'json-enforce-catalog': 'warn' },
+      yaml: { 'yaml-no-unused-catalog-item': 'off' },
+    },
+  },
+});
+```
 
 ## 📦 What Is Included
 
-These config groups are always included:
+Always included:
 
 - `ignores`
 - `javascript`
@@ -236,10 +194,9 @@ These config groups are always included:
 - `sort package.json`
 - `sort tsconfig.json`
 - `yml`
-- `regexp`
 - `command`
 
-These groups are conditional:
+Toggleable (defaults shown above):
 
 - `typescript`
 - `react`
@@ -250,10 +207,9 @@ These groups are conditional:
 - `node`
 - `prettier`
 - `pnpm`
+- `regexp`
 
 ## 📁 Supported Files
-
-The built-in config covers:
 
 - `*.js`, `*.cjs`, `*.mjs`
 - `*.jsx`
@@ -281,13 +237,19 @@ Prettier is enabled by default with built-in defaults including:
 - `semi: true`
 - `singleQuote: true`
 - `quoteProps: 'consistent'`
-- `arrowParens: 'avoid'`
+- `arrowParens: 'always'`
 - `trailingComma: 'all'`
 - `endOfLine: 'auto'`
 - `vueIndentScriptAndStyle: false`
 - `singleAttributePerLine: false`
+- `bracketSameLine: false`
 
-Override them through the `prettier` field in the first argument.
+Override or disable through the top-level `prettier` field:
+
+```js
+defineConfig({ prettier: false });                  // disable entirely
+defineConfig({ prettier: { semi: false } });        // merge with defaults
+```
 
 ## 🙈 Default Ignores
 
@@ -296,25 +258,18 @@ The config ignores common generated and dependency paths by default, including:
 - `node_modules`
 - `dist`
 - lockfiles
-- `output`
-- `coverage`
-- `temp`
-- `fixtures`
-- `.nuxt`
-- `.vercel`
-- `.changeset`
-- `.idea`
-- `CHANGELOG*.md`
-- `LICENSE*`
+- `output`, `coverage`, `temp`, `fixtures`
+- `.nuxt`, `.vercel`, `.changeset`, `.idea`
+- `CHANGELOG*.md`, `LICENSE*`
 - `__snapshots__`
-- `auto-imports.d.ts`
-- `components.d.ts`
+- `auto-imports.d.ts`, `components.d.ts`
 
 Append more patterns through `ignores`.
 
-## command
+## ⚙️ Command codemods
 
-Powered by [`eslint-plugin-command`](https://github.com/antfu/eslint-plugin-command). It is an on-demand micro-codemod tool triggered by special comments.
+Powered by [`eslint-plugin-command`](https://github.com/antfu/eslint-plugin-command). It is
+an on-demand micro-codemod tool triggered by special comments.
 
 Examples:
 
@@ -324,10 +279,7 @@ Examples:
 - `/// to-for-of`
 - `/// keep-sorted`
 
-Full command list:
-https://github.com/antfu/eslint-plugin-command#built-in-commands
-
-Example:
+Full command list: https://github.com/antfu/eslint-plugin-command#built-in-commands
 
 <!-- eslint-skip -->
 
@@ -357,10 +309,6 @@ For the best developer experience:
 
 ## ❓ FAQ
 
-### Which formatter should I choose?
-
-- **Prettier** is enabled by default and is the recommended formatter for this config
-
 ### How do I debug configuration issues?
 
 1. Enable ESLint debug output:
@@ -383,73 +331,93 @@ npx eslint --print-config path/to/file.js
 
 ## 📚 Examples
 
-### TypeScript + Vue Project
+### TypeScript + Vue project
 
 ```js
-import { estjs } from '@estjs/eslint-config';
+import { defineConfig } from '@estjs/eslint-config';
 
-export default estjs({}, {
-  vue: true,
+export default defineConfig({
   typescript: true,
+  vue: true,
 });
 ```
 
-### React + Node.js Project
+### React + Node.js project
 
 ```js
-import { estjs } from '@estjs/eslint-config';
+import { defineConfig } from '@estjs/eslint-config';
 
-export default estjs(
-  {
-    javascript: {
-      'no-console': 'warn',
-    },
+export default defineConfig({
+  react: true,
+  node: true,
+  globals: { React: 'readonly' },
+  rules: {
+    javascript: { 'no-console': 'warn' },
     react: {
-      // overrides rules
-      // @see https://www.eslint-react.xyz/docs/rules/overview
-      // @see https://www.eslint-react.xyz/docs/rules/jsx-key-before-spread
       '@eslint-react/jsx-key-before-spread': 'error',
       '@eslint-react/no-array-index-key': 'off',
     },
-    globals: {
-      React: 'readonly',
-    },
   },
-  {
-    react: true,
-    node: true,
-  },
-);
+});
 ```
 
-### PNPM Workspace
+### pnpm workspace
 
 ```js
-import { estjs } from '@estjs/eslint-config';
+import { defineConfig } from '@estjs/eslint-config';
 
-export default estjs(
-  {
+export default defineConfig({
+  pnpm: true,
+  rules: {
     pnpm: {
       yaml: {
         // YAML rules for pnpm-workspace.yaml
       },
     },
   },
-  {
-    pnpm: true,
-  },
-);
+});
 ```
 
 ### Disable Prettier
 
 ```js
-import { estjs } from '@estjs/eslint-config';
+import { defineConfig } from '@estjs/eslint-config';
 
-export default estjs({}, {
-  prettier: false,
-});
+export default defineConfig({ prettier: false });
 ```
+
+## 🔁 Migrating from v2
+
+Two parameters were collapsed into one and the entry point was renamed:
+
+```diff
+- import { estjs } from '@estjs/eslint-config';
+-
+- export default estjs(
+-   {
+-     javascript: { 'no-console': 'off' },
+-     typescript: { 'no-unused-vars': 'off' },
+-   },
+-   { typescript: true, vue: true, prettier: false },
+- );
++ import { defineConfig } from '@estjs/eslint-config';
++
++ export default defineConfig({
++   typescript: true,
++   vue: true,
++   prettier: false,
++   rules: {
++     javascript: { 'no-console': 'off' },
++     typescript: { 'no-unused-vars': 'off' },
++   },
++ });
+```
+
+Other v2 → v3 renames:
+
+- `estjs(...)` → `defineConfig(...)`
+- `EstjsOptions` / `EstjsOverrides` → `Options` / `RulesOverrides`
+- `TypedFlatConfigItem` → `FlatConfig`
 
 ## 🤝 Contributing
 

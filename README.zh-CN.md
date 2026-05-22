@@ -4,35 +4,37 @@
 [![node version](https://img.shields.io/node/v/@estjs/eslint-config.svg)](https://www.npmjs.com/package/@estjs/eslint-config)
 [![license](https://img.shields.io/npm/l/@estjs/eslint-config.svg)](https://github.com/estjs/eslint-config/blob/main/LICENSE)
 
-> 面向现代 JavaScript 和 TypeScript 项目的完整 Flat ESLint 配置
+> 为现代 JavaScript 和 TypeScript 项目提供的完整 ESLint Flat Config
 
-这是一个统一的 ESLint flat config，支持 JavaScript、TypeScript、Vue 2/3、React、Node.js、RegExp、UnoCSS、Markdown、JSON/JSONC、YAML 和 JSDoc。
+一份统一覆盖 JavaScript、TypeScript、Vue 2/3、React、Node.js、RegExp、UnoCSS、Markdown、JSON/JSONC、YAML、JSDoc 的 ESLint flat config。
 
-[English](./README.md)
+[English Documentation](./README.md)
 
 ## ✨ 特性
 
 - **Flat config 优先**
-  - 基于 ESLint 9+
-  - 单一入口：`estjs(overrides?, options?)`
-- **自动检测能力**
-  - 根据已安装依赖自动检测 `typescript`、`react`、`vue`、`vitest`/`jest`、`unocss`
-  - `node`、`markdown`、`prettier` 默认开启
-- **广泛的文件覆盖**
+  - 面向 ESLint 9+
+  - 单一入口:`defineConfig(options?)`
+- **自动检测**
+  - 根据已安装依赖自动识别 `typescript`、`react`、`vue`、`vitest`/`jest`、`unocss`
+  - 默认启用 `node`、`markdown`、`regexp`、`prettier`
+- **短规则名**
+  - 在对应插件分组下可以直接写 `'no-unused-vars'`,不需要 `'@typescript-eslint/no-unused-vars'`
+- **广泛文件覆盖**
   - JavaScript、TypeScript、JSX、TSX、Vue
   - Markdown、HTML
   - JSON、JSON5、JSONC、YAML
   - RegExp、JSDoc、UnoCSS
-- **内置工程治理**
-  - 导入顺序和重复导入检查
-  - 自动整理 `package.json` 和 `tsconfig.json`
-  - 默认忽略常见生成文件和目录
+- **工程卫生**
+  - import 顺序与重复 import 检查
+  - `package.json` 与 `tsconfig.json` 自动排序
+  - 默认忽略常见生成文件
 - **格式化集成**
-  - 内置 [Prettier](https://github.com/prettier/prettier) 集成
-  - 提供一组可覆盖的合理默认值
+  - 内置 [Prettier](https://github.com/prettier/prettier)
+  - 默认合理且可覆盖
 - **编辑器友好**
-  - 适合配合 `eslint --fix` 使用
-  - 支持 `eslint-plugin-command` 的注释驱动 codemod
+  - 为 `eslint --fix` 优化
+  - 支持 `eslint-plugin-command` 注释驱动的 codemod
 
 ## 📋 环境要求
 
@@ -53,177 +55,131 @@ yarn add -D eslint prettier @estjs/eslint-config
 pnpm add -D eslint prettier @estjs/eslint-config
 ```
 
-## 🛠️ 快速开始
+## 🛠️ 快速上手
 
-在项目根目录创建 `eslint.config.js`：
+在项目根目录创建 `eslint.config.js`:
 
 ```js
-import { estjs } from '@estjs/eslint-config';
+import { defineConfig } from '@estjs/eslint-config';
 
-export default estjs();
+export default defineConfig();
 ```
 
-常见自定义方式：
+常见的定制:
 
 ```js
-import { estjs } from '@estjs/eslint-config';
+import { defineConfig } from '@estjs/eslint-config';
 
-export default estjs(
-  {
+export default defineConfig({
+  typescript: true,
+  react: true,
+  vue: false,
+  test: true,
+  pnpm: false,
+
+  ignores: ['dist', 'coverage'],
+
+  rules: {
     javascript: {
       'no-console': 'off',
     },
+    typescript: {
+      'no-unused-vars': 'off',
+    },
+    vue: {
+      'html-self-closing': 'off',
+    },
     imports: {
-      'import/no-default-export': 'off',
+      'no-default-export': 'off',
     },
-    ignores: ['dist', 'coverage'],
   },
-  {
-    typescript: true,
-    react: true,
-    vue: false,
-    test: true,
-    pnpm: false,
-  },
-);
-```
-
-## 🔄 配置说明
-
-### 第一个参数：覆盖项
-
-第一个参数用于覆盖规则或配置片段：
-
-```js
-export default estjs({
-  javascript: {
-    // 覆盖规则
-    // @see https://eslint.org/docs/latest/rules/
-    // @see https://github.com/sindresorhus/eslint-plugin-unicorn#rules
-    // @see https://github.com/sweepline/eslint-plugin-unused-imports#supported-rules
-  },
-  typescript: {
-    // 覆盖规则
-    // @see https://typescript-eslint.io/rules/
-  },
-  imports: {
-    // 覆盖规则
-    // @see https://github.com/un-ts/eslint-plugin-import-x?tab=readme-ov-file#rules
-  },
-  unicorn: {
-    // 覆盖规则
-    // @see https://github.com/sindresorhus/eslint-plugin-unicorn#rules
-  },
-  jsdoc: {
-    // 覆盖规则
-    // @see https://github.com/gajus/eslint-plugin-jsdoc#rules
-  },
-  vue: {
-    // 覆盖规则
-    // @see https://eslint.vuejs.org/rules/
-  },
-  markdown: {
-    // 覆盖规则
-    // @see https://github.com/eslint/markdown#rules
-  },
-  prettier: {
-    // 覆盖规则
-    // @see https://github.com/prettier/eslint-plugin-prettier#options
-  },
-  react: {
-    // 覆盖规则
-    // @see https://www.eslint-react.xyz/docs/rules/overview
-    // @see https://www.eslint-react.xyz/docs/rules/jsx-key-before-spread
-  },
-  test: {
-    // 覆盖规则
-    // @see https://github.com/vitest-dev/eslint-plugin-vitest#rules
-  },
-  regexp: {
-    // 覆盖规则
-    // @see https://ota-meshi.github.io/eslint-plugin-regexp/rules/
-  },
-  comments: {
-    // 覆盖规则
-    // @see https://eslint-community.github.io/eslint-plugin-eslint-comments/rules/
-  },
-  command: {
-    // 覆盖规则
-    // @see https://github.com/antfu/eslint-plugin-command
-  },
-    yaml: {
-      // 覆盖规则
-      // @see https://ota-meshi.github.io/eslint-plugin-yml/rules/
-    },
-    json: {
-      // 覆盖规则
-      // @see https://ota-meshi.github.io/eslint-plugin-jsonc/rules/
-    },
-   pnpm: {
-    // 覆盖规则
-    // @see https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules
-  },
-  globals: {
-    // 额外全局变量
-    // @see https://eslint.org/docs/latest/use/configure/language-options#specifying-globals
-    MyGlobal: 'readonly',
-  },
-  ignores: [
-    // 额外忽略路径
-    'dist',
-    '.cache',
-  ],
 });
 ```
 
-支持的覆盖字段：
+`typescript`、`vue`、`react`、`test`、`imports`、`jsdoc`、`comments`、`regexp`、`pnpm`、`unicorn`
+分组中,短规则名(如 `'no-unused-vars'`)与全限定名(如 `'@typescript-eslint/no-unused-vars'`)都可使用。
 
-- `javascript`
-- `typescript`
-- `imports`
-- `unicorn`
-- `jsdoc`
-- `vue`
-- `markdown`
-- `prettier`
-- `react`
-- `test`
-- `regexp`
-- `comments`
-- `command`
-- `pnpm`
-- `globals`
-- `ignores`
+## 🔄 配置说明
 
-### 第二个参数：功能开关
+`defineConfig` 接受单个 options 对象,结构如下:
 
-第二个参数用于控制哪些可选配置组启用：
+```ts
+defineConfig({
+  // 功能开关 —— 全部可选
+  typescript: boolean,   // 默认:自动检测
+  vue: boolean,          // 默认:自动检测
+  react: boolean,        // 默认:自动检测
+  test: boolean,         // 默认:自动检测
+  unocss: boolean,       // 默认:自动检测
+  node: boolean,         // 默认:true
+  markdown: boolean,     // 默认:true
+  regexp: boolean,       // 默认:true
+  pnpm: boolean,         // 默认:false
+  prettier: boolean | PrettierOptions, // 默认:true。传 false 关闭,传对象与默认值合并
 
-| 选项 | 默认值 | 说明 |
+  // 项目级设置
+  ignores: string[],
+  globals: Record<string, 'readonly' | 'writable' | 'off'>,
+
+  // 各分组规则覆盖。键名支持短名与全限定名两种写法。
+  rules: {
+    javascript: { /* ESLint 核心 + unused-imports */ },
+    typescript: { /* @see https://typescript-eslint.io/rules/ */ },
+    imports:    { /* @see https://github.com/un-ts/eslint-plugin-import-x */ },
+    unicorn:    { /* @see https://github.com/sindresorhus/eslint-plugin-unicorn */ },
+    jsdoc:      { /* @see https://github.com/gajus/eslint-plugin-jsdoc */ },
+    vue:        { /* @see https://eslint.vuejs.org/rules/ */ },
+    markdown:   { /* @see https://github.com/eslint/markdown */ },
+    react:      { /* @see https://www.eslint-react.xyz/docs/rules/overview */ },
+    test:       { /* @see https://github.com/vitest-dev/eslint-plugin-vitest */ },
+    regexp:     { /* @see https://ota-meshi.github.io/eslint-plugin-regexp/rules/ */ },
+    comments:   { /* @see https://eslint-community.github.io/eslint-plugin-eslint-comments/rules/ */ },
+    command:    { /* @see https://github.com/antfu/eslint-plugin-command */ },
+    pnpm: {
+      json:     { /* package.json 规则 */ },
+      yaml:     { /* pnpm-workspace.yaml 规则 */ },
+    },
+  },
+});
+```
+
+### 功能开关
+
+| 选项 | 默认 | 描述 |
 | --- | --- | --- |
-| `markdown` | `true` | 开启 Markdown lint |
-| `vue` | `auto` | 开启 Vue 支持 |
-| `unocss` | `auto` | 开启 UnoCSS 支持 |
-| `typescript` | `auto` | 开启 TypeScript 支持 |
-| `react` | `auto` | 开启 React 支持 |
-| `node` | `true` | 开启 Node.js 相关规则 |
-| `prettier` | `true` | 开启 Prettier 格式化 |
-| `pnpm` | `false` | 开启 PNPM 相关规则 |
-| `test` | `auto` | 开启测试规则 |
+| `markdown` | `true` | Markdown 检查 |
+| `node` | `true` | Node.js 规则 |
+| `prettier` | `true` | Prettier 集成(也可传 `PrettierOptions` 对象) |
+| `regexp` | `true` | RegExp 检查 |
+| `pnpm` | `false` | pnpm catalog / workspace 规则 |
+| `typescript` | `auto` | 安装了 `typescript` 时启用 |
+| `react` | `auto` | 安装了 `react` 时启用 |
+| `vue` | `auto` | 安装了 `vue`、`nuxt`、`vitepress` 或 `@slidev/cli` 时启用 |
+| `test` | `auto` | 安装了 `vitest` 或 `jest` 时启用 |
+| `unocss` | `auto` | 安装了 `unocss`、`@unocss/webpack` 或 `@unocss/nuxt` 时启用 |
 
-### 自动检测
+### 分组规则覆盖
 
-如果没有显式传入功能开关：
+在 `rules.<group>` 下传入覆盖。同一分组支持短名与全限定名混用:
 
-- 安装了 `typescript` 时自动开启 `typescript`
-- 安装了 `react` 时自动开启 `react`
-- 安装了 `vue`、`nuxt`、`vitepress` 或 `@slidev/cli` 时自动开启 `vue`
-- 安装了 `vitest` 或 `jest` 时自动开启 `test`
-- 安装了 `unocss`、`@unocss/webpack` 或 `@unocss/nuxt` 时自动开启 `unocss`
+```js
+defineConfig({
+  rules: {
+    typescript: {
+      'no-unused-vars': 'off',                        // 短名 —— 解析为 @typescript-eslint/no-unused-vars
+      '@typescript-eslint/no-explicit-any': 'error',  // 全限定名也可
+    },
+    pnpm: {
+      json: { 'json-enforce-catalog': 'warn' },
+      yaml: { 'yaml-no-unused-catalog-item': 'off' },
+    },
+  },
+});
+```
 
-## 📦 内置内容
+## 📦 包含范围
 
-这些配置组默认总会包含：
+始终包含:
 
 - `ignores`
 - `javascript`
@@ -236,10 +192,9 @@ export default estjs({
 - `sort package.json`
 - `sort tsconfig.json`
 - `yml`
-- `regexp`
 - `command`
 
-这些配置组按条件启用：
+可开关(默认值见上):
 
 - `typescript`
 - `react`
@@ -250,10 +205,9 @@ export default estjs({
 - `node`
 - `prettier`
 - `pnpm`
+- `regexp`
 
-## 📁 支持的文件类型
-
-内置配置覆盖：
+## 📁 支持的文件
 
 - `*.js`、`*.cjs`、`*.mjs`
 - `*.jsx`
@@ -266,7 +220,7 @@ export default estjs({
 - `*.html`
 - `*.css`、`*.less`、`*.scss`
 
-另外还会对这些文件做结构化排序：
+额外应用结构化排序:
 
 - `package.json`
 - `tsconfig.json`
@@ -274,49 +228,48 @@ export default estjs({
 
 ## 🎨 Prettier 默认值
 
-默认启用 Prettier，内置默认值包括：
+Prettier 默认启用,内置的默认值包括:
 
 - `printWidth: 100`
 - `tabWidth: 2`
 - `semi: true`
 - `singleQuote: true`
 - `quoteProps: 'consistent'`
-- `arrowParens: 'avoid'`
+- `arrowParens: 'always'`
 - `trailingComma: 'all'`
 - `endOfLine: 'auto'`
 - `vueIndentScriptAndStyle: false`
 - `singleAttributePerLine: false`
+- `bracketSameLine: false`
 
-可以通过第一个参数中的 `prettier` 字段进行覆盖。
+通过顶层 `prettier` 字段覆盖或关闭:
 
-## 🙈 默认忽略项
+```js
+defineConfig({ prettier: false });                  // 完全关闭
+defineConfig({ prettier: { semi: false } });        // 与默认值合并
+```
 
-默认会忽略常见依赖目录和生成物，包括：
+## 🙈 默认忽略
+
+默认忽略常见的生成与依赖目录,包括:
 
 - `node_modules`
 - `dist`
-- 各类 lockfile
-- `output`
-- `coverage`
-- `temp`
-- `fixtures`
-- `.nuxt`
-- `.vercel`
-- `.changeset`
-- `.idea`
-- `CHANGELOG*.md`
-- `LICENSE*`
+- lockfiles
+- `output`、`coverage`、`temp`、`fixtures`
+- `.nuxt`、`.vercel`、`.changeset`、`.idea`
+- `CHANGELOG*.md`、`LICENSE*`
 - `__snapshots__`
-- `auto-imports.d.ts`
-- `components.d.ts`
+- `auto-imports.d.ts`、`components.d.ts`
 
-可以通过 `ignores` 继续追加。
+可通过 `ignores` 追加。
 
-## command
+## ⚙️ Command codemod
 
-基于 [`eslint-plugin-command`](https://github.com/antfu/eslint-plugin-command)。这是一个通过特殊注释触发的按需微型 codemod 工具。
+由 [`eslint-plugin-command`](https://github.com/antfu/eslint-plugin-command) 提供。通过特殊
+注释触发的按需微型 codemod 工具。
 
-例如：
+示例:
 
 - `/// to-function`
 - `/// to-arrow`
@@ -324,10 +277,7 @@ export default estjs({
 - `/// to-for-of`
 - `/// keep-sorted`
 
-完整命令列表：
-https://github.com/antfu/eslint-plugin-command#built-in-commands
-
-示例：
+完整命令列表:https://github.com/antfu/eslint-plugin-command#built-in-commands
 
 <!-- eslint-skip -->
 
@@ -338,7 +288,7 @@ const foo = async (msg: string): void => {
 };
 ```
 
-保存或执行 `eslint --fix` 后会变成：
+在编辑器保存或运行 `eslint --fix` 后会变为:
 
 ```ts
 // eslint-disable-next-line require-await
@@ -349,111 +299,127 @@ async function foo(msg: string): void {
 
 ## 💡 IDE 集成
 
-为了获得更好的开发体验，建议：
+获得最佳体验的方式:
 
-- 在 VS Code 中安装 [ESLint 扩展](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- 开启 `editor.formatOnSave`
-- 以 `eslint --fix` 作为主要格式化入口
+- 使用 VS Code + [ESLint 扩展](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- 启用 `editor.formatOnSave`
+- 把 `eslint --fix` 作为主要的格式化入口
 
-## ❓ FAQ
+## ❓ 常见问题
 
-### 应该选择哪个格式化工具？
+### 如何排查配置问题?
 
-- **Prettier** 默认启用，也是这个配置推荐的格式化方案
-
-### 如何排查配置问题？
-
-1. 打开 ESLint 调试输出：
+1. 开启 ESLint 调试输出:
 
 ```bash
 DEBUG=eslint:* eslint .
 ```
 
-2. 查看某个文件的最终配置：
+2. 打印某个文件的解析后配置:
 
 ```bash
 npx eslint --print-config path/to/file.js
 ```
 
-3. 常见问题来源：
+3. 常见原因:
 
-- 缺少 peer dependencies
-- 本地存在意外的 ESLint 覆盖配置
-- 文件扩展名没有匹配到预期规则
+- 缺失 peer dependency
+- 本地 ESLint 配置覆盖了默认
+- 文件后缀未匹配
 
 ## 📚 示例
 
 ### TypeScript + Vue 项目
 
 ```js
-import { estjs } from '@estjs/eslint-config';
+import { defineConfig } from '@estjs/eslint-config';
 
-export default estjs({}, {
-  vue: true,
+export default defineConfig({
   typescript: true,
+  vue: true,
 });
 ```
 
 ### React + Node.js 项目
 
 ```js
-import { estjs } from '@estjs/eslint-config';
+import { defineConfig } from '@estjs/eslint-config';
 
-export default estjs(
-  {
-    javascript: {
-      'no-console': 'warn',
-    },
+export default defineConfig({
+  react: true,
+  node: true,
+  globals: { React: 'readonly' },
+  rules: {
+    javascript: { 'no-console': 'warn' },
     react: {
-      // 覆盖规则
-      // @see https://www.eslint-react.xyz/docs/rules/overview
-      // @see https://www.eslint-react.xyz/docs/rules/jsx-key-before-spread
       '@eslint-react/jsx-key-before-spread': 'error',
       '@eslint-react/no-array-index-key': 'off',
     },
-    globals: {
-      React: 'readonly',
-    },
   },
-  {
-    react: true,
-    node: true,
-  },
-);
+});
 ```
 
-### PNPM Workspace
+### pnpm workspace
 
 ```js
-import { estjs } from '@estjs/eslint-config';
+import { defineConfig } from '@estjs/eslint-config';
 
-export default estjs(
-  {
+export default defineConfig({
+  pnpm: true,
+  rules: {
     pnpm: {
       yaml: {
         // pnpm-workspace.yaml 的 YAML 规则
       },
     },
   },
-  {
-    pnpm: true,
-  },
-);
+});
 ```
 
 ### 关闭 Prettier
 
 ```js
-import { estjs } from '@estjs/eslint-config';
+import { defineConfig } from '@estjs/eslint-config';
 
-export default estjs({}, {
-  prettier: false,
-});
+export default defineConfig({ prettier: false });
 ```
+
+## 🔁 从 v2 迁移
+
+双参数合并为单参数,入口函数也改名:
+
+```diff
+- import { estjs } from '@estjs/eslint-config';
+-
+- export default estjs(
+-   {
+-     javascript: { 'no-console': 'off' },
+-     typescript: { 'no-unused-vars': 'off' },
+-   },
+-   { typescript: true, vue: true, prettier: false },
+- );
++ import { defineConfig } from '@estjs/eslint-config';
++
++ export default defineConfig({
++   typescript: true,
++   vue: true,
++   prettier: false,
++   rules: {
++     javascript: { 'no-console': 'off' },
++     typescript: { 'no-unused-vars': 'off' },
++   },
++ });
+```
+
+其他 v2 → v3 重命名:
+
+- `estjs(...)` → `defineConfig(...)`
+- `EstjsOptions` / `EstjsOverrides` → `Options` / `RulesOverrides`
+- `TypedFlatConfigItem` → `FlatConfig`
 
 ## 🤝 贡献
 
-欢迎提交 issue 或 pull request。
+欢迎贡献。提交 Issue 或 PR 均可。
 
 ## 📄 License
 

@@ -1,0 +1,167 @@
+import type { Linter } from 'eslint';
+import globals from 'globals';
+import { pluginUnusedImports } from '../plugins';
+import type { FlatConfig, JavaScriptRulesOverride } from '../types';
+
+/**
+ * AST node types that are forbidden in JS/TS source — banned via `no-restricted-syntax`.
+ * Exported because the TypeScript config re-applies the same restriction.
+ */
+export const restrictedSyntaxJs = ['LabeledStatement', 'WithStatement'];
+
+export const javascriptBaseRules: Linter.RulesRecord = {
+  'curly': ['error', 'all'],
+  'array-callback-return': 'error',
+  'block-scoped-var': 'error',
+  'constructor-super': 'error',
+  'dot-notation': 'warn',
+  'eqeqeq': ['error', 'smart'],
+  'for-direction': 'error',
+  'getter-return': 'error',
+  'no-alert': 'warn',
+  'no-async-promise-executor': 'error',
+  'no-case-declarations': 'error',
+  'no-class-assign': 'error',
+  'no-compare-neg-zero': 'error',
+  'no-cond-assign': 'error',
+  'no-console': ['warn', { allow: ['warn', 'error'] }],
+  'no-const-assign': 'error',
+  'no-constant-condition': 'warn',
+  'no-control-regex': 'error',
+  'no-debugger': 'warn',
+  'no-delete-var': 'error',
+  'no-dupe-args': 'error',
+  'no-dupe-class-members': 'error',
+  'no-dupe-else-if': 'error',
+  'no-dupe-keys': 'error',
+  'no-duplicate-case': 'error',
+  'no-empty': ['error', { allowEmptyCatch: true }],
+  'no-empty-character-class': 'error',
+  'no-empty-pattern': 'error',
+  'no-ex-assign': 'error',
+  'no-extra-boolean-cast': 'error',
+  'no-fallthrough': ['warn', { commentPattern: 'break[\\s\\w]*omitted' }],
+  'no-func-assign': 'error',
+  'no-global-assign': 'error',
+  'no-import-assign': 'error',
+  'no-inner-declarations': 'error',
+  'no-invalid-regexp': 'error',
+  'no-irregular-whitespace': 'error',
+  'no-loss-of-precision': 'error',
+  'no-misleading-character-class': 'error',
+  'no-mixed-spaces-and-tabs': 'error',
+  'no-multi-str': 'error',
+  'no-new-symbol': 'error',
+  'no-nonoctal-decimal-escape': 'error',
+  'no-obj-calls': 'error',
+  'no-octal': 'error',
+  'no-prototype-builtins': 'error',
+  'no-redeclare': 'error',
+  'no-regex-spaces': 'error',
+  'no-restricted-syntax': ['error', ...restrictedSyntaxJs],
+  'no-return-await': 'warn',
+  'no-self-assign': 'error',
+  'no-setter-return': 'error',
+  'no-shadow-restricted-names': 'error',
+  'no-sparse-arrays': 'error',
+  'no-this-before-super': 'error',
+  'no-undef': 'error',
+  'no-unexpected-multiline': 'error',
+  'no-unreachable': 'error',
+  'no-unsafe-finally': 'error',
+  'no-unsafe-negation': 'error',
+  'no-unsafe-optional-chaining': 'error',
+  'no-unused-expressions': [
+    'error',
+    { allowShortCircuit: true, allowTaggedTemplates: true, allowTernary: true },
+  ],
+  'no-unused-labels': 'error',
+  'no-useless-backreference': 'error',
+  'no-useless-catch': 'error',
+  'no-useless-escape': 'error',
+  'no-with': 'error',
+  'no-var': 'error',
+  'object-shorthand': ['error', 'always', { avoidQuotes: true, ignoreConstructors: false }],
+  'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
+  'prefer-const': ['error', { destructuring: 'all', ignoreReadBeforeAssign: true }],
+  'prefer-exponentiation-operator': 'error',
+  'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
+  'prefer-rest-params': 'error',
+  'prefer-spread': 'error',
+  'prefer-template': 'error',
+  'require-await': 'error',
+  'require-yield': 'error',
+  'sort-imports': [
+    'error',
+    {
+      allowSeparatedGroups: false,
+      ignoreCase: false,
+      ignoreDeclarationSort: true,
+      ignoreMemberSort: false,
+      memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+    },
+  ],
+  'unicode-bom': ['error', 'never'],
+  'unused-imports/no-unused-imports': 'warn',
+  'unused-imports/no-unused-vars': ['error', { args: 'after-used', ignoreRestSiblings: true }],
+  'use-isnan': ['error', { enforceForIndexOf: true, enforceForSwitchCase: true }],
+  'valid-typeof': ['error', { requireStringLiterals: true }],
+  'vars-on-top': 'error',
+  'wrap-iife': ['error', 'any', { functionPrototypeMethods: true }],
+
+  'no-void': 'off',
+  'no-unused-vars': 'off',
+  'no-lonely-if': 'off',
+};
+
+export interface JavaScriptOptions {
+  rules?: JavaScriptRulesOverride;
+  globals?: Linter.Globals;
+}
+
+export function javascript(options: JavaScriptOptions = {}): FlatConfig[] {
+  const { rules: userRules = {}, globals: userGlobals = {} } = options;
+
+  return [
+    {
+      name: 'estjs/javascript/setup',
+      languageOptions: {
+        globals: {
+          ...globals.browser,
+          ...globals.es2021,
+          ...globals.node,
+          ...userGlobals,
+        },
+        parserOptions: {
+          ecmaFeatures: { jsx: true },
+          sourceType: 'module',
+        },
+        sourceType: 'module',
+      },
+      plugins: {
+        'unused-imports': pluginUnusedImports,
+      },
+    },
+    {
+      name: 'estjs/javascript/rules',
+      rules: {
+        ...javascriptBaseRules,
+        ...(userRules as Linter.RulesRecord),
+      },
+    },
+    {
+      name: 'estjs/javascript/scripts',
+      files: ['**/scripts/*', '**/cli.*'],
+      rules: {
+        'no-console': 'off',
+      },
+    },
+    {
+      name: 'estjs/javascript/tests',
+      files: ['**/*.{test,spec}.js?(x)'],
+      rules: {
+        'no-unused-expressions': 'off',
+      },
+    },
+  ];
+}

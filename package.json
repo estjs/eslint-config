@@ -1,6 +1,6 @@
 {
   "name": "@estjs/eslint-config",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "packageManager": "pnpm@10.33.1",
   "description": "",
   "type": "module",
@@ -40,10 +40,13 @@
     "access": "public"
   },
   "scripts": {
+    "typegen": "node scripts/gen-rule-names.mjs",
+    "verify-rule-names": "node scripts/check-rule-names.mjs",
     "dev": "tsup --watch",
     "build": "tsup",
+    "typecheck": "tsc --noEmit",
     "lint": "pnpm run build && eslint --cache --fix ./",
-    "prepublishOnly": "pnpm run build",
+    "prepublishOnly": "pnpm run verify-rule-names && pnpm run build",
     "release": "bumpp --commit --tag --push",
     "test": "pnpm run build && vitest",
     "test:watch": "pnpm run build && vitest watch"

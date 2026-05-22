@@ -4,8 +4,8 @@
     "jsx": "preserve",
     "lib": ["ES2022", "DOM"],
     "experimentalDecorators": true,
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "types": ["vitest/globals"],
     "strict": true,
@@ -15,7 +15,9 @@
     "sourceMap": true,
     "esModuleInterop": true,
     "skipDefaultLibCheck": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "declaration": true
   },
+  "include": ["src/**/*.ts", "scripts/**/*.ts", "test/**/*.ts", "*.ts"],
   "exclude": ["node_modules", "dist", "./dist/**/*"]
 }

@@ -1,5 +1,5 @@
-import { estjs } from './dist/index.js';
+import { defineConfig } from './dist/index.js';
 
-export default estjs({
+export default defineConfig({
   ignores: ['**/fixtures/**'],
 });
