@@ -1,3 +1,4 @@
+import { GLOB_SRC, GLOB_VUE } from '../globs';
 import { pluginRegexp } from '../plugins';
 export function regexp(overrides) {
   const config = pluginRegexp.configs['flat/recommended'];
@@ -12,6 +13,7 @@ export function regexp(overrides) {
   }
   return [
     {
+      files: [GLOB_SRC, GLOB_VUE, '**/*.md/**'],
       plugins: {
         regexp: pluginRegexp,
       },

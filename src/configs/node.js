@@ -1,7 +1,9 @@
+import { GLOB_SRC, GLOB_VUE } from '../globs';
 import { pluginNode } from '../plugins';
 
 export const node = [
   {
+    files: [GLOB_SRC, GLOB_VUE, '**/*.md/**'],
     plugins: {
       node: pluginNode,
     },

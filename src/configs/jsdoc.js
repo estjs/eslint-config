@@ -1,8 +1,10 @@
+import { GLOB_SRC, GLOB_VUE } from '../globs';
 import { jsDocPlugin } from '../plugins';
 
 export function jsdoc(overrides = {}) {
   return [
     {
+      files: [GLOB_SRC, GLOB_VUE, '**/*.md/**'],
       plugins: {
         jsdoc: jsDocPlugin,
       },

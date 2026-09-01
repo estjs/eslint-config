@@ -6,6 +6,7 @@ import { typescript } from './typescript';
 
 export const reactivityTransform = [
   {
+    files: [GLOB_VUE],
     languageOptions: {
       globals: {
         $: 'readonly',
@@ -46,14 +47,22 @@ const vueCustomRules = {
     },
   ],
   'vue/one-component-per-file': 'off',
-  'vue/padding-line-between-blocks': ['error', 'always'],
+  'vue/padding-line-between-blocks': 'off',
   'vue/prefer-template': 'error',
   'vue/require-default-prop': 'off',
   'vue/require-prop-types': 'off',
   'vue/html-self-closing': 'off',
   'vue/singleline-html-element-content-newline': 'off',
   'vue/max-attributes-per-line': 'off',
-  "vue/html-closing-bracket-newline":"off"
+  'vue/html-closing-bracket-newline': 'off',
+  'vue/html-closing-bracket-spacing': 'off',
+  'vue/html-end-tags': 'off',
+  'vue/html-indent': 'off',
+  'vue/html-quotes': 'off',
+  'vue/multiline-html-element-content-newline': 'off',
+  'vue/mustache-interpolation-spacing': 'off',
+  'vue/no-multi-spaces': 'off',
+  'vue/no-spaces-around-equal-signs-in-attribute': 'off',
 };
 
 const vue2Rules = {

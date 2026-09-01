@@ -1,8 +1,10 @@
+import { GLOB_SRC, GLOB_VUE } from '../globs';
 import { pluginUnicorn } from '../plugins';
 
 export function unicorn(overrides = {}) {
   return [
     {
+      files: [GLOB_SRC, GLOB_VUE, '**/*.md/**'],
       plugins: {
         unicorn: pluginUnicorn,
       },
