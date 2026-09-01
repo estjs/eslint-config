@@ -14,10 +14,10 @@ A unified ESLint flat config for JavaScript, TypeScript, Vue 2/3, React, Node.js
 
 - **Flat config first**
   - Built for ESLint 9+
-  - One entry point: `estjs(overrides?, options?)`
+  - Single entry point with flexible chaining: `estjs(overrides?, options?, ...userConfigs)`
 - **Auto-detected features**
   - Detects `typescript`, `react`, `vue`, `vitest`/`jest`, and `unocss` from installed dependencies
-  - Keeps `node`, `markdown`, and `prettier` enabled by default
+  - Keeps `node`, `markdown`, `disables`, and `prettier` enabled by default
 - **Broad file coverage**
   - JavaScript, TypeScript, JSX, TSX, Vue
   - Markdown, HTML
@@ -25,11 +25,16 @@ A unified ESLint flat config for JavaScript, TypeScript, Vue 2/3, React, Node.js
   - RegExp, JSDoc, UnoCSS
 - **Project hygiene included**
   - Import ordering and duplicate import checks
+  - Unused imports automatic removal with `_` prefix ignore support
+  - Centralized `disables` layer for scripts, `.d.ts`, configs, and tests
   - Sorting for `package.json` and `tsconfig.json`
   - Common generated files ignored by default
+- **TypeScript Type-Aware ready**
+  - Fast AST parsing by default
+  - On-demand Type-Aware checking via `tsconfigPath` (TypeScript 5+ `projectService`)
 - **Formatter integration**
-  - Built-in [Prettier](https://github.com/prettier/prettier) integration
-  - Sensible defaults with override support
+  - Built-in [Prettier](https://github.com/prettier/prettier) integration with zero Vue/JSX conflicts
+  - Sensible defaults (`bracketSameLine: false`, `arrowParens: 'always'`) with override support
 - **Editor-friendly**
   - Designed for `eslint --fix`
   - Supports `eslint-plugin-command` comment-driven codemods
@@ -73,6 +78,14 @@ export default estjs(
     javascript: {
       'no-console': 'off',
     },
+    typescript: {
+      tsconfigPath: 'tsconfig.json', // Enable Type-Aware linting
+    },
+    disables: {
+      scripts: {
+        'no-console': 'off',
+      },
+    },
     imports: {
       'import/no-default-export': 'off',
     },
@@ -84,6 +97,14 @@ export default estjs(
     vue: false,
     test: true,
     pnpm: false,
+    disables: true,
+  },
+  // You can append custom flat config objects directly as subsequent arguments:
+  {
+    files: ['**/custom-folder/**'],
+    rules: {
+      'no-alert': 'error',
+    },
   },
 );
 ```
@@ -103,8 +124,17 @@ export default estjs({
     // @see https://github.com/sweepline/eslint-plugin-unused-imports#supported-rules
   },
   typescript: {
-    // overrides rules
+    // options & overrides
+    // tsconfigPath: 'tsconfig.json', // Enable Type-Aware rules
     // @see https://typescript-eslint.io/rules/
+  },
+  disables: {
+    // fine-tune scene-based rule exemptions
+    // scripts: { 'no-console': 'off' },
+    // dts: { 'unused-imports/no-unused-vars': 'off' },
+    // config: { 'import/no-default-export': 'off' },
+    // test: { 'no-unused-expressions': 'off' },
+    // cjs: { '@typescript-eslint/no-require-imports': 'off' },
   },
   imports: {
     // overrides rules
@@ -151,14 +181,14 @@ export default estjs({
     // overrides rules
     // @see https://github.com/antfu/eslint-plugin-command
   },
-    yaml: {
-      // overrides rules
-      // @see https://ota-meshi.github.io/eslint-plugin-yml/rules/
-    },
-    json: {
-      // overrides rules
-      // @see https://ota-meshi.github.io/eslint-plugin-jsonc/rules/
-    },
+  yaml: {
+    // overrides rules
+    // @see https://ota-meshi.github.io/eslint-plugin-yml/rules/
+  },
+  json: {
+    // overrides rules
+    // @see https://ota-meshi.github.io/eslint-plugin-jsonc/rules/
+  },
   pnpm: {
     // overrides rules
     // @see https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules
@@ -180,6 +210,7 @@ Supported override keys:
 
 - `javascript`
 - `typescript`
+- `disables`
 - `imports`
 - `unicorn`
 - `jsdoc`
@@ -210,6 +241,24 @@ The second argument controls which optional groups are enabled:
 | `prettier` | `true` | Enable Prettier formatting |
 | `pnpm` | `false` | Enable PNPM-specific rules |
 | `test` | `auto` | Enable test rules |
+| `disables` | `true` | Enable scene-based rule exemptions (scripts, dts, config, test, cjs) |
+
+### Third argument & beyond: custom user configs
+
+You can directly append custom Flat Config objects or arrays as subsequent arguments:
+
+```js
+export default estjs(
+  {},
+  {},
+  {
+    files: ['**/scripts/**'],
+    rules: {
+      'no-console': 'error',
+    },
+  },
+);
+```
 
 ### Auto detection
 
@@ -248,6 +297,7 @@ These groups are conditional:
 - `unocss`
 - `markdown`
 - `node`
+- `disables`
 - `prettier`
 - `pnpm`
 
@@ -281,7 +331,9 @@ Prettier is enabled by default with built-in defaults including:
 - `semi: true`
 - `singleQuote: true`
 - `quoteProps: 'consistent'`
-- `arrowParens: 'avoid'`
+- `arrowParens: 'always'`
+- `bracketSameLine: false`
+- `bracketSpacing: true`
 - `trailingComma: 'all'`
 - `endOfLine: 'auto'`
 - `vueIndentScriptAndStyle: false`

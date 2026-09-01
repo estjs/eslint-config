@@ -14,10 +14,10 @@
 
 - **Flat config 优先**
   - 基于 ESLint 9+
-  - 单一入口：`estjs(overrides?, options?)`
+  - 单一入口与灵活链式追加：`estjs(overrides?, options?, ...userConfigs)`
 - **自动检测能力**
   - 根据已安装依赖自动检测 `typescript`、`react`、`vue`、`vitest`/`jest`、`unocss`
-  - `node`、`markdown`、`prettier` 默认开启
+  - `node`、`markdown`、`disables`、`prettier` 默认开启
 - **广泛的文件覆盖**
   - JavaScript、TypeScript、JSX、TSX、Vue
   - Markdown、HTML
@@ -25,11 +25,16 @@
   - RegExp、JSDoc、UnoCSS
 - **内置工程治理**
   - 导入顺序和重复导入检查
+  - 未使用导入自动清理，支持下划线 `_` 显式忽略约定
+  - 集中化 `disables` 场景静音层（scripts、`.d.ts`、config、test）
   - 自动整理 `package.json` 和 `tsconfig.json`
   - 默认忽略常见生成文件和目录
+- **TypeScript Type-Aware 支持**
+  - 默认快速纯 AST 语法解析
+  - 支持传入 `tsconfigPath` 按需启动 TypeScript 5+ `projectService` 类型感知检查
 - **格式化集成**
-  - 内置 [Prettier](https://github.com/prettier/prettier) 集成
-  - 提供一组可覆盖的合理默认值
+  - 内置 [Prettier](https://github.com/prettier/prettier) 集成，彻底解决 Vue/JSX 规则冲突
+  - 提供一组可覆盖的合理默认值（`bracketSameLine: false`、`arrowParens: 'always'`）
 - **编辑器友好**
   - 适合配合 `eslint --fix` 使用
   - 支持 `eslint-plugin-command` 的注释驱动 codemod
@@ -73,6 +78,14 @@ export default estjs(
     javascript: {
       'no-console': 'off',
     },
+    typescript: {
+      tsconfigPath: 'tsconfig.json', // 开启 Type-Aware 类型感知检查
+    },
+    disables: {
+      scripts: {
+        'no-console': 'off',
+      },
+    },
     imports: {
       'import/no-default-export': 'off',
     },
@@ -84,6 +97,14 @@ export default estjs(
     vue: false,
     test: true,
     pnpm: false,
+    disables: true,
+  },
+  // 可以直接在尾部参数追加自定义 Flat Config 配置块：
+  {
+    files: ['**/custom-folder/**'],
+    rules: {
+      'no-alert': 'error',
+    },
   },
 );
 ```
@@ -103,8 +124,17 @@ export default estjs({
     // @see https://github.com/sweepline/eslint-plugin-unused-imports#supported-rules
   },
   typescript: {
-    // 覆盖规则
+    // 选项与覆盖规则
+    // tsconfigPath: 'tsconfig.json', // 开启 Type-Aware 规则
     // @see https://typescript-eslint.io/rules/
+  },
+  disables: {
+    // 按场景精细调整规则豁免
+    // scripts: { 'no-console': 'off' },
+    // dts: { 'unused-imports/no-unused-vars': 'off' },
+    // config: { 'import/no-default-export': 'off' },
+    // test: { 'no-unused-expressions': 'off' },
+    // cjs: { '@typescript-eslint/no-require-imports': 'off' },
   },
   imports: {
     // 覆盖规则
@@ -151,15 +181,15 @@ export default estjs({
     // 覆盖规则
     // @see https://github.com/antfu/eslint-plugin-command
   },
-    yaml: {
-      // 覆盖规则
-      // @see https://ota-meshi.github.io/eslint-plugin-yml/rules/
-    },
-    json: {
-      // 覆盖规则
-      // @see https://ota-meshi.github.io/eslint-plugin-jsonc/rules/
-    },
-   pnpm: {
+  yaml: {
+    // 覆盖规则
+    // @see https://ota-meshi.github.io/eslint-plugin-yml/rules/
+  },
+  json: {
+    // 覆盖规则
+    // @see https://ota-meshi.github.io/eslint-plugin-jsonc/rules/
+  },
+  pnpm: {
     // 覆盖规则
     // @see https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm#rules
   },
@@ -180,6 +210,7 @@ export default estjs({
 
 - `javascript`
 - `typescript`
+- `disables`
 - `imports`
 - `unicorn`
 - `jsdoc`
@@ -210,6 +241,24 @@ export default estjs({
 | `prettier` | `true` | 开启 Prettier 格式化 |
 | `pnpm` | `false` | 开启 PNPM 相关规则 |
 | `test` | `auto` | 开启测试规则 |
+| `disables` | `true` | 开启场景化规则静音（scripts、dts、config、test、cjs） |
+
+### 第三个及后续参数：自定义追加配置
+
+可以直接传入自定义 Flat Config 配置对象或数组，自动追加在配置末尾：
+
+```js
+export default estjs(
+  {},
+  {},
+  {
+    files: ['**/scripts/**'],
+    rules: {
+      'no-console': 'error',
+    },
+  },
+);
+```
 
 ### 自动检测
 
@@ -248,6 +297,7 @@ export default estjs({
 - `unocss`
 - `markdown`
 - `node`
+- `disables`
 - `prettier`
 - `pnpm`
 
@@ -281,7 +331,9 @@ export default estjs({
 - `semi: true`
 - `singleQuote: true`
 - `quoteProps: 'consistent'`
-- `arrowParens: 'avoid'`
+- `arrowParens: 'always'`
+- `bracketSameLine: false`
+- `bracketSpacing: true`
 - `trailingComma: 'all'`
 - `endOfLine: 'auto'`
 - `vueIndentScriptAndStyle: false`
