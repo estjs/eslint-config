@@ -23,7 +23,7 @@ import {
   vue,
   yml,
 } from './configs';
-import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
+import { hasReact, hasTest, hasTypeScript, hasVue } from './env';
 
 /**
  * Generates a list of configurations based on the input parameters.
@@ -86,8 +86,8 @@ export function estjs(
     vue: enableVue = hasVue ?? false,
     test: enableTest = hasTest ?? false,
     react: enableReact = hasReact ?? false,
-    unocss: enableUnocss = hasUnocss ?? false,
     typescript: enableTS = hasTypeScript ?? false,
+    unocss: enableUnocss = false,
     node: enableNode = true,
     prettier: enablePrettier = true,
     markdown: enableMarkdown = true,
