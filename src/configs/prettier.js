@@ -41,7 +41,7 @@ export function prettier(overrides = {}) {
     singleAttributePerLine: false,
 
     // jsx 里把 > 单独放在下一行
-   bracketSameLine: false,
+    bracketSameLine: false,
 
     ...overrides,
   };
