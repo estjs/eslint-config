@@ -1,4 +1,3 @@
-import { GLOB_MARKDOWN, GLOB_SRC, GLOB_SRC_EXT } from '../globs';
 import { pluginImport } from '../plugins';
 export function imports(overrides = {}) {
   return [
@@ -34,23 +33,6 @@ export function imports(overrides = {}) {
         'import/no-default-export': 'off',
         'import/no-mutable-exports': 'off',
         ...overrides,
-      },
-    },
-    {
-      files: [
-        `**/*config*.${GLOB_SRC_EXT}`,
-        `**/views/${GLOB_SRC}`,
-        `**/pages/${GLOB_SRC}`,
-        '**/{index,vite,esbuild,rollup,webpack,rspack}.ts',
-        '**/*.d.ts',
-        `${GLOB_MARKDOWN}/**`,
-        '**/.prettierrc*',
-      ],
-      plugins: {
-        import: pluginImport,
-      },
-      rules: {
-        'import/no-default-export': 'off',
       },
     },
   ];

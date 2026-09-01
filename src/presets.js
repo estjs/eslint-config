@@ -1,6 +1,7 @@
 import {
   command,
   comments,
+  disables,
   ignores,
   imports,
   javascript,
@@ -44,6 +45,7 @@ import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
  * @param {object} param1.comments - Configuration options for eslint-comments.
  * @param {object} param1.command - Configuration options for eslint-plugin-command.
  * @param {object} param1.ignores - Configuration options for ignores.
+ * @param {object} param1.disables - Configuration options for disables.
  * @param {object} param2 - Additional options to enable or disable certain features.
  * @param {boolean} param2.vue - Enable or disable vue.
  * @param {boolean} param2.test - Enable or disable test.
@@ -55,6 +57,8 @@ import { hasReact, hasTest, hasTypeScript, hasUnocss, hasVue } from './env';
  * @param {boolean} param2.prettier - Enable or disable prettier.
  * @param {boolean} param2.regexp - Enable or disable regexp.
  * @param {boolean} param2.pnpm - Enable or disable pnpm.
+ * @param {boolean} param2.disables - Enable or disable disables.
+ * @param {...object} userConfigs - Custom flat configs to append.
  *
  * @return {Array} List of configurations based on the input parameters.
  */
@@ -76,6 +80,7 @@ export function estjs(
     comments: commentsConfig = {},
     command: commandConfig = {},
     ignores: ignoresConfig = [],
+    disables: disablesConfig = {},
   } = {},
   {
     vue: enableVue = hasVue ?? false,
@@ -88,7 +93,9 @@ export function estjs(
     markdown: enableMarkdown = true,
     pnpm: enablePnpm = false,
     regexp: enableRegexp = true,
+    disables: enableDisables = true,
   } = {},
+  ...userConfigs
 ) {
   const configs = [
     ...ignores(ignoresConfig),
@@ -107,7 +114,6 @@ export function estjs(
 
   const optionalConfigs = [
     [enablePnpm, () => pnpm(pnpmConfig)],
-    [enablePrettier, () => prettier(prettierConfig)],
     [enableVue, () => vue(vueConfig, enableTS)],
     [enableMarkdown, () => markdown(markdownConfig)],
     [enableUnocss, () => unocss()],
@@ -116,11 +122,21 @@ export function estjs(
     [enableTest, () => test(testConfig)],
     [enableNode, () => node],
     [enableRegexp, () => regexp(regexpConfig)],
+    [enableDisables, () => disables(disablesConfig)],
+    [enablePrettier, () => prettier(prettierConfig)],
   ];
 
   for (const [enabled, createConfig] of optionalConfigs) {
     if (enabled) {
       configs.push(...createConfig());
+    }
+  }
+
+  for (const config of userConfigs) {
+    if (Array.isArray(config)) {
+      configs.push(...config);
+    } else if (config && typeof config === 'object') {
+      configs.push(config);
     }
   }
 

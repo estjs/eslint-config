@@ -124,10 +124,25 @@ export function javascript(overrides = {}, global = {}) {
           },
         ],
         'unicode-bom': ['error', 'never'],
+        'no-unused-vars': [
+          'error',
+          {
+            args: 'none',
+            caughtErrors: 'none',
+            ignoreRestSiblings: true,
+            vars: 'all',
+          },
+        ],
         'unused-imports/no-unused-imports': 'warn',
         'unused-imports/no-unused-vars': [
           'error',
-          { args: 'after-used', ignoreRestSiblings: true },
+          {
+            args: 'after-used',
+            argsIgnorePattern: '^_',
+            ignoreRestSiblings: true,
+            vars: 'all',
+            varsIgnorePattern: '^_',
+          },
         ],
         'use-isnan': ['error', { enforceForIndexOf: true, enforceForSwitchCase: true }],
         'valid-typeof': ['error', { requireStringLiterals: true }],
@@ -136,22 +151,8 @@ export function javascript(overrides = {}, global = {}) {
 
         // off rule
         'no-void': 'off',
-
-        'no-unused-vars': 'off',
         'no-lonely-if': 'off',
         ...overrides,
-      },
-    },
-    {
-      files: ['**/scripts/*', '**/cli.*'],
-      rules: {
-        'no-console': 'off',
-      },
-    },
-    {
-      files: ['**/*.{test,spec}.js?(x)'],
-      rules: {
-        'no-unused-expressions': 'off',
       },
     },
   ];
