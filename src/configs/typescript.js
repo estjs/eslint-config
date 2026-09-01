@@ -1,18 +1,72 @@
-import { GLOB_JS, GLOB_TS, GLOB_TSX } from '../globs';
+import process from 'node:process';
+import { GLOB_MARKDOWN, GLOB_TS, GLOB_TSX } from '../globs';
 import { parserTypeScript, pluginTypeScript } from '../plugins';
 import { restrictedSyntaxJs } from './javascript';
 
-export function typescript(overrides = {}, globals = {}) {
-  return [
-    {
-      files: [GLOB_TS, GLOB_TSX],
+export function typescript(options = {}, globals = {}) {
+  const {
+    overrides = {},
+    overridesTypeAware = {},
+    parserOptions = {},
+    tsconfigPath,
+    files = [GLOB_TS, GLOB_TSX],
+    filesTypeAware = [GLOB_TS, GLOB_TSX],
+    ignoresTypeAware = [`${GLOB_MARKDOWN}/**`],
+  } = typeof options === 'object' && !Array.isArray(options) && options !== null ? options : {};
+
+  const isTypeAware = Boolean(tsconfigPath);
+
+  const typeAwareRules = {
+    '@typescript-eslint/await-thenable': 'error',
+    '@typescript-eslint/dot-notation': ['error', { allowKeywords: true }],
+    '@typescript-eslint/no-floating-promises': 'error',
+    '@typescript-eslint/no-for-in-array': 'error',
+    '@typescript-eslint/no-implied-eval': 'error',
+    '@typescript-eslint/no-misused-promises': 'error',
+    '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+    '@typescript-eslint/no-unsafe-argument': 'error',
+    '@typescript-eslint/no-unsafe-assignment': 'error',
+    '@typescript-eslint/no-unsafe-call': 'error',
+    '@typescript-eslint/no-unsafe-member-access': 'error',
+    '@typescript-eslint/no-unsafe-return': 'error',
+    '@typescript-eslint/restrict-plus-operands': 'error',
+    '@typescript-eslint/restrict-template-expressions': 'error',
+    '@typescript-eslint/unbound-method': 'error',
+    'dot-notation': 'off',
+    'no-implied-eval': 'off',
+    'require-await': 'off',
+  };
+
+  function makeParser(typeAware, filesList, ignoresList) {
+    return {
+      files: filesList,
+      ...(ignoresList ? { ignores: ignoresList } : {}),
       languageOptions: {
         parser: parserTypeScript,
         parserOptions: {
           sourceType: 'module',
+          ...(typeAware
+            ? {
+                projectService: {
+                  allowDefaultProject: ['./*.js'],
+                  defaultProject: tsconfigPath,
+                },
+                tsconfigRootDir: process.cwd(),
+              }
+            : {}),
+          ...parserOptions,
         },
         globals,
       },
+    };
+  }
+
+  return [
+    makeParser(false, files),
+    ...(isTypeAware ? [makeParser(true, filesTypeAware, ignoresTypeAware)] : []),
+
+    {
+      files,
       plugins: {
         '@typescript-eslint': pluginTypeScript,
       },
@@ -53,38 +107,24 @@ export function typescript(overrides = {}, globals = {}) {
 
         'no-restricted-syntax': ['error', ...restrictedSyntaxJs],
         'no-unused-expressions': 'off',
+        'no-redeclare': 'off',
+        'no-dupe-class-members': 'off',
 
         ...overrides,
       },
     },
-    {
-      files: ['**/*.d.ts'],
-      rules: {
-        '@eslint-community/eslint-comments/no-unlimited-disable': 'off',
-        'import/no-duplicates': 'off',
-        'unused-imports/no-unused-vars': 'off',
-        ...overrides,
-      },
-    },
-    {
-      files: ['**/*.{test,spec}.ts?(x)'],
-      rules: {
-        '@typescript-eslint/no-unused-expressions': 'off',
-        'no-unused-expressions': 'off',
-      },
-    },
-    {
-      files: [GLOB_JS, '**/*.cjs'],
-      rules: {
-        '@typescript-eslint/no-require-imports': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-      },
-    },
-    {
-      files: ['**/*.d.ts'],
-      rules: {
-        'no-restricted-syntax': ['error', ...restrictedSyntaxJs],
-      },
-    },
+
+    ...(isTypeAware
+      ? [
+          {
+            files: filesTypeAware,
+            ignores: ignoresTypeAware,
+            rules: {
+              ...typeAwareRules,
+              ...overridesTypeAware,
+            },
+          },
+        ]
+      : []),
   ];
 }
