@@ -31,7 +31,7 @@ importers:
         version: 8.69.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
       '@unocss/eslint-plugin':
         specifier: ^66.9.1
-        version: 66.9.1(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
+        version: 66.10.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
       '@vitest/eslint-plugin':
         specifier: ^1.6.27
         version: 1.6.27(@typescript-eslint/eslint-plugin@8.69.0(@typescript-eslint/parser@8.69.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3))(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3))(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)(vitest@4.1.11(@types/node@26.4.0)(vite@6.2.5(@types/node@26.4.0)(jiti@2.6.1)(yaml@2.9.0)))
@@ -1272,14 +1272,20 @@ packages:
     resolution: {integrity: sha512-/2zr57BR70xvimCl3+p0QQFh4GwOy3vx2iZ2G1/NOv9TxpG58GuFPQE3e4h3ydt6kxwEhKLfCHDwfg9veESuNg==}
     hasBin: true
 
+  '@unocss/config@66.10.0':
+    resolution: {integrity: sha512-FuOGfNYwl+br7Nqknr2eRkUsPrN1diTInf9xvWcJB2xmu73LTe8o8YE1j85OT9cLv/tdp5fW0m5uTlQ5qyTyjw==}
+
   '@unocss/config@66.9.1':
     resolution: {integrity: sha512-1Re36+AGU6c3OXIq/lOhsEe6yGVsNy0DBFscKiA7GTl/ZS6ofADitSKkd9+FFx2QbztAJi2mbcuMnW+gtY76yw==}
+
+  '@unocss/core@66.10.0':
+    resolution: {integrity: sha512-d3IMOBqbAdkq4zWiV469o1Q4qizdKbD/wkbvLaq7W6qf1aDrZ/dqg29aWMj23Nb48NVDNhsQAPUhQre/IZ04mQ==}
 
   '@unocss/core@66.9.1':
     resolution: {integrity: sha512-x4ckZij1dV8mdLx9dpLPH5Aw5bUvGQM58p7pj6HYpeufxxE+qQeEOGuMZkmWSjilfZ039Zj9/KPf+e/V7sqMdQ==}
 
-  '@unocss/eslint-plugin@66.9.1':
-    resolution: {integrity: sha512-2NVwDXQ6HsK+2juROpn+qai1vklVXAEduN9rzwd83oj1aKowUG2ATY6/YZK28e2uNpNkXqskHUtag5vJMv/7aA==}
+  '@unocss/eslint-plugin@66.10.0':
+    resolution: {integrity: sha512-8TFmomFgRX8SOqvS6bl59PiV0o0BU1KKcExsgxY79gzvYonBxabfbWMGZb863DjTUrWp+qk6HtSGHS5gf0Ybzw==}
 
   '@unocss/extractor-arbitrary-variants@66.9.1':
     resolution: {integrity: sha512-y3qAKCzBxFZgvpu+l3YLMTvewg55eFKBpsZkJwdJPBTssBuk4bHxUtQ0vfCgEOUmXrKD/7WAPLXGfJwt+y9myw==}
@@ -1316,6 +1322,9 @@ packages:
 
   '@unocss/preset-wind@66.9.1':
     resolution: {integrity: sha512-FPBdrD963c4+sMAT/tgS+0nUWiu4SDx9hX/v/3LQnKe47Ge7Gnyy8olDLsaBLspeXaxwkHa1FH5vlhBZVV48tQ==}
+
+  '@unocss/rule-utils@66.10.0':
+    resolution: {integrity: sha512-J0UCAAIQ7U18zEnYm9YDGzmmjExtANX0MYvtn/Wrz4ZztjIGyLKvykX5NtGg27rp4bPpwY/i4vw978vxNupc3w==}
 
   '@unocss/rule-utils@66.9.1':
     resolution: {integrity: sha512-4Du8AAauGzLoMBfic0C7S1oo2PFuDYeM8etiE8ZBR66T+utIWUrP6JZWE1h5ti6DNrhf7OFWRM/EuOFus1AjjQ==}
@@ -3481,7 +3490,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 8.68.0
       '@typescript-eslint/typescript-estree': 8.68.0(typescript@6.0.3)
-      '@typescript-eslint/utils': 8.68.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
+      '@typescript-eslint/utils': 8.69.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
       eslint: 10.9.1(jiti@2.6.1)
       string-ts: 2.3.1
       typescript: 6.0.3
@@ -3496,7 +3505,7 @@ snapshots:
       '@eslint-react/var': 5.18.6(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
       '@typescript-eslint/scope-manager': 8.68.0
       '@typescript-eslint/types': 8.68.0
-      '@typescript-eslint/utils': 8.68.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
+      '@typescript-eslint/utils': 8.69.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
       eslint: 10.9.1(jiti@2.6.1)
       ts-pattern: 5.9.0
       typescript: 6.0.3
@@ -3519,7 +3528,7 @@ snapshots:
 
   '@eslint-react/eslint@5.18.6(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)':
     dependencies:
-      '@typescript-eslint/utils': 8.68.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
+      '@typescript-eslint/utils': 8.69.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
       eslint: 10.9.1(jiti@2.6.1)
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -3532,7 +3541,7 @@ snapshots:
       '@eslint-react/shared': 5.18.6(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
       '@eslint-react/var': 5.18.6(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
       '@typescript-eslint/types': 8.68.0
-      '@typescript-eslint/utils': 8.68.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
+      '@typescript-eslint/utils': 8.69.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
       eslint: 10.9.1(jiti@2.6.1)
       ts-pattern: 5.9.0
       typescript: 6.0.3
@@ -3556,7 +3565,7 @@ snapshots:
       '@eslint-react/eslint': 5.18.6(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
       '@typescript-eslint/scope-manager': 8.68.0
       '@typescript-eslint/types': 8.68.0
-      '@typescript-eslint/utils': 8.68.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
+      '@typescript-eslint/utils': 8.69.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
       eslint: 10.9.1(jiti@2.6.1)
       ts-pattern: 5.9.0
       typescript: 6.0.3
@@ -4190,6 +4199,13 @@ snapshots:
       tinyglobby: 0.2.17
       unplugin-utils: 0.3.2
 
+  '@unocss/config@66.10.0':
+    dependencies:
+      '@unocss/core': 66.10.0
+      colorette: 2.0.20
+      consola: 3.4.2
+      unconfig: 7.5.0
+
   '@unocss/config@66.9.1':
     dependencies:
       '@unocss/core': 66.9.1
@@ -4197,14 +4213,16 @@ snapshots:
       consola: 3.4.2
       unconfig: 7.5.0
 
+  '@unocss/core@66.10.0': {}
+
   '@unocss/core@66.9.1': {}
 
-  '@unocss/eslint-plugin@66.9.1(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)':
+  '@unocss/eslint-plugin@66.10.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)':
     dependencies:
-      '@typescript-eslint/utils': 8.68.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
-      '@unocss/config': 66.9.1
-      '@unocss/core': 66.9.1
-      '@unocss/rule-utils': 66.9.1
+      '@typescript-eslint/utils': 8.69.0(eslint@10.9.1(jiti@2.6.1))(typescript@6.0.3)
+      '@unocss/config': 66.10.0
+      '@unocss/core': 66.10.0
+      '@unocss/rule-utils': 66.10.0
       magic-string: 1.2.3
       synckit: 0.11.13
     transitivePeerDependencies:
@@ -4275,6 +4293,11 @@ snapshots:
     dependencies:
       '@unocss/core': 66.9.1
       '@unocss/preset-wind3': 66.9.1
+
+  '@unocss/rule-utils@66.10.0':
+    dependencies:
+      '@unocss/core': 66.10.0
+      magic-string: 1.2.3
 
   '@unocss/rule-utils@66.9.1':
     dependencies:
