@@ -1,7 +1,7 @@
 {
   "name": "@estjs/eslint-config",
   "version": "2.3.1",
-  "packageManager": "pnpm@11.26.0",
+  "packageManager": "pnpm@12.4.1",
   "description": "",
   "type": "module",
   "keywords": [],
@@ -90,7 +90,7 @@
     "execa": "^10.0.1",
     "fast-glob": "^3.3.3",
     "fs-extra": "^11.4.0",
-    "pnpm": "^11.25.0",
+    "pnpm": "^12.0.0",
     "prettier": "^3.9.6",
     "tsup": "^8.5.1",
     "typescript": "^6.0.3",
