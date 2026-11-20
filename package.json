@@ -66,7 +66,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-command": "^4.0.0",
     "eslint-plugin-import-x": "^4.17.1",
-    "eslint-plugin-jsdoc": "^64.5.4",
+    "eslint-plugin-jsdoc": "^65.0.0",
     "eslint-plugin-jsonc": "^3.4.2",
     "eslint-plugin-n": "^18.4.0",
     "eslint-plugin-pnpm": "^1.9.1",
